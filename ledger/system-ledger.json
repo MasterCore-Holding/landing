@@ -1,0 +1,26 @@
+{
+  "ledger": "MasterCore-Holding",
+  "currentVersion": "1.0.0",
+  "entries": [
+    {
+      "version": "1.0.0",
+      "date": "2026-10-05T03:30:00-03:00",
+      "type": "BASELINE",
+      "description": "Baseline de governanca da holding: repositorio canonico criado (pepticoreapp/MasterCore-Holding, espelho do estado da org MasterCore-Holding/landing). Artefatos consolidados: public/index.html (fonte unica do portal institucional), assets/brand/mastercore-logo-canonical.png (integridade criptografica verificada).",
+      "artifacts_consolidated": ["public/index.html", "assets/brand/mastercore-logo-canonical.png"],
+      "artifacts_pending": [
+        {"path": "governance/normativos/MasterCore-Normas-Corporativas-v1.pdf", "reason": "documento fisico inexistente; gate societario — criacao exige chancela CEO"},
+        {"path": "governance/manuals/MC-PUB-001.md", "reason": "rascunho v0.9 redigido pelo Cortex, aguarda chancela CEO para virar v1.0"},
+        {"path": "governance/manuals/MC-QUAL-001.md", "reason": "rascunho v0.9 redigido pelo Cortex, aguarda chancela CEO para virar v1.0"}
+      ],
+      "authorization_id": "AUT-MC-20261005-01",
+      "executor": "Cortex (Control Plane)",
+      "source_repo": "MasterCore-Holding/landing (org)",
+      "canonical_repo": "pepticoreapp/MasterCore-Holding",
+      "hashes": {
+        "public/index.html": "6b32b0c5897b1bb4053a17e58ba3ec02ae9945d4634f4747b10ac737f3186b3f",
+        "assets/brand/mastercore-logo-canonical.png": "4d3c5fcff6e2257d361b595b78844da999f26575344e2f05a78a0d4f85f883f9"
+      }
+    }
+  ]
+}

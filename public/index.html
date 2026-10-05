@@ -1,0 +1,1839 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MasterCore — Venture Studio</title>
+  
+  <!-- Allowed External Fonts & CSS -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/basecoat-css@1.0.2/dist/basecoat.cdn.min.css">
+  <style>
+/* Skip artifact shell — fixed styles served beside every artifact.
+   Complements basecoat; artifacts override --accent for their own identity. */
+:root {
+  color-scheme: light dark;
+  --accent: #2563eb;
+  --accent-contrast: #ffffff;
+  --accent-text: color-mix(in srgb, var(--accent) 72%, #000);
+  --bg: #f8f9fb;
+  --surface: #ffffff;
+  --text: #14171f;
+  --text-muted: #5b6472;
+  --border: rgba(20, 23, 31, 0.10);
+  --radius: 10px;
+  --shadow: 0 1px 3px rgba(20, 23, 31, 0.08);
+  --space: 16px;
+}
+/* Theme resolution. Without data-theme the viewer's system preference decides,
+   as it always did. With it, the artifact's own choice wins in BOTH directions:
+   a page that hardcodes one palette must not be handed the opposite set of
+   tokens by the machine it happens to be opened on. The dark values appear
+   twice because a media query cannot be folded into a selector list.
+   The attribute sits inside :where() so these blocks keep the specificity of a
+   bare :root — the page's own <style> is linked after this file and must go on
+   overriding any token it wants, exactly as it could before. */
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) {
+    --accent-text: color-mix(in srgb, var(--accent) 78%, #fff);
+    --bg: #101318;
+    --surface: #181c23;
+    --text: #eef1f6;
+    --text-muted: #9aa4b2;
+    --border: rgba(238, 241, 246, 0.12);
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  }
+}
+:root:where([data-theme="dark"]) {
+  color-scheme: dark;
+  --accent-text: color-mix(in srgb, var(--accent) 78%, #fff);
+  --bg: #101318;
+  --surface: #181c23;
+  --text: #eef1f6;
+  --text-muted: #9aa4b2;
+  --border: rgba(238, 241, 246, 0.12);
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+:root:where([data-theme="light"]) { color-scheme: light; }
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+
+.shell-container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+.shell-section { padding: calc(var(--space) * 2) 0; }
+.shell-grid { display: grid; gap: var(--space); grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.shell-toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: var(--space); }
+.shell-footer { padding: 24px 0 40px; color: var(--text-muted); font-size: 13px; }
+
+.shell-hero { padding: calc(var(--space) * 3) 0 calc(var(--space) * 2); }
+.shell-hero h1 { font-size: clamp(26px, 4vw, 40px); line-height: 1.15; margin: 0 0 10px; text-wrap: balance; }
+.shell-hero p { color: var(--text-muted); max-width: 60ch; margin: 0; }
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: var(--space);
+}
+
+.kpi { display: flex; flex-direction: column; gap: 4px; }
+.kpi .kpi-value { font-size: 28px; font-weight: 650; line-height: 1.1; }
+.kpi .kpi-label { font-size: 13px; color: var(--text-muted); }
+.kpi .kpi-delta { font-size: 12.5px; font-weight: 600; }
+.kpi .kpi-delta.up { color: #0a8f3c; }
+.kpi .kpi-delta.down { color: #cf3131; }
+
+table.shell-table { border-collapse: collapse; width: 100%; font-size: 14px; }
+table.shell-table th {
+  text-align: left; font-size: 11.5px; letter-spacing: 0.05em; text-transform: uppercase;
+  color: var(--text-muted); font-weight: 600;
+}
+table.shell-table th, table.shell-table td { padding: 9px 12px 9px 0; border-bottom: 1px solid var(--border); }
+table.shell-table td.num, table.shell-table th.num { text-align: right; font-variant-numeric: tabular-nums; }
+table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 6%, transparent); }
+
+.chart-box { width: 100%; min-height: 220px; }
+.chart-box svg { width: 100%; height: auto; display: block; }
+
+.muted { color: var(--text-muted); }
+.accent { color: var(--accent-text); }
+.shell-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px;
+  background: color-mix(in srgb, var(--accent) 12%, transparent); color: var(--accent-text);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .shell-fade { animation: shell-fade 400ms ease both; }
+  @keyframes shell-fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+}
+
+</style>
+  
+
+  <style>
+    :root {
+      --accent: #14B8A6;
+      --accent-hover: #0D9488;
+      --accent-light: rgba(20, 184, 166, 0.12);
+      --accent-glow: rgba(20, 184, 166, 0.3);
+      --bg: #0A192F;
+      --surface: #112240;
+      --surface-border: #233554;
+      --surface-hover: #1A2D4C;
+      --text: #F8FAFC;
+      --text-muted: #94A3B8;
+      --clinical-white: #F8FAFC;
+      --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-family);
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* Custom Focus Outline for Accessibility */
+    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    /* Utilities & Header Typography */
+    .text-teal {
+      color: #2DD4BF;
+    }
+    
+    .bg-teal-glow {
+      background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+    }
+
+    /* Navbar styling */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(10, 25, 47, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--surface-border);
+      transition: background 0.3s ease;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--clinical-white);
+      font-weight: 800;
+      font-size: 1.35rem;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-icon {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, #14B8A6 0%, #0D9488 100%);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0A192F;
+      font-weight: 900;
+      box-shadow: 0 0 15px var(--accent-glow);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--clinical-white);
+    }
+
+    .btn-teal {
+      background-color: var(--accent);
+      color: #0A192F;
+      font-weight: 700;
+      padding: 0.65rem 1.25rem;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 14px rgba(20, 184, 166, 0.25);
+    }
+
+    .btn-teal:hover {
+      background-color: #2DD4BF;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(20, 184, 166, 0.4);
+      color: #0A192F;
+    }
+
+    .btn-outline-teal {
+      background: transparent;
+      color: #2DD4BF;
+      border: 1px solid var(--accent);
+      font-weight: 600;
+      padding: 0.65rem 1.25rem;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.25s ease;
+    }
+
+    .btn-outline-teal:hover {
+      background: var(--accent-light);
+      border-color: #2DD4BF;
+      color: #5EEAD4;
+      transform: translateY(-2px);
+    }
+
+    /* Mobile Nav Toggle */
+    .mobile-menu-btn {
+      display: none;
+      background: transparent;
+      border: none;
+      color: var(--clinical-white);
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      position: relative;
+      padding: 9rem 1.5rem 5rem 1.5rem;
+      background: radial-gradient(circle at 50% 20%, #112240 0%, #0A192F 70%);
+      overflow: hidden;
+      border-bottom: 1px solid var(--surface-border);
+    }
+
+    #hero-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: auto;
+      z-index: 1;
+      opacity: 0.6;
+    }
+
+    .hero-container {
+      position: relative;
+      z-index: 2;
+      max-width: 1100px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 1rem;
+      background: rgba(20, 184, 166, 0.1);
+      border: 1px solid rgba(20, 184, 166, 0.3);
+      border-radius: 9999px;
+      color: #2DD4BF;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      margin-bottom: 1.75rem;
+      text-transform: uppercase;
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      color: var(--clinical-white);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.2rem;
+      color: #CBD5E1;
+      max-width: 780px;
+      margin: 0 auto 2.5rem auto;
+      font-weight: 400;
+      line-height: 1.7;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+      margin-bottom: 3.5rem;
+    }
+
+    /* Hero Metrics Bar */
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      margin-top: 2rem;
+      text-align: left;
+    }
+
+    .metric-card {
+      background: rgba(17, 34, 64, 0.7);
+      border: 1px solid var(--surface-border);
+      backdrop-filter: blur(8px);
+      padding: 1.25rem 1.5rem;
+      border-radius: 12px;
+      transition: border-color 0.3s ease;
+    }
+
+    .metric-card:hover {
+      border-color: var(--accent);
+    }
+
+    .metric-val {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #2DD4BF;
+      line-height: 1.2;
+    }
+
+    .metric-lbl {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+      font-weight: 500;
+    }
+
+    /* Shared Sections */
+    .section {
+      padding: 5.5rem 1.5rem;
+      position: relative;
+    }
+
+    .section-alt {
+      background-color: #0E1E36;
+      border-top: 1px solid var(--surface-border);
+      border-bottom: 1px solid var(--surface-border);
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 750px;
+      margin: 0 auto 3.5rem auto;
+    }
+
+    .section-tag {
+      color: #2DD4BF;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .section-title {
+      font-size: 2.3rem;
+      font-weight: 800;
+      color: var(--clinical-white);
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+
+    .section-desc {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    /* Modelo Section (3 Cards) */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .card-modelo {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: 16px;
+      padding: 2.25rem;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .card-modelo:hover {
+      transform: translateY(-6px);
+      border-color: var(--accent);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .card-icon-wrap {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      background: var(--accent-light);
+      border: 1px solid rgba(20, 184, 166, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #2DD4BF;
+      margin-bottom: 1.5rem;
+    }
+
+    .card-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--clinical-white);
+      margin-bottom: 1rem;
+    }
+
+    .card-text {
+      color: #CBD5E1;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      flex-grow: 1;
+    }
+
+    .card-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .pill {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+      font-weight: 500;
+    }
+
+    /* Interactive Gate Simulator inside Modelo */
+    .gate-sim-container {
+      max-width: 1000px;
+      margin: 3.5rem auto 0 auto;
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: 16px;
+      padding: 2rem;
+    }
+
+    .gate-nav {
+      display: flex;
+      gap: 1rem;
+      border-bottom: 1px solid var(--surface-border);
+      padding-bottom: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .gate-tab {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .gate-tab.active {
+      background: var(--accent-light);
+      color: #2DD4BF;
+      border: 1px solid rgba(20, 184, 166, 0.3);
+    }
+
+    .gate-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .gate-info h4 {
+      font-size: 1.2rem;
+      color: var(--clinical-white);
+      margin-bottom: 0.5rem;
+    }
+
+    .gate-info p {
+      color: #CBD5E1;
+      font-size: 0.9rem;
+    }
+
+    .gate-checklist {
+      list-style: none;
+      margin-top: 1rem;
+    }
+
+    .gate-checklist li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #E2E8F0;
+      font-size: 0.85rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .gate-checklist svg {
+      color: #2DD4BF;
+      flex-shrink: 0;
+    }
+
+    /* Group Companies (Empresas) */
+    .company-card {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: 16px;
+      padding: 2.25rem;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .company-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1.25rem;
+    }
+
+    .company-name {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--clinical-white);
+    }
+
+    .company-tagline {
+      color: #2DD4BF;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .badge-status {
+      background: rgba(20, 184, 166, 0.15);
+      color: #2DD4BF;
+      border: 1px solid rgba(20, 184, 166, 0.3);
+      padding: 0.25rem 0.6rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .company-body {
+      color: #CBD5E1;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+
+    /* Disclaimer box for PeptiCore non-prescriptive rule */
+    .disclaimer-box {
+      background: rgba(15, 23, 42, 0.6);
+      border-left: 3px solid var(--accent);
+      padding: 0.75rem 1rem;
+      border-radius: 0 8px 8px 0;
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .disclaimer-box strong {
+      color: #E2E8F0;
+    }
+
+    /* Vision & Ambition Banner */
+    .vision-card {
+      background: linear-gradient(135deg, #112240 0%, #0A192F 100%);
+      border: 1px solid var(--surface-border);
+      border-radius: 24px;
+      padding: 4rem 3rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    .vision-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    }
+
+    .ambition-title {
+      font-size: 2.8rem;
+      font-weight: 900;
+      color: var(--clinical-white);
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .ambition-highlight {
+      color: #2DD4BF;
+      text-shadow: 0 0 20px rgba(20, 184, 166, 0.3);
+    }
+
+    .vision-process-steps {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 2.5rem 0;
+      flex-wrap: wrap;
+    }
+
+    .v-step {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 700;
+      font-size: 1rem;
+      color: #E2E8F0;
+      background: rgba(255, 255, 255, 0.04);
+      padding: 0.6rem 1.25rem;
+      border-radius: 9999px;
+      border: 1px solid var(--surface-border);
+    }
+
+    .v-step-num {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #0A192F;
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .v-arrow {
+      color: var(--text-muted);
+    }
+
+    .quote-box {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--surface-border);
+      max-width: 750px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .quote-text {
+      font-size: 1.15rem;
+      font-style: italic;
+      color: #CBD5E1;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .quote-author {
+      font-weight: 700;
+      color: var(--clinical-white);
+      font-size: 0.95rem;
+    }
+
+    .quote-role {
+      color: #2DD4BF;
+      font-size: 0.85rem;
+    }
+
+    /* Differentials Section */
+    .diff-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .diff-item {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: all 0.3s ease;
+    }
+
+    .diff-item:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+    }
+
+    .diff-num {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #2DD4BF;
+      margin-bottom: 0.5rem;
+      font-family: monospace;
+    }
+
+    .diff-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--clinical-white);
+      margin-bottom: 0.75rem;
+    }
+
+    .diff-desc {
+      color: #CBD5E1;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    /* Final CTA Banner */
+    .cta-banner {
+      background: linear-gradient(135deg, #0D9488 0%, #0A192F 100%);
+      border: 1px solid rgba(20, 184, 166, 0.4);
+      border-radius: 20px;
+      padding: 4rem 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .cta-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--clinical-white);
+      margin-bottom: 1.25rem;
+    }
+
+    .cta-desc {
+      color: #E2E8F0;
+      max-width: 600px;
+      margin: 0 auto 2rem auto;
+      font-size: 1.05rem;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: #060F1E;
+      border-top: 1px solid var(--surface-border);
+      padding: 4rem 1.5rem 2.5rem 1.5rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .footer-legal-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.2rem 0.6rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--surface-border);
+      border-radius: 4px;
+      color: #94A3B8;
+      font-size: 0.75rem;
+      width: fit-content;
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-notice {
+      max-width: 700px;
+      line-height: 1.5;
+    }
+
+    /* Modal for Contact Form */
+    .modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(6, 15, 30, 0.8);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal-backdrop.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-box {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: 20px;
+      width: 90%;
+      max-width: 540px;
+      padding: 2.5rem;
+      position: relative;
+      transform: translateY(20px);
+      transition: transform 0.3s ease;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+    }
+
+    .modal-backdrop.active .modal-box {
+      transform: translateY(0);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 0.5rem;
+      font-size: 1.25rem;
+      line-height: 1;
+    }
+
+    .modal-close:hover {
+      color: var(--clinical-white);
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--clinical-white);
+      margin-bottom: 0.4rem;
+    }
+
+    .form-input, .form-textarea, .form-select {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: #0A192F;
+      border: 1px solid var(--surface-border);
+      border-radius: 8px;
+      color: var(--clinical-white);
+      font-family: inherit;
+      font-size: 0.95rem;
+      transition: border-color 0.2s ease;
+    }
+
+    .form-input:focus, .form-textarea:focus, .form-select:focus {
+      border-color: var(--accent);
+      outline: none;
+    }
+
+    .form-checkbox {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .form-checkbox input {
+      margin-top: 0.2rem;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 1024px) {
+      .grid-3, .diff-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2.4rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.05rem;
+      }
+
+      .grid-3, .diff-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gate-content {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #0A192F;
+        border-bottom: 1px solid var(--surface-border);
+        flex-direction: column;
+        padding: 1.5rem;
+        gap: 1.25rem;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .footer-container {
+        grid-template-columns: 1fr;
+      }
+
+      .ambition-title {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#" class="brand-logo" aria-label="MasterCore Home">
+        <div class="brand-icon">M</div>
+        <span>MasterCore</span>
+      </a>
+
+      <button class="mobile-menu-btn" id="mobile-toggle" aria-label="Abrir menu de navegação">
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+
+      <ul class="nav-links" id="nav-menu">
+        <li><a href="#modelo" class="nav-link">Modelo</a></li>
+        <li><a href="#empresas" class="nav-link">Empresas</a></li>
+        <li><a href="#visao" class="nav-link">Visão</a></li>
+        <li><a href="#diferencial" class="nav-link">Diferencial</a></li>
+        <li>
+          <button class="btn-teal" onclick="openContactModal()">
+            <span>Fale com o grupo</span>
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path d="M5 12h14M12 5l7 7-7 7"></path>
+            </svg>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero-section" id="hero">
+    <canvas id="hero-canvas"></canvas>
+    
+    <div class="hero-container">
+      <div class="hero-badge">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M12 8v4l3 3"></path>
+        </svg>
+        <span>Venture Studio de Alta Performance</span>
+      </div>
+
+      <h1 class="hero-title">
+        A fábrica de <br><span class="text-teal">empresas autônomas.</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        A MasterCore cria, opera e escala ventures hiperautomatizadas alimentadas por um núcleo tecnológico compartilhado com <strong>automação operada por IA e supervisão humana contínua</strong>.
+      </p>
+
+      <div class="hero-cta-group">
+        <a href="#modelo" class="btn-teal">
+          <span>Conheça o modelo</span>
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </a>
+
+        <a href="#empresas" class="btn-outline-teal">
+          <span>Nossas empresas</span>
+        </a>
+      </div>
+
+      <!-- Live Operational Indicators -->
+      <div class="hero-metrics">
+        <div class="metric-card">
+          <div class="metric-val">≥ 90%</div>
+          <div class="metric-lbl">Índice de Autonomia Operacional</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-val">Zero</div>
+          <div class="metric-lbl">Incidentes de Conformidade</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-val">3 Ventures</div>
+          <div class="metric-lbl">Ativas no Hub de Inovação</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-val">100%</div>
+          <div class="metric-lbl">Política em Código Versionada</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODELO (VENTURE STUDIO) -->
+  <section class="section" id="modelo">
+    <div class="shell-container">
+      <div class="section-header">
+        <span class="section-tag">Arquitetura de Grupo</span>
+        <h2 class="section-title">O Modelo Venture Studio</h2>
+        <p class="section-desc">
+          Engenharia de negócios projetada para reaproveitamento máximo de inteligência, descentralização de capital e aprovação rigorosa por validação real.
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <!-- Card A -->
+        <div class="card-modelo">
+          <div class="card-icon-wrap">
+            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+            </svg>
+          </div>
+          <h3 class="card-title">Núcleo Compartilhado</h3>
+          <p class="card-text">
+            Tecnologia, pipelines de IA, modelos de dados e frameworks de compliance são reutilizados de forma modular entre todas as ventures do grupo, reduzindo dramaticamente o custo de criação e o tempo até o mercado.
+          </p>
+          <div class="card-pills">
+            <span class="pill">Core Reutilizável</span>
+            <span class="pill">Infraestrutura IA</span>
+            <span class="pill">Compliance Central</span>
+          </div>
+        </div>
+
+        <!-- Card B -->
+        <div class="card-modelo">
+          <div class="card-icon-wrap">
+            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="9" y1="3" x2="9" y2="21"></line>
+            </svg>
+          </div>
+          <h3 class="card-title">Empresas Autônomas</h3>
+          <p class="card-text">
+            Cada venture opera como uma entidade jurídica independente com PJ, cap table, direcionamento de mercado e balanço financeiro próprios, mantendo agilidade máxima e blindagem de risco.
+          </p>
+          <div class="card-pills">
+            <span class="pill">PJ Exclusivo</span>
+            <span class="pill">Cap Table Própria</span>
+            <span class="pill">Balanço Isolado</span>
+          </div>
+        </div>
+
+        <!-- Card C -->
+        <div class="card-modelo">
+          <div class="card-icon-wrap">
+            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M9 11l3 3L22 4"></path>
+              <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"></path>
+            </svg>
+          </div>
+          <h3 class="card-title">Governança por Portas</h3>
+          <p class="card-text">
+            Nenhuma empresa avança para a próxima fase de investimentos sem atingir marcos obrigatórios de clientes pagantes, retenção comprovada e margem operacional positiva com supervisão humana.
+          </p>
+          <div class="card-pills">
+            <span class="pill">Gated Progression</span>
+            <span class="pill">Retenção Ativa</span>
+            <span class="pill">Margem Positiva</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive Gate Simulator -->
+      <div class="gate-sim-container">
+        <h3 style="font-size:1.1rem; color:var(--clinical-white); margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem;">
+          <svg width="20" height="20" fill="none" stroke="#2DD4BF" stroke-width="2" viewBox="0 0 24 24">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
+          Simulador de Governança por Portas (Stage-Gate Framework)
+        </h3>
+
+        <div class="gate-nav">
+          <button class="gate-tab active" onclick="switchGate(1, this)">Porta 1: Validação</button>
+          <button class="gate-tab" onclick="switchGate(2, this)">Porta 2: Retenção & PMF</button>
+          <button class="gate-tab" onclick="switchGate(3, this)">Porta 3: Escala Sustentável</button>
+        </div>
+
+        <div id="gate-content-area" class="gate-content">
+          <!-- Rendered via JavaScript -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EMPRESAS DO GRUPO -->
+  <section class="section section-alt" id="empresas">
+    <div class="shell-container">
+      <div class="section-header">
+        <span class="section-tag">Portfólio de Ativos</span>
+        <h2 class="section-title">Empresas do Grupo</h2>
+        <p class="section-desc">
+          Conheça as marcas que compõem o ecossistema MasterCore, impulsionadas pelo mesmo motor tecnológico central.
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <!-- MasterCore -->
+        <div class="company-card">
+          <div class="company-header">
+            <div>
+              <h3 class="company-name">MasterCore</h3>
+              <span class="company-tagline">Holding & Orquestração</span>
+            </div>
+            <span class="badge-status">Controladora</span>
+          </div>
+          <p class="company-body">
+            Empresa-mãe responsável por orquestrar o ecossistema, alocar capital estratégico, desenvolver a infraestrutura de dados compartilhada e garantir a governança e conformidade regulatória.
+          </p>
+          <div class="card-pills">
+            <span class="pill">Alocação de Capital</span>
+            <span class="pill">Arquitetura de IA</span>
+            <span class="pill">Governança</span>
+          </div>
+        </div>
+
+        <!-- PeptiCore -->
+        <div class="company-card">
+          <div class="company-header">
+            <div>
+              <h3 class="company-name">PeptiCore</h3>
+              <span class="company-tagline">Biomedical EdTech</span>
+            </div>
+            <span class="badge-status">Em Operação</span>
+          </div>
+          <p class="company-body">
+            Plataforma educacional de inteligência biomédica especializada no estudo e disseminação científica sobre peptídeos bioidênticos e saúde integrativa.
+          </p>
+          
+          <!-- Mandatory Educational Disclaimer -->
+          <div class="disclaimer-box">
+            <strong>Nota Institucional:</strong> Plataforma de caráter estritamente educacional e informativo. Não realiza prescrições médicas nem substitui o diagnóstico ou acompanhamento por profissional de saúde habilitado.
+          </div>
+
+          <div class="card-pills" style="margin-top: auto;">
+            <span class="pill">Base Científica</span>
+            <span class="pill">Educação Médica</span>
+            <span class="pill">Conteúdo Curado</span>
+          </div>
+        </div>
+
+        <!-- EngineCore -->
+        <div class="company-card">
+          <div class="company-header">
+            <div>
+              <h3 class="company-name">EngineCore</h3>
+              <span class="company-tagline">Mídia & Growth</span>
+            </div>
+            <span class="badge-status">Em Operação</span>
+          </div>
+          <p class="company-body">
+            Agência especializada em mídia de alta performance, design estratégico e automação inteligente de marketing para aceleração do funil de vendas das ventures do grupo.
+          </p>
+          <div class="card-pills">
+            <span class="pill">Mídia de Performance</span>
+            <span class="pill">Design de Conversão</span>
+            <span class="pill">Marketing Automation</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISÃO E AMBIÇÃO -->
+  <section class="section" id="visao">
+    <div class="shell-container">
+      <div class="vision-card">
+        <span class="section-tag">Ambição Estratégica</span>
+        <h2 class="ambition-title">
+          Visão de Longo Prazo: <br>
+          <span class="ambition-highlight">US$ 1 Bilhão</span> em valor de portfólio em 5 anos.
+        </h2>
+
+        <p style="color:#CBD5E1; max-width:700px; margin:0 auto; font-size:1rem; line-height:1.6;">
+          Uma visão ambiciosa construída de forma consistente e metódica, porta a porta, fundamentada em métricas sólidas de validação de mercado, retenção real e escala com margem positiva.
+        </p>
+
+        <div class="vision-process-steps">
+          <div class="v-step">
+            <span class="v-step-num">1</span>
+            <span>Validação</span>
+          </div>
+          <span class="v-arrow">→</span>
+          <div class="v-step">
+            <span class="v-step-num">2</span>
+            <span>Retenção</span>
+          </div>
+          <span class="v-arrow">→</span>
+          <div class="v-step">
+            <span class="v-step-num">3</span>
+            <span>Escala Global</span>
+          </div>
+        </div>
+
+        <div class="quote-box">
+          <p class="quote-text">
+            "Não buscamos o crescimento desordenado a qualquer custo. O verdadeiro diferencial da MasterCore é a capacidade de operar empresas altamente eficientes, com automação profunda e governança rigorosa em cada ciclo."
+          </p>
+          <div class="quote-author">Lúcio Bicalho</div>
+          <div class="quote-role">CEO MasterCore</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIFERENCIAL -->
+  <section class="section section-alt" id="diferencial">
+    <div class="shell-container">
+      <div class="section-header">
+        <span class="section-tag">Vantagem Competitiva</span>
+        <h2 class="section-title">O Padrão MasterCore</h2>
+        <p class="section-desc">
+          Critérios de excelência técnica e institucional que garantem previsibilidade e segurança operacional.
+        </p>
+      </div>
+
+      <div class="diff-grid">
+        <!-- Diff 1 -->
+        <div class="diff-item">
+          <div class="diff-num">≥ 90%</div>
+          <h3 class="diff-title">Autonomia com Zero Incidentes</h3>
+          <p class="diff-desc">
+            Sistemas operados por automação com supervisão humana contínua. Índice de autonomia elevado com histórico rigoroso de zero incidentes de conformidade.
+          </p>
+        </div>
+
+        <!-- Diff 2 -->
+        <div class="diff-item">
+          <div class="diff-num">&lt;code/&gt;</div>
+          <h3 class="diff-title">Política como Código</h3>
+          <p class="diff-desc">
+            Todas as regras operacionais, limites de autoridade e restrições regulatórias são versionadas e auditáveis via software, com rollback instantâneo e rastreabilidade total.
+          </p>
+        </div>
+
+        <!-- Diff 3 -->
+        <div class="diff-item">
+          <div class="diff-num">UAU!</div>
+          <h3 class="diff-title">Efeito UAU como Aceite</h3>
+          <p class="diff-desc">
+            Cada produto, interface ou entrega institucional do grupo é submetido ao critério de aceite "Efeito UAU" — exigindo padrão estético e de usabilidade impecáveis.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="section" id="contato" style="padding-bottom: 6rem;">
+    <div class="shell-container">
+      <div class="cta-banner">
+        <h2 class="cta-title">Vamos construir o próximo unicórnio do grupo.</h2>
+        <p class="cta-desc">
+          Se você é um investidor estratégico, parceiro institucional ou especialista interessado em conectar-se ao ecossistema MasterCore, entre em contato.
+        </p>
+        <button class="btn-teal" style="font-size: 1.05rem; padding: 0.85rem 2rem;" onclick="openContactModal()">
+          <span>Iniciar Diálogo Institucional</span>
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path d="M5 12h14M12 5l7 7-7 7"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <a href="#" class="brand-logo" style="font-size:1.2rem;">
+          <div class="brand-icon" style="width:28px; height:28px; font-size:0.9rem;">M</div>
+          <span>MasterCore</span>
+        </a>
+        <p style="max-width:360px; color:#94A3B8; font-size:0.85rem; margin-top:0.5rem;">
+          Holding controladora de venture studio operado por automação inteligente e supervisão humana.
+        </p>
+        <div class="footer-legal-tag">
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M12 8v4M12 16h.01"></path>
+          </svg>
+          <span>Geo-phase: Brasil (Fase 1)</span>
+        </div>
+      </div>
+
+      <div>
+        <h4 style="color:var(--clinical-white); font-size:0.9rem; margin-bottom:1rem; font-weight:700;">Navegação</h4>
+        <ul style="list-style:none; display:flex; flex-direction:column; gap:0.5rem;">
+          <li><a href="#modelo" style="color:#94A3B8; text-decoration:none;">Modelo Venture Studio</a></li>
+          <li><a href="#empresas" style="color:#94A3B8; text-decoration:none;">Empresas do Grupo</a></li>
+          <li><a href="#visao" style="color:#94A3B8; text-decoration:none;">Visão Estratégica</a></li>
+          <li><a href="#diferencial" style="color:#94A3B8; text-decoration:none;">Diferenciais</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 style="color:var(--clinical-white); font-size:0.9rem; margin-bottom:1rem; font-weight:700;">Conformidade</h4>
+        <p style="font-size:0.8rem; color:#94A3B8; line-height:1.5;">
+          Proteção de Dados Pessoais em conformidade rigorosa com a <strong>LGPD (Lei nº 13.709/2018)</strong>.
+        </p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>
+        © 2026 MasterCore. Todos os direitos reservados.
+      </div>
+      <div class="footer-notice">
+        Conteúdo institucional. Consulte os termos de uso e a política de privacidade. O presente material tem finalidade estritamente informativa e não constitui promessa de rentabilidade financeira ou oferta pública de valores mobiliários.
+      </div>
+    </div>
+  </footer>
+
+  <!-- CONTACT MODAL -->
+  <div class="modal-backdrop" id="contact-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeContactModal()" aria-label="Fechar formulário">✕</button>
+      
+      <h3 id="modal-title" style="font-size:1.4rem; color:var(--clinical-white); margin-bottom:0.5rem; font-weight:800;">
+        Fale com o Grupo MasterCore
+      </h3>
+      <p style="color:#CBD5E1; font-size:0.85rem; margin-bottom:1.5rem;">
+        Preencha os dados abaixo para direcionamento institucional ao nosso departamento executivo.
+      </p>
+
+      <form id="contact-form" onsubmit="handleContactSubmit(event)">
+        <div class="form-group">
+          <label class="form-label" for="c-name">Nome Completo</label>
+          <input type="text" id="c-name" class="form-input" placeholder="Ex: Dr. Roberto Silva" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="c-email">E-mail Institucional</label>
+          <input type="email" id="c-email" class="form-input" placeholder="seu.nome@empresa.com" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="c-subject">Assunto / Perfil</label>
+          <select id="c-subject" class="form-select" required>
+            <option value="" disabled selected>Selecione uma opção</option>
+            <option value="Investidor">Investidor Estratégico</option>
+            <option value="Parceria">Parceria Corporativa / Venturing</option>
+            <option value="PeptiCore">Dúvida Institucional PeptiCore</option>
+            <option value="EngineCore">Serviços EngineCore</option>
+            <option value="Outro">Outro Assunto</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="c-msg">Mensagem</label>
+          <textarea id="c-msg" class="form-textarea" rows="3" placeholder="Como podemos colaborar?" required></textarea>
+        </div>
+
+        <label class="form-checkbox">
+          <input type="checkbox" required>
+          <span>Concordo com o tratamento de dados pessoais de acordo com a LGPD (Lei 13.709/2018) para fins de contato institucional.</span>
+        </label>
+
+        <button type="submit" class="btn-teal" style="width: 100%; justify-content: center;">
+          <span>Enviar Mensagem</span>
+        </button>
+      </form>
+
+      <div id="contact-success" style="display:none; text-align:center; padding: 1.5rem 0;">
+        <div style="width:48px; height:48px; border-radius:50%; background:var(--accent-light); color:#2DD4BF; display:flex; align-items:center; justify-content:center; margin:0 auto 1rem auto; font-size:1.5rem;">✓</div>
+        <h4 style="color:var(--clinical-white); font-size:1.1rem; margin-bottom:0.5rem;">Mensagem Recebida</h4>
+        <p style="color:#CBD5E1; font-size:0.85rem;">
+          Agradecemos seu contato. Nossa equipe de governança entrará em contato em breve.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // --- 1. Interactive Canvas Background (Particle Constellation Visual) ---
+    const canvas = document.getElementById('hero-canvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    let width, height;
+
+    function resizeCanvas() {
+      width = canvas.parentElement.offsetWidth;
+      height = canvas.parentElement.offsetHeight;
+      canvas.width = width;
+      canvas.height = height;
+    }
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.vx = (Math.random() - 0.5) * 0.4;
+        this.vy = (Math.random() - 0.5) * 0.4;
+        this.radius = Math.random() * 1.5 + 1;
+      }
+
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+
+        if (this.x < 0 || this.x > width) this.vx *= -1;
+        if (this.y < 0 || this.y > height) this.vy *= -1;
+      }
+
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = '#14B8A6';
+        ctx.fill();
+      }
+    }
+
+    function initCanvas() {
+      resizeCanvas();
+      particles = [];
+      const particleCount = Math.min(Math.floor(width / 18), 65);
+      for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+      }
+    }
+
+    function animateCanvas() {
+      ctx.clearRect(0, 0, width, height);
+
+      for (let i = 0; i < particles.length; i++) {
+        particles[i].update();
+        particles[i].draw();
+
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < 120) {
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = `rgba(20, 184, 166, ${0.18 * (1 - dist / 120)})`;
+            ctx.lineWidth = 0.8;
+            ctx.stroke();
+          }
+        }
+      }
+
+      requestAnimationFrame(animateCanvas);
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+    initCanvas();
+    animateCanvas();
+
+    // --- 2. Mobile Nav Toggle ---
+    const mobileBtn = document.getElementById('mobile-toggle');
+    const navMenu = document.getElementById('nav-menu');
+
+    mobileBtn.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+    });
+
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+      });
+    });
+
+    // --- 3. Stage-Gate Governance Simulator Data & Switcher ---
+    const gateData = {
+      1: {
+        title: "Porta 1: Validação Inicial & Product-Market Fit",
+        desc: "Validação da dor de mercado e teste de atração com clientes pagantes iniciais antes de qualquer investimento em escala.",
+        checklist: [
+          "Prova de conceito aprovada com supervisão humana",
+          "Mínimo de 10 clientes pagantes qualificados",
+          "NPS inicial ≥ 70 e custo de aquisição validado",
+          "Arquitetura de dados e compliance auditados"
+        ]
+      },
+      2: {
+        title: "Porta 2: Retenção & Unit Economics Positivos",
+        desc: "Aprovação do modelo financeiro unitário com retenção comprovada e automação operacional estabelecida.",
+        checklist: [
+          "LTV / CAC ≥ 3.5x consistente em 3 meses",
+          "Índice de automação com IA ≥ 85%",
+          "Taxa de Churn mensal inferior a 2%",
+          "Cap table e isolamento de risco PJ consolidados"
+        ]
+      },
+      3: {
+        title: "Porta 3: Escala Sustentável & Margem Operacional",
+        desc: "Aceleração de capital para expansão com margem operacional positiva e governança executiva rigorosa.",
+        checklist: [
+          "EBITDA positivo ou caminho claro de lucratividade",
+          "Automação de processos ≥ 90%",
+          "Zero incidentes de conformidade regulatória",
+          "Prontidão para captação externa ou distribuição"
+        ]
+      }
+    };
+
+    function switchGate(gateNumber, tabBtn) {
+      document.querySelectorAll('.gate-tab').forEach(b => b.classList.remove('active'));
+      tabBtn.classList.add('active');
+
+      const data = gateData[gateNumber];
+      const area = document.getElementById('gate-content-area');
+
+      area.innerHTML = `
+        <div class="gate-info">
+          <h4>${data.title}</h4>
+          <p>${data.desc}</p>
+        </div>
+        <div>
+          <ul class="gate-checklist">
+            ${data.checklist.map(item => `
+              <li>
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>${item}</span>
+              </li>
+            `).join('')}
+          </ul>
+        </div>
+      `;
+    }
+
+    // Initialize Gate 1 by default
+    document.addEventListener('DOMContentLoaded', () => {
+      switchGate(1, document.querySelector('.gate-tab'));
+    });
+
+    // --- 4. Modal Handler ---
+    function openContactModal() {
+      document.getElementById('contact-modal').classList.add('active');
+    }
+
+    function closeContactModal() {
+      document.getElementById('contact-modal').classList.remove('active');
+      setTimeout(() => {
+        document.getElementById('contact-form').style.display = 'block';
+        document.getElementById('contact-success').style.display = 'none';
+        document.getElementById('contact-form').reset();
+      }, 300);
+    }
+
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      document.getElementById('contact-form').style.display = 'none';
+      document.getElementById('contact-success').style.display = 'block';
+    }
+
+    // Close modal on backdrop click
+    document.getElementById('contact-modal').addEventListener('click', (e) => {
+      if (e.target === document.getElementById('contact-modal')) {
+        closeContactModal();
+      }
+    });
+  </script>
+<script>
+/* Skip artifact shell — fixed helpers served beside every artifact. */
+(function () {
+  "use strict";
+
+  var fmt = {
+    num: function (v, opts) { return new Intl.NumberFormat("pt-BR", opts || {}).format(v); },
+    brl: function (v) { return new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(v); },
+    pct: function (v) { return new Intl.NumberFormat("pt-BR", { style: "percent", maximumFractionDigits: 1 }).format(v); }
+  };
+
+  // axisFmt keeps axis tick labels short (compact notation) so long values
+  // (e.g. full BRL amounts) never clip against the plot edge.
+  function axisFmt(v) {
+    return fmt.num(v, { notation: "compact", maximumFractionDigits: 1 });
+  }
+
+  // format accepts a function OR one of the fmt names ("num" | "brl" | "pct").
+  function coerceFormat(spec) {
+    if (typeof spec === "function") return spec;
+    if (typeof spec === "string" && fmt[spec]) return fmt[spec];
+    return function (v) { return fmt.num(v); };
+  }
+
+  function accent() {
+    return getComputedStyle(document.documentElement).getPropertyValue("--accent").trim() || "#2563eb";
+  }
+  function mutedColor() {
+    return getComputedStyle(document.documentElement).getPropertyValue("--text-muted").trim() || "#5b6472";
+  }
+  function svgEl(tag, attrs) {
+    var el = document.createElementNS("http://www.w3.org/2000/svg", tag);
+    for (var k in attrs) el.setAttribute(k, attrs[k]);
+    return el;
+  }
+  function frame(el, w, h) {
+    var svg = svgEl("svg", { viewBox: "0 0 " + w + " " + h, role: "img" });
+    el.innerHTML = "";
+    el.appendChild(svg);
+    return svg;
+  }
+
+  // maxOf guards the axis scale: empty values would give -Infinity (truthy,
+  // so "|| 1" can't catch it) and a non-positive max would flip the chart.
+  function maxOf(values) {
+    var m = values.length ? Math.max.apply(null, values) : 0;
+    return m > 0 ? m : 1;
+  }
+
+  // bar(el, {labels:[], values:[], color?, format?}) — vertical bar chart.
+  function bar(el, cfg) {
+    var W = 640, H = 280, padL = 46, padB = 30, padT = 12;
+    var svg = frame(el, W, H);
+    var max = maxOf(cfg.values);
+    var n = cfg.values.length;
+    var plotW = W - padL - 12, plotH = H - padT - padB;
+    var step = plotW / n, bw = Math.min(step * 0.62, 64);
+    var color = cfg.color || accent();
+    var f = coerceFormat(cfg.format);
+    for (var g = 0; g <= 4; g++) {
+      var gy = padT + plotH - (plotH * g) / 4;
+      svg.appendChild(svgEl("line", { x1: padL, y1: gy, x2: W - 12, y2: gy, stroke: "currentColor", "stroke-opacity": 0.08 }));
+      var lbl = svgEl("text", { x: padL - 8, y: gy + 4, "text-anchor": "end", "font-size": 10, fill: mutedColor() });
+      lbl.textContent = axisFmt((max * g) / 4);
+      svg.appendChild(lbl);
+    }
+    cfg.values.forEach(function (v, i) {
+      var bh = Math.max(0, (v / max) * plotH);
+      var x = padL + i * step + (step - bw) / 2;
+      var y = padT + plotH - bh;
+      var r = svgEl("rect", { x: x, y: y, width: bw, height: bh, rx: 4, fill: color });
+      var t = svgEl("title", {});
+      t.textContent = cfg.labels[i] + ": " + f(v);
+      r.appendChild(t);
+      svg.appendChild(r);
+      var tx = svgEl("text", { x: x + bw / 2, y: H - 10, "text-anchor": "middle", "font-size": 11, fill: mutedColor() });
+      tx.textContent = cfg.labels[i];
+      svg.appendChild(tx);
+    });
+  }
+
+  // line(el, {labels:[], values:[], color?, format?}) — single-series line.
+  function line(el, cfg) {
+    var W = 640, H = 280, padL = 46, padB = 30, padT = 12;
+    var svg = frame(el, W, H);
+    var max = maxOf(cfg.values);
+    var n = cfg.values.length;
+    var plotW = W - padL - 16, plotH = H - padT - padB;
+    var color = cfg.color || accent();
+    var f = coerceFormat(cfg.format);
+    for (var g = 0; g <= 4; g++) {
+      var gy = padT + plotH - (plotH * g) / 4;
+      svg.appendChild(svgEl("line", { x1: padL, y1: gy, x2: W - 16, y2: gy, stroke: "currentColor", "stroke-opacity": 0.08 }));
+      var lbl = svgEl("text", { x: padL - 8, y: gy + 4, "text-anchor": "end", "font-size": 10, fill: mutedColor() });
+      lbl.textContent = axisFmt((max * g) / 4);
+      svg.appendChild(lbl);
+    }
+    var pts = cfg.values.map(function (v, i) {
+      var x = padL + (n === 1 ? plotW / 2 : (plotW * i) / (n - 1));
+      var y = padT + plotH - (v / max) * plotH;
+      return [x, y];
+    });
+    var d = pts.map(function (p, i) { return (i ? "L" : "M") + p[0].toFixed(1) + " " + p[1].toFixed(1); }).join(" ");
+    svg.appendChild(svgEl("path", { d: d, fill: "none", stroke: color, "stroke-width": 2, "stroke-linejoin": "round" }));
+    pts.forEach(function (p, i) {
+      var c = svgEl("circle", { cx: p[0], cy: p[1], r: 3.5, fill: color });
+      var t = svgEl("title", {});
+      t.textContent = cfg.labels[i] + ": " + f(cfg.values[i]);
+      c.appendChild(t);
+      svg.appendChild(c);
+      var tx = svgEl("text", { x: p[0], y: H - 10, "text-anchor": "middle", "font-size": 11, fill: mutedColor() });
+      tx.textContent = cfg.labels[i];
+      svg.appendChild(tx);
+    });
+  }
+
+  // donut(el, {labels:[], values:[], colors?}) — donut with center total.
+  function donut(el, cfg) {
+    var W = 320, H = 280, cx = W / 2, cy = H / 2, R = 92, r = 58;
+    var svg = frame(el, W, H);
+    var total = cfg.values.reduce(function (a, b) { return a + b; }, 0) || 1;
+    var palette = cfg.colors || [accent(), "#1baf7a", "#eda100", "#e34948", "#4a3aa7", "#e87ba4"];
+    var a0 = -Math.PI / 2;
+    cfg.values.forEach(function (v, i) {
+      var a1 = a0 + (v / total) * Math.PI * 2;
+      var large = a1 - a0 > Math.PI ? 1 : 0;
+      var p = ["M", cx + R * Math.cos(a0), cy + R * Math.sin(a0),
+        "A", R, R, 0, large, 1, cx + R * Math.cos(a1), cy + R * Math.sin(a1),
+        "L", cx + r * Math.cos(a1), cy + r * Math.sin(a1),
+        "A", r, r, 0, large, 0, cx + r * Math.cos(a0), cy + r * Math.sin(a0), "Z"].join(" ");
+      var path = svgEl("path", { d: p, fill: palette[i % palette.length] });
+      var t = svgEl("title", {});
+      t.textContent = cfg.labels[i] + ": " + fmt.num(v) + " (" + fmt.pct(v / total) + ")";
+      path.appendChild(t);
+      svg.appendChild(path);
+      a0 = a1;
+    });
+    var center = svgEl("text", { x: cx, y: cy + 5, "text-anchor": "middle", "font-size": 20, "font-weight": 650, fill: "currentColor" });
+    center.textContent = fmt.num(total);
+    svg.appendChild(center);
+  }
+
+  window.skipShell = { fmt: fmt };
+  window.skipChart = { bar: bar, line: line, donut: donut };
+})();
+
+</script>
+</body>
+</html>
