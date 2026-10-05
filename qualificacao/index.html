@@ -1003,6 +1003,14 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
     } catch(e) {}
   })();
 </script>
+<style>
+  /* MasterCore DS override — teal Vital + navy */
+  :root { --accent: #14B8A6 !important; --accent-hover: #0D9488 !important; }
+  :root:where(:not([data-theme="light"])) { --accent: #14B8A6 !important; --accent-hover: #0D9488 !important; --bg: #0A192F !important; --surface: #112240 !important; --text: #F8FAFC !important; }
+  :root:where([data-theme="dark"]) { --accent: #14B8A6 !important; --accent-hover: #0D9488 !important; --bg: #0A192F !important; --surface: #112240 !important; --text: #F8FAFC !important; }
+  html[data-theme="dark"] { --accent: #14B8A6 !important; --accent-hover: #0D9488 !important; --bg: #0A192F !important; --surface: #112240 !important; --text: #F8FAFC !important; }
+  html[data-theme="dark"] body { background: #0A192F !important; color: #F8FAFC !important; }
+</style>
 </head>
 <body>
 
