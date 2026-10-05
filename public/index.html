@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-BR" data-theme="dark">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MasterCore — Venture Studio</title>
+  <title>MasterCore OS — Fábrica de Empresas & Criação de Aplicativos</title>
+  <meta name="description" content="Sua ideia vira um negócio com MasterCore OS. Escolha entre parceria de resultado com zero custo upfront ou desenvolvimento por projeto pontual.">
   
-  <!-- Allowed External Fonts & CSS -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+  <!-- Basecoat CSS (Allowed CDN) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/basecoat-css@1.0.2/dist/basecoat.cdn.min.css">
+  
+  <!-- Shell styles -->
   <style>
 /* Skip artifact shell — fixed styles served beside every artifact.
    Complements basecoat; artifacts override --accent for their own identity. */
@@ -121,1570 +123,2436 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
 
   <style>
     :root {
-      --accent: #14B8A6;
-      --accent-hover: #0D9488;
-      --accent-light: rgba(20, 184, 166, 0.12);
-      --accent-glow: rgba(20, 184, 166, 0.3);
-      --bg: #0A192F;
-      --surface: #112240;
-      --surface-border: #233554;
-      --surface-hover: #1A2D4C;
-      --text: #F8FAFC;
-      --text-muted: #94A3B8;
-      --clinical-white: #F8FAFC;
-      --font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      background-color: var(--bg);
-      color: var(--text);
-      font-family: var(--font-family);
+      --accent: #0ea5e9;
+      --accent-hover: #38bdf8;
+      --accent-contrast: #041c32;
+      --accent-text: #38bdf8;
+      --bg: #0a192f;
+      --surface: #10233f;
+      --surface-elevated: #162f52;
+      --dashboard-bg: #0d2b45;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --border: #1e3a5f;
+      --border-accent: rgba(14, 165, 233, 0.35);
+      --glow-blue: rgba(14, 165, 233, 0.2);
     }
 
     body {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      overflow-x: hidden;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
       line-height: 1.6;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 50% -10%, rgba(14, 165, 233, 0.16) 0%, transparent 60%),
+        linear-gradient(to right, rgba(30, 58, 95, 0.18) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(30, 58, 95, 0.18) 1px, transparent 1px);
+      background-size: 100% auto, 48px 48px, 48px 48px;
+      background-position: top center, 0 0, 0 0;
     }
 
-    /* Custom Focus Outline for Accessibility */
-    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 3px;
-    }
-
-    /* Utilities & Header Typography */
-    .text-teal {
-      color: #2DD4BF;
-    }
-    
-    .bg-teal-glow {
-      background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
-    }
-
-    /* Navbar styling */
-    .navbar {
+    /* Top Navigation */
+    .mc-nav {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
-      z-index: 1000;
-      background: rgba(10, 25, 47, 0.88);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--surface-border);
-      transition: background 0.3s ease;
-    }
-
-    .nav-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 1rem 1.5rem;
+      height: 72px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      padding: 0 clamp(1.25rem, 5vw, 4rem);
+      background: rgba(10, 25, 47, 0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+      transition: border-color 0.2s ease, background 0.2s ease;
     }
 
-    .brand-logo {
-      display: flex;
+    .mc-brand {
+      display: inline-flex;
       align-items: center;
-      gap: 0.75rem;
       text-decoration: none;
-      color: var(--clinical-white);
-      font-weight: 800;
-      font-size: 1.35rem;
-      letter-spacing: -0.02em;
+      color: var(--text);
     }
 
-    .brand-icon {
-      width: 32px;
-      height: 32px;
-      background: linear-gradient(135deg, #14B8A6 0%, #0D9488 100%);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #0A192F;
-      font-weight: 900;
-      box-shadow: 0 0 15px var(--accent-glow);
+    .mc-brand-text {
+      color: #ffffff;
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      line-height: 1;
     }
 
-    .nav-links {
+    .mc-footer .mc-brand-text {
+      font-size: 1rem;
+    }
+
+    .mc-brand-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 10px var(--accent);
+      display: inline-block;
+    }
+
+    .mc-nav-links {
       display: flex;
       align-items: center;
-      gap: 2rem;
+      gap: 1.75rem;
       list-style: none;
+      margin: 0;
+      padding: 0;
     }
 
-    .nav-link {
+    .mc-nav-links a {
       color: var(--text-muted);
       text-decoration: none;
-      font-size: 0.95rem;
+      font-size: 0.925rem;
       font-weight: 500;
       transition: color 0.2s ease;
     }
 
-    .nav-link:hover, .nav-link.active {
-      color: var(--clinical-white);
+    .mc-nav-links a:hover,
+    .mc-nav-links a:focus-visible {
+      color: var(--accent-text);
     }
 
-    .btn-teal {
-      background-color: var(--accent);
-      color: #0A192F;
-      font-weight: 700;
-      padding: 0.65rem 1.25rem;
-      border-radius: 8px;
-      border: none;
-      cursor: pointer;
-      text-decoration: none;
+    .mc-cta-btn {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      transition: all 0.25s ease;
-      box-shadow: 0 4px 14px rgba(20, 184, 166, 0.25);
-    }
-
-    .btn-teal:hover {
-      background-color: #2DD4BF;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(20, 184, 166, 0.4);
-      color: #0A192F;
-    }
-
-    .btn-outline-teal {
-      background: transparent;
-      color: #2DD4BF;
-      border: 1px solid var(--accent);
+      justify-content: center;
+      padding: 0.55rem 1.25rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
       font-weight: 600;
-      padding: 0.65rem 1.25rem;
-      border-radius: 8px;
-      cursor: pointer;
       text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition: all 0.25s ease;
+      transition: all 0.2s ease;
+      cursor: pointer;
     }
 
-    .btn-outline-teal:hover {
-      background: var(--accent-light);
-      border-color: #2DD4BF;
-      color: #5EEAD4;
+    .mc-cta-primary {
+      background: var(--accent);
+      color: var(--accent-contrast);
+      border: 1px solid var(--accent);
+      box-shadow: 0 4px 14px rgba(14, 165, 233, 0.3);
+    }
+
+    .mc-cta-primary:hover {
+      background: var(--accent-hover);
+      border-color: var(--accent-hover);
+      box-shadow: 0 6px 20px rgba(14, 165, 233, 0.45);
+      color: var(--accent-contrast);
+    }
+
+    .mc-cta-secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .mc-cta-secondary:hover {
+      border-color: var(--accent);
+      color: var(--accent-text);
+      background: rgba(14, 165, 233, 0.08);
+    }
+
+    .mc-cta-trio-btn {
+      flex: 1 1 260px;
+      min-width: 250px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0.95rem 1.4rem;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-decoration: none;
+      background: var(--accent);
+      color: var(--accent-contrast);
+      border: 1.5px solid var(--accent);
+      box-shadow: 0 4px 18px rgba(14, 165, 233, 0.35);
+      transition: all 0.22s ease;
+    }
+
+    .mc-cta-trio-btn:hover {
+      background: var(--accent-hover);
+      border-color: var(--accent-hover);
+      color: var(--accent-contrast);
+      box-shadow: 0 6px 24px rgba(14, 165, 233, 0.5);
       transform: translateY(-2px);
     }
 
-    /* Mobile Nav Toggle */
-    .mobile-menu-btn {
+    /* Mobile Menu Toggle */
+    .mc-menu-btn {
       display: none;
       background: transparent;
-      border: none;
-      color: var(--clinical-white);
-      cursor: pointer;
+      border: 1px solid var(--border);
+      color: var(--text);
       padding: 0.5rem;
-    }
-
-    /* Hero Section */
-    .hero-section {
-      position: relative;
-      padding: 9rem 1.5rem 5rem 1.5rem;
-      background: radial-gradient(circle at 50% 20%, #112240 0%, #0A192F 70%);
-      overflow: hidden;
-      border-bottom: 1px solid var(--surface-border);
-    }
-
-    #hero-canvas {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: auto;
-      z-index: 1;
-      opacity: 0.6;
-    }
-
-    .hero-container {
-      position: relative;
-      z-index: 2;
-      max-width: 1100px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.35rem 1rem;
-      background: rgba(20, 184, 166, 0.1);
-      border: 1px solid rgba(20, 184, 166, 0.3);
-      border-radius: 9999px;
-      color: #2DD4BF;
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 0.03em;
-      margin-bottom: 1.75rem;
-      text-transform: uppercase;
-    }
-
-    .hero-title {
-      font-size: 3.5rem;
-      font-weight: 800;
-      line-height: 1.15;
-      letter-spacing: -0.03em;
-      color: var(--clinical-white);
-      margin-bottom: 1.5rem;
-    }
-
-    .hero-subtitle {
-      font-size: 1.2rem;
-      color: #CBD5E1;
-      max-width: 780px;
-      margin: 0 auto 2.5rem auto;
-      font-weight: 400;
-      line-height: 1.7;
-    }
-
-    .hero-cta-group {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1.25rem;
-      flex-wrap: wrap;
-      margin-bottom: 3.5rem;
-    }
-
-    /* Hero Metrics Bar */
-    .hero-metrics {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.25rem;
-      margin-top: 2rem;
-      text-align: left;
-    }
-
-    .metric-card {
-      background: rgba(17, 34, 64, 0.7);
-      border: 1px solid var(--surface-border);
-      backdrop-filter: blur(8px);
-      padding: 1.25rem 1.5rem;
-      border-radius: 12px;
-      transition: border-color 0.3s ease;
-    }
-
-    .metric-card:hover {
-      border-color: var(--accent);
-    }
-
-    .metric-val {
-      font-size: 1.8rem;
-      font-weight: 800;
-      color: #2DD4BF;
-      line-height: 1.2;
-    }
-
-    .metric-lbl {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-top: 0.25rem;
-      font-weight: 500;
-    }
-
-    /* Shared Sections */
-    .section {
-      padding: 5.5rem 1.5rem;
-      position: relative;
-    }
-
-    .section-alt {
-      background-color: #0E1E36;
-      border-top: 1px solid var(--surface-border);
-      border-bottom: 1px solid var(--surface-border);
-    }
-
-    .section-header {
-      text-align: center;
-      max-width: 750px;
-      margin: 0 auto 3.5rem auto;
-    }
-
-    .section-tag {
-      color: #2DD4BF;
-      font-size: 0.85rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 0.5rem;
-      display: block;
-    }
-
-    .section-title {
-      font-size: 2.3rem;
-      font-weight: 800;
-      color: var(--clinical-white);
-      letter-spacing: -0.02em;
-      margin-bottom: 1rem;
-    }
-
-    .section-desc {
-      color: var(--text-muted);
-      font-size: 1.05rem;
-      line-height: 1.6;
-    }
-
-    /* Modelo Section (3 Cards) */
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .card-modelo {
-      background: var(--surface);
-      border: 1px solid var(--surface-border);
-      border-radius: 16px;
-      padding: 2.25rem;
-      transition: all 0.3s ease;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-    }
-
-    .card-modelo:hover {
-      transform: translateY(-6px);
-      border-color: var(--accent);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
-    }
-
-    .card-icon-wrap {
-      width: 52px;
-      height: 52px;
-      border-radius: 12px;
-      background: var(--accent-light);
-      border: 1px solid rgba(20, 184, 166, 0.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #2DD4BF;
-      margin-bottom: 1.5rem;
-    }
-
-    .card-title {
-      font-size: 1.35rem;
-      font-weight: 700;
-      color: var(--clinical-white);
-      margin-bottom: 1rem;
-    }
-
-    .card-text {
-      color: #CBD5E1;
-      font-size: 0.95rem;
-      line-height: 1.6;
-      flex-grow: 1;
-    }
-
-    .card-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 1.5rem;
-      padding-top: 1.25rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .pill {
-      background: rgba(255, 255, 255, 0.05);
-      color: var(--text-muted);
-      font-size: 0.75rem;
-      padding: 0.25rem 0.6rem;
       border-radius: 6px;
-      font-weight: 500;
-    }
-
-    /* Interactive Gate Simulator inside Modelo */
-    .gate-sim-container {
-      max-width: 1000px;
-      margin: 3.5rem auto 0 auto;
-      background: var(--surface);
-      border: 1px solid var(--surface-border);
-      border-radius: 16px;
-      padding: 2rem;
-    }
-
-    .gate-nav {
-      display: flex;
-      gap: 1rem;
-      border-bottom: 1px solid var(--surface-border);
-      padding-bottom: 1rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .gate-tab {
-      background: transparent;
-      border: none;
-      color: var(--text-muted);
-      font-weight: 600;
-      font-size: 0.95rem;
-      padding: 0.5rem 1rem;
       cursor: pointer;
-      border-radius: 6px;
-      transition: all 0.2s ease;
+      line-height: 0;
     }
 
-    .gate-tab.active {
-      background: var(--accent-light);
-      color: #2DD4BF;
-      border: 1px solid rgba(20, 184, 166, 0.3);
-    }
-
-    .gate-content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      align-items: center;
-    }
-
-    .gate-info h4 {
-      font-size: 1.2rem;
-      color: var(--clinical-white);
-      margin-bottom: 0.5rem;
-    }
-
-    .gate-info p {
-      color: #CBD5E1;
-      font-size: 0.9rem;
-    }
-
-    .gate-checklist {
-      list-style: none;
-      margin-top: 1rem;
-    }
-
-    .gate-checklist li {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: #E2E8F0;
-      font-size: 0.85rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .gate-checklist svg {
-      color: #2DD4BF;
-      flex-shrink: 0;
-    }
-
-    /* Group Companies (Empresas) */
-    .company-card {
-      background: var(--surface);
-      border: 1px solid var(--surface-border);
-      border-radius: 16px;
-      padding: 2.25rem;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .company-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 1.25rem;
-    }
-
-    .company-name {
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: var(--clinical-white);
-    }
-
-    .company-tagline {
-      color: #2DD4BF;
-      font-size: 0.85rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .badge-status {
-      background: rgba(20, 184, 166, 0.15);
-      color: #2DD4BF;
-      border: 1px solid rgba(20, 184, 166, 0.3);
-      padding: 0.25rem 0.6rem;
-      border-radius: 9999px;
-      font-size: 0.75rem;
-      font-weight: 700;
-    }
-
-    .company-body {
-      color: #CBD5E1;
-      font-size: 0.95rem;
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
-      flex-grow: 1;
-    }
-
-    /* Disclaimer box for PeptiCore non-prescriptive rule */
-    .disclaimer-box {
-      background: rgba(15, 23, 42, 0.6);
-      border-left: 3px solid var(--accent);
-      padding: 0.75rem 1rem;
-      border-radius: 0 8px 8px 0;
-      margin-top: 1rem;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      line-height: 1.4;
-    }
-
-    .disclaimer-box strong {
-      color: #E2E8F0;
-    }
-
-    /* Vision & Ambition Banner */
-    .vision-card {
-      background: linear-gradient(135deg, #112240 0%, #0A192F 100%);
-      border: 1px solid var(--surface-border);
-      border-radius: 24px;
-      padding: 4rem 3rem;
-      max-width: 1100px;
-      margin: 0 auto;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-    }
-
-    .vision-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80%;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--accent), transparent);
-    }
-
-    .ambition-title {
-      font-size: 2.8rem;
-      font-weight: 900;
-      color: var(--clinical-white);
-      margin-bottom: 1rem;
-      letter-spacing: -0.02em;
-    }
-
-    .ambition-highlight {
-      color: #2DD4BF;
-      text-shadow: 0 0 20px rgba(20, 184, 166, 0.3);
-    }
-
-    .vision-process-steps {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1.5rem;
-      margin: 2.5rem 0;
-      flex-wrap: wrap;
-    }
-
-    .v-step {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-weight: 700;
-      font-size: 1rem;
-      color: #E2E8F0;
-      background: rgba(255, 255, 255, 0.04);
-      padding: 0.6rem 1.25rem;
-      border-radius: 9999px;
-      border: 1px solid var(--surface-border);
-    }
-
-    .v-step-num {
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      background: var(--accent);
-      color: #0A192F;
-      font-size: 0.8rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .v-arrow {
-      color: var(--text-muted);
-    }
-
-    .quote-box {
-      margin-top: 3rem;
-      padding-top: 2rem;
-      border-top: 1px solid var(--surface-border);
-      max-width: 750px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .quote-text {
-      font-size: 1.15rem;
-      font-style: italic;
-      color: #CBD5E1;
-      line-height: 1.7;
-      margin-bottom: 1rem;
-    }
-
-    .quote-author {
-      font-weight: 700;
-      color: var(--clinical-white);
-      font-size: 0.95rem;
-    }
-
-    .quote-role {
-      color: #2DD4BF;
-      font-size: 0.85rem;
-    }
-
-    /* Differentials Section */
-    .diff-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .diff-item {
-      background: var(--surface);
-      border: 1px solid var(--surface-border);
-      border-radius: 16px;
-      padding: 2rem;
-      transition: all 0.3s ease;
-    }
-
-    .diff-item:hover {
-      border-color: var(--accent);
-      transform: translateY(-4px);
-    }
-
-    .diff-num {
-      font-size: 2.2rem;
-      font-weight: 800;
-      color: #2DD4BF;
-      margin-bottom: 0.5rem;
-      font-family: monospace;
-    }
-
-    .diff-title {
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: var(--clinical-white);
-      margin-bottom: 0.75rem;
-    }
-
-    .diff-desc {
-      color: #CBD5E1;
-      font-size: 0.9rem;
-      line-height: 1.6;
-    }
-
-    /* Final CTA Banner */
-    .cta-banner {
-      background: linear-gradient(135deg, #0D9488 0%, #0A192F 100%);
-      border: 1px solid rgba(20, 184, 166, 0.4);
-      border-radius: 20px;
-      padding: 4rem 2rem;
-      max-width: 1000px;
-      margin: 0 auto;
-      text-align: center;
-      position: relative;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-    }
-
-    .cta-title {
-      font-size: 2.2rem;
-      font-weight: 800;
-      color: var(--clinical-white);
-      margin-bottom: 1.25rem;
-    }
-
-    .cta-desc {
-      color: #E2E8F0;
-      max-width: 600px;
-      margin: 0 auto 2rem auto;
-      font-size: 1.05rem;
-    }
-
-    /* Footer */
-    .footer {
-      background-color: #060F1E;
-      border-top: 1px solid var(--surface-border);
-      padding: 4rem 1.5rem 2.5rem 1.5rem;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-
-    .footer-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: 3rem;
-      margin-bottom: 3rem;
-    }
-
-    .footer-brand {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .footer-legal-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.2rem 0.6rem;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--surface-border);
-      border-radius: 4px;
-      color: #94A3B8;
-      font-size: 0.75rem;
-      width: fit-content;
-    }
-
-    .footer-bottom {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding-top: 2rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .footer-notice {
-      max-width: 700px;
-      line-height: 1.5;
-    }
-
-    /* Modal for Contact Form */
-    .modal-backdrop {
+    .mc-mobile-drawer {
+      display: none;
       position: fixed;
-      top: 0;
+      top: 72px;
       left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(6, 15, 30, 0.8);
-      backdrop-filter: blur(8px);
+      right: 0;
+      background: #0a192f;
+      border-bottom: 1px solid var(--border);
+      padding: 1.5rem clamp(1.25rem, 5vw, 4rem);
+      flex-direction: column;
+      gap: 1.25rem;
+      z-index: 99;
+      box-shadow: 0 20px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .mc-mobile-drawer.is-open {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 2000;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
     }
 
-    .modal-backdrop.active {
-      opacity: 1;
-      pointer-events: auto;
+    .mc-mobile-drawer a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 1.05rem;
+      font-weight: 500;
+      padding: 0.4rem 0;
     }
 
-    .modal-box {
-      background: var(--surface);
-      border: 1px solid var(--surface-border);
-      border-radius: 20px;
-      width: 90%;
-      max-width: 540px;
-      padding: 2.5rem;
+    /* Container wrapper */
+    .mc-wrap {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 clamp(1.25rem, 5vw, 2.5rem);
+    }
+
+    /* Section padding */
+    .mc-section {
+      padding: clamp(4.5rem, 9vw, 7.5rem) 0;
       position: relative;
-      transform: translateY(20px);
-      transition: transform 0.3s ease;
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
     }
 
-    .modal-backdrop.active .modal-box {
-      transform: translateY(0);
+    .mc-section-border {
+      border-top: 1px solid var(--border);
     }
 
-    .modal-close {
-      position: absolute;
-      top: 1.25rem;
-      right: 1.25rem;
-      background: transparent;
-      border: none;
-      color: var(--text-muted);
-      cursor: pointer;
-      padding: 0.5rem;
-      font-size: 1.25rem;
-      line-height: 1;
+    /* Badge */
+    .mc-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.775rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-text);
+      background: rgba(14, 165, 233, 0.1);
+      border: 1px solid var(--border-accent);
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
+      margin: 0 auto 1.5rem auto;
     }
 
-    .modal-close:hover {
-      color: var(--clinical-white);
+    /* Hero - Centralized like PeptiCore */
+    .mc-hero {
+      padding-top: clamp(8rem, 16vw, 11rem);
+      padding-bottom: clamp(4rem, 8vw, 6rem);
+      text-align: center;
     }
 
-    .form-group {
-      margin-bottom: 1.25rem;
-    }
-
-    .form-label {
-      display: block;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--clinical-white);
-      margin-bottom: 0.4rem;
-    }
-
-    .form-input, .form-textarea, .form-select {
-      width: 100%;
-      padding: 0.75rem 1rem;
-      background: #0A192F;
-      border: 1px solid var(--surface-border);
-      border-radius: 8px;
-      color: var(--clinical-white);
-      font-family: inherit;
-      font-size: 0.95rem;
-      transition: border-color 0.2s ease;
-    }
-
-    .form-input:focus, .form-textarea:focus, .form-select:focus {
-      border-color: var(--accent);
-      outline: none;
-    }
-
-    .form-checkbox {
+    .mc-hero-inner {
       display: flex;
-      align-items: flex-start;
-      gap: 0.6rem;
-      font-size: 0.8rem;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .mc-hero-title {
+      font-size: clamp(2.35rem, 5.5vw, 4.1rem);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+      color: var(--text);
+      max-width: 950px;
+      margin: 0 auto 1.5rem auto;
+      text-align: center;
+    }
+
+    .mc-hero-sub {
+      font-size: clamp(1.05rem, 2vw, 1.28rem);
       color: var(--text-muted);
-      margin-bottom: 1.5rem;
+      max-width: 780px;
+      line-height: 1.6;
+      margin: 0 auto 2.5rem auto;
+      text-align: center;
     }
 
-    .form-checkbox input {
-      margin-top: 0.2rem;
+    .mc-hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      margin: 0 auto 3rem auto;
+      width: 100%;
+      max-width: 960px;
     }
 
-    /* Responsive adjustments */
-    @media (max-width: 1024px) {
-      .grid-3, .diff-grid {
+    .mc-metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--border);
+      width: 100%;
+    }
+
+    @media (max-width: 960px) {
+      .mc-metrics-grid {
         grid-template-columns: repeat(2, 1fr);
       }
     }
 
+    @media (max-width: 580px) {
+      .mc-metrics-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .mc-metric-card {
+      background: rgba(16, 35, 63, 0.65);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem 1.25rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 140px;
+      box-sizing: border-box;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .mc-metric-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--border-accent);
+    }
+
+    .mc-metric-val {
+      font-size: clamp(1.35rem, 2.2vw, 1.7rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #0ea5e9;
+      text-align: center;
+      margin: 0 0 0.65rem 0;
+      line-height: 1.2;
+    }
+
+    .mc-metric-label {
+      font-size: 0.9rem;
+      color: #f8fafc;
+      margin: 0;
+      font-weight: 500;
+      line-height: 1.45;
+      text-align: center;
+    }
+
+    /* Offers Section Styles */
+    .mc-offers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .mc-offer-card {
+      background: linear-gradient(180deg, var(--surface) 0%, rgba(16, 35, 63, 0.6) 100%);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: clamp(2rem, 4vw, 2.5rem);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .mc-offer-card.is-featured {
+      border-color: var(--accent);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45), 0 0 25px var(--glow-blue);
+    }
+
+    .mc-offer-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-accent);
+    }
+
+    .mc-offer-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.8rem;
+      border-radius: 9999px;
+      margin: 0 auto 1.25rem auto;
+      align-self: center;
+    }
+
+    .mc-offer-tag.studio {
+      background: rgba(14, 165, 233, 0.15);
+      border: 1px solid var(--border-accent);
+      color: var(--accent-text);
+    }
+
+    .mc-offer-tag.fee {
+      background: rgba(148, 163, 184, 0.12);
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      color: #e2e8f0;
+    }
+
+    .mc-offer-title {
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1.2;
+      margin: 0 0 0.75rem 0;
+    }
+
+    .mc-offer-badge-sub {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--accent-text);
+      margin-bottom: 1rem;
+    }
+
+    .mc-offer-desc {
+      font-size: 0.96rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin: 0 0 1.75rem 0;
+      flex-grow: 1;
+    }
+
+    .mc-offer-features {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 2rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      border-top: 1px solid rgba(30, 58, 95, 0.6);
+      padding-top: 1.5rem;
+    }
+
+    .mc-offer-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+      font-size: 0.92rem;
+      color: #e2e8f0;
+      line-height: 1.45;
+    }
+
+    .mc-offer-features svg {
+      color: var(--accent-text);
+      flex-shrink: 0;
+      margin-top: 0.15rem;
+    }
+
+    /* Gate / Validation Panel */
+    .mc-gate-box {
+      background: radial-gradient(circle at 50% 0%, rgba(14, 165, 233, 0.14) 0%, transparent 60%),
+                  var(--surface);
+      border: 1px solid var(--border-accent);
+      border-radius: 16px;
+      padding: clamp(2rem, 5vw, 3rem);
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .mc-criteria-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 2.25rem;
+      width: 100%;
+    }
+
+    @media (max-width: 860px) {
+      .mc-criteria-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .mc-criteria-item {
+      background: rgba(10, 25, 47, 0.75);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 2.25rem 1.75rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      box-sizing: border-box;
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .mc-criteria-item:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-accent);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35), 0 0 18px var(--glow-blue);
+    }
+
+    .mc-criteria-icon {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: #0ea5e9;
+      line-height: 1;
+      margin-bottom: 0.85rem;
+      text-align: center;
+    }
+
+    /* Proposal dual outlets */
+    .mc-proposal-branches {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .mc-branch-card {
+      background: rgba(16, 35, 63, 0.65);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-align: center;
+      align-items: center;
+    }
+
+    .mc-branch-card.primary-branch {
+      border-color: var(--border-accent);
+      background: rgba(16, 35, 63, 0.95);
+    }
+
+    /* Benefits pill list */
+    .mc-benefits-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem clamp(0.75rem, 2vw, 1.5rem);
+      align-items: center;
+      justify-content: center;
+      padding: 1.25rem 0;
+      border-top: 1px solid var(--border);
+      width: 100%;
+    }
+
+    .mc-benefit-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #e2e8f0;
+      background: rgba(16, 35, 63, 0.55);
+      border: 1px solid var(--border);
+      border-radius: 9999px;
+      padding: 0.45rem 1rem;
+    }
+
+    .mc-benefit-tag svg {
+      color: var(--accent-text);
+      flex-shrink: 0;
+    }
+
+    /* Steps Grid - Simetria 2x2 */
+    .mc-steps-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.75rem;
+      position: relative;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
     @media (max-width: 768px) {
-      .hero-title {
-        font-size: 2.4rem;
-      }
-      
-      .hero-subtitle {
-        font-size: 1.05rem;
-      }
-
-      .grid-3, .diff-grid {
+      .mc-steps-grid {
         grid-template-columns: 1fr;
       }
+    }
 
-      .gate-content {
+    .mc-step-card {
+      background: linear-gradient(180deg, var(--surface) 0%, rgba(16, 35, 63, 0.5) 100%);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 2.25rem 2rem;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      height: 100%;
+      box-sizing: border-box;
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .mc-step-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-accent);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.4), 0 0 20px var(--glow-blue);
+    }
+
+    .mc-step-num {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: rgba(14, 165, 233, 0.14);
+      border: 1px solid var(--border-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--accent-text);
+      margin-bottom: 1.5rem;
+    }
+
+    .mc-step-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.3;
+      margin: 0 0 0.85rem 0;
+    }
+
+    .mc-step-desc {
+      font-size: 0.925rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* Partner of Result Highlights */
+    .mc-partner-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.75rem;
+    }
+
+    .mc-partner-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 2rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .mc-partner-card:hover {
+      border-color: var(--border-accent);
+      transform: translateY(-3px);
+    }
+
+    .mc-partner-badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-text);
+      background: rgba(14, 165, 233, 0.12);
+      border: 1px solid rgba(14, 165, 233, 0.25);
+      padding: 0.28rem 0.65rem;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+    }
+
+    .mc-partner-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 0 0 0.75rem 0;
+    }
+
+    .mc-partner-p {
+      font-size: 0.93rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .mc-telemetry-panel {
+      background: radial-gradient(circle at 50% 0%, rgba(14, 165, 233, 0.15), transparent 70%),
+                  rgba(10, 25, 47, 0.95);
+      border: 1px solid var(--border-accent);
+      border-radius: 14px;
+      padding: 2rem;
+      margin-top: 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.75rem;
+      align-items: center;
+    }
+
+    .mc-telemetry-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 0.75rem;
+    }
+
+    .mc-telemetry-icon {
+      color: var(--accent-text);
+      background: rgba(14, 165, 233, 0.14);
+      border: 1px solid var(--border-accent);
+      border-radius: 8px;
+      padding: 0.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* Section Headings - Centralized */
+    .mc-heading-sm {
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--accent-text);
+      margin-bottom: 0.75rem;
+      text-align: center;
+    }
+
+    .mc-heading-lg {
+      font-size: clamp(1.85rem, 3.8vw, 2.65rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      color: var(--text);
+      line-height: 1.2;
+      margin: 0 auto 1rem auto;
+      text-align: center;
+      max-width: 900px;
+    }
+
+    .mc-heading-desc {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 760px;
+      line-height: 1.65;
+      margin: 0 auto 2.75rem auto;
+      text-align: center;
+    }
+
+    /* Cards */
+    .mc-pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .mc-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      justify-content: flex-start;
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .mc-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-accent);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35), 0 0 20px var(--glow-blue);
+    }
+
+    .mc-card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      background: rgba(14, 165, 233, 0.12);
+      border: 1px solid var(--border-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-text);
+      margin-bottom: 1.25rem;
+    }
+
+    .mc-card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 0 0 0.75rem 0;
+      letter-spacing: -0.01em;
+    }
+
+    .mc-card-p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* Ventures Section */
+    .mc-ventures-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .mc-venture-card {
+      background: linear-gradient(180deg, var(--surface) 0%, rgba(16, 35, 63, 0.55) 100%);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.25rem 2rem;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .mc-venture-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-accent);
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.4), 0 0 24px var(--glow-blue);
+    }
+
+    .mc-venture-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: 0.8;
+    }
+
+    .mc-card-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+      width: 100%;
+    }
+
+    .mc-venture-monogram {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: rgba(14, 165, 233, 0.12);
+      border: 1.5px solid var(--accent);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-text);
+      font-size: 1.35rem;
+      font-weight: 800;
+      box-shadow: 0 0 15px rgba(14, 165, 233, 0.25);
+    }
+
+    .mc-venture-name {
+      font-size: 1.65rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin: 0;
+    }
+
+    .mc-chip {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 0.32rem 0.8rem;
+      border-radius: 9999px;
+      background: rgba(14, 165, 233, 0.14);
+      border: 1px solid var(--border-accent);
+      color: var(--accent-text);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1.3;
+    }
+
+    .mc-chip.structuring {
+      background: rgba(14, 165, 233, 0.14);
+      border-color: var(--border-accent);
+      color: var(--accent-text);
+    }
+
+    .mc-venture-desc {
+      font-size: 0.96rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin: 0 0 2rem 0;
+      flex-grow: 1;
+      text-align: center;
+    }
+
+    .mc-venture-footer {
+      border-top: 1px solid rgba(30, 58, 95, 0.7);
+      padding-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      width: 100%;
+    }
+
+    .mc-venture-meta {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* Automation / Cortex */
+    .mc-cortex-box {
+      background: radial-gradient(circle at 50% 10%, rgba(14, 165, 233, 0.12) 0%, transparent 60%),
+                  var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: clamp(2rem, 5vw, 3.5rem);
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .mc-cortex-layers {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin: 2.25rem auto 3rem auto;
+      max-width: 960px;
+      width: 100%;
+      justify-content: center;
+      align-items: stretch;
+    }
+
+    @media (max-width: 768px) {
+      .mc-cortex-layers {
         grid-template-columns: 1fr;
       }
+    }
 
-      .nav-links {
+    .mc-layer-item {
+      background: rgba(10, 25, 47, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 2.25rem 2rem;
+      position: relative;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 190px;
+      box-sizing: border-box;
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .mc-layer-item:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-accent);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35), 0 0 20px var(--glow-blue);
+    }
+
+    .mc-layer-tag {
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #0ea5e9;
+      margin-bottom: 0.65rem;
+      text-align: center;
+    }
+
+    .mc-layer-name {
+      font-size: 1.22rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0 0 0.65rem 0;
+      text-align: center;
+      line-height: 1.3;
+    }
+
+    .mc-layer-sub {
+      font-size: 0.925rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin: 0;
+      text-align: center;
+    }
+
+    /* Subseção Governança Operacional */
+    .mc-gov-subhead {
+      border-top: 1px solid var(--border);
+      padding-top: 3rem;
+      margin-top: 1rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .mc-principles-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin: 2.25rem auto 0 auto;
+      max-width: 960px;
+      width: 100%;
+      justify-content: center;
+      align-items: stretch;
+    }
+
+    @media (max-width: 768px) {
+      .mc-principles-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .mc-principle-card {
+      background: rgba(10, 25, 47, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 2.25rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: 190px;
+      box-sizing: border-box;
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .mc-principle-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-accent);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35), 0 0 20px var(--glow-blue);
+    }
+
+    .mc-principle-num {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: #0ea5e9;
+      line-height: 1;
+      margin: 0 0 0.65rem 0;
+      text-align: center;
+      letter-spacing: -0.02em;
+    }
+
+    .mc-principle-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0 0 0.55rem 0;
+      text-align: center;
+      line-height: 1.3;
+    }
+
+    .mc-principle-text {
+      font-size: 0.925rem;
+      color: #94a3b8;
+      margin: 0;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    /* Governance Section */
+    .mc-gov-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .mc-gov-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .mc-gov-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent-text);
+      background: rgba(14, 165, 233, 0.12);
+      border: 1px solid rgba(14, 165, 233, 0.25);
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 0.85rem;
+    }
+
+    .mc-gov-title {
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 0 0 0.5rem 0;
+    }
+
+    .mc-gov-text {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin: 0;
+      line-height: 1.55;
+    }
+
+    .mc-callout-box {
+      background: rgba(16, 35, 63, 0.4);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      padding: 1.25rem 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .mc-disclaimer-card {
+      background: rgba(10, 25, 47, 0.8);
+      border: 1px solid rgba(220, 38, 38, 0.25);
+      border-left: 4px solid #ef4444;
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .mc-disclaimer-title {
+      font-size: 0.825rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #f87171;
+      margin-bottom: 0.35rem;
+    }
+
+    .mc-disclaimer-p {
+      font-size: 0.875rem;
+      color: #cbd5e1;
+      margin: 0;
+      line-height: 1.55;
+    }
+
+    /* Telemetry Dashboard Mockup Showcase */
+    .mc-telemetry-container {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .mc-dashboard-frame {
+      background: var(--dashboard-bg);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65), 0 0 35px rgba(14, 165, 233, 0.16);
+      padding: clamp(1.5rem, 3.5vw, 2.75rem);
+      position: relative;
+      overflow: hidden;
+      background-image: 
+        radial-gradient(circle at 80% 10%, rgba(14, 165, 233, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 20% 90%, rgba(20, 184, 166, 0.08) 0%, transparent 50%),
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 100% auto, 100% auto, 28px 28px, 28px 28px;
+    }
+
+    .mc-dashboard-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-bottom: 1.75rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      margin-bottom: 2rem;
+    }
+
+    .mc-dashboard-title-group {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .mc-cockpit-tag {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: -0.01em;
+    }
+
+    .mc-live-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.28rem 0.75rem;
+      border-radius: 9999px;
+      background: rgba(20, 184, 166, 0.14);
+      color: #14b8a6;
+      border: 1px solid rgba(20, 184, 166, 0.35);
+    }
+
+    .mc-live-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #14b8a6;
+      box-shadow: 0 0 8px #14b8a6;
+      animation: mcPulse 1.8s infinite ease-in-out;
+    }
+
+    @keyframes mcPulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    .mc-dashboard-kpis {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    @media (max-width: 900px) {
+      .mc-dashboard-kpis {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 500px) {
+      .mc-dashboard-kpis {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .mc-kpi-card {
+      background: rgba(10, 25, 47, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 1.25rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .mc-kpi-title {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #cbd5e1;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin: 0 0 0.5rem 0;
+      text-align: center;
+    }
+
+    .mc-kpi-big {
+      font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+      font-weight: 800;
+      color: #0ea5e9;
+      line-height: 1.15;
+      margin-bottom: 0.4rem;
+      letter-spacing: -0.02em;
+      text-align: center;
+    }
+
+    .mc-kpi-delta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #14b8a6;
+    }
+
+    .mc-dashboard-charts {
+      display: grid;
+      grid-template-columns: 1.35fr 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 860px) {
+      .mc-dashboard-charts {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .mc-chart-panel {
+      background: rgba(10, 25, 47, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .mc-chart-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+
+    .mc-chart-headline {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #f8fafc;
+      margin: 0;
+    }
+
+    .mc-chart-legend {
+      font-size: 0.75rem;
+      color: #94a3b8;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .mc-legend-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #0ea5e9;
+    }
+
+    .mc-legend-dot.green {
+      background: #14b8a6;
+    }
+
+    /* SVG Keyframes & line draw */
+    .mc-chart-svg {
+      width: 100%;
+      height: auto;
+      overflow: visible;
+    }
+
+    .mc-line-anim {
+      stroke-dasharray: 600;
+      stroke-dashoffset: 600;
+      animation: mcDrawLine 2.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes mcDrawLine {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    .mc-bar-grow {
+      transform-origin: bottom;
+      transform: scaleY(0);
+      animation: mcGrowBar 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .mc-bar-grow:nth-child(1) { animation-delay: 0.1s; }
+    .mc-bar-grow:nth-child(2) { animation-delay: 0.2s; }
+    .mc-bar-grow:nth-child(3) { animation-delay: 0.3s; }
+    .mc-bar-grow:nth-child(4) { animation-delay: 0.4s; }
+    .mc-bar-grow:nth-child(5) { animation-delay: 0.5s; }
+    .mc-bar-grow:nth-child(6) { animation-delay: 0.6s; }
+
+    @keyframes mcGrowBar {
+      to {
+        transform: scaleY(1);
+      }
+    }
+
+    /* Contact Section */
+    .mc-contact-box {
+      text-align: center;
+      background: linear-gradient(180deg, var(--surface) 0%, rgba(10, 25, 47, 0.95) 100%);
+      border: 1px solid var(--border-accent);
+      border-radius: 20px;
+      padding: clamp(3rem, 7vw, 5rem) clamp(1.5rem, 5vw, 3.5rem);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px var(--glow-blue);
+    }
+
+    .mc-contact-title {
+      font-size: clamp(1.9rem, 4.2vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      max-width: 780px;
+      margin: 0 auto 1.25rem auto;
+      line-height: 1.18;
+    }
+
+    .mc-contact-desc {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 660px;
+      margin: 0 auto 2.5rem auto;
+      line-height: 1.6;
+    }
+
+    .mc-btn-xl {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 2.25rem;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-decoration: none;
+      background: var(--accent);
+      color: var(--accent-contrast);
+      box-shadow: 0 8px 25px rgba(14, 165, 233, 0.35);
+      transition: all 0.25s ease;
+    }
+
+    .mc-btn-xl:hover {
+      background: var(--accent-hover);
+      box-shadow: 0 12px 32px rgba(14, 165, 233, 0.5);
+      transform: translateY(-2px);
+      color: var(--accent-contrast);
+    }
+
+    .mc-btn-xl svg {
+      transition: transform 0.2s ease;
+    }
+
+    .mc-btn-xl:hover svg {
+      transform: translateX(4px);
+    }
+
+    /* Footer */
+    .mc-footer {
+      border-top: 1px solid var(--border);
+      padding: 3.5rem 0 2.5rem 0;
+      background: rgba(10, 25, 47, 0.98);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .mc-footer-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .mc-footer-top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .mc-footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .mc-footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .mc-footer-links a:hover {
+      color: var(--accent-text);
+    }
+
+    .mc-footer-bottom {
+      border-top: 1px solid rgba(30, 58, 95, 0.5);
+      padding-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .mc-legal-p {
+      font-size: 0.78rem;
+      color: #64748b;
+      margin: 0;
+      line-height: 1.55;
+    }
+
+    /* Scroll Reveal Animation */
+    .mc-reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+
+    .mc-reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Focus visible */
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    /* Responsive */
+    @media (max-width: 860px) {
+      .mc-nav-links {
         display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: #0A192F;
-        border-bottom: 1px solid var(--surface-border);
-        flex-direction: column;
-        padding: 1.5rem;
-        gap: 1.25rem;
       }
-
-      .nav-links.active {
+      .mc-menu-btn {
         display: flex;
       }
-
-      .mobile-menu-btn {
-        display: block;
+      .mc-nav .mc-cta-btn {
+        display: none;
       }
+    }
 
-      .footer-container {
-        grid-template-columns: 1fr;
+    @media print {
+      .mc-nav, .mc-mobile-drawer, .mc-cta-btn, .mc-hero-actions {
+        display: none !important;
       }
-
-      .ambition-title {
-        font-size: 2rem;
+      body {
+        background: #fff;
+        color: #000;
+      }
+      .mc-card, .mc-venture-card, .mc-cortex-box, .mc-gov-card {
+        border: 1px solid #ccc;
+        box-shadow: none;
       }
     }
   </style>
 </head>
-
 <body>
 
-  <!-- NAVBAR -->
-  <header class="navbar" id="navbar">
-    <div class="nav-container">
-      <a href="#" class="brand-logo" aria-label="MasterCore Home">
-        <div class="brand-icon">M</div>
-        <span>MasterCore</span>
-      </a>
+  <!-- Top Navigation -->
+  <header class="mc-nav">
+    <a href="#" class="mc-brand" aria-label="MasterCore — Página Inicial">
+      <img src="Logo_MasterCore.png" alt="" style="height: 28px; width: auto; margin-right: 0.6rem;" onerror="this.style.display='none'">
+      <span class="mc-brand-text">MasterCore</span>
+    </a>
 
-      <button class="mobile-menu-btn" id="mobile-toggle" aria-label="Abrir menu de navegação">
-        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path d="M4 6h16M4 12h16M4 18h16"></path>
+    <nav aria-label="Navegação Principal">
+      <ul class="mc-nav-links">
+        <li><a href="#ofertas">Nossas Ofertas</a></li>
+        <li><a href="#como-funciona">Como Funciona</a></li>
+        <li><a href="#qualificacao">Validação</a></li>
+        <li><a href="#sobre">O Grupo</a></li>
+        <li><a href="#ventures">Ventures</a></li>
+        <li><a href="#mastercore-os">MasterCore OS</a></li>
+        <li><a href="#governanca">Governança</a></li>
+      </ul>
+    </nav>
+
+    <div style="display: flex; align-items: center; gap: 0.75rem;">
+      <a href="#contato" class="mc-cta-btn mc-cta-primary">Iniciar Contato</a>
+      <button type="button" class="mc-menu-btn" id="menuToggle" aria-label="Alternar menu de navegação" aria-expanded="false">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
         </svg>
       </button>
-
-      <ul class="nav-links" id="nav-menu">
-        <li><a href="#modelo" class="nav-link">Modelo</a></li>
-        <li><a href="#empresas" class="nav-link">Empresas</a></li>
-        <li><a href="#visao" class="nav-link">Visão</a></li>
-        <li><a href="#diferencial" class="nav-link">Diferencial</a></li>
-        <li>
-          <button class="btn-teal" onclick="openContactModal()">
-            <span>Fale com o grupo</span>
-            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-              <path d="M5 12h14M12 5l7 7-7 7"></path>
-            </svg>
-          </button>
-        </li>
-      </ul>
     </div>
   </header>
 
-  <!-- HERO SECTION -->
-  <section class="hero-section" id="hero">
-    <canvas id="hero-canvas"></canvas>
-    
-    <div class="hero-container">
-      <div class="hero-badge">
-        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <circle cx="12" cy="12" r="10"></circle>
-          <path d="M12 8v4l3 3"></path>
-        </svg>
-        <span>Venture Studio de Alta Performance</span>
-      </div>
+  <!-- Mobile Drawer -->
+  <div class="mc-mobile-drawer" id="mobileDrawer" role="region" aria-label="Menu móvel">
+    <a href="#ofertas" class="mc-mobile-link">Nossas Ofertas</a>
+    <a href="#como-funciona" class="mc-mobile-link">Como Funciona</a>
+    <a href="#qualificacao" class="mc-mobile-link">Validação Seletiva</a>
+    <a href="#sobre" class="mc-mobile-link">O Grupo</a>
+    <a href="#ventures" class="mc-mobile-link">Ventures</a>
+    <a href="#mastercore-os" class="mc-mobile-link">MasterCore OS</a>
+    <a href="#governanca" class="mc-mobile-link">Governança</a>
+    <a href="#contato" class="mc-mobile-link">Contato</a>
+    <a href="#contato" class="mc-cta-btn mc-cta-primary" style="margin-top: 0.5rem; text-align: center;">Iniciar Contato</a>
+  </div>
 
-      <h1 class="hero-title">
-        A fábrica de <br><span class="text-teal">empresas autônomas.</span>
-      </h1>
-
-      <p class="hero-subtitle">
-        A MasterCore cria, opera e escala ventures hiperautomatizadas alimentadas por um núcleo tecnológico compartilhado com <strong>automação operada por IA e supervisão humana contínua</strong>.
-      </p>
-
-      <div class="hero-cta-group">
-        <a href="#modelo" class="btn-teal">
-          <span>Conheça o modelo</span>
-          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path d="M19 9l-7 7-7-7"></path>
-          </svg>
-        </a>
-
-        <a href="#empresas" class="btn-outline-teal">
-          <span>Nossas empresas</span>
-        </a>
-      </div>
-
-      <!-- Live Operational Indicators -->
-      <div class="hero-metrics">
-        <div class="metric-card">
-          <div class="metric-val">≥ 90%</div>
-          <div class="metric-lbl">Índice de Autonomia Operacional</div>
-        </div>
-        <div class="metric-card">
-          <div class="metric-val">Zero</div>
-          <div class="metric-lbl">Incidentes de Conformidade</div>
-        </div>
-        <div class="metric-card">
-          <div class="metric-val">3 Ventures</div>
-          <div class="metric-lbl">Ativas no Hub de Inovação</div>
-        </div>
-        <div class="metric-card">
-          <div class="metric-val">100%</div>
-          <div class="metric-lbl">Política em Código Versionada</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- MODELO (VENTURE STUDIO) -->
-  <section class="section" id="modelo">
-    <div class="shell-container">
-      <div class="section-header">
-        <span class="section-tag">Arquitetura de Grupo</span>
-        <h2 class="section-title">O Modelo Venture Studio</h2>
-        <p class="section-desc">
-          Engenharia de negócios projetada para reaproveitamento máximo de inteligência, descentralização de capital e aprovação rigorosa por validação real.
-        </p>
-      </div>
-
-      <div class="grid-3">
-        <!-- Card A -->
-        <div class="card-modelo">
-          <div class="card-icon-wrap">
-            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-            </svg>
+  <main>
+    <!-- Section 1: Hero (Posicionamento Centralizado & MasterCore OS) -->
+    <section class="mc-section mc-hero">
+      <div class="mc-wrap">
+        <div class="mc-hero-inner mc-reveal">
+          <div class="mc-pill">
+            <span class="mc-brand-dot"></span>
+            MASTERCORE OS — FÁBRICA DE EMPRESAS
           </div>
-          <h3 class="card-title">Núcleo Compartilhado</h3>
-          <p class="card-text">
-            Tecnologia, pipelines de IA, modelos de dados e frameworks de compliance são reutilizados de forma modular entre todas as ventures do grupo, reduzindo dramaticamente o custo de criação e o tempo até o mercado.
+          <h1 class="mc-hero-title">
+            Sua ideia vira um negócio. Você roda. A gente divide o resultado — ou constrói por projeto.
+          </h1>
+          <p class="mc-hero-sub">
+            A <strong>MasterCore OS</strong> estrutura a arquitetura tecnológica e a automação de marketing completa. Escolha entre três caminhos transparentes: <strong>Parceria de Resultado</strong> (zero custo upfront, divisão de lucro por contrato), <strong>Projeto Pontual</strong> (valor por projeto sob medida) ou <strong>avaliar as duas opções</strong> para decidir o melhor modelo com nosso time.
           </p>
-          <div class="card-pills">
-            <span class="pill">Core Reutilizável</span>
-            <span class="pill">Infraestrutura IA</span>
-            <span class="pill">Compliance Central</span>
+
+          <!-- 3 CTAs alinhados lado a lado com igual destaque -->
+          <div class="mc-hero-actions">
+            <a href="https://mastercore.app/qualificacao?utm_source=mastercore&utm_medium=landing&utm_campaign=parceria" target="_blank" rel="noopener noreferrer" class="mc-cta-trio-btn">
+              Quero um projeto em parceria
+            </a>
+            <a href="https://mastercore.app/qualificacao?utm_source=mastercore&utm_medium=landing&utm_campaign=projeto_pontual" target="_blank" rel="noopener noreferrer" class="mc-cta-trio-btn">
+              Quero um projeto pontual
+            </a>
+            <a href="https://mastercore.app/qualificacao?utm_source=mastercore&utm_medium=landing&utm_campaign=avaliar_opcoes" target="_blank" rel="noopener noreferrer" class="mc-cta-trio-btn">
+              Quero avaliar as duas opções
+            </a>
           </div>
-        </div>
 
-        <!-- Card B -->
-        <div class="card-modelo">
-          <div class="card-icon-wrap">
-            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-              <line x1="9" y1="3" x2="9" y2="21"></line>
-            </svg>
-          </div>
-          <h3 class="card-title">Empresas Autônomas</h3>
-          <p class="card-text">
-            Cada venture opera como uma entidade jurídica independente com PJ, cap table, direcionamento de mercado e balanço financeiro próprios, mantendo agilidade máxima e blindagem de risco.
-          </p>
-          <div class="card-pills">
-            <span class="pill">PJ Exclusivo</span>
-            <span class="pill">Cap Table Própria</span>
-            <span class="pill">Balanço Isolado</span>
-          </div>
-        </div>
-
-        <!-- Card C -->
-        <div class="card-modelo">
-          <div class="card-icon-wrap">
-            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path d="M9 11l3 3L22 4"></path>
-              <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"></path>
-            </svg>
-          </div>
-          <h3 class="card-title">Governança por Portas</h3>
-          <p class="card-text">
-            Nenhuma empresa avança para a próxima fase de investimentos sem atingir marcos obrigatórios de clientes pagantes, retenção comprovada e margem operacional positiva com supervisão humana.
-          </p>
-          <div class="card-pills">
-            <span class="pill">Gated Progression</span>
-            <span class="pill">Retenção Ativa</span>
-            <span class="pill">Margem Positiva</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Interactive Gate Simulator -->
-      <div class="gate-sim-container">
-        <h3 style="font-size:1.1rem; color:var(--clinical-white); margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem;">
-          <svg width="20" height="20" fill="none" stroke="#2DD4BF" stroke-width="2" viewBox="0 0 24 24">
-            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-          </svg>
-          Simulador de Governança por Portas (Stage-Gate Framework)
-        </h3>
-
-        <div class="gate-nav">
-          <button class="gate-tab active" onclick="switchGate(1, this)">Porta 1: Validação</button>
-          <button class="gate-tab" onclick="switchGate(2, this)">Porta 2: Retenção & PMF</button>
-          <button class="gate-tab" onclick="switchGate(3, this)">Porta 3: Escala Sustentável</button>
-        </div>
-
-        <div id="gate-content-area" class="gate-content">
-          <!-- Rendered via JavaScript -->
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- EMPRESAS DO GRUPO -->
-  <section class="section section-alt" id="empresas">
-    <div class="shell-container">
-      <div class="section-header">
-        <span class="section-tag">Portfólio de Ativos</span>
-        <h2 class="section-title">Empresas do Grupo</h2>
-        <p class="section-desc">
-          Conheça as marcas que compõem o ecossistema MasterCore, impulsionadas pelo mesmo motor tecnológico central.
-        </p>
-      </div>
-
-      <div class="grid-3">
-        <!-- MasterCore -->
-        <div class="company-card">
-          <div class="company-header">
-            <div>
-              <h3 class="company-name">MasterCore</h3>
-              <span class="company-tagline">Holding & Orquestração</span>
+          <!-- 4 Benefícios Essenciais Centralizados -->
+          <div class="mc-benefits-strip">
+            <div class="mc-benefit-tag">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Zero custo upfront</span>
             </div>
-            <span class="badge-status">Controladora</span>
-          </div>
-          <p class="company-body">
-            Empresa-mãe responsável por orquestrar o ecossistema, alocar capital estratégico, desenvolver a infraestrutura de dados compartilhada e garantir a governança e conformidade regulatória.
-          </p>
-          <div class="card-pills">
-            <span class="pill">Alocação de Capital</span>
-            <span class="pill">Arquitetura de IA</span>
-            <span class="pill">Governança</span>
-          </div>
-        </div>
-
-        <!-- PeptiCore -->
-        <div class="company-card">
-          <div class="company-header">
-            <div>
-              <h3 class="company-name">PeptiCore</h3>
-              <span class="company-tagline">Biomedical EdTech</span>
+            <div class="mc-benefit-tag">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Automação de marketing inclusa</span>
             </div>
-            <span class="badge-status">Em Operação</span>
-          </div>
-          <p class="company-body">
-            Plataforma educacional de inteligência biomédica especializada no estudo e disseminação científica sobre peptídeos bioidênticos e saúde integrativa.
-          </p>
-          
-          <!-- Mandatory Educational Disclaimer -->
-          <div class="disclaimer-box">
-            <strong>Nota Institucional:</strong> Plataforma de caráter estritamente educacional e informativo. Não realiza prescrições médicas nem substitui o diagnóstico ou acompanhamento por profissional de saúde habilitado.
-          </div>
-
-          <div class="card-pills" style="margin-top: auto;">
-            <span class="pill">Base Científica</span>
-            <span class="pill">Educação Médica</span>
-            <span class="pill">Conteúdo Curado</span>
-          </div>
-        </div>
-
-        <!-- EngineCore -->
-        <div class="company-card">
-          <div class="company-header">
-            <div>
-              <h3 class="company-name">EngineCore</h3>
-              <span class="company-tagline">Mídia & Growth</span>
+            <div class="mc-benefit-tag">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Divisão de lucro por contrato</span>
             </div>
-            <span class="badge-status">Em Operação</span>
-          </div>
-          <p class="company-body">
-            Agência especializada em mídia de alta performance, design estratégico e automação inteligente de marketing para aceleração do funil de vendas das ventures do grupo.
-          </p>
-          <div class="card-pills">
-            <span class="pill">Mídia de Performance</span>
-            <span class="pill">Design de Conversão</span>
-            <span class="pill">Marketing Automation</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- VISÃO E AMBIÇÃO -->
-  <section class="section" id="visao">
-    <div class="shell-container">
-      <div class="vision-card">
-        <span class="section-tag">Ambição Estratégica</span>
-        <h2 class="ambition-title">
-          Visão de Longo Prazo: <br>
-          <span class="ambition-highlight">US$ 1 Bilhão</span> em valor de portfólio em 5 anos.
-        </h2>
-
-        <p style="color:#CBD5E1; max-width:700px; margin:0 auto; font-size:1rem; line-height:1.6;">
-          Uma visão ambiciosa construída de forma consistente e metódica, porta a porta, fundamentada em métricas sólidas de validação de mercado, retenção real e escala com margem positiva.
-        </p>
-
-        <div class="vision-process-steps">
-          <div class="v-step">
-            <span class="v-step-num">1</span>
-            <span>Validação</span>
-          </div>
-          <span class="v-arrow">→</span>
-          <div class="v-step">
-            <span class="v-step-num">2</span>
-            <span>Retenção</span>
-          </div>
-          <span class="v-arrow">→</span>
-          <div class="v-step">
-            <span class="v-step-num">3</span>
-            <span>Escala Global</span>
+            <div class="mc-benefit-tag">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Telemetria e transparência</span>
+            </div>
           </div>
         </div>
 
-        <div class="quote-box">
-          <p class="quote-text">
-            "Não buscamos o crescimento desordenado a qualquer custo. O verdadeiro diferencial da MasterCore é a capacidade de operar empresas altamente eficientes, com automação profunda e governança rigorosa em cada ciclo."
-          </p>
-          <div class="quote-author">Lúcio Bicalho</div>
-          <div class="quote-role">CEO MasterCore</div>
+        <!-- Métricas Institucionais / Cards de Valor (4 Colunas Simétricas e Uniformes) -->
+        <div class="mc-metrics-grid mc-reveal" style="margin-top: 2.5rem;">
+          <div class="mc-metric-card">
+            <div class="mc-metric-val">R$ 0 na parceria</div>
+            <div class="mc-metric-label">Zero custo upfront no modelo Studio de sociedade</div>
+          </div>
+          <div class="mc-metric-card">
+            <div class="mc-metric-val">3 caminhos</div>
+            <div class="mc-metric-label">Parceria de resultado, fee pontual ou avaliação conjunta</div>
+          </div>
+          <div class="mc-metric-card">
+            <div class="mc-metric-val">100% validado</div>
+            <div class="mc-metric-label">Estudo prévio de demanda, mercado e margem</div>
+          </div>
+          <div class="mc-metric-card">
+            <div class="mc-metric-val">IFRS 10 segregação</div>
+            <div class="mc-metric-label">PJ autônoma e proteção patrimonial formal por venture</div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- DIFERENCIAL -->
-  <section class="section section-alt" id="diferencial">
-    <div class="shell-container">
-      <div class="section-header">
-        <span class="section-tag">Vantagem Competitiva</span>
-        <h2 class="section-title">O Padrão MasterCore</h2>
-        <p class="section-desc">
-          Critérios de excelência técnica e institucional que garantem previsibilidade e segurança operacional.
-        </p>
-      </div>
-
-      <div class="diff-grid">
-        <!-- Diff 1 -->
-        <div class="diff-item">
-          <div class="diff-num">≥ 90%</div>
-          <h3 class="diff-title">Autonomia com Zero Incidentes</h3>
-          <p class="diff-desc">
-            Sistemas operados por automação com supervisão humana contínua. Índice de autonomia elevado com histórico rigoroso de zero incidentes de conformidade.
-          </p>
-        </div>
-
-        <!-- Diff 2 -->
-        <div class="diff-item">
-          <div class="diff-num">&lt;code/&gt;</div>
-          <h3 class="diff-title">Política como Código</h3>
-          <p class="diff-desc">
-            Todas as regras operacionais, limites de autoridade e restrições regulatórias são versionadas e auditáveis via software, com rollback instantâneo e rastreabilidade total.
+    <!-- Section: Nossas Ofertas Comerciais -->
+    <section class="mc-section mc-section-border" id="ofertas">
+      <div class="mc-wrap">
+        <div class="mc-reveal">
+          <div class="mc-heading-sm">Modelos Comerciais Claros</div>
+          <h2 class="mc-heading-lg">Nossas ofertas: escolha o caminho ideal</h2>
+          <p class="mc-heading-desc">
+            Seja construindo um negócio conjunto em sociedade de resultado ou contratando tecnologia proprietária sob demanda, a MasterCore OS entrega produtos prontos para monetizar.
           </p>
         </div>
 
-        <!-- Diff 3 -->
-        <div class="diff-item">
-          <div class="diff-num">UAU!</div>
-          <h3 class="diff-title">Efeito UAU como Aceite</h3>
-          <p class="diff-desc">
-            Cada produto, interface ou entrega institucional do grupo é submetido ao critério de aceite "Efeito UAU" — exigindo padrão estético e de usabilidade impecáveis.
+        <div class="mc-offers-grid">
+          <!-- Oferta A: Parceria de Resultado -->
+          <div class="mc-offer-card is-featured mc-reveal">
+            <div class="mc-offer-tag studio">Oferta A · Studio</div>
+            <h3 class="mc-offer-title">Parceria de Resultado</h3>
+            <div class="mc-offer-badge-sub">Ideal para quem quer um sócio tecnológico e não tem capital inicial</div>
+            <p class="mc-offer-desc">
+              A MasterCore monta todo o aplicativo e a infraestrutura automatizada de marketing sem custo upfront. Você roda o negócio do seu jeito e dividimos o lucro gerado com total transparência e alinhamento societário.
+            </p>
+
+            <ul class="mc-offer-features">
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span><strong>Zero custo upfront:</strong> desenvolvimento 100% financiado pelo MasterCore OS.</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span><strong>Automação de marketing inclusa:</strong> funis, esteiras de captação e analytics nativos.</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span><strong>Divisão de lucro por contrato:</strong> instrumento societário formal de participação.</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span><strong>Telemetria e transparência:</strong> acompanhamento em tempo real de vendas e custos.</span>
+              </li>
+            </ul>
+
+            <a href="https://mastercore.app/qualificacao?utm_source=mastercore&utm_medium=landing&utm_campaign=parceria" target="_blank" rel="noopener noreferrer" class="mc-cta-btn mc-cta-primary" style="width: 100%; text-align: center; padding: 0.85rem 1.25rem; font-weight: 700;">
+              Quero um projeto em parceria
+            </a>
+          </div>
+
+          <!-- Oferta B: Projeto Pontual -->
+          <div class="mc-offer-card mc-reveal">
+            <div class="mc-offer-tag fee">Oferta B · Fee Pontual</div>
+            <h3 class="mc-offer-title">Projeto Pontual</h3>
+            <div class="mc-offer-badge-sub" style="color: #cbd5e1;">Ideal para quem só quer o produto pronto, sem vínculo de sociedade</div>
+            <p class="mc-offer-desc">
+              Desenvolvemos a sua ideia ou projeto sob encomenda. Entregamos a solução técnica completa com escopo fechado, prazo garantido e valor de projeto definido.
+            </p>
+
+            <ul class="mc-offer-features">
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span><strong>Valor por projeto definido:</strong> orçamento transparente sem custos ocultos posteriores.</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span><strong>Propriedade total do cliente:</strong> 100% dos direitos e receitas ficam com você.</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span><strong>Padrão de engenharia MasterCore:</strong> arquitetura de alta performance, segura e responsiva.</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span><strong>Sem divisão de lucro:</strong> relação contratual direta de fornecimento e entrega pontual.</span>
+              </li>
+            </ul>
+
+            <a href="https://mastercore.app/qualificacao?utm_source=mastercore&utm_medium=landing&utm_campaign=projeto_pontual" target="_blank" rel="noopener noreferrer" class="mc-cta-btn mc-cta-primary" style="width: 100%; text-align: center; padding: 0.85rem 1.25rem; font-weight: 700;">
+              Quero um projeto pontual
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: Como Funciona (4 Passos) -->
+    <section class="mc-section mc-section-border" id="como-funciona">
+      <div class="mc-wrap">
+        <div class="mc-reveal">
+          <div class="mc-heading-sm">Processo Claro & Objetivo</div>
+          <h2 class="mc-heading-lg">Como funciona a parceria</h2>
+          <p class="mc-heading-desc">
+            Sem reuniões infindáveis ou cobranças de horas de desenvolvimento de software. Estabelecemos uma relação pragmática de sociedade onde cada parte contribui com o que faz de melhor.
+          </p>
+        </div>
+
+        <div class="mc-steps-grid">
+          <!-- Passo 1 -->
+          <div class="mc-step-card mc-reveal">
+            <div class="mc-step-num">1</div>
+            <h3 class="mc-step-title">Você traz a ideia e o mercado</h3>
+            <p class="mc-step-desc">
+              Você detém a visão do produto, conhece as dores do seu cliente e possui a capacidade de posicionar e operar a solução no seu nicho de atuação.
+            </p>
+          </div>
+
+          <!-- Passo 2 -->
+          <div class="mc-step-card mc-reveal">
+            <div class="mc-step-num">2</div>
+            <h3 class="mc-step-title">MasterCore OS valida e monta o sistema</h3>
+            <p class="mc-step-desc">
+              Após nosso gate de validação de demanda e margem, o MasterCore OS assume a engenharia: arquitetura cloud, app de ponta, infraestrutura escalável e automação de marketing integrada.
+            </p>
+          </div>
+
+          <!-- Passo 3 -->
+          <div class="mc-step-card mc-reveal">
+            <div class="mc-step-num">3</div>
+            <h3 class="mc-step-title">Você roda o negócio do seu jeito</h3>
+            <p class="mc-step-desc">
+              Você lidera a gestão executiva, relacionamento com clientes e expansão comercial sem interferências arbitrárias na sua condução cotidiana.
+            </p>
+          </div>
+
+          <!-- Passo 4 -->
+          <div class="mc-step-card mc-reveal">
+            <div class="mc-step-num">4</div>
+            <h3 class="mc-step-title">A gente divide o lucro, por contrato</h3>
+            <p class="mc-step-desc">
+              Sem custos ocultos. Os lucros apurados são distribuídos conforme as regras contratuais acordadas, com auditoria e dashboards contábeis abertos a ambas as partes.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: Gate de Qualificação Seletiva / Critérios Obrigatórios de Validação -->
+    <section class="mc-section mc-section-border" id="qualificacao">
+      <div class="mc-wrap">
+        <div class="mc-gate-box mc-reveal" style="text-align: center; display: flex; flex-direction: column; align-items: center;">
+          <!-- Badge centralizada no topo -->
+          <div class="mc-pill" style="margin: 0 auto 1.25rem auto;">
+            CRITÉRIOS OBRIGATÓRIOS DE VALIDAÇÃO
+          </div>
+
+          <!-- Título centralizado -->
+          <h2 class="mc-heading-lg" style="margin: 0 auto 1rem auto; text-align: center; color: #ffffff;">
+            Só enviamos proposta de valor quando todos os pilares forem comprovados
+          </h2>
+
+          <!-- Parágrafo centralizado (text-align: center, max-width 720px, margin: auto) -->
+          <p style="font-size: 1.05rem; color: var(--text-muted); line-height: 1.65; max-width: 720px; margin: 0 auto 2.5rem auto; text-align: center;">
+            Antes de formularmos a oferta formal de parceria ou projeto, nosso time analisa dados reais do setor. Isso garante que você receba uma oferta sólida, factível e com alto potencial de geração de caixa.
+          </p>
+
+          <!-- 3 CARDS IDÊNTICOS centralizados em linha (3 colunas iguais desktop, empilhados no mobile) -->
+          <div class="mc-criteria-grid">
+            <!-- Card 1 -->
+            <div class="mc-criteria-item">
+              <div class="mc-criteria-icon">01</div>
+              <h3 style="font-size: 1.25rem; font-weight: 700; color: #ffffff; margin: 0 0 0.65rem 0; text-align: center;">
+                Demanda de Mercado
+              </h3>
+              <p style="font-size: 0.93rem; color: #94a3b8; line-height: 1.6; margin: 0; text-align: center;">
+                Identificação de problema crítico com clientes dispostos a pagar
+              </p>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="mc-criteria-item">
+              <div class="mc-criteria-icon">02</div>
+              <h3 style="font-size: 1.25rem; font-weight: 700; color: #ffffff; margin: 0 0 0.65rem 0; text-align: center;">
+                Mercado Endereçável
+              </h3>
+              <p style="font-size: 0.93rem; color: #94a3b8; line-height: 1.6; margin: 0; text-align: center;">
+                Análise de TAM/SAM/SOM com qualidade e potencial de captura real
+              </p>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="mc-criteria-item">
+              <div class="mc-criteria-icon">03</div>
+              <h3 style="font-size: 1.25rem; font-weight: 700; color: #ffffff; margin: 0 0 0.65rem 0; text-align: center;">
+                Margem e Receita
+              </h3>
+              <p style="font-size: 0.93rem; color: #94a3b8; line-height: 1.6; margin: 0; text-align: center;">
+                Modelo de negócio com margem saudável e geração de caixa positiva
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: Parceiro de Resultado -->
+    <section class="mc-section mc-section-border" id="parceria">
+      <div class="mc-wrap">
+        <div class="mc-reveal">
+          <div class="mc-heading-sm">Modelo Build-for-Revenue-Share</div>
+          <h2 class="mc-heading-lg">Por que ser um parceiro de resultado da MasterCore</h2>
+          <p class="mc-heading-desc">
+            Agências cobram fortunas para criar software que muitas vezes nunca entra no ar. A MasterCore não é fornecedora comum: na Parceria de Resultado nós entramos como co-founders tecnológicos investindo nossa própria capacidade de engenharia.
+          </p>
+        </div>
+
+        <div class="mc-partner-grid">
+          <!-- Card A -->
+          <div class="mc-partner-card mc-reveal">
+            <span class="mc-partner-badge">Risco Zero de Engenharia</span>
+            <h3 class="mc-partner-title">Não cobramos para construir</h3>
+            <p class="mc-partner-p">
+              Você não desembolsa taxas iniciais de desenvolvimento ou mensalidades fixas para criação do app. Todo o risco de execução tecnológica, design de interface e esteira de lançamento é absorvido pela MasterCore.
+            </p>
+          </div>
+
+          <!-- Card B -->
+          <div class="mc-partner-card mc-reveal">
+            <span class="mc-partner-badge">Alinhamento Perfeito</span>
+            <h3 class="mc-partner-title">Entramos como sócios de resultado</h3>
+            <p class="mc-partner-p">
+              Diferente de prestadores de serviços, nosso ganho depende única e exclusivamente do sucesso e faturamento real do negócio. Só somos remunerados quando você obtém tração e lucro líquido.
+            </p>
+          </div>
+
+          <!-- Card C -->
+          <div class="mc-partner-card mc-reveal">
+            <span class="mc-partner-badge">Venture do Grupo</span>
+            <h3 class="mc-partner-title">Cada parceria nasce como uma venture oficial</h3>
+            <p class="mc-partner-p">
+              Sua iniciativa recebe personalidade jurídica segregada, cap table protegido e benefício imediato da governança e de toda a infraestrutura hiperautomatizada da holding MasterCore.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: Nova Seção Painel de Telemetria e Transparência (Efeito UAU) -->
+    <section class="mc-section mc-section-border" id="telemetria">
+      <div class="mc-wrap">
+        <div class="mc-reveal" style="text-align: center;">
+          <div class="mc-pill">tempo real · auditável · compartilhado</div>
+          <h2 class="mc-heading-lg" style="color: #0ea5e9;">Painel de Telemetria e Transparência</h2>
+          <p class="mc-heading-desc">
+            Métricas de conversão, faturamento bruto, custos de infraestrutura e apuração de lucro acessíveis em tempo real, em dashboard auditável compartilhado.
+          </p>
+        </div>
+
+        <!-- Mockup Grande de Dashboard Centralizado -->
+        <div class="mc-telemetry-container mc-reveal">
+          <div class="mc-dashboard-frame">
+            <!-- Header do Dashboard -->
+            <div class="mc-dashboard-header">
+              <div class="mc-dashboard-title-group">
+                <span class="mc-cockpit-tag">MasterCore OS — Cockpit</span>
+                <span class="mc-live-pill">
+                  <span class="mc-live-dot"></span>
+                  tempo real
+                </span>
+              </div>
+              <div style="font-size: 0.8rem; color: #94a3b8; font-weight: 500;">
+                Ambiente de Produção · Auditoria Ativa
+              </div>
+            </div>
+
+            <!-- 4 KPIs em Linha -->
+            <div class="mc-dashboard-kpis">
+              <div class="mc-kpi-card">
+                <div class="mc-kpi-title">Conversão</div>
+                <div class="mc-kpi-big">4.82%</div>
+                <div class="mc-kpi-delta">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+                  +0.8% no período
+                </div>
+              </div>
+
+              <div class="mc-kpi-card">
+                <div class="mc-kpi-title">Faturamento Bruto</div>
+                <div class="mc-kpi-big">R$ 348.200</div>
+                <div class="mc-kpi-delta">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+                  +18.4% no período
+                </div>
+              </div>
+
+              <div class="mc-kpi-card">
+                <div class="mc-kpi-title">Custos de Infraestrutura</div>
+                <div class="mc-kpi-big">R$ 3.840</div>
+                <div class="mc-kpi-delta">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                  -4.1% otimizado
+                </div>
+              </div>
+
+              <div class="mc-kpi-card">
+                <div class="mc-kpi-title">Apuração de Lucro</div>
+                <div class="mc-kpi-big">R$ 241.680</div>
+                <div class="mc-kpi-delta">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+                  +22.6% líquido
+                </div>
+              </div>
+            </div>
+
+            <!-- Gráficos SVG em tempo real com animação CSS -->
+            <div class="mc-dashboard-charts">
+              <!-- Gráfico 1: Linha de Conversão ao Longo do Tempo -->
+              <div class="mc-chart-panel">
+                <div class="mc-chart-top">
+                  <span class="mc-chart-headline">Curva de Conversão em Tempo Real</span>
+                  <div class="mc-chart-legend">
+                    <span class="mc-legend-dot"></span>
+                    <span>Tx. Conversão (%)</span>
+                  </div>
+                </div>
+                <svg class="mc-chart-svg" viewBox="0 0 520 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="areaGradientLine" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#0ea5e9" stop-opacity="0.38"/>
+                      <stop offset="100%" stop-color="#0ea5e9" stop-opacity="0"/>
+                    </linearGradient>
+                  </defs>
+                  <!-- Linhas de Grade de Apoio -->
+                  <line x1="30" y1="30" x2="500" y2="30" stroke="rgba(255,255,255,0.06)" stroke-dasharray="3 3"/>
+                  <line x1="30" y1="75" x2="500" y2="75" stroke="rgba(255,255,255,0.06)" stroke-dasharray="3 3"/>
+                  <line x1="30" y1="120" x2="500" y2="120" stroke="rgba(255,255,255,0.06)" stroke-dasharray="3 3"/>
+                  <!-- Área sob a linha -->
+                  <path d="M 40 135 Q 110 115 170 95 T 300 70 T 430 45 L 490 35 L 490 150 L 40 150 Z" fill="url(#areaGradientLine)"/>
+                  <!-- Linha Animada -->
+                  <path class="mc-line-anim" d="M 40 135 Q 110 115 170 95 T 300 70 T 430 45 L 490 35" stroke="#0ea5e9" stroke-width="3" stroke-linecap="round"/>
+                  <!-- Pontos na Curva -->
+                  <circle cx="170" cy="95" r="4" fill="#ffffff" stroke="#0ea5e9" stroke-width="2"/>
+                  <circle cx="300" cy="70" r="4" fill="#ffffff" stroke="#0ea5e9" stroke-width="2"/>
+                  <circle cx="430" cy="45" r="4" fill="#ffffff" stroke="#0ea5e9" stroke-width="2"/>
+                  <circle cx="490" cy="35" r="5" fill="#38bdf8" stroke="#ffffff" stroke-width="2"/>
+                  <!-- Rótulos no eixo X -->
+                  <text x="40" y="170" fill="#94a3b8" font-size="11">Sem 01</text>
+                  <text x="150" y="170" fill="#94a3b8" font-size="11">Sem 02</text>
+                  <text x="280" y="170" fill="#94a3b8" font-size="11">Sem 03</text>
+                  <text x="410" y="170" fill="#94a3b8" font-size="11">Sem 04</text>
+                  <text x="470" y="170" fill="#38bdf8" font-size="11" font-weight="700">Hoje</text>
+                </svg>
+              </div>
+
+              <!-- Gráfico 2: Faturamento vs Custos em Barras -->
+              <div class="mc-chart-panel">
+                <div class="mc-chart-top">
+                  <span class="mc-chart-headline">Faturamento vs Custos</span>
+                  <div class="mc-chart-legend">
+                    <span class="mc-legend-dot"></span> <span style="margin-right: 0.6rem;">Fat.</span>
+                    <span class="mc-legend-dot green"></span> <span>Custo</span>
+                  </div>
+                </div>
+                <svg class="mc-chart-svg" viewBox="0 0 380 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <!-- Grade -->
+                  <line x1="25" y1="30" x2="360" y2="30" stroke="rgba(255,255,255,0.06)" stroke-dasharray="3 3"/>
+                  <line x1="25" y1="80" x2="360" y2="80" stroke="rgba(255,255,255,0.06)" stroke-dasharray="3 3"/>
+                  <line x1="25" y1="130" x2="360" y2="130" stroke="rgba(255,255,255,0.06)" stroke-dasharray="3 3"/>
+                  <!-- Mês 1 -->
+                  <g class="mc-bar-grow" style="transform-origin: 0 145px;">
+                    <rect x="45" y="65" width="22" height="80" rx="4" fill="#0ea5e9"/>
+                    <rect x="71" y="125" width="22" height="20" rx="4" fill="#14b8a6"/>
+                  </g>
+                  <!-- Mês 2 -->
+                  <g class="mc-bar-grow" style="transform-origin: 0 145px;">
+                    <rect x="135" y="45" width="22" height="100" rx="4" fill="#0ea5e9"/>
+                    <rect x="161" y="123" width="22" height="22" rx="4" fill="#14b8a6"/>
+                  </g>
+                  <!-- Mês 3 -->
+                  <g class="mc-bar-grow" style="transform-origin: 0 145px;">
+                    <rect x="225" y="28" width="22" height="117" rx="4" fill="#0ea5e9"/>
+                    <rect x="251" y="120" width="22" height="25" rx="4" fill="#14b8a6"/>
+                  </g>
+                  <!-- Mês 4 -->
+                  <g class="mc-bar-grow" style="transform-origin: 0 145px;">
+                    <rect x="305" y="18" width="22" height="127" rx="4" fill="#38bdf8"/>
+                    <rect x="331" y="118" width="22" height="27" rx="4" fill="#14b8a6"/>
+                  </g>
+                  <!-- Rótulos -->
+                  <text x="52" y="165" fill="#94a3b8" font-size="11">Mês 1</text>
+                  <text x="142" y="165" fill="#94a3b8" font-size="11">Mês 2</text>
+                  <text x="232" y="165" fill="#94a3b8" font-size="11">Mês 3</text>
+                  <text x="312" y="165" fill="#38bdf8" font-size="11" font-weight="700">Mês 4</text>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: O que é a MasterCore -->
+    <section class="mc-section mc-section-border" id="sobre">
+      <div class="mc-wrap">
+        <div class="mc-reveal">
+          <div class="mc-heading-sm">Arquitetura Societária & Modelo</div>
+          <h2 class="mc-heading-lg">Holding controladora de venture studio institucional</h2>
+          <p class="mc-heading-desc">
+            A MasterCore centraliza a infraestrutura tecnológica de orquestração, segurança e automação sistêmica enquanto assegura estrita segregação patrimonial: cada venture constituída detém sua própria pessoa jurídica (PJ), cap table dedicado, demonstrativos contábeis independentes e balanço segregado sob os padrões IFRS 10 / CPC 36.
+          </p>
+        </div>
+
+        <div class="mc-pillars-grid">
+          <!-- Pilar 1 -->
+          <div class="mc-card mc-reveal">
+            <div>
+              <div class="mc-card-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                </svg>
+              </div>
+              <h3 class="mc-card-title">Inteligência compartilhada</h3>
+              <p class="mc-card-p">
+                Modelos de decisão, bases de conhecimento sintéticas e esteiras de dados compartilhados entre ventures, permitindo que cada nova entidade nasça com aprendizados acumulados de todo o portfólio.
+              </p>
+            </div>
+          </div>
+
+          <!-- Pilar 2 -->
+          <div class="mc-card mc-reveal">
+            <div>
+              <div class="mc-card-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                </svg>
+              </div>
+              <h3 class="mc-card-title">Automação de ponta a ponta</h3>
+              <p class="mc-card-p">
+                Operações de backoffice, aquisição, atendimento, faturamento e conformidade executadas por rotinas hiperautomatizadas de alta precisão, reduzindo atrito e custos marginais a níveis próximos a zero.
+              </p>
+            </div>
+          </div>
+
+          <!-- Pilar 3 -->
+          <div class="mc-card mc-reveal">
+            <div>
+              <div class="mc-card-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                </svg>
+              </div>
+              <h3 class="mc-card-title">Governança como código</h3>
+              <p class="mc-card-p">
+                Políticas corporativas, limites de alçada, trilhas de auditoria imutáveis e conformidade regulatória incorporados diretamente no software e nos pipelines institucionais de cada operação.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Ventures do Grupo -->
+    <section class="mc-section mc-section-border" id="ventures">
+      <div class="mc-wrap">
+        <div class="mc-reveal">
+          <div class="mc-heading-sm">Portfólio Institucional</div>
+          <h2 class="mc-heading-lg">Ventures desenvolvidas e orquestradas pelo grupo</h2>
+          <p class="mc-heading-desc">
+            Cada venture opera com governança técnica da holding e estrutura societária autônoma, validando nosso modelo reprodutível de alta eficiência de capital.
+          </p>
+        </div>
+
+        <div class="mc-ventures-grid">
+          <!-- Card 1: PeptiCore -->
+          <div class="mc-venture-card mc-reveal">
+            <div class="mc-card-header">
+              <div class="mc-venture-monogram" aria-hidden="true">P</div>
+              <h3 class="mc-venture-name">PeptiCore</h3>
+              <span class="mc-chip">Em desenvolvimento</span>
+            </div>
+            <p class="mc-venture-desc">
+              Plataforma educacional de saúde não-prescritiva, apoiada por IA com supervisão humana. Curadoria biomédica focada em peptídeos bioidênticos e longevidade celular, atuando como o protótipo zero de validação do motor tecnológico da MasterCore.
+            </p>
+            <div class="mc-venture-footer">
+              <span class="mc-venture-meta">Vertical de Saúde · Protótipo Zero</span>
+              <a href="https://pepticore.app/?utm_source=mastercore&utm_medium=landing&utm_campaign=conhecer_venture" target="_blank" rel="noopener noreferrer" class="mc-cta-btn mc-cta-primary" style="font-size: 0.9rem; padding: 0.65rem 1.6rem; font-weight: 700;">
+                Conhecer venture
+              </a>
+            </div>
+          </div>
+
+          <!-- Card 2: EngineCore -->
+          <div class="mc-venture-card mc-reveal">
+            <div class="mc-card-header">
+              <div class="mc-venture-monogram" aria-hidden="true">E</div>
+              <h3 class="mc-venture-name">EngineCore</h3>
+              <span class="mc-chip">Em desenvolvimento</span>
+            </div>
+            <p class="mc-venture-desc">
+              Performance & Growth Digital — agência de mídia, design e automação de marketing; primeira replicação operacional do grupo, cobrindo todas as possibilidades de negócio digital atuais e futuras: performance e mídia paga, design, automação de marketing, conteúdo e growth, creator economy e influenciadores, e-commerce, e novas frentes digitais que o grupo venha a operar.
+            </p>
+            <div class="mc-venture-footer">
+              <span class="mc-venture-meta">Performance & Growth · Replicação</span>
+              <a href="https://enginecore.app/?utm_source=mastercore&utm_medium=landing&utm_campaign=conhecer_venture" target="_blank" rel="noopener noreferrer" class="mc-cta-btn mc-cta-primary" style="font-size: 0.9rem; padding: 0.65rem 1.6rem; font-weight: 700;">
+                Conhecer venture
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Plataforma Tecnológica Unificada & Governança Operacional (MasterCore OS) -->
+    <section class="mc-section mc-section-border" id="mastercore-os">
+      <div class="mc-wrap">
+        <div class="mc-cortex-box mc-reveal" style="text-align: center; display: flex; flex-direction: column; align-items: center;">
+          <!-- Título centralizado grande em branco com subtítulo -->
+          <div class="mc-pill" style="margin: 0 auto 1.25rem auto;">
+            MOTOR TECNOLÓGICO PROPRIETÁRIO
+          </div>
+          <h2 class="mc-heading-lg" style="color: #ffffff; text-align: center; margin: 0 auto 1rem auto;">
+            Plataforma Tecnológica Unificada
+          </h2>
+          <p class="mc-heading-desc" style="margin: 0 auto 2.5rem auto; text-align: center;">
+            O <strong>MasterCore OS</strong> centraliza os 4 pilares essenciais que aceleram e operam soluções digitais com escalabilidade e precisão técnica.
+          </p>
+
+          <!-- Grid 2x2 Simétrica e Centralizada de 4 Pilares (mesmo tamanho, largura e altura) -->
+          <div class="mc-cortex-layers">
+            <!-- Pilar 01 -->
+            <div class="mc-layer-item">
+              <div class="mc-layer-tag">Pilar 01</div>
+              <h3 class="mc-layer-name">Geração de Soluções</h3>
+              <p class="mc-layer-sub">Estruturação acelerada de aplicativos modernos, web platforms e interfaces de alta conversão.</p>
+            </div>
+
+            <!-- Pilar 02 -->
+            <div class="mc-layer-item">
+              <div class="mc-layer-tag">Pilar 02</div>
+              <h3 class="mc-layer-name">Esteiras de Marketing &amp; Dados</h3>
+              <p class="mc-layer-sub">Automação de aquisição, nutrição de leads, integrações de pagamento e telemetria comercial.</p>
+            </div>
+
+            <!-- Pilar 03 -->
+            <div class="mc-layer-item">
+              <div class="mc-layer-tag">Pilar 03</div>
+              <h3 class="mc-layer-name">Governança Integrada</h3>
+              <p class="mc-layer-sub">Controle de conformidade contínua, auditoria transparente e segregação societária nativa.</p>
+            </div>
+
+            <!-- Pilar 04 (dentro da grade simétrica 2x2, nunca isolado) -->
+            <div class="mc-layer-item">
+              <div class="mc-layer-tag">Pilar 04</div>
+              <h3 class="mc-layer-name">Operação Escalável</h3>
+              <p class="mc-layer-sub">Infraestrutura em nuvem de padrão corporativo dimensionada para alto volume transacional.</p>
+            </div>
+          </div>
+
+          <!-- Subseção: 4 Princípios Operacionais anexados coesamente como área de governança -->
+          <div class="mc-gov-subhead" style="width: 100%;">
+            <div class="mc-pill" style="margin: 0 auto 1rem auto;">
+              EXECUÇÃO &amp; CONFORMIDADE
+            </div>
+            <h3 class="mc-heading-lg" style="font-size: clamp(1.5rem, 3vw, 2.1rem); color: #ffffff; margin: 0 auto 0.85rem auto; text-align: center;">
+              Governança Operacional — MasterCore OS
+            </h3>
+            <p style="font-size: 0.98rem; color: var(--text-muted); max-width: 720px; margin: 0 auto 2.25rem auto; line-height: 1.6; text-align: center;">
+              Diretrizes sistêmicas imutáveis que asseguram segurança jurídica, auditoria criptográfica e controle humano contínuo.
+            </p>
+
+            <!-- Grid 2x2 Simétrica dos 4 Princípios Operacionais (cards de mesmo tamanho e centralizados) -->
+            <div class="mc-principles-grid">
+              <!-- Card 1 -->
+              <div class="mc-principle-card">
+                <div class="mc-principle-num">01</div>
+                <h4 class="mc-principle-title">Política como código</h4>
+                <p class="mc-principle-text">Políticas corporativas, permissões e orçamentos declarados e testados antes de qualquer deploy.</p>
+              </div>
+
+              <!-- Card 2 -->
+              <div class="mc-principle-card">
+                <div class="mc-principle-num">02</div>
+                <h4 class="mc-principle-title">Default-allow com auditoria</h4>
+                <p class="mc-principle-text">Execuções de baixo risco ocorrem sem atrito com registro criptográfico completo de cada transação.</p>
+              </div>
+
+              <!-- Card 3 -->
+              <div class="mc-principle-card">
+                <div class="mc-principle-num">03</div>
+                <h4 class="mc-principle-title">Gates humanos intransferíveis</h4>
+                <p class="mc-principle-text">Aprovação humana mandatória e obrigatória para temas de saúde, decisões jurídicas e tesouraria.</p>
+              </div>
+
+              <!-- Card 4 -->
+              <div class="mc-principle-card">
+                <div class="mc-principle-num">04</div>
+                <h4 class="mc-principle-title">Reversibilidade com rollback</h4>
+                <p class="mc-principle-text">Toda automação crítica possui mecanismo de parada emergencial e reversão de estado em minutos.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Governança e Conformidade -->
+    <section class="mc-section mc-section-border" id="governanca">
+      <div class="mc-wrap">
+        <div class="mc-reveal">
+          <div class="mc-heading-sm">Segurança Jurídica & Integridade</div>
+          <h2 class="mc-heading-lg">Governança institucional e conformidade regulatória</h2>
+          <p class="mc-heading-desc">
+            A MasterCore Holding estrutura todas as operações sob o marco legal brasileiro aplicável, priorizando a segurança jurídica de investidores, parceiros e usuários.
+          </p>
+        </div>
+
+        <div class="mc-gov-grid">
+          <div class="mc-gov-card mc-reveal">
+            <span class="mc-gov-badge">Lei nº 13.709/2018</span>
+            <h3 class="mc-gov-title">Privacidade e Proteção de Dados (LGPD)</h3>
+            <p class="mc-gov-text">
+              Processamento restrito de dados com conformidade rigorosa aos princípios de finalidade, necessidade e segurança desde o design da arquitetura de software (Privacy by Design).
+            </p>
+          </div>
+
+          <div class="mc-gov-card mc-reveal">
+            <span class="mc-gov-badge">Resolução CD/ANPD nº 15/2024</span>
+            <h3 class="mc-gov-title">Comunicação e Resposta a Incidentes</h3>
+            <p class="mc-gov-text">
+              Protocolo corporativo formal de contenção e plano de comunicação à autoridade nacional e titulares em até 3 (três) dias úteis a partir da detecção inequívoca de eventos relevantes.
+            </p>
+          </div>
+
+          <div class="mc-gov-card mc-reveal">
+            <span class="mc-gov-badge">Resolução CD/ANPD nº 19/2024</span>
+            <h3 class="mc-gov-title">Transferência Internacional de Dados</h3>
+            <p class="mc-gov-text">
+              Cláusulas-padrão contratuais e criptografia de ponta a ponta aplicadas em todos os provedores e infraestruturas em nuvem operados fora da jurisdição nacional.
+            </p>
+          </div>
+        </div>
+
+        <div class="mc-callout-box mc-reveal">
+          <p style="margin: 0; font-size: 0.92rem; color: var(--text);">
+            <strong>Instrumentos normativos:</strong> A Política de Privacidade, os Termos de Uso e o Código de Conduta Corporativa da holding e de suas controladas encontram-se integralmente disponíveis mediante solicitação institucional direta aos nossos canais de governança.
           </p>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CTA FINAL -->
-  <section class="section" id="contato" style="padding-bottom: 6rem;">
-    <div class="shell-container">
-      <div class="cta-banner">
-        <h2 class="cta-title">Vamos construir o próximo unicórnio do grupo.</h2>
-        <p class="cta-desc">
-          Se você é um investidor estratégico, parceiro institucional ou especialista interessado em conectar-se ao ecossistema MasterCore, entre em contato.
-        </p>
-        <button class="btn-teal" style="font-size: 1.05rem; padding: 0.85rem 2rem;" onclick="openContactModal()">
-          <span>Iniciar Diálogo Institucional</span>
-          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-            <path d="M5 12h14M12 5l7 7-7 7"></path>
-          </svg>
-        </button>
-      </div>
-    </div>
-  </section>
+    <!-- Section 6: Contato & Três Caminhos -->
+    <section class="mc-section mc-section-border" id="contato">
+      <div class="mc-wrap">
+        <div class="mc-contact-box mc-reveal">
+          <div class="mc-heading-sm">Submissão Estratégica</div>
+          <h2 class="mc-contact-title">
+            Tem uma ideia consistente de negócio ou aplicativo?
+          </h2>
+          <p class="mc-contact-desc">
+            Submeta seu projeto à validação do MasterCore OS. Escolha o caminho ideal para dar início à análise: parceria de resultado (zero custo upfront), projeto pontual (valor por projeto) ou avaliar ambas as opções.
+          </p>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="footer-container">
-      <div class="footer-brand">
-        <a href="#" class="brand-logo" style="font-size:1.2rem;">
-          <div class="brand-icon" style="width:28px; height:28px; font-size:0.9rem;">M</div>
-          <span>MasterCore</span>
-        </a>
-        <p style="max-width:360px; color:#94A3B8; font-size:0.85rem; margin-top:0.5rem;">
-          Holding controladora de venture studio operado por automação inteligente e supervisão humana.
-        </p>
-        <div class="footer-legal-tag">
-          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <circle cx="12" cy="12" r="10"></circle>
-            <path d="M12 8v4M12 16h.01"></path>
-          </svg>
-          <span>Geo-phase: Brasil (Fase 1)</span>
+          <!-- Cards explicativos dos três caminhos (com botões únicos e individuais integrados) -->
+          <div class="mc-proposal-branches" style="margin-top: 2.75rem;">
+            <div class="mc-branch-card primary-branch">
+              <div>
+                <span class="mc-chip" style="margin-bottom: 0.75rem; display: inline-block;">Caminho 1 · Studio</span>
+                <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--text); margin: 0 0 0.5rem 0;">Parceria de Resultado</h3>
+                <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; margin: 0 0 1.25rem 0;">
+                  Zero custo upfront. A MasterCore assume a engenharia tecnológica completa e dividimos os lucros por contrato formal de sociedade.
+                </p>
+              </div>
+              <a href="https://mastercore.app/qualificacao?utm_source=mastercore&utm_medium=landing&utm_campaign=parceria" target="_blank" rel="noopener noreferrer" class="mc-cta-btn mc-cta-primary" style="width: 100%; text-align: center; padding: 0.75rem 1rem; font-weight: 700;">
+                Quero um projeto em parceria
+              </a>
+            </div>
+
+            <div class="mc-branch-card">
+              <div>
+                <span class="mc-chip" style="margin-bottom: 0.75rem; display: inline-block;">Caminho 2 · Fee Pontual</span>
+                <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--text); margin: 0 0 0.5rem 0;">Projeto Pontual</h3>
+                <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; margin: 0 0 1.25rem 0;">
+                  Orçamento e escopo fechados por projeto. Entrega técnica sob demanda sem compartilhamento societário nem divisão de lucros.
+                </p>
+              </div>
+              <a href="https://mastercore.app/qualificacao?utm_source=mastercore&utm_medium=landing&utm_campaign=projeto_pontual" target="_blank" rel="noopener noreferrer" class="mc-cta-btn mc-cta-primary" style="width: 100%; text-align: center; padding: 0.75rem 1rem; font-weight: 700;">
+                Quero um projeto pontual
+              </a>
+            </div>
+
+            <div class="mc-branch-card">
+              <div>
+                <span class="mc-chip" style="margin-bottom: 0.75rem; display: inline-block;">Caminho 3 · Consulta</span>
+                <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--text); margin: 0 0 0.5rem 0;">Avaliar as Duas Opções</h3>
+                <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; margin: 0 0 1.25rem 0;">
+                  Analise junto com nossa equipe de produtos as vantagens de cada estrutura e escolha com total clareza antes de qualquer compromisso.
+                </p>
+              </div>
+              <a href="https://mastercore.app/qualificacao?utm_source=mastercore&utm_medium=landing&utm_campaign=avaliar_opcoes" target="_blank" rel="noopener noreferrer" class="mc-cta-btn mc-cta-primary" style="width: 100%; text-align: center; padding: 0.75rem 1rem; font-weight: 700;">
+                Quero avaliar as duas opções
+              </a>
+            </div>
+          </div>
+
+          <p style="margin: 2.5rem 0 0 0; font-size: 0.88rem; color: var(--text-muted);">
+            Canal direto institucional: <a href="mailto:contato@mastercore.app" style="color: var(--accent-text); text-decoration: none; font-weight: 600;">contato@mastercore.app</a>
+          </p>
         </div>
       </div>
+    </section>
+  </main>
 
-      <div>
-        <h4 style="color:var(--clinical-white); font-size:0.9rem; margin-bottom:1rem; font-weight:700;">Navegação</h4>
-        <ul style="list-style:none; display:flex; flex-direction:column; gap:0.5rem;">
-          <li><a href="#modelo" style="color:#94A3B8; text-decoration:none;">Modelo Venture Studio</a></li>
-          <li><a href="#empresas" style="color:#94A3B8; text-decoration:none;">Empresas do Grupo</a></li>
-          <li><a href="#visao" style="color:#94A3B8; text-decoration:none;">Visão Estratégica</a></li>
-          <li><a href="#diferencial" style="color:#94A3B8; text-decoration:none;">Diferenciais</a></li>
+  <!-- Rodapé -->
+  <footer class="mc-footer">
+    <div class="mc-wrap mc-footer-inner">
+      <div class="mc-footer-top">
+        <div class="mc-brand">
+          <img src="Logo_MasterCore.png" alt="" style="height: 24px; width: auto; margin-right: 0.5rem;" onerror="this.style.display='none'">
+          <span class="mc-brand-text">MasterCore</span>
+        </div>
+
+        <ul class="mc-footer-links">
+          <li><a href="#ofertas">Ofertas</a></li>
+          <li><a href="#como-funciona">Como Funciona</a></li>
+          <li><a href="#qualificacao">Validação</a></li>
+          <li><a href="#sobre">O Grupo</a></li>
+          <li><a href="#ventures">Ventures</a></li>
+          <li><a href="#mastercore-os">MasterCore OS</a></li>
+          <li><a href="#governanca">Governança</a></li>
+          <li><a href="#contato">Contato</a></li>
         </ul>
       </div>
 
-      <div>
-        <h4 style="color:var(--clinical-white); font-size:0.9rem; margin-bottom:1rem; font-weight:700;">Conformidade</h4>
-        <p style="font-size:0.8rem; color:#94A3B8; line-height:1.5;">
-          Proteção de Dados Pessoais em conformidade rigorosa com a <strong>LGPD (Lei nº 13.709/2018)</strong>.
+      <div class="mc-footer-bottom">
+        <p style="margin: 0; color: #cbd5e1; font-weight: 500;">
+          © 2026 MasterCore Holding Societária · São Paulo, Brasil · <a href="mailto:contato@mastercore.app" style="color: var(--accent-text); text-decoration: none;">contato@mastercore.app</a>
         </p>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <div>
-        © 2026 MasterCore. Todos os direitos reservados.
-      </div>
-      <div class="footer-notice">
-        Conteúdo institucional. Consulte os termos de uso e a política de privacidade. O presente material tem finalidade estritamente informativa e não constitui promessa de rentabilidade financeira ou oferta pública de valores mobiliários.
+        <p class="mc-legal-p">
+          MasterCore Holding Societária é a controladora de venture studio com sede em São Paulo/SP. Balanços e demonstrativos societários auditados e segregados por subsidiária (IFRS 10 / CPC 36).
+        </p>
+        <p class="mc-legal-p">
+          Nota de isenção: As informações veiculadas neste portal têm finalidade estritamente institucional e informativa. Não constituem oferta pública de valores mobiliários, captação aberta de investimento ou consultoria financeira.
+        </p>
       </div>
     </div>
   </footer>
 
-  <!-- CONTACT MODAL -->
-  <div class="modal-backdrop" id="contact-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-    <div class="modal-box">
-      <button class="modal-close" onclick="closeContactModal()" aria-label="Fechar formulário">✕</button>
-      
-      <h3 id="modal-title" style="font-size:1.4rem; color:var(--clinical-white); margin-bottom:0.5rem; font-weight:800;">
-        Fale com o Grupo MasterCore
-      </h3>
-      <p style="color:#CBD5E1; font-size:0.85rem; margin-bottom:1.5rem;">
-        Preencha os dados abaixo para direcionamento institucional ao nosso departamento executivo.
-      </p>
-
-      <form id="contact-form" onsubmit="handleContactSubmit(event)">
-        <div class="form-group">
-          <label class="form-label" for="c-name">Nome Completo</label>
-          <input type="text" id="c-name" class="form-input" placeholder="Ex: Dr. Roberto Silva" required>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label" for="c-email">E-mail Institucional</label>
-          <input type="email" id="c-email" class="form-input" placeholder="seu.nome@empresa.com" required>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label" for="c-subject">Assunto / Perfil</label>
-          <select id="c-subject" class="form-select" required>
-            <option value="" disabled selected>Selecione uma opção</option>
-            <option value="Investidor">Investidor Estratégico</option>
-            <option value="Parceria">Parceria Corporativa / Venturing</option>
-            <option value="PeptiCore">Dúvida Institucional PeptiCore</option>
-            <option value="EngineCore">Serviços EngineCore</option>
-            <option value="Outro">Outro Assunto</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label" for="c-msg">Mensagem</label>
-          <textarea id="c-msg" class="form-textarea" rows="3" placeholder="Como podemos colaborar?" required></textarea>
-        </div>
-
-        <label class="form-checkbox">
-          <input type="checkbox" required>
-          <span>Concordo com o tratamento de dados pessoais de acordo com a LGPD (Lei 13.709/2018) para fins de contato institucional.</span>
-        </label>
-
-        <button type="submit" class="btn-teal" style="width: 100%; justify-content: center;">
-          <span>Enviar Mensagem</span>
-        </button>
-      </form>
-
-      <div id="contact-success" style="display:none; text-align:center; padding: 1.5rem 0;">
-        <div style="width:48px; height:48px; border-radius:50%; background:var(--accent-light); color:#2DD4BF; display:flex; align-items:center; justify-content:center; margin:0 auto 1rem auto; font-size:1.5rem;">✓</div>
-        <h4 style="color:var(--clinical-white); font-size:1.1rem; margin-bottom:0.5rem;">Mensagem Recebida</h4>
-        <p style="color:#CBD5E1; font-size:0.85rem;">
-          Agradecemos seu contato. Nossa equipe de governança entrará em contato em breve.
-        </p>
-      </div>
-    </div>
-  </div>
-
   <script>
-    // --- 1. Interactive Canvas Background (Particle Constellation Visual) ---
-    const canvas = document.getElementById('hero-canvas');
-    const ctx = canvas.getContext('2d');
-    let particles = [];
-    let width, height;
-
-    function resizeCanvas() {
-      width = canvas.parentElement.offsetWidth;
-      height = canvas.parentElement.offsetHeight;
-      canvas.width = width;
-      canvas.height = height;
-    }
-
-    class Particle {
-      constructor() {
-        this.x = Math.random() * width;
-        this.y = Math.random() * height;
-        this.vx = (Math.random() - 0.5) * 0.4;
-        this.vy = (Math.random() - 0.5) * 0.4;
-        this.radius = Math.random() * 1.5 + 1;
-      }
-
-      update() {
-        this.x += this.vx;
-        this.y += this.vy;
-
-        if (this.x < 0 || this.x > width) this.vx *= -1;
-        if (this.y < 0 || this.y > height) this.vy *= -1;
-      }
-
-      draw() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = '#14B8A6';
-        ctx.fill();
-      }
-    }
-
-    function initCanvas() {
-      resizeCanvas();
-      particles = [];
-      const particleCount = Math.min(Math.floor(width / 18), 65);
-      for (let i = 0; i < particleCount; i++) {
-        particles.push(new Particle());
-      }
-    }
-
-    function animateCanvas() {
-      ctx.clearRect(0, 0, width, height);
-
-      for (let i = 0; i < particles.length; i++) {
-        particles[i].update();
-        particles[i].draw();
-
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-
-          if (dist < 120) {
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(20, 184, 166, ${0.18 * (1 - dist / 120)})`;
-            ctx.lineWidth = 0.8;
-            ctx.stroke();
-          }
-        }
-      }
-
-      requestAnimationFrame(animateCanvas);
-    }
-
-    window.addEventListener('resize', resizeCanvas);
-    initCanvas();
-    animateCanvas();
-
-    // --- 2. Mobile Nav Toggle ---
-    const mobileBtn = document.getElementById('mobile-toggle');
-    const navMenu = document.getElementById('nav-menu');
-
-    mobileBtn.addEventListener('click', () => {
-      navMenu.classList.toggle('active');
-    });
-
-    document.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
-      });
-    });
-
-    // --- 3. Stage-Gate Governance Simulator Data & Switcher ---
-    const gateData = {
-      1: {
-        title: "Porta 1: Validação Inicial & Product-Market Fit",
-        desc: "Validação da dor de mercado e teste de atração com clientes pagantes iniciais antes de qualquer investimento em escala.",
-        checklist: [
-          "Prova de conceito aprovada com supervisão humana",
-          "Mínimo de 10 clientes pagantes qualificados",
-          "NPS inicial ≥ 70 e custo de aquisição validado",
-          "Arquitetura de dados e compliance auditados"
-        ]
-      },
-      2: {
-        title: "Porta 2: Retenção & Unit Economics Positivos",
-        desc: "Aprovação do modelo financeiro unitário com retenção comprovada e automação operacional estabelecida.",
-        checklist: [
-          "LTV / CAC ≥ 3.5x consistente em 3 meses",
-          "Índice de automação com IA ≥ 85%",
-          "Taxa de Churn mensal inferior a 2%",
-          "Cap table e isolamento de risco PJ consolidados"
-        ]
-      },
-      3: {
-        title: "Porta 3: Escala Sustentável & Margem Operacional",
-        desc: "Aceleração de capital para expansão com margem operacional positiva e governança executiva rigorosa.",
-        checklist: [
-          "EBITDA positivo ou caminho claro de lucratividade",
-          "Automação de processos ≥ 90%",
-          "Zero incidentes de conformidade regulatória",
-          "Prontidão para captação externa ou distribuição"
-        ]
-      }
-    };
-
-    function switchGate(gateNumber, tabBtn) {
-      document.querySelectorAll('.gate-tab').forEach(b => b.classList.remove('active'));
-      tabBtn.classList.add('active');
-
-      const data = gateData[gateNumber];
-      const area = document.getElementById('gate-content-area');
-
-      area.innerHTML = `
-        <div class="gate-info">
-          <h4>${data.title}</h4>
-          <p>${data.desc}</p>
-        </div>
-        <div>
-          <ul class="gate-checklist">
-            ${data.checklist.map(item => `
-              <li>
-                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                <span>${item}</span>
-              </li>
-            `).join('')}
-          </ul>
-        </div>
-      `;
-    }
-
-    // Initialize Gate 1 by default
     document.addEventListener('DOMContentLoaded', () => {
-      switchGate(1, document.querySelector('.gate-tab'));
-    });
+      // Mobile Drawer Toggle
+      const menuBtn = document.getElementById('menuToggle');
+      const mobileDrawer = document.getElementById('mobileDrawer');
+      const mobileLinks = document.querySelectorAll('.mc-mobile-link');
 
-    // --- 4. Modal Handler ---
-    function openContactModal() {
-      document.getElementById('contact-modal').classList.add('active');
-    }
+      if (menuBtn && mobileDrawer) {
+        menuBtn.addEventListener('click', () => {
+          const isOpen = mobileDrawer.classList.toggle('is-open');
+          menuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
 
-    function closeContactModal() {
-      document.getElementById('contact-modal').classList.remove('active');
-      setTimeout(() => {
-        document.getElementById('contact-form').style.display = 'block';
-        document.getElementById('contact-success').style.display = 'none';
-        document.getElementById('contact-form').reset();
-      }, 300);
-    }
+        mobileLinks.forEach(link => {
+          link.addEventListener('click', () => {
+            mobileDrawer.classList.remove('is-open');
+            menuBtn.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
 
-    function handleContactSubmit(e) {
-      e.preventDefault();
-      document.getElementById('contact-form').style.display = 'none';
-      document.getElementById('contact-success').style.display = 'block';
-    }
+      // Smooth scroll reveal via IntersectionObserver
+      const reveals = document.querySelectorAll('.mc-reveal');
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries, obs) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              obs.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.1,
+          rootMargin: '0px 0px -40px 0px'
+        });
 
-    // Close modal on backdrop click
-    document.getElementById('contact-modal').addEventListener('click', (e) => {
-      if (e.target === document.getElementById('contact-modal')) {
-        closeContactModal();
+        reveals.forEach(el => observer.observe(el));
+      } else {
+        // Fallback for older browsers
+        reveals.forEach(el => el.classList.add('is-visible'));
       }
     });
   </script>
