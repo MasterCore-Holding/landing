@@ -994,6 +994,22 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
       }
     }
   </style>
+<script>
+  // UTM first-touch capture (padrao utmCapture.js da landing PeptiCore)
+  (function() {
+    try {
+      var p = new URLSearchParams(window.location.search);
+      var utm = {
+        utm_source: p.get('utm_source') || '',
+        utm_medium: p.get('utm_medium') || '',
+        utm_campaign: p.get('utm_campaign') || ''
+      };
+      if (utm.utm_source || utm.utm_campaign) {
+        localStorage.setItem('mc_discovery_utm', JSON.stringify(utm));
+      }
+    } catch(e) {}
+  })();
+</script>
 </head>
 <body>
 
@@ -2345,6 +2361,37 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
   window.skipChart = { bar: bar, line: line, donut: donut };
 })();
 
+</script>
+<script>
+  // Captura de lead Discovery -> planilha Leads -> CRM (sync Cortex)
+  (function() {
+    var btn = document.getElementById('modal-whatsapp-direct');
+    if (!btn) return;
+    var original = btn.onclick;
+    btn.addEventListener('click', function() {
+      try {
+        var nome = (document.getElementById('lead-name')||{}).value || '';
+        var email = (document.getElementById('lead-email')||{}).value || '';
+        var whats = (document.getElementById('lead-whatsapp')||{}).value || '';
+        var ideia = (document.getElementById('step1-desc')||{}).value || '';
+        var utm = {};
+        try { utm = JSON.parse(localStorage.getItem('mc_discovery_utm')||'{}'); } catch(e){}
+        if (!email) return;
+        fetch('https://pepti-core-plus.base44.app/api/functions/registrarLeadAppsScript', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({
+            nome: nome, email: email, whatsapp: whats,
+            origem: 'Discovery Experience',
+            utm_source: utm.utm_source || 'mastercore',
+            utm_medium: utm.utm_medium || 'landing',
+            utm_campaign: utm.utm_campaign || 'avaliar_opcoes',
+            observacao: 'Discovery score: ' + (window.state ? state.score : 'n/a') + ' | ideia: ' + ideia
+          })
+        }).catch(function(){});
+      } catch(e) {}
+    }, true);
+  })();
 </script>
 </body>
 </html>
