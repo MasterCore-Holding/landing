@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>LinkedIn OAuth — PeptiCore</title>
+<style>
+body{font-family:Inter,system-ui,sans-serif;background:#0A192F;color:#F8FAFC;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0}
+.card{background:#112240;border:1px solid #233554;border-radius:14px;padding:2rem;max-width:520px;width:92%}
+code{background:#0A192F;padding:0.2rem 0.5rem;border-radius:6px;word-break:break-all;display:block;margin:0.5rem 0 1rem;font-size:0.85rem}
+button{background:#14B8A6;color:#fff;border:0;border-radius:8px;padding:0.7rem 1.4rem;font-size:1rem;cursor:pointer;font-weight:700}
+</style>
+</head>
+<body>
+<div class="card">
+<h2>Autorização LinkedIn</h2>
+<p>Se esta página abriu após você autorizar, copie o código abaixo e envie para o Córtex:</p>
+<code id="code">aguardando…</code>
+<button onclick="navigator.clipboard.writeText(document.getElementById('code').innerText);this.innerText='Copiado!'">Copiar código</button>
+</div>
+<script>
+try {
+  var p = new URLSearchParams(window.location.search);
+  var c = p.get('code');
+  if (c) document.getElementById('code').innerText = c;
+  else document.getElementById('code').innerText = 'Nenhum code encontrado na URL. Autorize novamente.';
+} catch(e) { document.getElementById('code').innerText = 'Erro: ' + e.message; }
+</script>
+</body>
+</html>
