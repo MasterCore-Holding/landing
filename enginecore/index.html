@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EngineCore — Performance & Growth Digital</title>
+  <meta name="description" content="Sua marca com motor de performance, mídia paga, design e automação de marketing. Diagnóstico de prontidão gratuito — descubra o plano de crescimento do seu negócio.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+  <style>
+    :root {
+      --accent: #14B8A6;
+      --accent-hover: #0D9488;
+      --accent-light: rgba(20, 184, 166, 0.12);
+      --bg: #0A192F;
+      --surface: #112240;
+      --surface-border: #233554;
+      --text: #F8FAFC;
+      --text-muted: #94A3B8;
+      --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: var(--font-family);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.25rem 2rem; max-width: 1200px; margin: 0 auto;
+    }
+    .brand { display: flex; align-items: center; gap: 0.6rem; font-weight: 800; font-size: 1.15rem; }
+    .brand img { height: 28px; width: auto; }
+    .brand .ec { color: var(--accent); }
+    .badge {
+      display: inline-block; padding: 0.35rem 0.9rem; border-radius: 999px;
+      background: var(--accent-light); color: var(--accent);
+      font-size: 0.8rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
+    }
+    .hero {
+      max-width: 900px; margin: 0 auto; padding: 4rem 2rem 3rem; text-align: center;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; line-height: 1.15;
+      margin: 1.25rem 0 1rem;
+    }
+    .hero h1 .hl { color: var(--accent); }
+    .hero p.lead { font-size: 1.15rem; color: var(--text-muted); max-width: 680px; margin: 0 auto 2rem; }
+    .cta-btn {
+      display: inline-block; padding: 1rem 2.2rem; border-radius: 10px;
+      background: linear-gradient(135deg, #14B8A6 0%, #0D9488 100%);
+      color: #FFFFFF; font-weight: 700; font-size: 1.05rem; text-decoration: none;
+      border: none; cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(20, 184, 166, 0.35); }
+    .grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.25rem; max-width: 1100px; margin: 0 auto; padding: 2rem;
+    }
+    .card {
+      background: var(--surface); border: 1px solid var(--surface-border);
+      border-radius: 14px; padding: 1.5rem;
+    }
+    .card h3 { font-size: 1.05rem; margin-bottom: 0.5rem; }
+    .card p { color: var(--text-muted); font-size: 0.92rem; }
+    .card .ico { font-size: 1.6rem; margin-bottom: 0.75rem; display: block; }
+    .steps { max-width: 800px; margin: 2rem auto; padding: 0 2rem; }
+    .step { display: flex; gap: 1rem; margin-bottom: 1.5rem; align-items: flex-start; }
+    .step .n {
+      flex: 0 0 40px; height: 40px; border-radius: 50%;
+      background: var(--accent-light); color: var(--accent);
+      display: flex; align-items: center; justify-content: center; font-weight: 800;
+    }
+    .step h4 { margin-bottom: 0.25rem; }
+    .step p { color: var(--text-muted); font-size: 0.95rem; }
+    .final {
+      max-width: 700px; margin: 3rem auto; padding: 3rem 2rem; text-align: center;
+      background: radial-gradient(circle at 50% 20%, #112240 0%, #0A192F 70%);
+      border-top: 1px solid var(--surface-border);
+    }
+    .final h2 { font-size: 1.8rem; margin-bottom: 1rem; }
+    .final p { color: var(--text-muted); margin-bottom: 2rem; }
+    footer {
+      text-align: center; padding: 2rem; color: var(--text-muted);
+      font-size: 0.85rem; border-top: 1px solid var(--surface-border);
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="brand">
+      <img src="https://mastercore.app/Logo_MasterCore.png" alt="EngineCore" onerror="this.style.display='none'">
+      <span>Engine<span class="ec">Core</span></span>
+    </div>
+    <span class="badge">Venture MasterCore</span>
+  </nav>
+
+  <section class="hero">
+    <span class="badge">Performance & Growth Digital</span>
+    <h1>Seu negócio com um <span class="hl">motor de crescimento</span> operando de verdade.</h1>
+    <p class="lead">Mídia paga, design, automação de marketing, conteúdo e growth — a EngineCore é a primeira replicação operacional do grupo MasterCore: toda a capacidade digital que um negócio precisa, executada com rigor de engenharia.</p>
+    <a class="cta-btn" href="https://mastercore.app/lander?utm_source=enginecore&utm_medium=landing&utm_campaign=diagnostico_prontidao" target="_blank" rel="noopener noreferrer">Descobrir meu plano de crescimento →</a>
+  </section>
+
+  <section class="grid">
+    <div class="card"><span class="ico">🎯</span><h3>Performance & Mídia Paga</h3><p>Campanhas que respeitam compliance e convertem: Google, Meta e redes — com telemetria aberta.</p></div>
+    <div class="card"><span class="ico">🎨</span><h3>Design & Identidade</h3><p>Design System canônico, peças que respeitam a marca e conversão orientada por dados.</p></div>
+    <div class="card"><span class="ico">⚙️</span><h3>Automação de Marketing</h3><p>Funis, esteiras de captação, CRM e analytics nativos — operação hiperautomatizada.</p></div>
+    <div class="card"><span class="ico">📈</span><h3>Content & Growth</h3><p>Conteúdo com jornada de captação, creator economy e presença digital que gera demanda.</p></div>
+  </section>
+
+  <section class="steps">
+    <div class="step"><div class="n">1</div><div><h4>Você traz o negócio</h4><p>Sua marca, seu produto, seu mercado — e a ambição de crescer com método.</p></div></div>
+    <div class="step"><div class="n">2</div><div><h4>EngineCore diagnostica</h4><p>Diagnóstico de prontidão gratuito: onde está o gargalo e qual o plano de ataque.</p></div></div>
+    <div class="step"><div class="n">3</div><div><h4>A gente opera o motor</h4><p>Performance, design e automação rodando como infraestrutura — não como freelancer.</p></div></div>
+    <div class="step"><div class="n">4</div><div><h4>Resultado medido em tempo real</h4><p>Telemetria aberta, dashboards auditáveis e crescimento que se prova em número.</p></div></div>
+  </section>
+
+  <section class="final">
+    <h2>Tem uma marca que merece crescer de verdade?</h2>
+    <p>Faça o diagnóstico de prontidão gratuito e descubra o plano de crescimento do seu negócio — em minutos, sem compromisso.</p>
+    <a class="cta-btn" href="https://mastercore.app/lander?utm_source=enginecore&utm_medium=landing&utm_campaign=diagnostico_prontidao" target="_blank" rel="noopener noreferrer">Fazer o diagnóstico gratuito →</a>
+  </section>
+
+  <footer>
+    EngineCore — venture do grupo <a href="https://mastercore.app">MasterCore</a> · São Paulo, Brasil<br>
+    © 2026 EngineCore · contato@mastercore.app
+  </footer>
+</body>
+</html>
