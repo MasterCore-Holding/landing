@@ -1000,6 +1000,13 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
       var p = new URLSearchParams(window.location.search);
       var utm = { utm_source: p.get('utm_source') || '', utm_medium: p.get('utm_medium') || '', utm_campaign: p.get('utm_campaign') || '' };
       if (utm.utm_source || utm.utm_campaign) localStorage.setItem('mc_discovery_utm', JSON.stringify(utm));
+      // ref_code de afiliado (padrão PeptiCore): ?ref=CODE ou path /r/CODE — first-touch
+      var ref = p.get('ref') || p.get('ref_code');
+      if (!ref) {
+        var m = window.location.pathname.match(/\/r\/([A-Za-z0-9_-]{1,50})/);
+        if (m) ref = m[1];
+      }
+      if (ref) localStorage.setItem('mc_discovery_ref', ref);
     } catch(e) {}
   })();
 </script>
@@ -2299,6 +2306,8 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
         journeySent = true;
         try {
           var utm = {}; try { utm = JSON.parse(localStorage.getItem('mc_discovery_utm')||'{}'); } catch(e){}
+          var refCode = '';
+          try { refCode = localStorage.getItem('mc_discovery_ref') || ''; } catch(e) {}
           var payload = {
             nome: state.data.nome,
             email: state.data.email,
@@ -2324,7 +2333,8 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
               ' | motivoPrazo: ' + (state.data.motivoPrazo||'') +
               ' | sucesso: ' + state.data.sucesso +
               ' | origem: ' + state.data.origem + (state.data.indicacao ? ' | indicacao: ' + state.data.indicacao : '') + (state.data.origemOutro ? ' | origemOutro: ' + state.data.origemOutro : ''),
-            lgpd: state.data.lgpd === true
+            lgpd: state.data.lgpd === true,
+            ref_code: refCode || undefined
           };
           fetch('https://pepti-core-plus.base44.app/api/functions/registrarLeadAppsScript', {
             method: 'POST',
