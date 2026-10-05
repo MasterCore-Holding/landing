@@ -1457,6 +1457,50 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
           </div>
 
           <div class="sub-section-title">
+            Como você chegou até a MasterCore?
+          </div>
+          <div class="option-grid" id="step10-origem-options" style="margin-bottom: 1.25rem;">
+            <label class="choice-card" data-origem="indicacao">
+              <span class="choice-radio"></span>
+              <div>
+                <div class="choice-label">Indicação de alguém</div>
+                <div class="choice-desc">Um amigo, parceiro ou comunidade indicou</div>
+              </div>
+            </label>
+            <label class="choice-card" data-origem="instagram">
+              <span class="choice-radio"></span>
+              <div class="choice-label">Instagram</div>
+            </label>
+            <label class="choice-card" data-origem="linkedin">
+              <span class="choice-radio"></span>
+              <div class="choice-label">LinkedIn</div>
+            </label>
+            <label class="choice-card" data-origem="youtube">
+              <span class="choice-radio"></span>
+              <div class="choice-label">YouTube</div>
+            </label>
+            <label class="choice-card" data-origem="google">
+              <span class="choice-radio"></span>
+              <div class="choice-label">Pesquisa no Google</div>
+            </label>
+            <label class="choice-card" data-origem="outro">
+              <span class="choice-radio"></span>
+              <div>
+                <div class="choice-label">Outro</div>
+                <div class="choice-desc">Conte pra gente como nos encontrou</div>
+              </div>
+            </label>
+          </div>
+          <div class="form-group" id="step10-indicacao-group" style="display: none; margin-bottom: 1.25rem;">
+            <label for="step10-indicacao" class="input-label">Quem indicou? (nome ou grupo/comunidade)</label>
+            <input type="text" id="step10-indicacao" class="text-input" placeholder="Ex.: Alex — grupo de WhatsApp, ou nome da pessoa">
+          </div>
+          <div class="form-group" id="step10-origem-outro-group" style="display: none; margin-bottom: 1.25rem;">
+            <label for="step10-origem-outro" class="input-label">Como nos encontrou?</label>
+            <input type="text" id="step10-origem-outro" class="text-input" placeholder="Ex.: indicação de um amigo, evento, podcast...">
+          </div>
+
+          <div class="sub-section-title">
             Para onde enviamos seu diagnóstico completo?
           </div>
 
@@ -1672,6 +1716,9 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
           investimento: '',
           // 10. Sucesso e Contato
           sucesso: '',
+          origem: '',
+          indicacao: '',
+          origemOutro: '',
           nome: '',
           email: '',
           whatsapp: '',
@@ -1713,7 +1760,8 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
                         card.getAttribute('data-uber') ||
                         card.getAttribute('data-prazo') ||
                         card.getAttribute('data-invest') ||
-                        card.getAttribute('data-suc');
+                        card.getAttribute('data-suc') ||
+                        card.getAttribute('data-origem');
             state.data[stateKey] = val;
             if (onSelect) onSelect(val);
             validateCurrentStep();
@@ -1728,6 +1776,31 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
                   setupChoiceGroup('step9-prazo-options', 'prazo');
       setupChoiceGroup('step9-invest-options', 'investimento');
       setupChoiceGroup('step10-sucesso-options', 'sucesso');
+
+      // Origem (step 10, single choice + reveal condicional)
+      setupChoiceGroup('step10-origem-options', 'origem', (val) => {
+        const indGroup = document.getElementById('step10-indicacao-group');
+        const outroGroup = document.getElementById('step10-origem-outro-group');
+        indGroup.style.display = (val === 'indicacao') ? 'block' : 'none';
+        outroGroup.style.display = (val === 'outro') ? 'block' : 'none';
+        if (val !== 'indicacao') { state.data.indicacao = ''; }
+        if (val !== 'outro') { state.data.origemOutro = ''; }
+        validateCurrentStep();
+      });
+      const indicacaoInput = document.getElementById('step10-indicacao');
+      if (indicacaoInput) {
+        indicacaoInput.addEventListener('input', () => {
+          state.data.indicacao = indicacaoInput.value.trim();
+          validateCurrentStep();
+        });
+      }
+      const origemOutroInput = document.getElementById('step10-origem-outro');
+      if (origemOutroInput) {
+        origemOutroInput.addEventListener('input', () => {
+          state.data.origemOutro = origemOutroInput.value.trim();
+          validateCurrentStep();
+        });
+      }
 
       // Checkbox mecânicas (step 4, multi-seleção)
       const step4Checks = document.querySelectorAll('#step4-mecanicas-checklist input[type="checkbox"]');
@@ -1907,6 +1980,9 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
           case 10: // Sucesso e Contato
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             isValid = Boolean(state.data.sucesso) &&
+                      Boolean(state.data.origem) &&
+                      (state.data.origem !== 'indicacao' || state.data.indicacao.length >= 2) &&
+                      (state.data.origem !== 'outro' || state.data.origemOutro.length >= 2) &&
                       state.data.nome.length >= 2 &&
                       emailRegex.test(state.data.email) &&
                       state.data.whatsapp.length >= 14 &&
@@ -2212,7 +2288,7 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
         });
 
         // Update modal lead summary
-        document.getElementById('modal-lead-summary').textContent = `${state.data.nome} • ${state.data.whatsapp}`;
+        document.getElementById('modal-lead-summary').textContent = `${state.data.nome} • ${state.data.whatsapp}${state.data.indicacao ? ' • indicado por: ' + state.data.indicacao : ''}`;
         document.getElementById('modal-score-summary').textContent = `Score: ${score}/100 · ${badge.textContent}`;
       }
 
@@ -2246,7 +2322,8 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
               ' | conexoes: ' + (state.data.conexoes||'') +
               ' | prazo: ' + state.data.prazo +
               ' | motivoPrazo: ' + (state.data.motivoPrazo||'') +
-              ' | sucesso: ' + state.data.sucesso,
+              ' | sucesso: ' + state.data.sucesso +
+              ' | origem: ' + state.data.origem + (state.data.indicacao ? ' | indicacao: ' + state.data.indicacao : '') + (state.data.origemOutro ? ' | origemOutro: ' + state.data.origemOutro : ''),
             lgpd: state.data.lgpd === true
           };
           fetch('https://pepti-core-plus.base44.app/api/functions/registrarLeadAppsScript', {
