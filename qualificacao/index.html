@@ -1119,7 +1119,7 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
 
           <div class="form-group" style="margin-top: 1.25rem;">
             <label for="step1-desc" class="input-label">Conta pra gente sua ideia em poucas palavras (opcional)</label>
-            <input type="text" id="step1-desc" class="text-input" placeholder="Ex.: Quero conectar pessoas que precisam de pequenos fretes com quem tem furgão ou carretinha...">
+            <input type="text" id="step1-desc" class="text-input" placeholder="Ex.: Quero criar um sistema que resolve [seu problema] para [seu público]...">
           </div>
         </div>
 
@@ -1140,12 +1140,12 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
 
           <div class="form-group">
             <label for="step2-problem" class="input-label">Descreva o problema que seu projeto vai resolver *</label>
-            <textarea id="step2-problem" class="textarea-input" placeholder="Ex.: As pessoas perdem muito tempo ligando para orçar frete e muitas vezes o motorista não aparece ou cobra valores sem critério..."></textarea>
+            <textarea id="step2-problem" class="textarea-input" placeholder="Ex.: Hoje esse trabalho é feito à mão/por telefone e dá erro, atraso ou custo extra para todo mundo..."></textarea>
           </div>
 
           <div class="form-group">
             <label for="step2-custo" class="input-label">Quanto esse problema custa por mês, em R$? (se souber)</label>
-            <input type="text" id="step2-custo" class="text-input" placeholder="Ex.: Cerca de R$ 3.000 em atrasos e retrabalho (ou deixe em branco se não souber)">
+            <input type="text" id="step2-custo" class="text-input" placeholder="Ex.: Cerca de R$ 3.000/mês em horas perdidas e retrabalho (ou deixe em branco se não souber)">
           </div>
         </div>
 
@@ -1158,7 +1158,7 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
 
           <div class="form-group">
             <label for="step3-perfil" class="input-label">Perfil das pessoas (idade, profissão, renda ou cidade)</label>
-            <input type="text" id="step3-perfil" class="text-input" placeholder="Ex.: Comerciantes de 25 a 50 anos em capitais e motoristas autônomos">
+            <input type="text" id="step3-perfil" class="text-input" placeholder="Ex.: Donos de pequenos negócios, profissionais autônomos ou consumidores de uma região">
           </div>
 
           <div class="sub-section-title">
@@ -1171,7 +1171,7 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
               <span class="choice-radio"></span>
               <div>
                 <div class="choice-label">Já tenho quem oferece o serviço</div>
-                <div class="choice-desc">Tenho contato direto com prestadores, motoristas ou lojas parceiras</div>
+                <div class="choice-desc">Tenho contato direto com quem vai oferecer o serviço ou produto</div>
               </div>
             </label>
             <label class="choice-card" data-val="tem-usa">
@@ -1231,27 +1231,35 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
           <div class="sub-section-title">
             Quais mecânicas você quer no seu projeto?
           </div>
-          <div class="option-grid" id="step4-uber-options">
-            <label class="choice-card" data-uber="toque">
-              <span class="choice-radio"></span>
-              <div class="choice-label">Pedido ou solicitação com um toque</div>
+          <div class="check-grid" id="step4-mecanicas-checklist">
+            <label class="check-card">
+              <input type="checkbox" value="pedido-rapido">
+              <span>Pedido ou solicitação rápida</span>
             </label>
-            <label class="choice-card" data-uber="mapa">
-              <span class="choice-radio"></span>
-              <div class="choice-label">Acompanhamento em tempo real</div>
+            <label class="check-card">
+              <input type="checkbox" value="tempo-real">
+              <span>Acompanhamento em tempo real</span>
             </label>
-            <label class="choice-card" data-uber="pagamento">
-              <span class="choice-radio"></span>
-              <div class="choice-label">Pagamento integrado</div>
+            <label class="check-card">
+              <input type="checkbox" value="pagamento">
+              <span>Pagamento integrado</span>
             </label>
-            <label class="choice-card" data-uber="avaliacao">
-              <span class="choice-radio"></span>
-              <div class="choice-label">Avaliações e reputação</div>
+            <label class="check-card">
+              <input type="checkbox" value="avaliacoes">
+              <span>Avaliações e reputação</span>
             </label>
-            <label class="choice-card" data-uber="tudo">
-              <span class="choice-radio"></span>
-              <div class="choice-label">Tudo isso junto</div>
+            <label class="check-card">
+              <input type="checkbox" value="notificacoes">
+              <span>Notificações automáticas</span>
             </label>
+            <label class="check-card">
+              <input type="checkbox" value="relatorios">
+              <span>Relatórios e indicadores</span>
+            </label>
+          </div>
+          <div class="form-group" style="margin-top: 0.9rem;">
+            <label for="step4-mecanica-outro" class="input-label">Outra mecânica não listada? Descreva (opcional)</label>
+            <input type="text" id="step4-mecanica-outro" class="text-input" placeholder="Ex.: agendamento automático de horários, chat entre partes...">
           </div>
         </div>
 
@@ -1272,7 +1280,7 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
 
           <div class="form-group">
             <label for="step5-fluxo" class="input-label">Como acontece a experiência no app? *</label>
-            <textarea id="step5-fluxo" class="textarea-input" placeholder="Ex.: O cliente abre o app, diz o que precisa levar e onde. O motorista recebe a notificação, aceita, busca a mercadoria e o pagamento cai na hora com recibo..."></textarea>
+            <textarea id="step5-fluxo" class="textarea-input" placeholder="Ex.: O cliente abre o app, escolhe o que precisa; o fornecedor recebe o aviso, confirma e tudo fica registrado do início ao fim..."></textarea>
           </div>
         </div>
 
@@ -1283,42 +1291,35 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
             <h2 class="step-question">Como o negócio ganha dinheiro?</h2>
           </div>
 
-          <div class="option-grid" id="step6-options">
-            <label class="choice-card" data-val="comissao">
-              <span class="choice-radio"></span>
-              <div>
-                <div class="choice-label">Comissão por venda ou serviço</div>
-                <div class="choice-desc">Uma porcentagem de cada pagamento feito dentro do app</div>
-              </div>
+          <div class="check-grid" id="step6-receita-checklist">
+            <label class="check-card">
+              <input type="checkbox" value="comissao">
+              <span>Comissão por venda ou serviço</span>
             </label>
-            <label class="choice-card" data-val="assinatura">
-              <span class="choice-radio"></span>
-              <div>
-                <div class="choice-label">Assinatura mensal</div>
-                <div class="choice-desc">O cliente ou o profissional paga um valor fixo todo mês para usar</div>
-              </div>
+            <label class="check-card">
+              <input type="checkbox" value="assinatura">
+              <span>Assinatura mensal</span>
             </label>
-            <label class="choice-card" data-val="taxa-fixa">
-              <span class="choice-radio"></span>
-              <div>
-                <div class="choice-label">Taxa fixa por serviço</div>
-                <div class="choice-desc">Cobra um valor fixo por pedido atendido ou por contato liberado</div>
-              </div>
+            <label class="check-card">
+              <input type="checkbox" value="taxa-fixa">
+              <span>Taxa fixa por serviço</span>
             </label>
-            <label class="choice-card" data-val="produtos">
-              <span class="choice-radio"></span>
-              <div>
-                <div class="choice-label">Venda de produtos</div>
-                <div class="choice-desc">Lucro direto nas mercadorias vendidas no catálogo</div>
-              </div>
+            <label class="check-card">
+              <input type="checkbox" value="produtos">
+              <span>Venda de produtos</span>
             </label>
-            <label class="choice-card" data-val="nao-sei">
-              <span class="choice-radio"></span>
-              <div>
-                <div class="choice-label">Ainda não sei</div>
-                <div class="choice-desc">Quero entender qual a melhor forma de faturar com esse projeto</div>
-              </div>
+            <label class="check-card">
+              <input type="checkbox" value="anuncios">
+              <span>Espaços patrocinados / anúncios</span>
             </label>
+            <label class="check-card">
+              <input type="checkbox" value="nao-sei">
+              <span>Ainda não sei</span>
+            </label>
+          </div>
+          <div class="form-group" style="margin-top: 0.9rem;">
+            <label for="step6-receita-outro" class="input-label">Outro modelo? Descreva (opcional)</label>
+            <input type="text" id="step6-receita-outro" class="text-input" placeholder="Ex.: licenciamento, franquia, intermediação de contratos...">
           </div>
         </div>
 
@@ -1380,15 +1381,18 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
           </div>
 
           <div class="form-group" style="margin-top: 1rem;">
-            <label for="step8-conexoes" class="input-label">O app precisa se conectar com algo? (pagamentos, mapa, WhatsApp, e-mail) — opcional</label>
-            <input type="text" id="step8-conexoes" class="text-input" placeholder="Ex.: Pix automático, envio de mensagens no WhatsApp e mapa da cidade">
+            <label for="step8-conexoes" class="input-label">Algo mais que já existe e deve ser aproveitado? (planilhas, sistemas, grupos) — opcional</label>
+            <input type="text" id="step8-conexoes" class="text-input" placeholder="Ex.: hoje controlo tudo numa planilha e atendo clientes por WhatsApp">
           </div>
+          <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 0.5rem;">
+            As integrações técnicas (pagamentos, notificações, mapas) a MasterCore define e configura — você não precisa decidir nada disso agora.
+          </p>
         </div>
 
         <!-- STEP 9: PRAZO E INVESTIMENTO -->
         <div class="step-content view-hidden" id="step-pane-9">
           <div class="step-header">
-            <span class="step-badge">Passo 9 de 10 — Prazo e Investimento</span>
+            <span class="step-badge">Passo 9 de 10 — Prazo</span>
             <h2 class="step-question">Quando precisa estar no ar e por quê?</h2>
           </div>
 
@@ -1419,27 +1423,7 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
             <input type="text" id="step9-motivo-prazo" class="text-input" placeholder="Ex.: Quero aproveitar uma feira do setor em novembro ou não perder a janela de oportunidade">
           </div>
 
-          <div style="margin-top: 1.25rem;">
-            <label class="input-label">Quanto pretende investir nesse projeto? *</label>
-            <div class="option-grid-2col" id="step9-invest-options">
-              <label class="choice-card" data-invest="ate-20k">
-                <span class="choice-radio"></span>
-                <span class="choice-label">Até R$ 20 mil</span>
-              </label>
-              <label class="choice-card" data-invest="20-50k">
-                <span class="choice-radio"></span>
-                <span class="choice-label">R$ 20 a 50 mil</span>
-              </label>
-              <label class="choice-card" data-invest="50-100k">
-                <span class="choice-radio"></span>
-                <span class="choice-label">R$ 50 a 100 mil</span>
-              </label>
-              <label class="choice-card" data-invest="acima-100k">
-                <span class="choice-radio"></span>
-                <span class="choice-label">Acima de R$ 100 mil</span>
-              </label>
-            </div>
-          </div>
+
         </div>
 
         <!-- STEP 10: SUCESSO E CONTATO -->
@@ -1629,10 +1613,10 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
       </div>
 
       <h3 id="modal-title" style="font-size: 1.35rem; color: #FFFFFF; font-weight: 700; margin: 0 0 0.5rem;">
-        Conversa de Diagnóstico Agendada
+        Diagnóstico Recebido pela MasterCore
       </h3>
       <p style="font-size: 0.9rem; color: #94A3B8; margin-bottom: 1.5rem; line-height: 1.5;">
-        Recebemos as informações do seu projeto. Nosso consultor entrará em contato no seu WhatsApp para combinar o melhor horário para uma conversa rápida de 30 minutos em linguagem 100% simples.
+        Recebemos o seu diagnóstico completo. Nossa equipe vai analisar a viabilidade do seu projeto (mercado, potencial de receita e encaixe com a MasterCore) e retorna no seu WhatsApp com o próximo passo.
       </p>
 
       <div style="background: rgba(10, 25, 47, 0.7); border: 1px solid #1E3A5F; border-radius: 8px; padding: 1rem; margin-bottom: 1.5rem; text-align: left; font-size: 0.85rem;">
@@ -1642,7 +1626,7 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
       </div>
 
       <button id="modal-whatsapp-direct" class="cta-btn" type="button" style="width: 100%; max-width: 100%;">
-        Falar agora com consultor no WhatsApp
+        Falar com a MasterCore no WhatsApp
       </button>
     </div>
   </div>
@@ -1669,11 +1653,14 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
           acessoLado: '',
           // 4. A Mágica
           beneficio: '',
+          mecanicas: [],
+          mecanicaOutro: '',
           uberDesejo: '',
           // 5. Como Funciona
           fluxo: '',
           // 6. O Dinheiro
-          receita: '',
+          receita: [],
+          receitaOutro: '',
           // 7. Os Outros
           outros: '',
           // 8. Pré-requisitos
@@ -1738,11 +1725,55 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
       setupChoiceGroup('step1-options', 'ideia');
       setupChoiceGroup('step3-options', 'acessoLado');
       setupChoiceGroup('step4-beneficio-options', 'beneficio');
-      setupChoiceGroup('step4-uber-options', 'uberDesejo');
-      setupChoiceGroup('step6-options', 'receita');
-      setupChoiceGroup('step9-prazo-options', 'prazo');
+                  setupChoiceGroup('step9-prazo-options', 'prazo');
       setupChoiceGroup('step9-invest-options', 'investimento');
       setupChoiceGroup('step10-sucesso-options', 'sucesso');
+
+      // Checkbox mecânicas (step 4, multi-seleção)
+      const step4Checks = document.querySelectorAll('#step4-mecanicas-checklist input[type="checkbox"]');
+      step4Checks.forEach(chk => {
+        chk.addEventListener('change', () => {
+          const card = chk.closest('.check-card');
+          if (chk.checked) {
+            card.classList.add('checked');
+            if (!state.data.mecanicas.includes(chk.value)) state.data.mecanicas.push(chk.value);
+          } else {
+            card.classList.remove('checked');
+            state.data.mecanicas = state.data.mecanicas.filter(v => v !== chk.value);
+          }
+          validateCurrentStep();
+        });
+      });
+      const mecanicaOutroInput = document.getElementById('step4-mecanica-outro');
+      if (mecanicaOutroInput) {
+        mecanicaOutroInput.addEventListener('input', () => {
+          state.data.mecanicaOutro = mecanicaOutroInput.value.trim();
+          validateCurrentStep();
+        });
+      }
+
+      // Checkbox receita (step 6, multi-seleção)
+      const step6Checks = document.querySelectorAll('#step6-receita-checklist input[type="checkbox"]');
+      step6Checks.forEach(chk => {
+        chk.addEventListener('change', () => {
+          const card = chk.closest('.check-card');
+          if (chk.checked) {
+            card.classList.add('checked');
+            if (!state.data.receita.includes(chk.value)) state.data.receita.push(chk.value);
+          } else {
+            card.classList.remove('checked');
+            state.data.receita = state.data.receita.filter(v => v !== chk.value);
+          }
+          validateCurrentStep();
+        });
+      });
+      const receitaOutroInput = document.getElementById('step6-receita-outro');
+      if (receitaOutroInput) {
+        receitaOutroInput.addEventListener('input', () => {
+          state.data.receitaOutro = receitaOutroInput.value.trim();
+          validateCurrentStep();
+        });
+      }
 
       // Checkbox checklist in step 8
       const step8Checks = document.querySelectorAll('#step8-checklist input[type="checkbox"]');
@@ -1856,13 +1887,13 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
             isValid = Boolean(state.data.acessoLado);
             break;
           case 4: // A mágica
-            isValid = Boolean(state.data.beneficio);
+            isValid = Boolean(state.data.beneficio) && (state.data.mecanicas.length > 0 || (state.data.mecanicaOutro||'').length > 2);
             break;
           case 5: // Como funciona
             isValid = state.data.fluxo.length >= 8;
             break;
           case 6: // O dinheiro
-            isValid = Boolean(state.data.receita);
+            isValid = state.data.receita.length > 0 || (state.data.receitaOutro||'').length > 2;
             break;
           case 7: // Os outros
             isValid = state.data.outros.length >= 6;
@@ -1870,8 +1901,8 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
           case 8: // Pré-requisitos
             isValid = state.data.preRequisitos.length > 0;
             break;
-          case 9: // Prazo e Investimento
-            isValid = Boolean(state.data.prazo) && Boolean(state.data.investimento);
+          case 9: // Prazo
+            isValid = Boolean(state.data.prazo);
             break;
           case 10: // Sucesso e Contato
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -2003,8 +2034,8 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
           score += 10;
         }
 
-        // 8. Investimento definido: +10
-        if (state.data.investimento) {
+        // 8. Motivo do prazo definido: +10 (substitui investimento na jornada pública)
+        if (state.data.motivoPrazo && state.data.motivoPrazo.length >= 5) {
           score += 10;
         }
 
@@ -2020,6 +2051,7 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
         window.scrollTo({ top: 0, behavior: 'smooth' });
 
         renderResults(score);
+        sendJourneyLead(score);
       }
 
       function renderResults(score) {
@@ -2099,7 +2131,9 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
         };
 
         document.getElementById('res-pillar-ideia').textContent = ideiaLabels[state.data.ideia] || 'Definida';
-        document.getElementById('res-pillar-receita').textContent = receitaLabels[state.data.receita] || 'A Definir';
+        const receitaMap = { 'comissao': 'Comissão', 'assinatura': 'Assinatura', 'taxa-fixa': 'Taxa Fixa', 'produtos': 'Produtos', 'anuncios': 'Anúncios', 'nao-sei': 'A Definir' };
+        const receitaTxt = (state.data.receita||[]).map(v => receitaMap[v] || v).join(' + ') || (state.data.receitaOutro ? 'Definido' : 'A Definir');
+        document.getElementById('res-pillar-receita').textContent = receitaTxt;
         document.getElementById('res-pillar-mercado').textContent = acessoLabels[state.data.acessoLado] || 'A Definir';
         document.getElementById('res-pillar-prazo').textContent = prazoLabels[state.data.prazo] || 'A Definir';
 
@@ -2110,7 +2144,7 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
         const recsPool = [];
 
         // Rule: sem modelo de dinheiro
-        if (state.data.receita === 'nao-sei') {
+        if (state.data.receita.includes('nao-sei') || ((state.data.receita||[]).length === 0 && !(state.data.receitaOutro||'').length)) {
           recsPool.push({
             title: 'Como o negócio ganha dinheiro',
             desc: 'O primeiro passo é definir como o negócio ganha dinheiro antes de escrever código. Vamos ajudar a desenhar o modelo ideal na conversa.'
@@ -2149,10 +2183,10 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
           });
         }
 
-        if (recsPool.length < 3 && state.data.investimento === 'ate-20k') {
+        if (recsPool.length < 3 && state.data.preRequisitos.length <= 1) {
           recsPool.push({
             title: 'Otimização inteligente do investimento',
-            desc: 'Com o orçamento informado, a melhor rota é usar componentes pré-construídos e tecnologias modernas para colocar no ar rápido com qualidade profissional.'
+            desc: 'Com pouco estruturado ainda, a melhor rota é usar componentes pré-construídos e tecnologias modernas para colocar no ar rápido com qualidade profissional.'
           });
         }
 
@@ -2180,6 +2214,47 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
         // Update modal lead summary
         document.getElementById('modal-lead-summary').textContent = `${state.data.nome} • ${state.data.whatsapp}`;
         document.getElementById('modal-score-summary').textContent = `Score: ${score}/100 · ${badge.textContent}`;
+      }
+
+      // ===== Envio do lead COMPLETO no fim da jornada (submit principal) =====
+      let journeySent = false;
+      function sendJourneyLead(score) {
+        if (journeySent) return;
+        journeySent = true;
+        try {
+          var utm = {}; try { utm = JSON.parse(localStorage.getItem('mc_discovery_utm')||'{}'); } catch(e){}
+          var payload = {
+            nome: state.data.nome,
+            email: state.data.email,
+            whatsapp: state.data.whatsapp,
+            origem: 'Discovery Experience',
+            utm_source: utm.utm_source || 'mastercore',
+            utm_medium: utm.utm_medium || 'landing',
+            utm_campaign: utm.utm_campaign || 'avaliar_opcoes',
+            observacao: 'JORNADA COMPLETA | score: ' + score + '/100' +
+              ' | ideia: ' + (state.data.ideiaDesc || state.data.ideia) +
+              ' | problema: ' + state.data.problema +
+              ' | custoProblema: ' + (state.data.custoProblema||'') +
+              ' | perfil: ' + (state.data.perfil||'') +
+              ' | acesso: ' + state.data.acessoLado +
+              ' | beneficio: ' + state.data.beneficio +
+              ' | mecanicas: ' + (state.data.mecanicas||[]).join(',') + (state.data.mecanicaOutro ? ' | outra: ' + state.data.mecanicaOutro : '') +
+              ' | fluxo: ' + state.data.fluxo +
+              ' | receita: ' + (state.data.receita||[]).join(',') + (state.data.receitaOutro ? ' | outra: ' + state.data.receitaOutro : '') +
+              ' | concorrencia: ' + state.data.outros +
+              ' | preRequisitos: ' + (state.data.preRequisitos||[]).join(',') +
+              ' | conexoes: ' + (state.data.conexoes||'') +
+              ' | prazo: ' + state.data.prazo +
+              ' | motivoPrazo: ' + (state.data.motivoPrazo||'') +
+              ' | sucesso: ' + state.data.sucesso,
+            lgpd: state.data.lgpd === true
+          };
+          fetch('https://pepti-core-plus.base44.app/api/functions/registrarLeadAppsScript', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(payload)
+          }).catch(function(){});
+        } catch(e) {}
       }
 
       // Schedule Discovery CTA click
