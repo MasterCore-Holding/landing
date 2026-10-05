@@ -1,0 +1,2350 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Discovery Experience — Diagnóstico de Prontidão</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/basecoat-css@1.0.2/dist/basecoat.cdn.min.css">
+  <style>
+/* Skip artifact shell — fixed styles served beside every artifact.
+   Complements basecoat; artifacts override --accent for their own identity. */
+:root {
+  color-scheme: light dark;
+  --accent: #2563eb;
+  --accent-contrast: #ffffff;
+  --accent-text: color-mix(in srgb, var(--accent) 72%, #000);
+  --bg: #f8f9fb;
+  --surface: #ffffff;
+  --text: #14171f;
+  --text-muted: #5b6472;
+  --border: rgba(20, 23, 31, 0.10);
+  --radius: 10px;
+  --shadow: 0 1px 3px rgba(20, 23, 31, 0.08);
+  --space: 16px;
+}
+/* Theme resolution. Without data-theme the viewer's system preference decides,
+   as it always did. With it, the artifact's own choice wins in BOTH directions:
+   a page that hardcodes one palette must not be handed the opposite set of
+   tokens by the machine it happens to be opened on. The dark values appear
+   twice because a media query cannot be folded into a selector list.
+   The attribute sits inside :where() so these blocks keep the specificity of a
+   bare :root — the page's own <style> is linked after this file and must go on
+   overriding any token it wants, exactly as it could before. */
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) {
+    --accent-text: color-mix(in srgb, var(--accent) 78%, #fff);
+    --bg: #101318;
+    --surface: #181c23;
+    --text: #eef1f6;
+    --text-muted: #9aa4b2;
+    --border: rgba(238, 241, 246, 0.12);
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  }
+}
+:root:where([data-theme="dark"]) {
+  color-scheme: dark;
+  --accent-text: color-mix(in srgb, var(--accent) 78%, #fff);
+  --bg: #101318;
+  --surface: #181c23;
+  --text: #eef1f6;
+  --text-muted: #9aa4b2;
+  --border: rgba(238, 241, 246, 0.12);
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+:root:where([data-theme="light"]) { color-scheme: light; }
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+
+.shell-container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+.shell-section { padding: calc(var(--space) * 2) 0; }
+.shell-grid { display: grid; gap: var(--space); grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.shell-toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: var(--space); }
+.shell-footer { padding: 24px 0 40px; color: var(--text-muted); font-size: 13px; }
+
+.shell-hero { padding: calc(var(--space) * 3) 0 calc(var(--space) * 2); }
+.shell-hero h1 { font-size: clamp(26px, 4vw, 40px); line-height: 1.15; margin: 0 0 10px; text-wrap: balance; }
+.shell-hero p { color: var(--text-muted); max-width: 60ch; margin: 0; }
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: var(--space);
+}
+
+.kpi { display: flex; flex-direction: column; gap: 4px; }
+.kpi .kpi-value { font-size: 28px; font-weight: 650; line-height: 1.1; }
+.kpi .kpi-label { font-size: 13px; color: var(--text-muted); }
+.kpi .kpi-delta { font-size: 12.5px; font-weight: 600; }
+.kpi .kpi-delta.up { color: #0a8f3c; }
+.kpi .kpi-delta.down { color: #cf3131; }
+
+table.shell-table { border-collapse: collapse; width: 100%; font-size: 14px; }
+table.shell-table th {
+  text-align: left; font-size: 11.5px; letter-spacing: 0.05em; text-transform: uppercase;
+  color: var(--text-muted); font-weight: 600;
+}
+table.shell-table th, table.shell-table td { padding: 9px 12px 9px 0; border-bottom: 1px solid var(--border); }
+table.shell-table td.num, table.shell-table th.num { text-align: right; font-variant-numeric: tabular-nums; }
+table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 6%, transparent); }
+
+.chart-box { width: 100%; min-height: 220px; }
+.chart-box svg { width: 100%; height: auto; display: block; }
+
+.muted { color: var(--text-muted); }
+.accent { color: var(--accent-text); }
+.shell-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px;
+  background: color-mix(in srgb, var(--accent) 12%, transparent); color: var(--accent-text);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .shell-fade { animation: shell-fade 400ms ease both; }
+  @keyframes shell-fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+}
+
+</style>
+  
+  <style>
+    :root {
+      --accent: #14B8A6;
+      --accent-rgb: 20, 184, 166;
+      --bg: #0A192F;
+      --surface: #0F223D;
+      --surface-card: #132A4A;
+      --surface-hover: #1A3860;
+      --text: #F8FAFC;
+      --text-muted: #94A3B8;
+      --border: #1E3A5F;
+      --border-focus: #14B8A6;
+      --radius: 14px;
+      --radius-sm: 8px;
+    }
+
+    body {
+      background-color: var(--bg);
+      background-image: 
+        radial-gradient(circle at 50% -20%, rgba(20, 184, 166, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 100% 60%, rgba(14, 116, 144, 0.08) 0%, transparent 40%);
+      background-attachment: fixed;
+      color: var(--text);
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-nav {
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(30, 58, 95, 0.4);
+      backdrop-filter: blur(8px);
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(10, 25, 47, 0.85);
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-weight: 700;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+
+    .brand-mark {
+      width: 28px;
+      height: 28px;
+      border-radius: 7px;
+      background: linear-gradient(135deg, #14B8A6 0%, #0284C7 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0A192F;
+      font-weight: 800;
+      font-size: 0.9rem;
+    }
+
+    .badge-sub {
+      background: rgba(20, 184, 166, 0.12);
+      border: 1px solid rgba(20, 184, 166, 0.3);
+      color: #2DD4BF;
+      padding: 0.25rem 0.65rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .app-main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem 1rem 3rem;
+      max-width: 720px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    /* Views toggle */
+    .view-section {
+      width: 100%;
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+    .view-hidden {
+      display: none;
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    .view-active {
+      display: block;
+      animation: fadeUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* HERO */
+    .hero-card {
+      background: linear-gradient(180deg, rgba(19, 42, 74, 0.75) 0%, rgba(15, 34, 61, 0.9) 100%);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 3rem 2rem;
+      text-align: center;
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(20, 184, 166, 0.1);
+    }
+
+    @media (max-width: 600px) {
+      .hero-card {
+        padding: 2rem 1.25rem;
+      }
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      background: rgba(20, 184, 166, 0.1);
+      border: 1px solid rgba(20, 184, 166, 0.25);
+      color: #2DD4BF;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+    .hero-pill .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #14B8A6;
+      box-shadow: 0 0 8px #14B8A6;
+    }
+
+    .hero-title {
+      font-size: clamp(1.85rem, 5vw, 2.65rem);
+      line-height: 1.15;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.25rem;
+      color: #FFFFFF;
+    }
+
+    .hero-title span {
+      background: linear-gradient(120deg, #FFFFFF 30%, #2DD4BF 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+      max-width: 580px;
+      margin: 0 auto 2rem;
+    }
+
+    .sub-section-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #E2E8F0;
+      margin: 1.25rem 0 0.65rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .check-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.65rem;
+      margin-bottom: 1.25rem;
+    }
+    @media (max-width: 540px) {
+      .check-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .check-card {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.85rem 1rem;
+      background: rgba(19, 42, 74, 0.45);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+      color: #F8FAFC;
+    }
+    .check-card:hover {
+      background: rgba(26, 56, 96, 0.65);
+      border-color: rgba(20, 184, 166, 0.4);
+    }
+    .check-card.checked {
+      background: rgba(20, 184, 166, 0.12);
+      border-color: #14B8A6;
+    }
+    .check-card input[type="checkbox"] {
+      accent-color: #14B8A6;
+      width: 17px;
+      height: 17px;
+      cursor: pointer;
+    }
+
+    .cta-btn {
+      appearance: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      background: linear-gradient(135deg, #14B8A6 0%, #0D9488 100%);
+      color: #042F2E;
+      font-weight: 700;
+      font-size: 1.05rem;
+      padding: 1rem 2rem;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 10px 25px -5px rgba(20, 184, 166, 0.4);
+      transition: all 0.2s ease;
+      width: 100%;
+      max-width: 320px;
+    }
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px -4px rgba(20, 184, 166, 0.55);
+      background: linear-gradient(135deg, #2DD4BF 0%, #14B8A6 100%);
+    }
+    .cta-btn:active {
+      transform: translateY(0);
+    }
+    .cta-btn svg {
+      transition: transform 0.2s;
+    }
+    .cta-btn:hover svg {
+      transform: translateX(4px);
+    }
+
+    .hero-proof {
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      color: #94A3B8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .lgpd-note {
+      font-size: 0.75rem;
+      color: #64748B;
+      margin-top: 1.25rem;
+    }
+
+    /* STEP JOURNEY */
+    .journey-wrapper {
+      width: 100%;
+    }
+
+    .journey-progress-bar {
+      margin-bottom: 1.5rem;
+    }
+
+    .progress-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.6rem;
+      font-size: 0.825rem;
+      color: var(--text-muted);
+    }
+    .progress-step-name {
+      color: #2DD4BF;
+      font-weight: 600;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 6px;
+      background: rgba(30, 58, 95, 0.6);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 16.66%;
+      background: linear-gradient(90deg, #0D9488 0%, #14B8A6 100%);
+      box-shadow: 0 0 10px rgba(20, 184, 166, 0.6);
+      transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .step-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2.25rem 2rem;
+      box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.45);
+    }
+
+    @media (max-width: 600px) {
+      .step-card {
+        padding: 1.75rem 1.25rem;
+      }
+    }
+
+    .step-header {
+      margin-bottom: 1.75rem;
+    }
+
+    .step-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #2DD4BF;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+      display: inline-block;
+    }
+
+    .step-question {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: -0.02em;
+      line-height: 1.3;
+      margin: 0 0 0.5rem;
+    }
+
+    .step-hint {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      color: #94A3B8;
+      background: rgba(30, 58, 95, 0.35);
+      border-left: 3px solid #14B8A6;
+      padding: 0.65rem 0.85rem;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      margin-top: 0.75rem;
+      line-height: 1.45;
+    }
+
+    /* Option Cards */
+    .option-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .option-grid-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+    @media (max-width: 520px) {
+      .option-grid-2col {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .choice-card {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 1rem 1.15rem;
+      border-radius: var(--radius-sm);
+      background: rgba(19, 42, 74, 0.5);
+      border: 1px solid var(--border);
+      color: var(--text);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+
+    .choice-card:hover {
+      background: rgba(26, 56, 96, 0.65);
+      border-color: rgba(20, 184, 166, 0.4);
+      transform: translateY(-1px);
+    }
+
+    .choice-card.selected {
+      background: rgba(20, 184, 166, 0.12);
+      border-color: #14B8A6;
+      box-shadow: 0 0 0 1px #14B8A6, 0 4px 15px -3px rgba(20, 184, 166, 0.25);
+    }
+
+    .choice-radio {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 2px solid #64748B;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all 0.2s;
+    }
+
+    .choice-card.selected .choice-radio {
+      border-color: #14B8A6;
+      background: #14B8A6;
+    }
+    .choice-card.selected .choice-radio::after {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #0A192F;
+    }
+
+    .choice-label {
+      font-size: 0.95rem;
+      font-weight: 500;
+      line-height: 1.35;
+      color: #F8FAFC;
+    }
+    .choice-desc {
+      font-size: 0.775rem;
+      color: var(--text-muted);
+      margin-top: 0.15rem;
+    }
+
+    /* Inputs */
+    .input-label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #CBD5E1;
+      margin-bottom: 0.4rem;
+    }
+
+    .text-input,
+    .textarea-input {
+      width: 100%;
+      box-sizing: border-box;
+      background: rgba(10, 25, 47, 0.7);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 0.85rem 1rem;
+      color: #F8FAFC;
+      font-size: 0.95rem;
+      font-family: inherit;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .text-input:focus,
+    .textarea-input:focus {
+      outline: none;
+      border-color: var(--border-focus);
+      box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.2);
+    }
+
+    .textarea-input {
+      min-height: 110px;
+      resize: vertical;
+      line-height: 1.5;
+    }
+
+    .form-group {
+      margin-bottom: 1.15rem;
+    }
+
+    .checkbox-container {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+      cursor: pointer;
+      margin-top: 1rem;
+      font-size: 0.825rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+    .checkbox-container input {
+      accent-color: #14B8A6;
+      width: 18px;
+      height: 18px;
+      margin-top: 2px;
+      cursor: pointer;
+    }
+
+    /* Navigation Actions */
+    .step-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(30, 58, 95, 0.5);
+    }
+
+    .btn-back {
+      appearance: none;
+      background: transparent;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      color: var(--text-muted);
+      padding: 0.75rem 1.25rem;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .btn-back:hover {
+      background: rgba(30, 58, 95, 0.4);
+      color: var(--text);
+      border-color: rgba(148, 163, 184, 0.4);
+    }
+
+    .btn-next {
+      appearance: none;
+      background: #14B8A6;
+      color: #042F2E;
+      border: none;
+      padding: 0.85rem 1.6rem;
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 4px 14px rgba(20, 184, 166, 0.3);
+      margin-left: auto;
+    }
+    .btn-next:hover:not(:disabled) {
+      background: #2DD4BF;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(20, 184, 166, 0.45);
+    }
+    .btn-next:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    /* RESULT SCREEN */
+    .result-container {
+      width: 100%;
+    }
+
+    .result-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2.5rem 2rem;
+      box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.55);
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    @media (max-width: 600px) {
+      .result-card {
+        padding: 2rem 1.25rem;
+      }
+    }
+
+    .result-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.3rem 0.8rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background: rgba(20, 184, 166, 0.1);
+      border: 1px solid rgba(20, 184, 166, 0.3);
+      color: #2DD4BF;
+      margin-bottom: 1rem;
+    }
+
+    .result-title {
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 800;
+      color: #FFFFFF;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+
+    .result-subtitle {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    /* Score Ring */
+    .gauge-wrapper {
+      position: relative;
+      width: 180px;
+      height: 180px;
+      margin: 0 auto 1.5rem;
+    }
+
+    .gauge-svg {
+      width: 100%;
+      height: 100%;
+      transform: rotate(-90deg);
+    }
+
+    .gauge-bg {
+      fill: none;
+      stroke: rgba(30, 58, 95, 0.6);
+      stroke-width: 12;
+    }
+
+    .gauge-meter {
+      fill: none;
+      stroke: #14B8A6;
+      stroke-width: 12;
+      stroke-linecap: round;
+      stroke-dasharray: 471;
+      stroke-dashoffset: 471;
+      transition: stroke-dashoffset 1.4s cubic-bezier(0.16, 1, 0.3, 1), stroke 0.4s ease;
+    }
+
+    .gauge-center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .gauge-score {
+      font-size: 2.8rem;
+      font-weight: 800;
+      line-height: 1;
+      color: #FFFFFF;
+      letter-spacing: -0.03em;
+    }
+    .gauge-max {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      margin-top: 0.15rem;
+    }
+
+    .status-badge {
+      display: inline-block;
+      padding: 0.5rem 1.25rem;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+    }
+    .status-ideacao {
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      color: #FBBF24;
+    }
+    .status-estruturado {
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      color: #38BDF8;
+    }
+    .status-pronto {
+      background: rgba(20, 184, 166, 0.15);
+      border: 1px solid rgba(20, 184, 166, 0.35);
+      color: #2DD4BF;
+    }
+
+    /* Pillars Breakdown */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+      text-align: left;
+    }
+    @media (max-width: 600px) {
+      .pillars-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .pillar-box {
+      background: rgba(10, 25, 47, 0.6);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 0.85rem;
+    }
+    .pillar-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 0.25rem;
+    }
+    .pillar-value {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #FFFFFF;
+    }
+
+    /* Recommendations */
+    .recs-section {
+      text-align: left;
+      background: rgba(10, 25, 47, 0.75);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .recs-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #2DD4BF;
+      margin: 0 0 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .rec-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid rgba(30, 58, 95, 0.5);
+    }
+    .rec-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .rec-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      background: rgba(20, 184, 166, 0.15);
+      color: #2DD4BF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 0.85rem;
+      margin-top: 2px;
+    }
+
+    .rec-text {
+      font-size: 0.9rem;
+      line-height: 1.45;
+      color: #E2E8F0;
+    }
+
+    /* Final Pitch CTA */
+    .pitch-banner {
+      background: linear-gradient(135deg, rgba(20, 184, 166, 0.12) 0%, rgba(14, 116, 144, 0.08) 100%);
+      border: 1px solid rgba(20, 184, 166, 0.35);
+      border-radius: var(--radius-sm);
+      padding: 1.5rem;
+      margin-bottom: 1.75rem;
+      text-align: center;
+    }
+    .pitch-text {
+      font-size: 1rem;
+      line-height: 1.55;
+      color: #F8FAFC;
+      font-weight: 500;
+      margin: 0;
+    }
+    .pitch-text strong {
+      color: #2DD4BF;
+    }
+
+    .footer-bar {
+      margin-top: auto;
+      text-align: center;
+      padding: 1.5rem;
+      border-top: 1px solid rgba(30, 58, 95, 0.4);
+      color: #64748B;
+      font-size: 0.8rem;
+    }
+
+    /* Booking Modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 25, 47, 0.85);
+      backdrop-filter: blur(6px);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+    .modal-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .modal-card {
+      background: #0F223D;
+      border: 1px solid #1E3A5F;
+      border-radius: var(--radius);
+      max-width: 480px;
+      width: 100%;
+      padding: 2rem;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+      text-align: center;
+      position: relative;
+    }
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      color: #94A3B8;
+      cursor: pointer;
+      font-size: 1.25rem;
+      padding: 0.3rem;
+    }
+    .modal-close:hover {
+      color: #FFFFFF;
+    }
+
+    @media print {
+      .brand-nav, .step-actions, .cta-btn, .modal-overlay {
+        display: none !important;
+      }
+      body {
+        background: #FFFFFF !important;
+        color: #000000 !important;
+      }
+      .result-card, .recs-section, .pitch-banner {
+        border-color: #CBD5E1 !important;
+        background: #FFFFFF !important;
+        color: #000000 !important;
+        box-shadow: none !important;
+      }
+      .result-title, .gauge-score, .rec-text, .pillar-value {
+        color: #000000 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Brand Navigation -->
+  <header class="brand-nav">
+    <div class="brand-logo">
+      <div class="brand-mark">M</div>
+      <span>MasterCore</span>
+    </div>
+    <div class="badge-sub">Discovery Lab · B2B</div>
+  </header>
+
+  <main class="app-main">
+
+    <!-- VIEW 1: HERO -->
+    <section id="view-hero" class="view-section view-active">
+      <div class="hero-card">
+        <div class="hero-pill">
+          <span class="dot"></span>
+          Diagnóstico Estratégico Exclusivo
+        </div>
+        <h1 class="hero-title">
+          Sua ideia merece mais que um orçamento.<br>
+          <span>Merece um plano de lançamento.</span>
+        </h1>
+        <p class="hero-subtitle">
+          Responda 10 passos simples em português claro e descubra quão pronto seu projeto está para sair do papel — sem termos técnicos e sem complicação.
+        </p>
+
+        <button id="btn-start" class="cta-btn" type="button">
+          Começar diagnóstico
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14"></path>
+            <path d="m12 5 7 7-7 7"></path>
+          </svg>
+        </button>
+
+        <div class="hero-proof">
+          <span>100% em linguagem simples</span>
+          <span>•</span>
+          <span>4 minutos</span>
+          <span>•</span>
+          <span>Sem compromisso</span>
+        </div>
+
+        <p class="lgpd-note">
+          Seus dados são tratados com segurança, conforme a LGPD.
+        </p>
+      </div>
+    </section>
+
+    <!-- VIEW 2: STEPS JOURNEY -->
+    <section id="view-journey" class="view-section view-hidden journey-wrapper">
+      
+      <!-- Progress Bar -->
+      <div class="journey-progress-bar">
+        <div class="progress-meta">
+          <span class="progress-step-name" id="progress-step-text">Passo 1 de 10</span>
+          <span id="progress-percent-text">10% concluído</span>
+        </div>
+        <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" id="progress-track-bar">
+          <div class="progress-fill" id="progress-fill-bar" style="width: 10%;"></div>
+        </div>
+      </div>
+
+      <!-- Step Content Card -->
+      <div class="step-card">
+        
+        <!-- STEP 1: A IDEIA -->
+        <div class="step-content" id="step-pane-1">
+          <div class="step-header">
+            <span class="step-badge">Passo 1 de 10 — A Ideia</span>
+            <h2 class="step-question">O que você quer criar?</h2>
+          </div>
+
+          <div class="option-grid" id="step1-options">
+            <label class="choice-card" data-val="app-celular">
+              <span class="choice-radio"></span>
+              <div>
+                <div class="choice-label">Aplicativo para celular</div>
+                <div class="choice-desc">Para as pessoas baixarem na Apple Store ou Google Play</div>
+              </div>
+            </label>
+            <label class="choice-card" data-val="sistema-computador">
+              <span class="choice-radio"></span>
+              <div>
+                <div class="choice-label">Sistema para computador</div>
+                <div class="choice-desc">Painel ou site que abre no navegador de internet</div>
+              </div>
+            </label>
+            <label class="choice-card" data-val="dois-lados">
+              <span class="choice-radio"></span>
+              <div>
+                <div class="choice-label">Um app com dois lados (ex.: quem oferece e quem usa)</div>
+                <div class="choice-desc">Como o Uber ou iFood: junta cliente e prestador no mesmo lugar</div>
+              </div>
+            </label>
+            <label class="choice-card" data-val="ajuda">
+              <span class="choice-radio"></span>
+              <div>
+                <div class="choice-label">Ainda não sei — quero ajuda</div>
+                <div class="choice-desc">Tenho a ideia de negócio e quero entender o melhor formato</div>
+              </div>
+            </label>
+          </div>
+
+          <div class="form-group" style="margin-top: 1.25rem;">
+            <label for="step1-desc" class="input-label">Conta pra gente sua ideia em poucas palavras (opcional)</label>
+            <input type="text" id="step1-desc" class="text-input" placeholder="Ex.: Quero conectar pessoas que precisam de pequenos fretes com quem tem furgão ou carretinha...">
+          </div>
+        </div>
+
+        <!-- STEP 2: O PROBLEMA -->
+        <div class="step-content view-hidden" id="step-pane-2">
+          <div class="step-header">
+            <span class="step-badge">Passo 2 de 10 — O Problema</span>
+            <h2 class="step-question">Qual problema isso resolve e para quem?</h2>
+            <div class="step-hint">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+              </svg>
+              <span>Dica simples: Pense: quem sofre com esse problema hoje e o que acontece se nada mudar?</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="step2-problem" class="input-label">Descreva o problema que seu projeto vai resolver *</label>
+            <textarea id="step2-problem" class="textarea-input" placeholder="Ex.: As pessoas perdem muito tempo ligando para orçar frete e muitas vezes o motorista não aparece ou cobra valores sem critério..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="step2-custo" class="input-label">Quanto esse problema custa por mês, em R$? (se souber)</label>
+            <input type="text" id="step2-custo" class="text-input" placeholder="Ex.: Cerca de R$ 3.000 em atrasos e retrabalho (ou deixe em branco se não souber)">
+          </div>
+        </div>
+
+        <!-- STEP 3: PARA QUEM -->
+        <div class="step-content view-hidden" id="step-pane-3">
+          <div class="step-header">
+            <span class="step-badge">Passo 3 de 10 — Para Quem</span>
+            <h2 class="step-question">Quem vai usar o app? Descreva a pessoa típica.</h2>
+          </div>
+
+          <div class="form-group">
+            <label for="step3-perfil" class="input-label">Perfil das pessoas (idade, profissão, renda ou cidade)</label>
+            <input type="text" id="step3-perfil" class="text-input" placeholder="Ex.: Comerciantes de 25 a 50 anos em capitais e motoristas autônomos">
+          </div>
+
+          <div class="sub-section-title">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            Pergunta-chave: Todo app desse tipo tem dois lados: quem oferece o serviço e quem usa. Qual lado você já conhece ou tem acesso? *
+          </div>
+
+          <div class="option-grid" id="step3-options">
+            <label class="choice-card" data-val="tem-oferece">
+              <span class="choice-radio"></span>
+              <div>
+                <div class="choice-label">Já tenho quem oferece o serviço</div>
+                <div class="choice-desc">Tenho contato direto com prestadores, motoristas ou lojas parceiras</div>
+              </div>
+            </label>
+            <label class="choice-card" data-val="tem-usa">
+              <span class="choice-radio"></span>
+              <div>
+                <div class="choice-label">Já tenho quem usa (os clientes finais)</div>
+                <div class="choice-desc">Já tenho clientes, fila de espera ou uma comunidade que pede essa solução</div>
+              </div>
+            </label>
+            <label class="choice-card" data-val="tem-dois">
+              <span class="choice-radio"></span>
+              <div>
+                <div class="choice-label">Tenho os dois lados prontos</div>
+                <div class="choice-desc">Já tenho prestadores e compradores aguardando o lançamento</div>
+              </div>
+            </label>
+            <label class="choice-card" data-val="nenhum-ainda">
+              <span class="choice-radio"></span>
+              <div>
+                <div class="choice-label">Nenhum ainda</div>
+                <div class="choice-desc">Vou buscar os dois lados assim que a primeira versão estiver pronta</div>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- STEP 4: A MÁGICA -->
+        <div class="step-content view-hidden" id="step-pane-4">
+          <div class="step-header">
+            <span class="step-badge">Passo 4 de 10 — A Mágica</span>
+            <h2 class="step-question">O que o app vai fazer de diferente? Qual o maior benefício?</h2>
+          </div>
+
+          <div class="option-grid" id="step4-beneficio-options">
+            <label class="choice-card" data-ben="preco">
+              <span class="choice-radio"></span>
+              <div class="choice-label">Preço menor (economizar dinheiro)</div>
+            </label>
+            <label class="choice-card" data-ben="velocidade">
+              <span class="choice-radio"></span>
+              <div class="choice-label">Mais velocidade (resolver muito mais rápido)</div>
+            </label>
+            <label class="choice-card" data-ben="conveniencia">
+              <span class="choice-radio"></span>
+              <div class="choice-label">Mais conveniência (fazer tudo em um só lugar sem burocracia)</div>
+            </label>
+            <label class="choice-card" data-ben="seguranca">
+              <span class="choice-radio"></span>
+              <div class="choice-label">Mais segurança (pessoas verificadas e sem golpe)</div>
+            </label>
+            <label class="choice-card" data-ben="qualidade">
+              <span class="choice-radio"></span>
+              <div class="choice-label">Mais qualidade no atendimento e no serviço</div>
+            </label>
+          </div>
+
+          <div class="sub-section-title">
+            No "estilo Uber", o que você quer copiar para a sua ideia?
+          </div>
+          <div class="option-grid" id="step4-uber-options">
+            <label class="choice-card" data-uber="toque">
+              <span class="choice-radio"></span>
+              <div class="choice-label">Pedir ou chamar com um toque</div>
+            </label>
+            <label class="choice-card" data-uber="mapa">
+              <span class="choice-radio"></span>
+              <div class="choice-label">Ver no mapa em tempo real</div>
+            </label>
+            <label class="choice-card" data-uber="pagamento">
+              <span class="choice-radio"></span>
+              <div class="choice-label">Pagamento automático dentro do app</div>
+            </label>
+            <label class="choice-card" data-uber="avaliacao">
+              <span class="choice-radio"></span>
+              <div class="choice-label">Avaliações mútuas entre usuários</div>
+            </label>
+            <label class="choice-card" data-uber="tudo">
+              <span class="choice-radio"></span>
+              <div class="choice-label">Tudo isso junto</div>
+            </label>
+          </div>
+        </div>
+
+        <!-- STEP 5: COMO FUNCIONA -->
+        <div class="step-content view-hidden" id="step-pane-5">
+          <div class="step-header">
+            <span class="step-badge">Passo 5 de 10 — Como Funciona</span>
+            <h2 class="step-question">Descreva no dia a dia: quem pede, quem atende e como tudo acontece do começo ao fim.</h2>
+            <div class="step-hint">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+              <span>Dica amigável: Escreva como se estivesse explicando para um amigo tomando um café.</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="step5-fluxo" class="input-label">Como acontece a experiência no app? *</label>
+            <textarea id="step5-fluxo" class="textarea-input" placeholder="Ex.: O cliente abre o app, diz o que precisa levar e onde. O motorista recebe a notificação, aceita, busca a mercadoria e o pagamento cai na hora com recibo..."></textarea>
+          </div>
+        </div>
+
+        <!-- STEP 6: O DINHEIRO -->
+        <div class="step-content view-hidden" id="step-pane-6">
+          <div class="step-header">
+            <span class="step-badge">Passo 6 de 10 — O Dinheiro</span>
+            <h2 class="step-question">Como o negócio ganha dinheiro?</h2>
+          </div>
+
+          <div class="option-grid" id="step6-options">
+            <label class="choice-card" data-val="comissao">
+              <span class="choice-radio"></span>
+              <div>
+                <div class="choice-label">Comissão por venda ou serviço</div>
+                <div class="choice-desc">Uma porcentagem de cada pagamento feito dentro do app</div>
+              </div>
+            </label>
+            <label class="choice-card" data-val="assinatura">
+              <span class="choice-radio"></span>
+              <div>
+                <div class="choice-label">Assinatura mensal</div>
+                <div class="choice-desc">O cliente ou o profissional paga um valor fixo todo mês para usar</div>
+              </div>
+            </label>
+            <label class="choice-card" data-val="taxa-fixa">
+              <span class="choice-radio"></span>
+              <div>
+                <div class="choice-label">Taxa fixa por serviço</div>
+                <div class="choice-desc">Cobra um valor fixo por pedido atendido ou por contato liberado</div>
+              </div>
+            </label>
+            <label class="choice-card" data-val="produtos">
+              <span class="choice-radio"></span>
+              <div>
+                <div class="choice-label">Venda de produtos</div>
+                <div class="choice-desc">Lucro direto nas mercadorias vendidas no catálogo</div>
+              </div>
+            </label>
+            <label class="choice-card" data-val="nao-sei">
+              <span class="choice-radio"></span>
+              <div>
+                <div class="choice-label">Ainda não sei</div>
+                <div class="choice-desc">Quero entender qual a melhor forma de faturar com esse projeto</div>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- STEP 7: OS OUTROS -->
+        <div class="step-content view-hidden" id="step-pane-7">
+          <div class="step-header">
+            <span class="step-badge">Passo 7 de 10 — Os Outros</span>
+            <h2 class="step-question">Quem mais já faz isso hoje no mercado? Como o seu vai ser diferente?</h2>
+            <div class="step-hint">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+              </svg>
+              <span>Dica didática: Grupos de WhatsApp, planilhas e serviços informais também contam como concorrência.</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="step7-outros" class="input-label">Quem são os concorrentes e o seu diferencial? *</label>
+            <textarea id="step7-outros" class="textarea-input" placeholder="Ex.: Hoje usam grupos de WhatsApp e boca a boca. O nosso vai ser diferente porque terá garantia, confirmação de horário e nota fiscal automática..."></textarea>
+          </div>
+        </div>
+
+        <!-- STEP 8: PRÉ-REQUISITOS -->
+        <div class="step-content view-hidden" id="step-pane-8">
+          <div class="step-header">
+            <span class="step-badge">Passo 8 de 10 — Pré-requisitos</span>
+            <h2 class="step-question">O que precisa existir para dar certo?</h2>
+            <p style="color: var(--text-muted); font-size: 0.88rem; margin-top: 0.35rem;">
+              Marque o que você já tem ou sabe que vai precisar (pode marcar mais de um):
+            </p>
+          </div>
+
+          <div class="check-grid" id="step8-checklist">
+            <label class="check-card">
+              <input type="checkbox" value="cnpj">
+              <span>Empresa aberta (CNPJ)</span>
+            </label>
+            <label class="check-card">
+              <input type="checkbox" value="dominio">
+              <span>Domínio ou site</span>
+            </label>
+            <label class="check-card">
+              <input type="checkbox" value="parcerias">
+              <span>Parcerias confirmadas</span>
+            </label>
+            <label class="check-card">
+              <input type="checkbox" value="licencas">
+              <span>Licenças ou autorizações</span>
+            </label>
+            <label class="check-card">
+              <input type="checkbox" value="equipe">
+              <span>Equipe ou ajuda de terceiros</span>
+            </label>
+            <label class="check-card">
+              <input type="checkbox" value="nao-sei">
+              <span>Não sei ainda</span>
+            </label>
+          </div>
+
+          <div class="form-group" style="margin-top: 1rem;">
+            <label for="step8-conexoes" class="input-label">O app precisa se conectar com algo? (pagamentos, mapa, WhatsApp, e-mail) — opcional</label>
+            <input type="text" id="step8-conexoes" class="text-input" placeholder="Ex.: Pix automático, envio de mensagens no WhatsApp e mapa da cidade">
+          </div>
+        </div>
+
+        <!-- STEP 9: PRAZO E INVESTIMENTO -->
+        <div class="step-content view-hidden" id="step-pane-9">
+          <div class="step-header">
+            <span class="step-badge">Passo 9 de 10 — Prazo e Investimento</span>
+            <h2 class="step-question">Quando precisa estar no ar e por quê?</h2>
+          </div>
+
+          <div style="margin-bottom: 1.25rem;">
+            <label class="input-label">Quando você quer ver a primeira versão funcionando? *</label>
+            <div class="option-grid-2col" id="step9-prazo-options">
+              <label class="choice-card" data-prazo="ate-1m">
+                <span class="choice-radio"></span>
+                <span class="choice-label">Até 1 mês</span>
+              </label>
+              <label class="choice-card" data-prazo="1-3m">
+                <span class="choice-radio"></span>
+                <span class="choice-label">1 a 3 meses</span>
+              </label>
+              <label class="choice-card" data-prazo="3-6m">
+                <span class="choice-radio"></span>
+                <span class="choice-label">3 a 6 meses</span>
+              </label>
+              <label class="choice-card" data-prazo="mais-6m">
+                <span class="choice-radio"></span>
+                <span class="choice-label">Mais de 6 meses</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="step9-motivo-prazo" class="input-label">Por que essa data? O que acontece se atrasar?</label>
+            <input type="text" id="step9-motivo-prazo" class="text-input" placeholder="Ex.: Quero aproveitar uma feira do setor em novembro ou não perder a janela de oportunidade">
+          </div>
+
+          <div style="margin-top: 1.25rem;">
+            <label class="input-label">Quanto pretende investir nesse projeto? *</label>
+            <div class="option-grid-2col" id="step9-invest-options">
+              <label class="choice-card" data-invest="ate-20k">
+                <span class="choice-radio"></span>
+                <span class="choice-label">Até R$ 20 mil</span>
+              </label>
+              <label class="choice-card" data-invest="20-50k">
+                <span class="choice-radio"></span>
+                <span class="choice-label">R$ 20 a 50 mil</span>
+              </label>
+              <label class="choice-card" data-invest="50-100k">
+                <span class="choice-radio"></span>
+                <span class="choice-label">R$ 50 a 100 mil</span>
+              </label>
+              <label class="choice-card" data-invest="acima-100k">
+                <span class="choice-radio"></span>
+                <span class="choice-label">Acima de R$ 100 mil</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 10: SUCESSO E CONTATO -->
+        <div class="step-content view-hidden" id="step-pane-10">
+          <div class="step-header">
+            <span class="step-badge">Passo 10 de 10 — Sucesso e Contato</span>
+            <h2 class="step-question">Como você vai saber que deu certo?</h2>
+          </div>
+
+          <div class="option-grid" id="step10-sucesso-options" style="margin-bottom: 1.5rem;">
+            <label class="choice-card" data-suc="usuarios">
+              <span class="choice-radio"></span>
+              <div class="choice-label">Pelo número de usuários usando o app</div>
+            </label>
+            <label class="choice-card" data-suc="vendas">
+              <span class="choice-radio"></span>
+              <div class="choice-label">Pelo volume de pedidos ou transações concluídas</div>
+            </label>
+            <label class="choice-card" data-suc="faturamento">
+              <span class="choice-radio"></span>
+              <div class="choice-label">Por atingir uma meta de faturamento mensal</div>
+            </label>
+            <label class="choice-card" data-suc="avaliacao">
+              <span class="choice-radio"></span>
+              <div class="choice-label">Pela satisfação e nota alta dos usuários</div>
+            </label>
+            <label class="choice-card" data-suc="nao-sei">
+              <span class="choice-radio"></span>
+              <div class="choice-label">Não sei ainda — quero definir na conversa</div>
+            </label>
+          </div>
+
+          <div class="sub-section-title">
+            Para onde enviamos seu diagnóstico completo?
+          </div>
+
+          <div class="form-group">
+            <label for="lead-name" class="input-label">Seu Nome *</label>
+            <input type="text" id="lead-name" class="text-input" placeholder="Ex.: Lucas Mendes" autocomplete="name">
+          </div>
+
+          <div class="form-group">
+            <label for="lead-email" class="input-label">Seu Melhor E-mail *</label>
+            <input type="email" id="lead-email" class="text-input" placeholder="lucas@exemplo.com.br" autocomplete="email">
+          </div>
+
+          <div class="form-group">
+            <label for="lead-whatsapp" class="input-label">WhatsApp com DDD *</label>
+            <input type="tel" id="lead-whatsapp" class="text-input" placeholder="(11) 98765-4321" autocomplete="tel">
+          </div>
+
+          <label class="checkbox-container">
+            <input type="checkbox" id="lead-lgpd">
+            <span>Posso chamar você para conversar sobre o diagnóstico? Seus dados ficam seguros e você pode pedir para apagar a qualquer momento.</span>
+          </label>
+        </div>
+
+        <!-- Step Actions (Single forward flow) -->
+        <div class="step-actions">
+          <button id="btn-back" class="btn-back" type="button">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m15 18-6-6 6-6"></path>
+            </svg>
+            Voltar
+          </button>
+          
+          <button id="btn-next" class="btn-next" type="button" disabled>
+            <span>Avançar</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14"></path>
+              <path d="m12 5 7 7-7 7"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- VIEW 3: RESULTADO UAU -->
+    <section id="view-result" class="view-section view-hidden result-container">
+      <div class="result-card">
+        
+        <div class="result-tag">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          Diagnóstico Gerado com Sucesso
+        </div>
+
+        <h2 class="result-title">Seu Diagnóstico de Prontidão</h2>
+        <p class="result-subtitle" id="result-user-greeting">
+          Análise preliminar em linguagem simples preparada pela MasterCore
+        </p>
+
+        <!-- Gauge visual -->
+        <div class="gauge-wrapper">
+          <svg class="gauge-svg" viewBox="0 0 180 180" aria-hidden="true">
+            <circle class="gauge-bg" cx="90" cy="90" r="75"></circle>
+            <circle class="gauge-meter" id="gauge-meter" cx="90" cy="90" r="75"></circle>
+          </svg>
+          <div class="gauge-center">
+            <div class="gauge-score" id="score-number">0</div>
+            <div class="gauge-max">de 100 pontos</div>
+          </div>
+        </div>
+
+        <div id="status-badge" class="status-badge status-estruturado">
+          Seu projeto está estruturado — pronto para o próximo passo
+        </div>
+
+        <!-- Breakdown Pillars -->
+        <div class="pillars-grid">
+          <div class="pillar-box">
+            <div class="pillar-label">Formato</div>
+            <div class="pillar-value" id="res-pillar-ideia">Aplicativo</div>
+          </div>
+          <div class="pillar-box">
+            <div class="pillar-label">Como Ganha</div>
+            <div class="pillar-value" id="res-pillar-receita">Comissão</div>
+          </div>
+          <div class="pillar-box">
+            <div class="pillar-label">Acesso aos Usuários</div>
+            <div class="pillar-value" id="res-pillar-mercado">Tenho os dois</div>
+          </div>
+          <div class="pillar-box">
+            <div class="pillar-label">Meta de Prazo</div>
+            <div class="pillar-value" id="res-pillar-prazo">1 a 3 meses</div>
+          </div>
+        </div>
+
+        <!-- Dynamic Strategic Recommendations -->
+        <div class="recs-section">
+          <h3 class="recs-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+            Recomendações Práticas para o seu Próximo Passo
+          </h3>
+          <div id="recs-list">
+            <!-- Dynamic entries inserted via JS -->
+          </div>
+        </div>
+
+        <!-- Value Banner -->
+        <div class="pitch-banner">
+          <p class="pitch-text">
+            Em uma conversa rápida e sem compromisso, transformamos esse diagnóstico em um <strong>passo a passo claro</strong>: como construir a primeira versão com segurança e no seu orçamento.
+          </p>
+        </div>
+
+        <!-- Single Primary CTA -->
+        <button id="btn-schedule" class="cta-btn" type="button" style="max-width: 380px; margin: 0 auto;">
+          Agendar conversa de diagnóstico
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14"></path>
+            <path d="m12 5 7 7-7 7"></path>
+          </svg>
+        </button>
+
+        <div style="margin-top: 1.25rem;">
+          <button id="btn-print" type="button" style="background: none; border: none; color: #94A3B8; font-size: 0.85rem; cursor: pointer; text-decoration: underline;">
+            Imprimir ou salvar diagnóstico em PDF
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Discovery Call Booking Modal -->
+  <div class="modal-overlay" id="booking-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-card">
+      <button class="modal-close" id="modal-close-btn" aria-label="Fechar modal">&times;</button>
+      
+      <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(20, 184, 166, 0.15); color: #2DD4BF; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+      </div>
+
+      <h3 id="modal-title" style="font-size: 1.35rem; color: #FFFFFF; font-weight: 700; margin: 0 0 0.5rem;">
+        Conversa de Diagnóstico Agendada
+      </h3>
+      <p style="font-size: 0.9rem; color: #94A3B8; margin-bottom: 1.5rem; line-height: 1.5;">
+        Recebemos as informações do seu projeto. Nosso consultor entrará em contato no seu WhatsApp para combinar o melhor horário para uma conversa rápida de 30 minutos em linguagem 100% simples.
+      </p>
+
+      <div style="background: rgba(10, 25, 47, 0.7); border: 1px solid #1E3A5F; border-radius: 8px; padding: 1rem; margin-bottom: 1.5rem; text-align: left; font-size: 0.85rem;">
+        <div style="color: #94A3B8; margin-bottom: 0.25rem;">Lead qualificado:</div>
+        <div id="modal-lead-summary" style="font-weight: 600; color: #FFFFFF;">Lucas Mendes • (11) 98765-4321</div>
+        <div style="margin-top: 0.5rem; color: #2DD4BF; font-weight: 600;" id="modal-score-summary">Score: 85/100 · Pronto para Lançamento</div>
+      </div>
+
+      <button id="modal-whatsapp-direct" class="cta-btn" type="button" style="width: 100%; max-width: 100%;">
+        Falar agora com consultor no WhatsApp
+      </button>
+    </div>
+  </div>
+
+  <footer class="footer-bar">
+    © MasterCore · Consultoria de produto, desenvolvimento e crescimento
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Application State - 10 Step Journey
+      const state = {
+        currentStep: 1,
+        totalSteps: 10,
+        data: {
+          // 1. A Ideia
+          ideia: '',
+          ideiaDesc: '',
+          // 2. O Problema
+          problema: '',
+          custoProblema: '',
+          // 3. Para Quem
+          perfil: '',
+          acessoLado: '',
+          // 4. A Mágica
+          beneficio: '',
+          uberDesejo: '',
+          // 5. Como Funciona
+          fluxo: '',
+          // 6. O Dinheiro
+          receita: '',
+          // 7. Os Outros
+          outros: '',
+          // 8. Pré-requisitos
+          preRequisitos: [],
+          conexoes: '',
+          // 9. Prazo e Investimento
+          prazo: '',
+          motivoPrazo: '',
+          investimento: '',
+          // 10. Sucesso e Contato
+          sucesso: '',
+          nome: '',
+          email: '',
+          whatsapp: '',
+          lgpd: false
+        },
+        score: 0
+      };
+
+      // DOM Elements
+      const viewHero = document.getElementById('view-hero');
+      const viewJourney = document.getElementById('view-journey');
+      const viewResult = document.getElementById('view-result');
+
+      const btnStart = document.getElementById('btn-start');
+      const btnBack = document.getElementById('btn-back');
+      const btnNext = document.getElementById('btn-next');
+      const btnSchedule = document.getElementById('btn-schedule');
+      const btnPrint = document.getElementById('btn-print');
+
+      const progressStepText = document.getElementById('progress-step-text');
+      const progressPercentText = document.getElementById('progress-percent-text');
+      const progressFillBar = document.getElementById('progress-fill-bar');
+
+      const bookingModal = document.getElementById('booking-modal');
+      const modalCloseBtn = document.getElementById('modal-close-btn');
+      const modalWhatsappDirect = document.getElementById('modal-whatsapp-direct');
+
+      // Helper to handle choice card groups
+      function setupChoiceGroup(containerId, stateKey, onSelect) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+        const cards = container.querySelectorAll('.choice-card');
+        cards.forEach(card => {
+          card.addEventListener('click', () => {
+            cards.forEach(c => c.classList.remove('selected'));
+            card.classList.add('selected');
+            const val = card.getAttribute('data-val') ||
+                        card.getAttribute('data-ben') ||
+                        card.getAttribute('data-uber') ||
+                        card.getAttribute('data-prazo') ||
+                        card.getAttribute('data-invest') ||
+                        card.getAttribute('data-suc');
+            state.data[stateKey] = val;
+            if (onSelect) onSelect(val);
+            validateCurrentStep();
+          });
+        });
+      }
+
+      // Initialize option groups
+      setupChoiceGroup('step1-options', 'ideia');
+      setupChoiceGroup('step3-options', 'acessoLado');
+      setupChoiceGroup('step4-beneficio-options', 'beneficio');
+      setupChoiceGroup('step4-uber-options', 'uberDesejo');
+      setupChoiceGroup('step6-options', 'receita');
+      setupChoiceGroup('step9-prazo-options', 'prazo');
+      setupChoiceGroup('step9-invest-options', 'investimento');
+      setupChoiceGroup('step10-sucesso-options', 'sucesso');
+
+      // Checkbox checklist in step 8
+      const step8Checks = document.querySelectorAll('#step8-checklist input[type="checkbox"]');
+      step8Checks.forEach(chk => {
+        chk.addEventListener('change', () => {
+          const card = chk.closest('.check-card');
+          if (chk.checked) {
+            card.classList.add('checked');
+            if (!state.data.preRequisitos.includes(chk.value)) {
+              state.data.preRequisitos.push(chk.value);
+            }
+          } else {
+            card.classList.remove('checked');
+            state.data.preRequisitos = state.data.preRequisitos.filter(v => v !== chk.value);
+          }
+          validateCurrentStep();
+        });
+      });
+
+      // Text input bindings
+      const step1DescInput = document.getElementById('step1-desc');
+      step1DescInput.addEventListener('input', (e) => {
+        state.data.ideiaDesc = e.target.value.trim();
+      });
+
+      const step2ProblemInput = document.getElementById('step2-problem');
+      step2ProblemInput.addEventListener('input', (e) => {
+        state.data.problema = e.target.value.trim();
+        validateCurrentStep();
+      });
+
+      const step2CustoInput = document.getElementById('step2-custo');
+      step2CustoInput.addEventListener('input', (e) => {
+        state.data.custoProblema = e.target.value.trim();
+      });
+
+      const step3PerfilInput = document.getElementById('step3-perfil');
+      step3PerfilInput.addEventListener('input', (e) => {
+        state.data.perfil = e.target.value.trim();
+      });
+
+      const step5FluxoInput = document.getElementById('step5-fluxo');
+      step5FluxoInput.addEventListener('input', (e) => {
+        state.data.fluxo = e.target.value.trim();
+        validateCurrentStep();
+      });
+
+      const step7OutrosInput = document.getElementById('step7-outros');
+      step7OutrosInput.addEventListener('input', (e) => {
+        state.data.outros = e.target.value.trim();
+        validateCurrentStep();
+      });
+
+      const step8ConexoesInput = document.getElementById('step8-conexoes');
+      step8ConexoesInput.addEventListener('input', (e) => {
+        state.data.conexoes = e.target.value.trim();
+      });
+
+      const step9MotivoPrazoInput = document.getElementById('step9-motivo-prazo');
+      step9MotivoPrazoInput.addEventListener('input', (e) => {
+        state.data.motivoPrazo = e.target.value.trim();
+      });
+
+      const leadNameInput = document.getElementById('lead-name');
+      const leadEmailInput = document.getElementById('lead-email');
+      const leadWhatsappInput = document.getElementById('lead-whatsapp');
+      const leadLgpdCheck = document.getElementById('lead-lgpd');
+
+      // WhatsApp mask
+      leadWhatsappInput.addEventListener('input', (e) => {
+        let v = e.target.value.replace(/\D/g, '');
+        if (v.length > 11) v = v.substring(0, 11);
+        if (v.length > 6) {
+          v = `(${v.substring(0,2)}) ${v.substring(2,7)}-${v.substring(7)}`;
+        } else if (v.length > 2) {
+          v = `(${v.substring(0,2)}) ${v.substring(2)}`;
+        } else if (v.length > 0) {
+          v = `(${v}`;
+        }
+        e.target.value = v;
+        state.data.whatsapp = v;
+        validateCurrentStep();
+      });
+
+      leadNameInput.addEventListener('input', (e) => {
+        state.data.nome = e.target.value.trim();
+        validateCurrentStep();
+      });
+
+      leadEmailInput.addEventListener('input', (e) => {
+        state.data.email = e.target.value.trim();
+        validateCurrentStep();
+      });
+
+      leadLgpdCheck.addEventListener('change', (e) => {
+        state.data.lgpd = e.target.checked;
+        validateCurrentStep();
+      });
+
+      // Step Validation logic
+      function validateCurrentStep() {
+        let isValid = false;
+        switch (state.currentStep) {
+          case 1: // Ideia
+            isValid = Boolean(state.data.ideia);
+            break;
+          case 2: // Problema
+            isValid = state.data.problema.length >= 8;
+            break;
+          case 3: // Para quem / acesso
+            isValid = Boolean(state.data.acessoLado);
+            break;
+          case 4: // A mágica
+            isValid = Boolean(state.data.beneficio);
+            break;
+          case 5: // Como funciona
+            isValid = state.data.fluxo.length >= 8;
+            break;
+          case 6: // O dinheiro
+            isValid = Boolean(state.data.receita);
+            break;
+          case 7: // Os outros
+            isValid = state.data.outros.length >= 6;
+            break;
+          case 8: // Pré-requisitos
+            isValid = state.data.preRequisitos.length > 0;
+            break;
+          case 9: // Prazo e Investimento
+            isValid = Boolean(state.data.prazo) && Boolean(state.data.investimento);
+            break;
+          case 10: // Sucesso e Contato
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            isValid = Boolean(state.data.sucesso) &&
+                      state.data.nome.length >= 2 &&
+                      emailRegex.test(state.data.email) &&
+                      state.data.whatsapp.length >= 14 &&
+                      state.data.lgpd === true;
+            break;
+        }
+
+        btnNext.disabled = !isValid;
+      }
+
+      // Step Navigation & UI
+      function updateStepView() {
+        // Toggle step panes
+        for (let i = 1; i <= state.totalSteps; i++) {
+          const pane = document.getElementById(`step-pane-${i}`);
+          if (pane) {
+            if (i === state.currentStep) {
+              pane.classList.remove('view-hidden');
+            } else {
+              pane.classList.add('view-hidden');
+            }
+          }
+        }
+
+        // Progress bar updates
+        const pct = Math.round((state.currentStep / state.totalSteps) * 100);
+        progressStepText.textContent = `Passo ${state.currentStep} de ${state.totalSteps}`;
+        progressPercentText.textContent = `${pct}% concluído`;
+        progressFillBar.style.width = `${pct}%`;
+
+        // Back button visibility
+        if (state.currentStep === 1) {
+          btnBack.style.visibility = 'hidden';
+        } else {
+          btnBack.style.visibility = 'visible';
+        }
+
+        // Next button label
+        if (state.currentStep === state.totalSteps) {
+          btnNext.querySelector('span').textContent = 'Ver meu Diagnóstico';
+        } else {
+          btnNext.querySelector('span').textContent = 'Avançar';
+        }
+
+        validateCurrentStep();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      // Start Flow
+      btnStart.addEventListener('click', () => {
+        viewHero.classList.remove('view-active');
+        viewHero.classList.add('view-hidden');
+        viewJourney.classList.remove('view-hidden');
+        viewJourney.classList.add('view-active');
+        updateStepView();
+      });
+
+      // Next Action
+      btnNext.addEventListener('click', () => {
+        if (btnNext.disabled) return;
+        if (state.currentStep < state.totalSteps) {
+          state.currentStep++;
+          updateStepView();
+        } else {
+          calculateAndShowResults();
+        }
+      });
+
+      // Back Action
+      btnBack.addEventListener('click', () => {
+        if (state.currentStep > 1) {
+          state.currentStep--;
+          updateStepView();
+        }
+      });
+
+      // Calculate Readiness Score & Dynamic Insights (0 - 100)
+      function calculateAndShowResults() {
+        let score = 0;
+
+        // 1. Ideia definida: +10
+        if (state.data.ideia && state.data.ideia !== 'ajuda') {
+          score += 10;
+        } else if (state.data.ideia === 'ajuda') {
+          score += 5;
+        }
+
+        // 2. Problema com custo definido: +15
+        if (state.data.custoProblema && state.data.custoProblema.length >= 2) {
+          score += 15;
+        } else if (state.data.problema && state.data.problema.length >= 15) {
+          score += 10;
+        } else {
+          score += 5;
+        }
+
+        // 3. Acesso a pelo menos um lado: +20
+        if (state.data.acessoLado === 'tem-dois' || state.data.acessoLado === 'tem-oferece' || state.data.acessoLado === 'tem-usa') {
+          score += 20;
+        } else {
+          score += 0;
+        }
+
+        // 4. Benefício/diferencial definido: +10
+        if (state.data.beneficio) {
+          score += 10;
+        }
+
+        // 5. Fluxo descrito: +10
+        if (state.data.fluxo && state.data.fluxo.length >= 15) {
+          score += 10;
+        } else {
+          score += 5;
+        }
+
+        // 6. Modelo de dinheiro definido: +15
+        if (state.data.receita && state.data.receita !== 'nao-sei') {
+          score += 15;
+        } else {
+          score += 5;
+        }
+
+        // 7. Prazo definido: +10
+        if (state.data.prazo) {
+          score += 10;
+        }
+
+        // 8. Investimento definido: +10
+        if (state.data.investimento) {
+          score += 10;
+        }
+
+        // Clamp to 0 - 100
+        score = Math.min(100, Math.max(10, score));
+        state.score = score;
+
+        // Transition views
+        viewJourney.classList.remove('view-active');
+        viewJourney.classList.add('view-hidden');
+        viewResult.classList.remove('view-hidden');
+        viewResult.classList.add('view-active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        renderResults(score);
+      }
+
+      function renderResults(score) {
+        // User greeting
+        const userGreeting = document.getElementById('result-user-greeting');
+        const firstName = state.data.nome.split(' ')[0] || 'Parceiro(a)';
+        userGreeting.textContent = `Olá, ${firstName}! Aqui está a leitura prática de prontidão do seu projeto preparada pela MasterCore.`;
+
+        // Animate gauge meter
+        const meter = document.getElementById('gauge-meter');
+        const scoreNumber = document.getElementById('score-number');
+        const maxDash = 471; // 2 * pi * 75
+        const offset = maxDash - (maxDash * (score / 100));
+
+        setTimeout(() => {
+          meter.style.strokeDashoffset = offset;
+        }, 120);
+
+        // Counter animation
+        let count = 0;
+        const duration = 1200;
+        const stepTime = 20;
+        const steps = duration / stepTime;
+        const increment = score / steps;
+
+        const counterInterval = setInterval(() => {
+          count += increment;
+          if (count >= score) {
+            count = score;
+            clearInterval(counterInterval);
+          }
+          scoreNumber.textContent = Math.round(count);
+        }, stepTime);
+
+        // Score Band Status
+        const badge = document.getElementById('status-badge');
+        badge.className = 'status-badge';
+        if (score <= 39) {
+          badge.classList.add('status-ideacao');
+          badge.textContent = 'Seu projeto está no começo — vamos estruturar juntos';
+          meter.style.stroke = '#F59E0B';
+        } else if (score <= 69) {
+          badge.classList.add('status-estruturado');
+          badge.textContent = 'Seu projeto está estruturado — pronto para o próximo passo';
+          meter.style.stroke = '#38BDF8';
+        } else {
+          badge.classList.add('status-pronto');
+          badge.textContent = 'Seu projeto está pronto para sair do papel';
+          meter.style.stroke = '#14B8A6';
+        }
+
+        // Fill Pillars
+        const ideiaLabels = {
+          'app-celular': 'App Celular',
+          'sistema-computador': 'Sistema Computador',
+          'dois-lados': 'App com Dois Lados',
+          'ajuda': 'A Definir'
+        };
+        const receitaLabels = {
+          'comissao': 'Comissão por Venda',
+          'assinatura': 'Assinatura Mensal',
+          'taxa-fixa': 'Taxa Fixa',
+          'produtos': 'Venda de Produtos',
+          'nao-sei': 'A Definir'
+        };
+        const acessoLabels = {
+          'tem-oferece': 'Já tenho quem oferece',
+          'tem-usa': 'Já tenho quem usa',
+          'tem-dois': 'Tenho os dois lados',
+          'nenhum-ainda': 'Nenhum ainda'
+        };
+        const prazoLabels = {
+          'ate-1m': 'Até 1 mês',
+          '1-3m': '1 a 3 meses',
+          '3-6m': '3 a 6 meses',
+          'mais-6m': 'Mais de 6 meses'
+        };
+
+        document.getElementById('res-pillar-ideia').textContent = ideiaLabels[state.data.ideia] || 'Definida';
+        document.getElementById('res-pillar-receita').textContent = receitaLabels[state.data.receita] || 'A Definir';
+        document.getElementById('res-pillar-mercado').textContent = acessoLabels[state.data.acessoLado] || 'A Definir';
+        document.getElementById('res-pillar-prazo').textContent = prazoLabels[state.data.prazo] || 'A Definir';
+
+        // 3 Dynamic Strategic Recommendations based on answers
+        const recsContainer = document.getElementById('recs-list');
+        recsContainer.innerHTML = '';
+
+        const recsPool = [];
+
+        // Rule: sem modelo de dinheiro
+        if (state.data.receita === 'nao-sei') {
+          recsPool.push({
+            title: 'Como o negócio ganha dinheiro',
+            desc: 'O primeiro passo é definir como o negócio ganha dinheiro antes de escrever código. Vamos ajudar a desenhar o modelo ideal na conversa.'
+          });
+        }
+
+        // Rule: sem acesso a nenhum lado
+        if (state.data.acessoLado === 'nenhum-ainda') {
+          recsPool.push({
+            title: 'Plano de atração dos primeiros usuários',
+            desc: 'O plano para atrair usuários será a prioridade. Criaremos a estratégia para conseguir os primeiros clientes antes ou junto com a primeira versão do app.'
+          });
+        }
+
+        // Rule: sem motivo do prazo
+        if (!state.data.motivoPrazo || state.data.motivoPrazo.length < 5) {
+          recsPool.push({
+            title: 'Data-alvo com propósito claro',
+            desc: 'Definir a data-alvo e o motivo dela ajuda a mover o projeto com foco e evita desperdício de tempo e recursos.'
+          });
+        }
+
+        // Rule: sem CNPJ
+        if (!state.data.preRequisitos.includes('cnpj')) {
+          recsPool.push({
+            title: 'Formalização simples do negócio',
+            desc: 'Estruturar a empresa é o ponto de partida para receber pagamentos pelo app e emitir notas sem travas bancárias.'
+          });
+        }
+
+        // Additional practical recommendations if list has less than 3
+        if (recsPool.length < 3 && state.data.ideia === 'dois-lados') {
+          recsPool.push({
+            title: 'Foco no essencial (Primeira Versão)',
+            desc: 'Para um app com dois lados, o segredo é lançar uma versão bem simples e estável: o cliente pede, o prestador aceita e o pagamento acontece redondo.'
+          });
+        }
+
+        if (recsPool.length < 3 && state.data.investimento === 'ate-20k') {
+          recsPool.push({
+            title: 'Otimização inteligente do investimento',
+            desc: 'Com o orçamento informado, a melhor rota é usar componentes pré-construídos e tecnologias modernas para colocar no ar rápido com qualidade profissional.'
+          });
+        }
+
+        if (recsPool.length < 3) {
+          recsPool.push({
+            title: 'Testar com clientes reais na primeira semana',
+            desc: 'Colocar o app nas mãos de 10 a 20 pessoas no primeiro mês traz aprendizados que valem mais do que meses de suposições.'
+          });
+        }
+
+        // Pick top 3 recommendations
+        const finalRecs = recsPool.slice(0, 3);
+        finalRecs.forEach((r, idx) => {
+          const item = document.createElement('div');
+          item.className = 'rec-item';
+          item.innerHTML = `
+            <div class="rec-icon">${idx + 1}</div>
+            <div class="rec-text">
+              <strong style="color: #FFFFFF;">${r.title}:</strong> ${r.desc}
+            </div>
+          `;
+          recsContainer.appendChild(item);
+        });
+
+        // Update modal lead summary
+        document.getElementById('modal-lead-summary').textContent = `${state.data.nome} • ${state.data.whatsapp}`;
+        document.getElementById('modal-score-summary').textContent = `Score: ${score}/100 · ${badge.textContent}`;
+      }
+
+      // Schedule Discovery CTA click
+      btnSchedule.addEventListener('click', () => {
+        bookingModal.classList.add('open');
+      });
+
+      modalCloseBtn.addEventListener('click', () => {
+        bookingModal.classList.remove('open');
+      });
+
+      bookingModal.addEventListener('click', (e) => {
+        if (e.target === bookingModal) {
+          bookingModal.classList.remove('open');
+        }
+      });
+
+      // WhatsApp direct handover
+      modalWhatsappDirect.addEventListener('click', () => {
+        const msg = encodeURIComponent(
+          `Olá MasterCore! Concluí o Diagnóstico de Prontidão no site com Score ${state.score}/100.\n\n` +
+          `Nome: ${state.data.nome}\n` +
+          `Ideia: ${state.data.ideia}\n` +
+          `Prazo desejado: ${state.data.prazo}\n` +
+          `Gostaria de agendar a conversa de diagnóstico para apresentar o plano do meu projeto.`
+        );
+        window.open(`https://wa.me/5511986735432?text=${msg}`, '_blank');
+      });
+
+      // Print PDF handler
+      btnPrint.addEventListener('click', () => {
+        window.print();
+      });
+
+    });
+  </script>
+<script>
+/* Skip artifact shell — fixed helpers served beside every artifact. */
+(function () {
+  "use strict";
+
+  var fmt = {
+    num: function (v, opts) { return new Intl.NumberFormat("pt-BR", opts || {}).format(v); },
+    brl: function (v) { return new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(v); },
+    pct: function (v) { return new Intl.NumberFormat("pt-BR", { style: "percent", maximumFractionDigits: 1 }).format(v); }
+  };
+
+  // axisFmt keeps axis tick labels short (compact notation) so long values
+  // (e.g. full BRL amounts) never clip against the plot edge.
+  function axisFmt(v) {
+    return fmt.num(v, { notation: "compact", maximumFractionDigits: 1 });
+  }
+
+  // format accepts a function OR one of the fmt names ("num" | "brl" | "pct").
+  function coerceFormat(spec) {
+    if (typeof spec === "function") return spec;
+    if (typeof spec === "string" && fmt[spec]) return fmt[spec];
+    return function (v) { return fmt.num(v); };
+  }
+
+  function accent() {
+    return getComputedStyle(document.documentElement).getPropertyValue("--accent").trim() || "#2563eb";
+  }
+  function mutedColor() {
+    return getComputedStyle(document.documentElement).getPropertyValue("--text-muted").trim() || "#5b6472";
+  }
+  function svgEl(tag, attrs) {
+    var el = document.createElementNS("http://www.w3.org/2000/svg", tag);
+    for (var k in attrs) el.setAttribute(k, attrs[k]);
+    return el;
+  }
+  function frame(el, w, h) {
+    var svg = svgEl("svg", { viewBox: "0 0 " + w + " " + h, role: "img" });
+    el.innerHTML = "";
+    el.appendChild(svg);
+    return svg;
+  }
+
+  // maxOf guards the axis scale: empty values would give -Infinity (truthy,
+  // so "|| 1" can't catch it) and a non-positive max would flip the chart.
+  function maxOf(values) {
+    var m = values.length ? Math.max.apply(null, values) : 0;
+    return m > 0 ? m : 1;
+  }
+
+  // bar(el, {labels:[], values:[], color?, format?}) — vertical bar chart.
+  function bar(el, cfg) {
+    var W = 640, H = 280, padL = 46, padB = 30, padT = 12;
+    var svg = frame(el, W, H);
+    var max = maxOf(cfg.values);
+    var n = cfg.values.length;
+    var plotW = W - padL - 12, plotH = H - padT - padB;
+    var step = plotW / n, bw = Math.min(step * 0.62, 64);
+    var color = cfg.color || accent();
+    var f = coerceFormat(cfg.format);
+    for (var g = 0; g <= 4; g++) {
+      var gy = padT + plotH - (plotH * g) / 4;
+      svg.appendChild(svgEl("line", { x1: padL, y1: gy, x2: W - 12, y2: gy, stroke: "currentColor", "stroke-opacity": 0.08 }));
+      var lbl = svgEl("text", { x: padL - 8, y: gy + 4, "text-anchor": "end", "font-size": 10, fill: mutedColor() });
+      lbl.textContent = axisFmt((max * g) / 4);
+      svg.appendChild(lbl);
+    }
+    cfg.values.forEach(function (v, i) {
+      var bh = Math.max(0, (v / max) * plotH);
+      var x = padL + i * step + (step - bw) / 2;
+      var y = padT + plotH - bh;
+      var r = svgEl("rect", { x: x, y: y, width: bw, height: bh, rx: 4, fill: color });
+      var t = svgEl("title", {});
+      t.textContent = cfg.labels[i] + ": " + f(v);
+      r.appendChild(t);
+      svg.appendChild(r);
+      var tx = svgEl("text", { x: x + bw / 2, y: H - 10, "text-anchor": "middle", "font-size": 11, fill: mutedColor() });
+      tx.textContent = cfg.labels[i];
+      svg.appendChild(tx);
+    });
+  }
+
+  // line(el, {labels:[], values:[], color?, format?}) — single-series line.
+  function line(el, cfg) {
+    var W = 640, H = 280, padL = 46, padB = 30, padT = 12;
+    var svg = frame(el, W, H);
+    var max = maxOf(cfg.values);
+    var n = cfg.values.length;
+    var plotW = W - padL - 16, plotH = H - padT - padB;
+    var color = cfg.color || accent();
+    var f = coerceFormat(cfg.format);
+    for (var g = 0; g <= 4; g++) {
+      var gy = padT + plotH - (plotH * g) / 4;
+      svg.appendChild(svgEl("line", { x1: padL, y1: gy, x2: W - 16, y2: gy, stroke: "currentColor", "stroke-opacity": 0.08 }));
+      var lbl = svgEl("text", { x: padL - 8, y: gy + 4, "text-anchor": "end", "font-size": 10, fill: mutedColor() });
+      lbl.textContent = axisFmt((max * g) / 4);
+      svg.appendChild(lbl);
+    }
+    var pts = cfg.values.map(function (v, i) {
+      var x = padL + (n === 1 ? plotW / 2 : (plotW * i) / (n - 1));
+      var y = padT + plotH - (v / max) * plotH;
+      return [x, y];
+    });
+    var d = pts.map(function (p, i) { return (i ? "L" : "M") + p[0].toFixed(1) + " " + p[1].toFixed(1); }).join(" ");
+    svg.appendChild(svgEl("path", { d: d, fill: "none", stroke: color, "stroke-width": 2, "stroke-linejoin": "round" }));
+    pts.forEach(function (p, i) {
+      var c = svgEl("circle", { cx: p[0], cy: p[1], r: 3.5, fill: color });
+      var t = svgEl("title", {});
+      t.textContent = cfg.labels[i] + ": " + f(cfg.values[i]);
+      c.appendChild(t);
+      svg.appendChild(c);
+      var tx = svgEl("text", { x: p[0], y: H - 10, "text-anchor": "middle", "font-size": 11, fill: mutedColor() });
+      tx.textContent = cfg.labels[i];
+      svg.appendChild(tx);
+    });
+  }
+
+  // donut(el, {labels:[], values:[], colors?}) — donut with center total.
+  function donut(el, cfg) {
+    var W = 320, H = 280, cx = W / 2, cy = H / 2, R = 92, r = 58;
+    var svg = frame(el, W, H);
+    var total = cfg.values.reduce(function (a, b) { return a + b; }, 0) || 1;
+    var palette = cfg.colors || [accent(), "#1baf7a", "#eda100", "#e34948", "#4a3aa7", "#e87ba4"];
+    var a0 = -Math.PI / 2;
+    cfg.values.forEach(function (v, i) {
+      var a1 = a0 + (v / total) * Math.PI * 2;
+      var large = a1 - a0 > Math.PI ? 1 : 0;
+      var p = ["M", cx + R * Math.cos(a0), cy + R * Math.sin(a0),
+        "A", R, R, 0, large, 1, cx + R * Math.cos(a1), cy + R * Math.sin(a1),
+        "L", cx + r * Math.cos(a1), cy + r * Math.sin(a1),
+        "A", r, r, 0, large, 0, cx + r * Math.cos(a0), cy + r * Math.sin(a0), "Z"].join(" ");
+      var path = svgEl("path", { d: p, fill: palette[i % palette.length] });
+      var t = svgEl("title", {});
+      t.textContent = cfg.labels[i] + ": " + fmt.num(v) + " (" + fmt.pct(v / total) + ")";
+      path.appendChild(t);
+      svg.appendChild(path);
+      a0 = a1;
+    });
+    var center = svgEl("text", { x: cx, y: cy + 5, "text-anchor": "middle", "font-size": 20, "font-weight": 650, fill: "currentColor" });
+    center.textContent = fmt.num(total);
+    svg.appendChild(center);
+  }
+
+  window.skipShell = { fmt: fmt };
+  window.skipChart = { bar: bar, line: line, donut: donut };
+})();
+
+</script>
+</body>
+</html>
