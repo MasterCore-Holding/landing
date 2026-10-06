@@ -1,6 +1,6 @@
 {
   "ledger": "MasterCore-Holding",
-  "currentVersion": "1.0.1",
+  "currentVersion": "1.0.2",
   "entries": [
     {
       "version": "1.0.0",
@@ -63,6 +63,31 @@
       "hashes": {
         "governance/normativos/MasterCore-Normas-Corporativas-v1.0.1.txt": "b1988fd5a782bea26e2003e4c585f813e08fb7cb2bb0b8e92b6f7109b9e8f7be",
         "governance/normativos/MasterCore-Normas-Corporativas-v1.0.1.pdf": "192adba1d27a8ec3edd4189feaac66f99a19bebc13da8c475e00891ba36fd9e7"
+      }
+    },
+    {
+      "version": "1.0.2",
+      "date": "2026-10-06T05:45:00-03:00",
+      "type": "GOVERNANCE",
+      "description": "P2 executada: Nucleo Universal MasterCore v1.0 redigido pelo Cortex (10 principios estruturantes P1-P10, 10 regras-mae R-Mae A-J, matriz de papeis) ancorado nas fontes-mae lidas (Diretriz v2.0, Politica Corporativa v1.0.1, Doc Referencia v1.0, Parecer 001). Status MINUTA — aguarda aceite provisorio do CEO (Proposto != Aplicado).",
+      "artifacts_consolidated": [
+        "governance/nucleo/Nucleo-Universal-MasterCore-v1.0.md"
+      ],
+      "artifacts_pending": [
+        {
+          "path": "governance/manuals/MC-PUB-001.md",
+          "reason": "rascunho v0.9 redigido pelo Cortex, aguarda chancela CEO para virar v1.0"
+        },
+        {
+          "path": "governance/manuals/MC-QUAL-001.md",
+          "reason": "rascunho v0.9 redigido pelo Cortex, aguarda chancela CEO para virar v1.0"
+        }
+      ],
+      "authorization_id": "AUT-MC-20261006-P2 (execucao Rotina; aceite pendente)",
+      "executor": "Cortex (Control Plane)",
+      "source_repo": "MasterCore-Holding/landing (org)",
+      "hashes": {
+        "governance/nucleo/Nucleo-Universal-MasterCore-v1.0.md": "372e4e353afe6ecfc99a6186e519dc053cafedd1fb44a0eea7b5a764b96ff237"
       }
     }
   ]
