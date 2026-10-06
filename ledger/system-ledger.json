@@ -1,17 +1,29 @@
 {
   "ledger": "MasterCore-Holding",
-  "currentVersion": "1.0.0",
+  "currentVersion": "1.0.1",
   "entries": [
     {
       "version": "1.0.0",
       "date": "2026-10-05T03:30:00-03:00",
       "type": "BASELINE",
       "description": "Baseline de governanca da holding: repositorio canonico criado (pepticoreapp/MasterCore-Holding, espelho do estado da org MasterCore-Holding/landing). Artefatos consolidados: public/index.html (fonte unica do portal institucional), assets/brand/mastercore-logo-canonical.png (integridade criptografica verificada).",
-      "artifacts_consolidated": ["public/index.html", "assets/brand/mastercore-logo-canonical.png"],
+      "artifacts_consolidated": [
+        "public/index.html",
+        "assets/brand/mastercore-logo-canonical.png"
+      ],
       "artifacts_pending": [
-        {"path": "governance/normativos/MasterCore-Normas-Corporativas-v1.pdf", "reason": "documento fisico inexistente; gate societario — criacao exige chancela CEO"},
-        {"path": "governance/manuals/MC-PUB-001.md", "reason": "rascunho v0.9 redigido pelo Cortex, aguarda chancela CEO para virar v1.0"},
-        {"path": "governance/manuals/MC-QUAL-001.md", "reason": "rascunho v0.9 redigido pelo Cortex, aguarda chancela CEO para virar v1.0"}
+        {
+          "path": "governance/normativos/MasterCore-Normas-Corporativas-v1.pdf",
+          "reason": "documento fisico inexistente; gate societario — criacao exige chancela CEO"
+        },
+        {
+          "path": "governance/manuals/MC-PUB-001.md",
+          "reason": "rascunho v0.9 redigido pelo Cortex, aguarda chancela CEO para virar v1.0"
+        },
+        {
+          "path": "governance/manuals/MC-QUAL-001.md",
+          "reason": "rascunho v0.9 redigido pelo Cortex, aguarda chancela CEO para virar v1.0"
+        }
       ],
       "authorization_id": "AUT-MC-20261005-01",
       "executor": "Cortex (Control Plane)",
@@ -20,6 +32,36 @@
       "hashes": {
         "public/index.html": "6b32b0c5897b1bb4053a17e58ba3ec02ae9945d4634f4747b10ac737f3186b3f",
         "assets/brand/mastercore-logo-canonical.png": "4d3c5fcff6e2257d361b595b78844da999f26575344e2f05a78a0d4f85f883f9"
+      }
+    },
+    {
+      "version": "1.0.1",
+      "date": "2026-10-06T00:35:00-03:00",
+      "type": "GOVERNANCE",
+      "description": "Instrumentos Normativos v1.0.1 registrados (P1 fechada): Politica Corporativa + Termos de Uso + Nota de Vigencia Provisoria, com aceite provisorio do CEO marcado em 05/10/2026 e vigencia ate 20/10/2026 (condicao resolutiva: aprovacao definitiva). Upload direto no repo canonico pelo Cortex — fluxo Link/ID, sem dependencia de conector Drive.",
+      "artifacts_consolidated": [
+        "governance/normativos/MasterCore-Normas-Corporativas-v1.0.1.txt",
+        "governance/normativos/MasterCore-Normas-Corporativas-v1.0.1.pdf"
+      ],
+      "artifacts_pending": [
+        {
+          "path": "governance/manuals/MC-PUB-001.md",
+          "reason": "rascunho v0.9 redigido pelo Cortex, aguarda chancela CEO para virar v1.0"
+        },
+        {
+          "path": "governance/manuals/MC-QUAL-001.md",
+          "reason": "rascunho v0.9 redigido pelo Cortex, aguarda chancela CEO para virar v1.0"
+        },
+        {
+          "path": "governance/nucleo/Nucleo-Universal-MasterCore-v1.0.md",
+          "reason": "P2: nucleo nao localizado; prazo 07/10"
+        }
+      ],
+      "authorization_id": "AUT-MC-20261005-01 (aceite provisorio CEO 05/10/2026 confirmado em chat)",
+      "executor": "Cortex (Control Plane)",
+      "source_repo": "MasterCore-Holding/landing (org)",
+      "hashes": {
+        "governance/normativos/MasterCore-Normas-Corporativas-v1.0.1.txt": "b1988fd5a782bea26e2003e4c585f813e08fb7cb2bb0b8e92b6f7109b9e8f7be"
       }
     }
   ]
