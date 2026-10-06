@@ -38,7 +38,7 @@
       "version": "1.0.1",
       "date": "2026-10-06T00:35:00-03:00",
       "type": "GOVERNANCE",
-      "description": "Instrumentos Normativos v1.0.1 registrados (P1 fechada): Politica Corporativa + Termos de Uso + Nota de Vigencia Provisoria, com aceite provisorio do CEO marcado em 05/10/2026 e vigencia ate 20/10/2026 (condicao resolutiva: aprovacao definitiva). Upload direto no repo canonico pelo Cortex — fluxo Link/ID, sem dependencia de conector Drive.",
+      "description": "Instrumentos Normativos v1.0.1 registrados (P1 fechada): Politica Corporativa + Termos de Uso + Nota de Vigencia Provisoria, com aceite provisorio do CEO marcado em 05/10/2026 e vigencia ate 20/10/2026 (condicao resolutiva: aprovacao definitiva). Upload direto no repo canonico pelo Cortex — fluxo Link/ID, sem dependencia de conector Drive. PDF oficial do aceite CEO (192adba1...) substitui a regeneracao do Cortex (53625bd0...) como materializacao canonica; TXT permanece como texto integral de referencia.",
       "artifacts_consolidated": [
         "governance/normativos/MasterCore-Normas-Corporativas-v1.0.1.txt",
         "governance/normativos/MasterCore-Normas-Corporativas-v1.0.1.pdf"
@@ -61,7 +61,8 @@
       "executor": "Cortex (Control Plane)",
       "source_repo": "MasterCore-Holding/landing (org)",
       "hashes": {
-        "governance/normativos/MasterCore-Normas-Corporativas-v1.0.1.txt": "b1988fd5a782bea26e2003e4c585f813e08fb7cb2bb0b8e92b6f7109b9e8f7be"
+        "governance/normativos/MasterCore-Normas-Corporativas-v1.0.1.txt": "b1988fd5a782bea26e2003e4c585f813e08fb7cb2bb0b8e92b6f7109b9e8f7be",
+        "governance/normativos/MasterCore-Normas-Corporativas-v1.0.1.pdf": "192adba1d27a8ec3edd4189feaac66f99a19bebc13da8c475e00891ba36fd9e7"
       }
     }
   ]
