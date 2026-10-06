@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-BR" data-theme="dark">
 <head>
+<script>
+(function(){
+  var h = location.hostname.replace(/^www\./,'');
+  if (h === 'enginecore.app' || h === 'www.enginecore.app' || h === 'enginecore.com.br' || h === 'www.enginecore.com.br') {
+    location.replace('/enginecore/' + location.search);
+  }
+})();
+</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MasterCore OS — Fábrica de Empresas & Criação de Aplicativos</title>
@@ -1761,8 +1769,8 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
         <!-- Métricas Institucionais / Cards de Valor (4 Colunas Simétricas e Uniformes) -->
         <div class="mc-metrics-grid mc-reveal" style="margin-top: 2.5rem;">
           <div class="mc-metric-card">
-            <div class="mc-metric-val">Investimento coberto pela MasterCore</div>
-            <div class="mc-metric-label">Engenharia e lançamento assumidos no modelo Studio de sociedade</div>
+            <div class="mc-metric-val">Parceria de Resultado</div>
+            <div class="mc-metric-label">MasterCore constrói a tecnologia e entra como sócia no resultado; parceiro entra com aporte inicial mínimo e operação</div>
           </div>
           <div class="mc-metric-card">
             <div class="mc-metric-val">3 caminhos</div>
@@ -1796,15 +1804,15 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
           <div class="mc-offer-card is-featured mc-reveal">
             <div class="mc-offer-tag studio">Oferta A · Studio</div>
             <h3 class="mc-offer-title">Parceria de Resultado</h3>
-            <div class="mc-offer-badge-sub">Ideal para quem quer um sócio tecnológico e não tem capital inicial</div>
+            <div class="mc-offer-badge-sub">Ideal para quem tem operação/mercado e quer um sócio tecnológico</div>
             <p class="mc-offer-desc">
-              A MasterCore monta todo o aplicativo e a infraestrutura automatizada de marketing assumindo o investimento inicial. Você roda o negócio do seu jeito e dividimos o lucro gerado com total transparência e alinhamento societário.
+              A MasterCore constrói a tecnologia e entra como sócia no resultado. O parceiro entra com aporte inicial mínimo e operação; dividimos o resultado por contrato — com opção de participação societária conforme metas.
             </p>
 
             <ul class="mc-offer-features">
               <li>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span><strong>Investimento coberto:</strong> desenvolvimento 100% financiado pelo MasterCore OS.</span>
+                <span><strong>Aporte inicial mínimo:</strong> a MasterCore constrói a tecnologia e entra como sócia no resultado, com opção de participação societária conforme metas.</span>
               </li>
               <li>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
@@ -2435,7 +2443,7 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
                 <span class="mc-chip" style="margin-bottom: 0.75rem; display: inline-block;">Caminho 1 · Studio</span>
                 <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--text); margin: 0 0 0.5rem 0;">Parceria de Resultado</h3>
                 <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; margin: 0 0 1.25rem 0;">
-                  Investimento inicial coberto pela MasterCore. Assumimos a engenharia tecnológica completa e dividimos os lucros por contrato formal de sociedade.
+                  A MasterCore constrói a tecnologia e entra como sócia no resultado. O parceiro entra com aporte inicial mínimo e operação; dividimos o resultado por contrato — com opção de participação societária conforme metas.
                 </p>
               </div>
               <a href="https://mastercore.app/qualificacao?utm_source=mastercore&utm_medium=landing&utm_campaign=parceria" target="_blank" rel="noopener noreferrer" class="mc-cta-btn mc-cta-primary" style="width: 100%; text-align: center; padding: 0.75rem 1rem; font-weight: 700;">
