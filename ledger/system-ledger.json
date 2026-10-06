@@ -1,6 +1,6 @@
 {
   "ledger": "MasterCore-Holding",
-  "currentVersion": "1.0.2",
+  "currentVersion": "1.0.3",
   "entries": [
     {
       "version": "1.0.0",
@@ -88,6 +88,35 @@
       "source_repo": "MasterCore-Holding/landing (org)",
       "hashes": {
         "governance/nucleo/Nucleo-Universal-MasterCore-v1.0.md": "372e4e353afe6ecfc99a6186e519dc053cafedd1fb44a0eea7b5a764b96ff237"
+      }
+    },
+    {
+      "version": "1.0.3",
+      "date": "2026-10-06T09:30:00-03:00",
+      "type": "GOVERNANCE",
+      "description": "Trinca canonica registrada (sessao Adapta -> GitHub): (1) Nucleo Universal MasterCore v1.2 — ACEITO PROVISORIAMENTE pelo CEO em 06/10/2026, vigencia ate 20/10/2026 (changelog v1.0 minuta -> v1.1 lacunas fechadas -> v1.2 aceite); (2) Instrumentos Normativos v1.0.2 — heranca realinhada ao Nucleo v1.2, sem alteracao de regras materiais; (3) MASTER_PLAN v2.2 — alinhado ao Nucleo v1.2 (ADAPTA=inteligencia, Maestro=interface de despacho do Cortex, faixas de risco e gates por referencia ao Nucleo). Fonte: PDFs homologados da sessao Adapta, hashes verificados no readback.",
+      "artifacts_consolidated": [
+        "governance/nucleo/Nucleo-Universal-MasterCore-v1.2.pdf",
+        "governance/normativos/MasterCore-Normas-Corporativas-v1.0.2.pdf",
+        "governance/masterplan/MASTER_PLAN_MASTERCORE_v2.2.pdf"
+      ],
+      "artifacts_pending": [
+        {
+          "path": "governance/manuals/MC-PUB-001.md",
+          "reason": "rascunho v0.9, aguarda chancela CEO"
+        },
+        {
+          "path": "governance/manuals/MC-QUAL-001.md",
+          "reason": "rascunho v0.9, aguarda chancela CEO"
+        }
+      ],
+      "authorization_id": "AUT-MC-20261006-TRINCA (aceite provisorio CEO 06/10/2026 no Nucleo v1.2)",
+      "executor": "Cortex (Control Plane)",
+      "source_repo": "MasterCore-Holding/landing (org)",
+      "hashes": {
+        "governance/nucleo/Nucleo-Universal-MasterCore-v1.2.pdf": "9cf9529234a60213423630987fc41565a8890b4ce70a3ef4b598e1a0a19f7d91",
+        "governance/normativos/MasterCore-Normas-Corporativas-v1.0.2.pdf": "484288eb3480e8b706bfe119278dc5685585d3700cb4f9b6bca2f5c58227240e",
+        "governance/masterplan/MASTER_PLAN_MASTERCORE_v2.2.pdf": "ac8346695a9e928245739a1f8a9c9c3ee16a8f947629d1a2bc745c4877f99514"
       }
     }
   ]
