@@ -4,12 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Redirecionando…</title>
-<meta http-equiv="refresh" content="0; url=https://mastercore.app/qualificacao/?utm_source=enginecore&utm_medium=go&utm_campaign=qualificacao">
-<link rel="canonical" href="https://mastercore.app/qualificacao/?utm_source=enginecore&utm_medium=go&utm_campaign=qualificacao">
-<style>body{font-family:sans-serif;background:#0A192F;color:#F8FAFC;display:flex;align-items:center;justify-content:center;height:100vh;margin:0}a{color:#14B8A6}</style>
+<script>
+(function(){
+  // Passa-through de UTMs/ref do link do post para a jornada EngineCore
+  var qs = window.location.search || '';
+  var base = 'https://mastercore.app/enginecore/qualificacao/';
+  var dest = base + (qs ? qs : '?utm_source=enginecore&utm_medium=go&utm_campaign=lancamento_enginecore');
+  window.location.replace(dest);
+})();
+</script>
+<meta http-equiv="refresh" content="1; url=https://mastercore.app/enginecore/qualificacao/">
+<style>body{font-family:sans-serif;background:#0D0D0F;color:#F3F4F6;display:flex;align-items:center;justify-content:center;height:100vh;margin:0}a{color:#00E5A0}</style>
 </head>
 <body>
-<p>Redirecionando para <a href="https://mastercore.app/qualificacao/?utm_source=enginecore&utm_medium=go&utm_campaign=qualificacao">a jornada de qualificação EngineCore</a>…</p>
-<script>window.location.replace("https://mastercore.app/qualificacao/?utm_source=enginecore&utm_medium=go&utm_campaign=qualificacao");</script>
+<p>Redirecionando para <a href="https://mastercore.app/enginecore/qualificacao/">EngineCore — Diagnóstico de Crescimento</a>…</p>
 </body>
 </html>
