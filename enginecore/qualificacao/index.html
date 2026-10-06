@@ -1,0 +1,1575 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EngineCore — Diagnóstico de Crescimento (Qualificação UAU)</title>
+  
+  <!-- Google Fonts: Space Grotesk & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
+  
+  <!-- Basecoat CSS CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/basecoat-css@1.0.2/dist/basecoat.cdn.min.css">
+  
+  <!-- Fixed Shell CSS & JS -->
+  <style>
+/* Skip artifact shell — fixed styles served beside every artifact.
+   Complements basecoat; artifacts override --accent for their own identity. */
+:root {
+  color-scheme: light dark;
+  --accent: #2563eb;
+  --accent-contrast: #ffffff;
+  --accent-text: color-mix(in srgb, var(--accent) 72%, #000);
+  --bg: #f8f9fb;
+  --surface: #ffffff;
+  --text: #14171f;
+  --text-muted: #5b6472;
+  --border: rgba(20, 23, 31, 0.10);
+  --radius: 10px;
+  --shadow: 0 1px 3px rgba(20, 23, 31, 0.08);
+  --space: 16px;
+}
+/* Theme resolution. Without data-theme the viewer's system preference decides,
+   as it always did. With it, the artifact's own choice wins in BOTH directions:
+   a page that hardcodes one palette must not be handed the opposite set of
+   tokens by the machine it happens to be opened on. The dark values appear
+   twice because a media query cannot be folded into a selector list.
+   The attribute sits inside :where() so these blocks keep the specificity of a
+   bare :root — the page's own <style> is linked after this file and must go on
+   overriding any token it wants, exactly as it could before. */
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) {
+    --accent-text: color-mix(in srgb, var(--accent) 78%, #fff);
+    --bg: #101318;
+    --surface: #181c23;
+    --text: #eef1f6;
+    --text-muted: #9aa4b2;
+    --border: rgba(238, 241, 246, 0.12);
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  }
+}
+:root:where([data-theme="dark"]) {
+  color-scheme: dark;
+  --accent-text: color-mix(in srgb, var(--accent) 78%, #fff);
+  --bg: #101318;
+  --surface: #181c23;
+  --text: #eef1f6;
+  --text-muted: #9aa4b2;
+  --border: rgba(238, 241, 246, 0.12);
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+:root:where([data-theme="light"]) { color-scheme: light; }
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+
+.shell-container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+.shell-section { padding: calc(var(--space) * 2) 0; }
+.shell-grid { display: grid; gap: var(--space); grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.shell-toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: var(--space); }
+.shell-footer { padding: 24px 0 40px; color: var(--text-muted); font-size: 13px; }
+
+.shell-hero { padding: calc(var(--space) * 3) 0 calc(var(--space) * 2); }
+.shell-hero h1 { font-size: clamp(26px, 4vw, 40px); line-height: 1.15; margin: 0 0 10px; text-wrap: balance; }
+.shell-hero p { color: var(--text-muted); max-width: 60ch; margin: 0; }
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: var(--space);
+}
+
+.kpi { display: flex; flex-direction: column; gap: 4px; }
+.kpi .kpi-value { font-size: 28px; font-weight: 650; line-height: 1.1; }
+.kpi .kpi-label { font-size: 13px; color: var(--text-muted); }
+.kpi .kpi-delta { font-size: 12.5px; font-weight: 600; }
+.kpi .kpi-delta.up { color: #0a8f3c; }
+.kpi .kpi-delta.down { color: #cf3131; }
+
+table.shell-table { border-collapse: collapse; width: 100%; font-size: 14px; }
+table.shell-table th {
+  text-align: left; font-size: 11.5px; letter-spacing: 0.05em; text-transform: uppercase;
+  color: var(--text-muted); font-weight: 600;
+}
+table.shell-table th, table.shell-table td { padding: 9px 12px 9px 0; border-bottom: 1px solid var(--border); }
+table.shell-table td.num, table.shell-table th.num { text-align: right; font-variant-numeric: tabular-nums; }
+table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 6%, transparent); }
+
+.chart-box { width: 100%; min-height: 220px; }
+.chart-box svg { width: 100%; height: auto; display: block; }
+
+.muted { color: var(--text-muted); }
+.accent { color: var(--accent-text); }
+.shell-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px;
+  background: color-mix(in srgb, var(--accent) 12%, transparent); color: var(--accent-text);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .shell-fade { animation: shell-fade 400ms ease both; }
+  @keyframes shell-fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+}
+
+</style>
+  
+
+  <style>
+    :root {
+      --accent: #00E5A0;
+      --accent-secondary: #1B5FFF;
+      --bg: #0D0D0F;
+      --surface: #141416;
+      --surface-elevated: #1B1B1F;
+      --border: rgba(255, 255, 255, 0.1);
+      --border-focus: #00E5A0;
+      --text: #F3F4F6;
+      --text-muted: #9CA3AF;
+      --radius: 12px;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, .font-heading {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      letter-spacing: -0.02em;
+    }
+
+    /* Top Brand Bar */
+    .brand-nav {
+      border-bottom: 1px solid var(--border);
+      padding: 1.1rem 1.5rem;
+      background: rgba(13, 13, 15, 0.85);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 40;
+    }
+
+    .brand-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: #FFFFFF;
+      text-decoration: none;
+    }
+
+    .brand-logo-gem {
+      width: 20px;
+      height: 20px;
+      background: linear-gradient(135deg, #00E5A0, #1B5FFF);
+      border-radius: 5px;
+      display: inline-block;
+      box-shadow: 0 0 14px rgba(0, 229, 160, 0.45);
+    }
+
+    /* Glow Ambient */
+    .ambient-glow {
+      position: absolute;
+      top: -80px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 650px;
+      height: 380px;
+      background: radial-gradient(circle, rgba(0, 229, 160, 0.12) 0%, rgba(27, 95, 255, 0.08) 50%, rgba(13, 13, 15, 0) 75%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Progress bar */
+    .wizard-progress-wrap {
+      max-width: 680px;
+      margin: 1.5rem auto 1rem auto;
+      padding: 0 1rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .progress-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 999px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #1B5FFF, #00E5A0);
+      border-radius: 999px;
+      transition: width 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+      box-shadow: 0 0 10px rgba(0, 229, 160, 0.5);
+    }
+
+    /* Card Box */
+    .diagnostic-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.03);
+      position: relative;
+      z-index: 2;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .diagnostic-card:hover {
+      border-color: rgba(0, 229, 160, 0.25);
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.7), 0 0 25px rgba(0, 229, 160, 0.08);
+    }
+
+    /* Step transition animations */
+    .step-view {
+      display: none;
+      animation: fadeInSlide 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .step-view.active {
+      display: block;
+    }
+
+    @keyframes fadeInSlide {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Selectable options (cards) */
+    .option-pill {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.1rem 1.25rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      background: #17171B;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .option-pill:hover {
+      border-color: rgba(0, 229, 160, 0.4);
+      background: #1C1C22;
+      transform: translateY(-1px);
+    }
+
+    .option-pill.selected {
+      border-color: #00E5A0;
+      background: rgba(0, 229, 160, 0.06);
+      box-shadow: 0 0 0 1px #00E5A0, 0 8px 20px rgba(0, 229, 160, 0.12);
+    }
+
+    .option-radio {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+    }
+
+    .option-pill.selected .option-radio {
+      border-color: #00E5A0;
+      background: #00E5A0;
+    }
+
+    .option-radio::after {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #0D0D0F;
+      display: none;
+    }
+
+    .option-pill.selected .option-radio::after {
+      display: block;
+    }
+
+    /* Custom form elements */
+    .form-group label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #D1D5DB;
+      margin-bottom: 0.4rem;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      background: #17171B;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 10px;
+      color: #FFFFFF;
+      font-size: 0.95rem;
+      font-family: inherit;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+
+    .form-input:focus {
+      border-color: #00E5A0;
+      box-shadow: 0 0 0 2px rgba(0, 229, 160, 0.2);
+      background: #1C1C22;
+    }
+
+    .form-input.invalid {
+      border-color: #EF4444;
+      box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2);
+    }
+
+    /* Buttons */
+    .btn-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 0.85rem 1.6rem;
+      border-radius: 12px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s ease;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .btn-action-primary {
+      background: #00E5A0;
+      color: #092015;
+      box-shadow: 0 4px 18px rgba(0, 229, 160, 0.35);
+    }
+
+    .btn-action-primary:hover {
+      background: #00ffb2;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(0, 229, 160, 0.5);
+    }
+
+    .btn-action-secondary {
+      background: rgba(255, 255, 255, 0.08);
+      color: #FFFFFF;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .btn-action-secondary:hover {
+      background: rgba(255, 255, 255, 0.13);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .btn-action-outline {
+      background: transparent;
+      color: var(--text-muted);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .btn-action-outline:hover {
+      color: #FFFFFF;
+      border-color: rgba(255, 255, 255, 0.3);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .btn-action-whatsapp {
+      background: #25D366;
+      color: #05260F;
+      font-weight: 700;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.35);
+    }
+
+    .btn-action-whatsapp:hover {
+      background: #2BF074;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(37, 211, 102, 0.5);
+    }
+
+    /* Result specifics */
+    .result-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .badge-cyan {
+      background: rgba(0, 229, 160, 0.15);
+      color: #00E5A0;
+      border: 1px solid rgba(0, 229, 160, 0.4);
+    }
+
+    .badge-blue {
+      background: rgba(27, 95, 255, 0.15);
+      color: #72A5FF;
+      border: 1px solid rgba(27, 95, 255, 0.4);
+    }
+
+    .badge-amber {
+      background: rgba(245, 158, 11, 0.15);
+      color: #FCD34D;
+      border: 1px solid rgba(245, 158, 11, 0.4);
+    }
+
+    .readiness-meter {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .readiness-pip {
+      width: 28px;
+      height: 8px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .readiness-pip.filled.high {
+      background: #00E5A0;
+      box-shadow: 0 0 8px rgba(0, 229, 160, 0.5);
+    }
+
+    .readiness-pip.filled.med {
+      background: #1B5FFF;
+      box-shadow: 0 0 8px rgba(27, 95, 255, 0.5);
+    }
+
+    .readiness-pip.filled.low {
+      background: #F59E0B;
+      box-shadow: 0 0 8px rgba(245, 158, 11, 0.5);
+    }
+
+    .signal-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.75rem 0.9rem;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.03);
+      border-left: 3px solid #00E5A0;
+      font-size: 0.9rem;
+    }
+
+    /* Helper utility classes */
+    .text-cyan { color: #00E5A0; }
+    .text-blue { color: #1B5FFF; }
+  </style>
+</head>
+<body>
+  <div class="ambient-glow"></div>
+<script>
+  (function() {
+    try {
+      var p = new URLSearchParams(window.location.search);
+      var utm = { utm_source: p.get('utm_source') || '', utm_medium: p.get('utm_medium') || '', utm_campaign: p.get('utm_campaign') || '' };
+      if (utm.utm_source || utm.utm_campaign) localStorage.setItem('ec_discovery_utm', JSON.stringify(utm));
+      var ref = p.get('ref') || p.get('ref_code');
+      if (!ref) {
+        var m = window.location.pathname.match(/\/r\/([A-Za-z0-9_-]{1,50})/);
+        if (m) ref = m[1];
+      }
+      if (ref) localStorage.setItem('ec_discovery_ref', ref);
+    } catch(e) {}
+  })();
+</script>
+
+  <!-- Header -->
+  <header class="brand-nav">
+    <div class="shell-container" style="display: flex; justify-content: space-between; align-items: center;">
+      <a href="https://mastercore.app/enginecore/" class="brand-logo" title="EngineCore">
+        <span class="brand-logo-gem"></span>
+        <span>EngineCore</span>
+      </a>
+      <span style="font-size: 0.78rem; color: var(--text-muted); background: rgba(255,255,255,0.06); padding: 0.3rem 0.7rem; border-radius: 999px; border: 1px solid rgba(255,255,255,0.08);">
+        Qualificação Rápida
+      </span>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="shell-container" style="max-width: 780px; padding-top: 2rem; padding-bottom: 3.5rem; flex: 1;">
+    
+    <!-- Hero (Shown only during the wizard steps) -->
+    <div id="heroSection" class="text-center" style="margin-bottom: 1.5rem; position: relative; z-index: 2;">
+      <div style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(0, 229, 160, 0.1); border: 1px solid rgba(0, 229, 160, 0.3); padding: 0.35rem 0.9rem; border-radius: 999px; margin-bottom: 1rem;">
+        <span style="width: 8px; height: 8px; border-radius: 50%; background: #00E5A0; display: inline-block; box-shadow: 0 0 6px #00E5A0;"></span>
+        <span style="color: #00E5A0; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;">Diagnóstico Interativo</span>
+      </div>
+      <h1 style="font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 700; line-height: 1.15; margin-bottom: 0.8rem; color: #FFFFFF;">
+        Diagnóstico de Crescimento <span style="color: #00E5A0;">EngineCore</span>
+      </h1>
+      <p style="color: #9CA3AF; font-size: 1rem; max-width: 580px; margin: 0 auto 0.75rem auto; line-height: 1.5;">
+        Responda 5 perguntas rápidas e descubra, em minutos, o modelo de trabalho certo para a sua fase — e o caminho mais curto até o seu primeiro resultado mensurável.
+      </p>
+      <div style="font-size: 0.8rem; color: #6B7280; font-weight: 500;">
+        Jornada de qualificação EngineCore · ~3 minutos · sem fidelidade · sem compromisso.
+      </div>
+    </div>
+
+    <!-- Progress Indicator -->
+    <div id="progressContainer" class="wizard-progress-wrap">
+      <div class="progress-info">
+        <span id="stepCounterText">Etapa 1 de 5</span>
+        <span id="stepPercentText" style="color: #00E5A0;">20%</span>
+      </div>
+      <div class="progress-track">
+        <div id="progressBar" class="progress-fill" style="width: 20%;"></div>
+      </div>
+    </div>
+
+    <!-- Card Wrapper -->
+    <div class="diagnostic-card" style="padding: clamp(1.4rem, 3.5vw, 2.4rem);">
+
+      <!-- ETAPA 1: CONTATO -->
+      <section id="step1" class="step-view active" aria-labelledby="step1Heading">
+        <div style="margin-bottom: 1.6rem;">
+          <span style="color: #00E5A0; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;">Passo 1</span>
+          <h2 id="step1Heading" style="font-size: 1.45rem; font-weight: 700; margin-top: 0.25rem;">Quem é você e qual o seu negócio?</h2>
+          <p style="color: #9CA3AF; font-size: 0.9rem; margin-top: 0.25rem;">Essas informações identificam seu diagnóstico personalizado.</p>
+        </div>
+
+        <form id="formContact" onsubmit="return false;" style="display: grid; gap: 1.1rem;">
+          <div class="form-group">
+            <label for="inputNome">Seu nome <span style="color: #00E5A0;">*</span></label>
+            <input type="text" id="inputNome" class="form-input" placeholder="Ex.: Lucas Moreira" required autocomplete="name">
+          </div>
+          <div class="form-group">
+            <label for="inputEmpresa">Nome da sua empresa ou projeto <span style="color: #00E5A0;">*</span></label>
+            <input type="text" id="inputEmpresa" class="form-input" placeholder="Ex.: Nexus Tech" required>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail">Seu melhor e-mail de trabalho <span style="color: #00E5A0;">*</span></label>
+            <input type="email" id="inputEmail" class="form-input" placeholder="lucas@nexustech.com.br" required autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label for="inputWhats">WhatsApp corporativo <span style="color: #9CA3AF; font-weight: 400; font-size: 0.8rem;">(recomendado para envio do relatório)</span></label>
+            <input type="tel" id="inputWhats" class="form-input" placeholder="(11) 99999-9999" autocomplete="tel">
+          </div>
+          <div id="step1Error" style="display: none; color: #F87171; font-size: 0.85rem; font-weight: 500;">
+            ⚠️ Por favor, preencha os campos obrigatórios (Nome, Empresa e E-mail válido).
+          </div>
+        </form>
+
+        <div style="display: flex; justify-content: flex-end; margin-top: 2rem;">
+          <button type="button" class="btn-action btn-action-primary" id="btnNext1">
+            <span>Continuar</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </button>
+        </div>
+      </section>
+
+      <!-- ETAPA 2: NECESSIDADE -->
+      <section id="step2" class="step-view" aria-labelledby="step2Heading">
+        <div style="margin-bottom: 1.5rem;">
+          <span style="color: #00E5A0; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;">Passo 2</span>
+          <h2 id="step2Heading" style="font-size: 1.45rem; font-weight: 700; margin-top: 0.25rem;">O que você mais precisa agora?</h2>
+          <p style="color: #9CA3AF; font-size: 0.9rem; margin-top: 0.25rem;">Escolha o principal foco de impacto nos próximos 30 dias.</p>
+        </div>
+
+        <div class="options-container" id="containerNeed" style="display: grid; gap: 0.75rem;">
+          <div class="option-pill" data-value="Conteúdo em escala (presença consistente em várias redes)">
+            <div class="option-radio"></div>
+            <div>
+              <div style="font-weight: 600; color: #FFFFFF;">Conteúdo em escala</div>
+              <div style="font-size: 0.85rem; color: #9CA3AF; margin-top: 0.15rem;">Presença consistente em múltiplas redes, linha editorial forte e autoridade.</div>
+            </div>
+          </div>
+
+          <div class="option-pill" data-value="Automação de funil (CRM + WhatsApp + e-mail)">
+            <div class="option-radio"></div>
+            <div>
+              <div style="font-weight: 600; color: #FFFFFF;">Automação de funil</div>
+              <div style="font-size: 0.85rem; color: #9CA3AF; margin-top: 0.15rem;">CRM + WhatsApp + e-mail integrados para transformar lead frio em cliente sem perda.</div>
+            </div>
+          </div>
+
+          <div class="option-pill" data-value="Design de alta conversão (landing pages e criativos)">
+            <div class="option-radio"></div>
+            <div>
+              <div style="font-weight: 600; color: #FFFFFF;">Design de alta conversão</div>
+              <div style="font-size: 0.85rem; color: #9CA3AF; margin-top: 0.15rem;">Landing pages magnéticas, identidade visual refinada e criativos com foco em CRO.</div>
+            </div>
+          </div>
+
+          <div class="option-pill" data-value="Performance paga (tráfego com foco em CAC e ROAS)">
+            <div class="option-radio"></div>
+            <div>
+              <div style="font-weight: 600; color: #FFFFFF;">Performance paga</div>
+              <div style="font-size: 0.85rem; color: #9CA3AF; margin-top: 0.15rem;">Tráfego pago rigorosamente calibrado para CAC previsível e ROAS positivo.</div>
+            </div>
+          </div>
+
+          <div class="option-pill" data-value="Não sei ainda — quero um diagnóstico">
+            <div class="option-radio"></div>
+            <div>
+              <div style="font-weight: 600; color: #FFFFFF;">Não sei ainda — quero um diagnóstico</div>
+              <div style="font-size: 0.85rem; color: #9CA3AF; margin-top: 0.15rem;">Preciso de uma visão 360° para apontar o maior gargalo e a alavanca prioritária.</div>
+            </div>
+          </div>
+        </div>
+
+        <div id="step2Error" style="display: none; color: #F87171; font-size: 0.85rem; font-weight: 500; margin-top: 0.8rem;">
+          ⚠️ Por favor, selecione uma das opções acima para continuar.
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 2rem;">
+          <button type="button" class="btn-action btn-action-outline" id="btnBack2">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            <span>Voltar</span>
+          </button>
+          <button type="button" class="btn-action btn-action-primary" id="btnNext2">
+            <span>Continuar</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </button>
+        </div>
+      </section>
+
+      <!-- ETAPA 3: FASE ATUAL -->
+      <section id="step3" class="step-view" aria-labelledby="step3Heading">
+        <div style="margin-bottom: 1.5rem;">
+          <span style="color: #00E5A0; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;">Passo 3</span>
+          <h2 id="step3Heading" style="font-size: 1.45rem; font-weight: 700; margin-top: 0.25rem;">Como está sua operação hoje?</h2>
+          <p style="color: #9CA3AF; font-size: 0.9rem; margin-top: 0.25rem;">A fase determina o ritmo de tração e o modelo de risco ideal.</p>
+        </div>
+
+        <div class="options-container" id="containerStage" style="display: grid; gap: 0.75rem;">
+          <div class="option-pill" data-value="Começando do zero (sem presença digital estruturada)">
+            <div class="option-radio"></div>
+            <div>
+              <div style="font-weight: 600; color: #FFFFFF;">Começando do zero</div>
+              <div style="font-size: 0.85rem; color: #9CA3AF; margin-top: 0.15rem;">Ainda sem presença digital estruturada ou canais de aquisição ativos.</div>
+            </div>
+          </div>
+
+          <div class="option-pill" data-value="Ativo, mas sem resultado consistente">
+            <div class="option-radio"></div>
+            <div>
+              <div style="font-weight: 600; color: #FFFFFF;">Ativo, mas sem resultado consistente</div>
+              <div style="font-size: 0.85rem; color: #9CA3AF; margin-top: 0.15rem;">Já publicamos e testamos, mas as vendas e os leads oscilam muito.</div>
+            </div>
+          </div>
+
+          <div class="option-pill" data-value="Tenho resultado e quero escalar">
+            <div class="option-radio"></div>
+            <div>
+              <div style="font-weight: 600; color: #FFFFFF;">Tenho resultado e quero escalar</div>
+              <div style="font-size: 0.85rem; color: #9CA3AF; margin-top: 0.15rem;">O modelo vende com frequência; o desafio é multiplicar o volume com previsibilidade.</div>
+            </div>
+          </div>
+
+          <div class="option-pill" data-value="Estou saturando / preciso de nova alavanca">
+            <div class="option-radio"></div>
+            <div>
+              <div style="font-weight: 600; color: #FFFFFF;">Estou saturando / preciso de nova alavanca</div>
+              <div style="font-size: 0.85rem; color: #9CA3AF; margin-top: 0.15rem;">CAC subindo, canais atuais perdendo fôlego e necessidade de pivô tático.</div>
+            </div>
+          </div>
+        </div>
+
+        <div id="step3Error" style="display: none; color: #F87171; font-size: 0.85rem; font-weight: 500; margin-top: 0.8rem;">
+          ⚠️ Selecione o momento atual da sua empresa.
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 2rem;">
+          <button type="button" class="btn-action btn-action-outline" id="btnBack3">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            <span>Voltar</span>
+          </button>
+          <button type="button" class="btn-action btn-action-primary" id="btnNext3">
+            <span>Continuar</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </button>
+        </div>
+      </section>
+
+      <!-- ETAPA 4: MODELO DE TRABALHO -->
+      <section id="step4" class="step-view" aria-labelledby="step4Heading">
+        <div style="margin-bottom: 1.5rem;">
+          <span style="color: #00E5A0; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;">Passo 4</span>
+          <h2 id="step4Heading" style="font-size: 1.45rem; font-weight: 700; margin-top: 0.25rem;">Como você prefere trabalhar?</h2>
+          <p style="color: #9CA3AF; font-size: 0.9rem; margin-top: 0.25rem;">Transparência absoluta: você define o formato de contratação que melhor se adapta.</p>
+        </div>
+
+        <div class="options-container" id="containerModel" style="display: grid; gap: 0.75rem;">
+          <div class="option-pill" data-value="Projeto fechado (campanha ou pacote, sem fidelidade)">
+            <div class="option-radio"></div>
+            <div>
+              <div style="font-weight: 600; color: #FFFFFF;">Projeto fechado (sem fidelidade)</div>
+              <div style="font-size: 0.85rem; color: #9CA3AF; margin-top: 0.15rem;">Escopo cirúrgico de 30 dias ou pacote de entregas específicas, sem amarras.</div>
+            </div>
+          </div>
+
+          <div class="option-pill" data-value="Mensalidade contínua (retainer)">
+            <div class="option-radio"></div>
+            <div>
+              <div style="font-weight: 600; color: #FFFFFF;">Mensalidade contínua (retainer)</div>
+              <div style="font-size: 0.85rem; color: #9CA3AF; margin-top: 0.15rem;">Parceria recorrente com equipe EngineCore dedicada para tração mês a mês.</div>
+            </div>
+          </div>
+
+          <div class="option-pill" data-value="Pagar por resultado (percentual sobre a receita gerada e medida)">
+            <div class="option-radio"></div>
+            <div>
+              <div style="font-weight: 600; color: #FFFFFF;">Pagar por resultado</div>
+              <div style="font-size: 0.85rem; color: #9CA3AF; margin-top: 0.15rem;">Skin in the game: fee mínimo operacional + % sobre a receita comprovadamente gerada.</div>
+            </div>
+          </div>
+
+          <div class="option-pill" data-value="Quero que vocês recomendem">
+            <div class="option-radio"></div>
+            <div>
+              <div style="font-weight: 600; color: #FFFFFF;">Quero que vocês recomendem</div>
+              <div style="font-size: 0.85rem; color: #9CA3AF; margin-top: 0.15rem;">Avaliem meu momento e indiquem a opção com menor atrito e maior retorno financeiro.</div>
+            </div>
+          </div>
+        </div>
+
+        <div id="step4Error" style="display: none; color: #F87171; font-size: 0.85rem; font-weight: 500; margin-top: 0.8rem;">
+          ⚠️ Selecione o modelo de trabalho de sua preferência.
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 2rem;">
+          <button type="button" class="btn-action btn-action-outline" id="btnBack4">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            <span>Voltar</span>
+          </button>
+          <button type="button" class="btn-action btn-action-primary" id="btnNext4">
+            <span>Continuar</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </button>
+        </div>
+      </section>
+
+      <!-- ETAPA 5: PRAZO & INVESTIMENTO -->
+      <section id="step5" class="step-view" aria-labelledby="step5Heading">
+        <div style="margin-bottom: 1.5rem;">
+          <span style="color: #00E5A0; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;">Passo 5 de 5</span>
+          <h2 id="step5Heading" style="font-size: 1.45rem; font-weight: 700; margin-top: 0.25rem;">Qual seu prazo e investimento inicial?</h2>
+          <p style="color: #9CA3AF; font-size: 0.9rem; margin-top: 0.25rem;">Último passo para gerar o seu diagnóstico em tempo real.</p>
+        </div>
+
+        <!-- Subseção A: Prazo -->
+        <div style="margin-bottom: 1.5rem;">
+          <label style="display: block; font-size: 0.9rem; font-weight: 600; color: #FFFFFF; margin-bottom: 0.6rem;">
+            Qual é a urgência para iniciar a execução? <span style="color: #00E5A0;">*</span>
+          </label>
+          <div class="options-container" id="containerTimeline" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.6rem;">
+            <div class="option-pill" data-value="Urgente (esta semana)" style="padding: 0.8rem 0.9rem;">
+              <div class="option-radio"></div>
+              <div style="font-size: 0.85rem; font-weight: 600; color: #FFFFFF;">Urgente (esta semana)</div>
+            </div>
+            <div class="option-pill" data-value="Este mês" style="padding: 0.8rem 0.9rem;">
+              <div class="option-radio"></div>
+              <div style="font-size: 0.85rem; font-weight: 600; color: #FFFFFF;">Este mês</div>
+            </div>
+            <div class="option-pill" data-value="Neste trimestre" style="padding: 0.8rem 0.9rem;">
+              <div class="option-radio"></div>
+              <div style="font-size: 0.85rem; font-weight: 600; color: #FFFFFF;">Neste trimestre</div>
+            </div>
+            <div class="option-pill" data-value="Sem pressa" style="padding: 0.8rem 0.9rem;">
+              <div class="option-radio"></div>
+              <div style="font-size: 0.85rem; font-weight: 600; color: #FFFFFF;">Sem pressa</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Subseção B: Investimento -->
+        <div style="margin-bottom: 1.5rem;">
+          <label style="display: block; font-size: 0.9rem; font-weight: 600; color: #FFFFFF; margin-bottom: 0.6rem;">
+            Faixa estimada de investimento inicial: <span style="color: #00E5A0;">*</span>
+          </label>
+          <div class="options-container" id="containerBudget" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.6rem;">
+            <div class="option-pill" data-value="Até R$ 2 mil" style="padding: 0.8rem 0.9rem;">
+              <div class="option-radio"></div>
+              <div style="font-size: 0.85rem; font-weight: 600; color: #FFFFFF;">Até R$ 2 mil</div>
+            </div>
+            <div class="option-pill" data-value="R$ 2 mil a R$ 5 mil" style="padding: 0.8rem 0.9rem;">
+              <div class="option-radio"></div>
+              <div style="font-size: 0.85rem; font-weight: 600; color: #FFFFFF;">R$ 2 mil a R$ 5 mil</div>
+            </div>
+            <div class="option-pill" data-value="R$ 5 mil a R$ 15 mil" style="padding: 0.8rem 0.9rem;">
+              <div class="option-radio"></div>
+              <div style="font-size: 0.85rem; font-weight: 600; color: #FFFFFF;">R$ 5 mil a R$ 15 mil</div>
+            </div>
+            <div class="option-pill" data-value="Acima de R$ 15 mil" style="padding: 0.8rem 0.9rem;">
+              <div class="option-radio"></div>
+              <div style="font-size: 0.85rem; font-weight: 600; color: #FFFFFF;">Acima de R$ 15 mil</div>
+            </div>
+          </div>
+        </div>
+
+        <div id="step5Error" style="display: none; color: #F87171; font-size: 0.85rem; font-weight: 500; margin-top: 0.8rem;">
+          ⚠️ Por favor, selecione tanto o prazo quanto a faixa de investimento.
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 2rem;">
+          <button type="button" class="btn-action btn-action-outline" id="btnBack5">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            <span>Voltar</span>
+          </button>
+          <button type="button" class="btn-action btn-action-primary" id="btnFinish" style="padding-left: 2rem; padding-right: 2rem;">
+            <span>Gerar Meu Diagnóstico</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+          </button>
+        </div>
+      </section>
+
+      <!-- TELA DE RESULTADO (O MOMENTO UAU) -->
+      <section id="stepResult" class="step-view" aria-labelledby="resultHeading">
+        
+        <!-- Header do Resultado -->
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 1rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 1.5rem; margin-bottom: 1.8rem;">
+          <div>
+            <div class="result-badge badge-cyan" style="margin-bottom: 0.6rem;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Diagnóstico Concluído</span>
+            </div>
+            <h2 id="resultHeading" style="font-size: clamp(1.5rem, 3.5vw, 1.85rem); font-weight: 700; color: #FFFFFF;">
+              Seu Diagnóstico de Crescimento
+            </h2>
+            <p id="resSubtitle" style="color: #9CA3AF; font-size: 0.95rem; margin-top: 0.25rem;">
+              Preparado exclusivamente para <span id="resLeadName" style="color: #FFFFFF; font-weight: 600;"></span> (<span id="resCompanyName" style="color: #FFFFFF; font-weight: 600;"></span>).
+            </p>
+          </div>
+
+          <div style="background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08); padding: 0.75rem 1.1rem; border-radius: 12px; text-align: right;">
+            <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); font-weight: 600; letter-spacing: 0.05em; margin-bottom: 0.3rem;">Nível de Prontidão</div>
+            <div style="display: flex; align-items: center; justify-content: flex-end; gap: 0.6rem;">
+              <span id="resReadinessBadge" class="result-badge badge-cyan" style="font-size: 0.75rem;">Alta</span>
+              <div class="readiness-meter" id="resReadinessPips">
+                <div class="readiness-pip filled high"></div>
+                <div class="readiness-pip filled high"></div>
+                <div class="readiness-pip filled high"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Grade com Perfil e Modelo Recomendado -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-bottom: 1.5rem;">
+          
+          <!-- Card Perfil -->
+          <div style="background: #17171C; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 14px; padding: 1.25rem;">
+            <div style="font-size: 0.75rem; text-transform: uppercase; color: #1B5FFF; font-weight: 700; letter-spacing: 0.06em; margin-bottom: 0.35rem;">
+              Perfil Identificado
+            </div>
+            <div id="resProfileTitle" style="font-family: 'Space Grotesk', sans-serif; font-size: 1.15rem; font-weight: 700; color: #FFFFFF; margin-bottom: 0.5rem; line-height: 1.3;">
+              Orientado a resultado em fase de escala
+            </div>
+            <div id="resProfileDesc" style="font-size: 0.85rem; color: #9CA3AF; line-height: 1.45;">
+              Sua operação tem tração e busca segurança técnica para expandir margens sem inflacionar a equipe interna.
+            </div>
+          </div>
+
+          <!-- Card Modelo Recomendado -->
+          <div style="background: #17171C; border: 1px solid rgba(0, 229, 160, 0.3); border-radius: 14px; padding: 1.25rem; position: relative; overflow: hidden;">
+            <div style="position: absolute; top: 0; right: 0; width: 60px; height: 60px; background: radial-gradient(circle, rgba(0,229,160,0.2) 0%, transparent 70%); pointer-events: none;"></div>
+            <div style="font-size: 0.75rem; text-transform: uppercase; color: #00E5A0; font-weight: 700; letter-spacing: 0.06em; margin-bottom: 0.35rem;">
+              Modelo Recomendado
+            </div>
+            <div id="resModelTitle" style="font-family: 'Space Grotesk', sans-serif; font-size: 1.2rem; font-weight: 700; color: #FFFFFF; margin-bottom: 0.35rem;">
+              Campanha-piloto de 30 dias
+            </div>
+            <div id="resModelQuote" style="font-size: 0.85rem; color: #00E5A0; font-weight: 500; margin-bottom: 0.45rem; font-style: italic;">
+              "comece gerando dados e prova, depois evolua"
+            </div>
+            <div id="resModelDesc" style="font-size: 0.82rem; color: #9CA3AF; line-height: 1.4;">
+              Porta de entrada sem fidelidade, focada em validar métricas reais de conversão antes de qualquer compromisso de longo prazo.
+            </div>
+          </div>
+        </div>
+
+        <!-- Box: Caminho Concreto em 30 Dias -->
+        <div style="background: linear-gradient(135deg, rgba(27, 95, 255, 0.12), rgba(0, 229, 160, 0.08)); border: 1px solid rgba(0, 229, 160, 0.25); border-radius: 14px; padding: 1.25rem 1.4rem; margin-bottom: 1.5rem;">
+          <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; font-weight: 700; color: #00E5A0; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+            <span>Caminho Concreto em 30 Dias</span>
+          </div>
+          <div id="resRoadmap" style="font-size: 1.05rem; font-weight: 600; color: #FFFFFF; line-height: 1.4;">
+            Funil CRM + WhatsApp + e-mail integrados de ponta a ponta com lead scoring
+          </div>
+        </div>
+
+        <!-- Box: 3 Sinais do seu Diagnóstico -->
+        <div style="margin-bottom: 1.8rem;">
+          <div style="font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 700; color: #FFFFFF; margin-bottom: 0.75rem;">
+            3 Sinais Críticos para o seu Cenário:
+          </div>
+          <div style="display: grid; gap: 0.6rem;" id="resSignalsList">
+            <!-- Injetado dinamicamente via JS -->
+          </div>
+        </div>
+
+        <!-- Microcopy Garantia de Tranquilidade -->
+        <div style="background: rgba(255, 255, 255, 0.03); border: 1px dashed rgba(255, 255, 255, 0.15); border-radius: 12px; padding: 0.9rem 1.1rem; margin-bottom: 2rem;">
+          <p style="font-size: 0.82rem; color: #9CA3AF; margin: 0; line-height: 1.5;">
+            🔒 <strong>Sem assédio comercial:</strong> Seu diagnóstico vai direto para a liderança técnica da EngineCore. Ninguém vai te perseguir — o próximo contato é uma proposta 100% objetiva com o passo certo para a sua fase.
+          </p>
+        </div>
+
+        <!-- Ações & CTAs Finais -->
+        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+          <a id="btnWhatsappCTA" href="#" target="_blank" rel="noopener noreferrer" class="btn-action btn-action-whatsapp" style="font-size: 1.05rem; padding: 1rem 1.4rem;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+            </svg>
+            <span>Quero falar com a EngineCore no WhatsApp</span>
+          </a>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem;">
+            <a id="btnEmailCTA" href="#" class="btn-action btn-action-secondary" style="font-size: 0.88rem;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              <span>Receber diagnóstico por e-mail</span>
+            </a>
+
+            <button type="button" id="btnRestart" class="btn-action btn-action-outline" style="font-size: 0.88rem;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
+              <span>Refazer o diagnóstico</span>
+            </button>
+          </div>
+
+          <div style="text-align: center; margin-top: 0.75rem;">
+            <a href="https://mastercore.app/enginecore/" style="color: #6B7280; font-size: 0.82rem; text-decoration: none; transition: color 0.2s ease;">
+              ← Voltar ao site principal (enginecore.app)
+            </a>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Rodapé Oficial EngineCore -->
+  <footer style="border-top: 1px solid rgba(255, 255, 255, 0.08); background: #0A0A0C; padding: 2.2rem 1.5rem; text-align: center; margin-top: auto;">
+    <div class="shell-container" style="max-width: 680px;">
+      <div style="display: inline-flex; align-items: center; gap: 0.5rem; margin-bottom: 0.6rem;">
+        <span class="brand-logo-gem" style="width: 14px; height: 14px;"></span>
+        <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: #FFFFFF; font-size: 1.05rem;">EngineCore</span>
+      </div>
+      <div style="font-size: 0.82rem; color: #9CA3AF; margin-bottom: 0.75rem;">
+        <a href="https://instagram.com/enginecoreapp" target="_blank" rel="noopener noreferrer" style="color: #9CA3AF; text-decoration: none; font-weight: 500;">@enginecoreapp</a>
+        <span style="margin: 0 0.5rem;">·</span>
+        <span>mastercore.app/enginecore/qualificacao</span>
+      </div>
+      <p style="font-size: 0.75rem; color: #6B7280; max-width: 500px; margin: 0 auto; line-height: 1.45;">
+        Resultados dependem do contexto de cada cliente; toda entrega acompanha relatório auditável.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Script da Aplicação -->
+  <script>
+    // Configurações do time EngineCore
+    // WhatsApp provisório da EngineCore (CEO Lucio) até YCloud destravar
+    const WHATSAPP_NUMBER = '5511986735432';
+    const CONTACT_EMAIL = 'contato@enginecore.app';
+
+    // Estado do Wizard
+    const state = {
+      currentStep: 1,
+      totalSteps: 5,
+      contact: {
+        nome: '',
+        empresa: '',
+        email: '',
+        whats: ''
+      },
+      need: '',
+      stage: '',
+      model: '',
+      timeline: '',
+      budget: ''
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      setupOptionPickers();
+      setupNavigation();
+    });
+
+    // Configura cliques nos pills de seleção única
+    function setupOptionPickers() {
+      // Step 2: Need
+      bindPills('#containerNeed', val => {
+        state.need = val;
+        document.getElementById('step2Error').style.display = 'none';
+      });
+
+      // Step 3: Stage
+      bindPills('#containerStage', val => {
+        state.stage = val;
+        document.getElementById('step3Error').style.display = 'none';
+      });
+
+      // Step 4: Model
+      bindPills('#containerModel', val => {
+        state.model = val;
+        document.getElementById('step4Error').style.display = 'none';
+      });
+
+      // Step 5: Timeline
+      bindPills('#containerTimeline', val => {
+        state.timeline = val;
+        document.getElementById('step5Error').style.display = 'none';
+      });
+
+      // Step 5: Budget
+      bindPills('#containerBudget', val => {
+        state.budget = val;
+        document.getElementById('step5Error').style.display = 'none';
+      });
+    }
+
+    function bindPills(containerSelector, onSelect) {
+      const container = document.querySelector(containerSelector);
+      if (!container) return;
+
+      const pills = container.querySelectorAll('.option-pill');
+      pills.forEach(pill => {
+        pill.addEventListener('click', () => {
+          pills.forEach(p => p.classList.remove('selected'));
+          pill.classList.add('selected');
+          const value = pill.getAttribute('data-value');
+          onSelect(value);
+        });
+      });
+    }
+
+    // Configura fluxo de navegação entre as telas
+    function setupNavigation() {
+      // Step 1 -> 2
+      document.getElementById('btnNext1').addEventListener('click', () => {
+        const nome = document.getElementById('inputNome').value.trim();
+        const empresa = document.getElementById('inputEmpresa').value.trim();
+        const email = document.getElementById('inputEmail').value.trim();
+        const whats = document.getElementById('inputWhats').value.trim();
+
+        // Validação leve de email
+        const emailValid = email.length > 3 && email.includes('@') && email.includes('.');
+
+        if (!nome || !empresa || !emailValid) {
+          document.getElementById('step1Error').style.display = 'block';
+          if (!nome) document.getElementById('inputNome').classList.add('invalid');
+          if (!empresa) document.getElementById('inputEmpresa').classList.add('invalid');
+          if (!emailValid) document.getElementById('inputEmail').classList.add('invalid');
+          return;
+        }
+
+        // Limpa erros
+        document.getElementById('step1Error').style.display = 'none';
+        document.getElementById('inputNome').classList.remove('invalid');
+        document.getElementById('inputEmpresa').classList.remove('invalid');
+        document.getElementById('inputEmail').classList.remove('invalid');
+
+        state.contact = { nome, empresa, email, whats };
+        goToStep(2);
+      });
+
+      // Step 2
+      document.getElementById('btnBack2').addEventListener('click', () => goToStep(1));
+      document.getElementById('btnNext2').addEventListener('click', () => {
+        if (!state.need) {
+          document.getElementById('step2Error').style.display = 'block';
+          return;
+        }
+        goToStep(3);
+      });
+
+      // Step 3
+      document.getElementById('btnBack3').addEventListener('click', () => goToStep(2));
+      document.getElementById('btnNext3').addEventListener('click', () => {
+        if (!state.stage) {
+          document.getElementById('step3Error').style.display = 'block';
+          return;
+        }
+        goToStep(4);
+      });
+
+      // Step 4
+      document.getElementById('btnBack4').addEventListener('click', () => goToStep(3));
+      document.getElementById('btnNext4').addEventListener('click', () => {
+        if (!state.model) {
+          document.getElementById('step4Error').style.display = 'block';
+          return;
+        }
+        goToStep(5);
+      });
+
+      // Step 5
+      document.getElementById('btnBack5').addEventListener('click', () => goToStep(4));
+      document.getElementById('btnFinish').addEventListener('click', () => {
+        if (!state.timeline || !state.budget) {
+          document.getElementById('step5Error').style.display = 'block';
+          return;
+        }
+        generateDiagnostic();
+      });
+
+      // Restart
+      document.getElementById('btnRestart').addEventListener('click', restartWizard);
+    }
+
+    function goToStep(stepNum) {
+      state.currentStep = stepNum;
+
+      // Atualiza visualização das etapas
+      for (let i = 1; i <= 5; i++) {
+        const el = document.getElementById(`step${i}`);
+        if (el) el.classList.toggle('active', i === stepNum);
+      }
+      document.getElementById('stepResult').classList.remove('active');
+
+      // Mostra Hero & Barra de Progresso
+      document.getElementById('heroSection').style.display = 'block';
+      document.getElementById('progressContainer').style.display = 'block';
+
+      // Atualiza a barra de progresso
+      const pct = Math.round((stepNum / state.totalSteps) * 100);
+      document.getElementById('stepCounterText').innerText = `Etapa ${stepNum} de ${state.totalSteps}`;
+      document.getElementById('stepPercentText').innerText = `${pct}%`;
+      document.getElementById('progressBar').style.width = `${pct}%`;
+
+      // Scroll suave para o topo do card
+      window.scrollTo({ top: 120, behavior: 'smooth' });
+    }
+
+    // Geração do Diagnóstico de Crescimento
+    function generateDiagnostic() {
+      sendLeadToBackend();
+      // 1. Esconde as etapas e hero/progresso
+      for (let i = 1; i <= 5; i++) {
+        const el = document.getElementById(`step${i}`);
+        if (el) el.classList.remove('active');
+      }
+      document.getElementById('heroSection').style.display = 'none';
+      document.getElementById('progressContainer').style.display = 'none';
+      document.getElementById('stepResult').classList.add('active');
+
+      // Scroll ao topo do resultado
+      window.scrollTo({ top: 50, behavior: 'smooth' });
+
+      // Dados de cabeçalho
+      document.getElementById('resLeadName').innerText = state.contact.nome || 'Líder';
+      document.getElementById('resCompanyName').innerText = state.contact.empresa || 'Sua Empresa';
+
+      // 2. Lógica do Perfil
+      let profileTitle = '';
+      let profileDesc = '';
+
+      if (state.stage.includes('Tenho resultado') || state.stage.includes('saturando')) {
+        profileTitle = 'Orientado a resultado em fase de escala';
+        profileDesc = 'Sua empresa já comprovou tração de mercado. O momento exige desatar nós de conversão e alavancar canais complementares com mensuração transparente.';
+      } else {
+        profileTitle = 'Estruturação inicial, priorizando velocidade';
+        profileDesc = 'Sua empresa precisa de fundações rápidas, sem burocracia ou custos fixos proibitivos, para colocar ativos digitais no ar e gerar dados reais de tração.';
+      }
+      document.getElementById('resProfileTitle').innerText = profileTitle;
+      document.getElementById('resProfileDesc').innerText = profileDesc;
+
+      // 3. Lógica do Modelo Recomendado (conforme especificação da EngineCore)
+      let modelTitle = '';
+      let modelQuote = '';
+      let modelDesc = '';
+
+      const isZeroOrNoResult = state.stage.includes('Começando do zero') || state.stage.includes('sem resultado consistente');
+      const isScaleOrSaturating = state.stage.includes('Tenho resultado') || state.stage.includes('saturando');
+      const prefersPerformance = state.model.includes('Pagar por resultado');
+      const prefersRetainer = state.model.includes('Mensalidade contínua');
+      const prefersEngineRecommend = state.model.includes('Quero que vocês recomendem');
+
+      if (isZeroOrNoResult) {
+        modelTitle = 'Campanha-piloto de 30 dias';
+        modelQuote = '“comece gerando dados e prova, depois evolua”';
+        modelDesc = 'Porta de entrada sem fidelidade: 30 dias de execução concentrada para criar ativos, rodar os primeiros testes e comprovar a conversão antes de qualquer compromisso de longo prazo.';
+      } else if (isScaleOrSaturating && prefersPerformance) {
+        modelTitle = 'Growth por resultado (Fee Reduzido + %)';
+        modelQuote = '“pagamos juntos: você só paga bem quando o resultado chega”';
+        modelDesc = 'Alinhamento total de incentivos: operamos com fee de sustentação reduzido + participação percentual na receita diretamente gerada e auditada no período.';
+      } else if (prefersRetainer) {
+        modelTitle = 'Retainer por pacote sob medida';
+        modelQuote = '“consistência mensal com escopo claro e sprint contínuo”';
+        modelDesc = 'Estrutura recorrente sem sustos: pacote fixo com entregas mensais definidas (conteúdo, automação ou tráfego), relatórios de evolução e suporte ágil.';
+      } else if (prefersEngineRecommend) {
+        modelTitle = 'Campanha-piloto de 30 dias';
+        modelQuote = '“comece gerando dados e prova, depois evolua”';
+        modelDesc = 'Recomendação técnica EngineCore: teste cirúrgico de 30 dias para calibrar a taxa de conversão com risco quase nulo para a sua empresa.';
+      } else {
+        modelTitle = 'Projeto fechado (Sprint de 30 dias)';
+        modelQuote = '“escopo cirúrgico entregue com início, meio e fim”';
+        modelDesc = 'Entrega pontual sem mensalidade ou fidelidade: executamos a alavanca prioritária e entregamos todos os ativos prontos para operar.';
+      }
+
+      document.getElementById('resModelTitle').innerText = modelTitle;
+      document.getElementById('resModelQuote').innerText = modelQuote;
+      document.getElementById('resModelDesc').innerText = modelDesc;
+
+      // 4. Lógica de Prontidão
+      // "Alta" (se tem resultado e investimento acima de R$ 5 mil)
+      // "Média" (se ativo sem resultado consistente OU investimento entre R$ 2k e R$ 5k)
+      // "Baixa" (se começando do zero — com nota de pacote de entrada)
+      let readinessLevel = 'Média';
+      let readinessClass = 'med';
+      let readinessNote = '';
+
+      const isHighBudget = state.budget.includes('5 mil a') || state.budget.includes('Acima de');
+      if (state.stage.includes('Tenho resultado') && isHighBudget) {
+        readinessLevel = 'Alta';
+        readinessClass = 'high';
+      } else if (state.stage.includes('Começando do zero')) {
+        readinessLevel = 'Baixa';
+        readinessClass = 'low';
+        readinessNote = ' (recomendamos começar pelo pacote de entrada)';
+      } else {
+        readinessLevel = 'Média';
+        readinessClass = 'med';
+      }
+
+      const badgeEl = document.getElementById('resReadinessBadge');
+      badgeEl.innerText = `${readinessLevel}${readinessNote ? '*' : ''}`;
+      badgeEl.className = `result-badge badge-${readinessClass === 'high' ? 'cyan' : (readinessClass === 'med' ? 'blue' : 'amber')}`;
+
+      // Pips
+      const pipsContainer = document.getElementById('resReadinessPips');
+      const pipsCount = readinessClass === 'high' ? 3 : (readinessClass === 'med' ? 2 : 1);
+      let pipsHtml = '';
+      for (let i = 1; i <= 3; i++) {
+        const isFilled = i <= pipsCount;
+        pipsHtml += `<div class="readiness-pip ${isFilled ? `filled ${readinessClass}` : ''}"></div>`;
+      }
+      pipsContainer.innerHTML = pipsHtml;
+
+      // 5. Lógica do Caminho em 30 Dias (Dinâmico por necessidade)
+      let roadmapText = '';
+      let signals = [];
+
+      if (state.need.includes('Conteúdo em escala')) {
+        roadmapText = 'Lote multi-plataforma de conteúdo (6 redes principais com linha editorial) + 1 landing de conversão rápida';
+        signals = [
+          'Conteúdo sem estratégia de distribuição é apenas custo, não constrói ativo duradouro.',
+          'Formatos curtos sem uma oferta de fechamento no final atraem visualizações sem monetizar.',
+          'Consistência com matriz de reaproveitamento multiplica seu alcance com 80% menos esforço.'
+        ];
+      } else if (state.need.includes('Automação de funil')) {
+        roadmapText = 'Funil CRM + WhatsApp + e-mail integrados de ponta a ponta com lead scoring e recuperação ativa de carrinhos';
+        signals = [
+          'Funil sem CRM vaza leads que você já pagou para atrair em anúncios ou tráfego orgânico.',
+          'Contatos comerciais feitos nos primeiros 5 minutos convertem até 7x mais no WhatsApp.',
+          'Automações bem calibradas nutrem quem não comprou hoje para fechar daqui a 3 semanas.'
+        ];
+      } else if (state.need.includes('Design de alta conversão')) {
+        roadmapText = 'Landing page UAU ultrarrápida + kit de criativos orientados a CRO e testes A/B';
+        signals = [
+          'Design sem hierarquia visual e prova social gera alta taxa de rejeição logo nos primeiros 3 segundos.',
+          'Uma oferta irresistível apresentada em design amador perde o valor percebido e exige descontos.',
+          'Micro-interações e carregamento instantâneo aumentam diretamente a taxa de conclusão de checkout.'
+        ];
+      } else if (state.need.includes('Performance paga')) {
+        roadmapText = 'Campanha paga calibrada com CAC e ROAS objetivos monitorados em painel auditável em tempo real';
+        signals = [
+          'Tráfego sem oferta clara de conversão queima orçamento em cliques curiosos sem intenção de compra.',
+          'Pixel mal configurado alimenta os algoritmos de Meta e Google com dados errados de conversão.',
+          'Escalar tráfego antes de validar a retenção de clientes cria a ilusão perigosa de crescimento oco.'
+        ];
+      } else {
+        // Não sei ainda
+        roadmapText = 'Diagnóstico 360° com auditoria técnica: dados atuais, quick wins prioritários e plano de ação de 30 dias';
+        signals = [
+          'Tentar fazer tudo ao mesmo tempo (tráfego, posts, automação) dilui a energia e adia resultados.',
+          'Identificar o gargalo número um da empresa desbloqueia receita imediata com esforço focado.',
+          'Terceirizar sem saber a métrica-chave de sucesso gera frustração mútua e retrabalho.'
+        ];
+      }
+
+      document.getElementById('resRoadmap').innerText = roadmapText;
+
+      // Renderiza 3 sinais
+      const signalsListEl = document.getElementById('resSignalsList');
+      signalsListEl.innerHTML = signals.map(sig => `
+        <div class="signal-item">
+          <span style="color: #00E5A0; font-weight: bold; flex-shrink: 0;">✦</span>
+          <span style="color: #E5E7EB; line-height: 1.45;">${sig}</span>
+        </div>
+      `).join('');
+
+      // 6. Montagem dos links de CTA (WhatsApp e E-mail)
+      const cleanPhone = (state.contact.whats || '').replace(/\D/g, '');
+      const whatsTarget = (WHATSAPP_NUMBER || '55').replace(/\D/g, '');
+
+      const summaryText = 
+`*DIAGNÓSTICO DE CRESCIMENTO — ENGINECORE*
+---------------------------------------
+• *Nome:* ${state.contact.nome}
+• *Empresa:* ${state.contact.empresa}
+• *E-mail:* ${state.contact.email}
+• *WhatsApp:* ${state.contact.whats || 'Não informado'}
+---------------------------------------
+• *Necessidade Principal:* ${state.need}
+• *Fase Atual:* ${state.stage}
+• *Modelo de Preferência:* ${state.model}
+• *Prazo Estimado:* ${state.timeline}
+• *Faixa de Investimento:* ${state.budget}
+---------------------------------------
+• *Diagnóstico Recomendado:* ${modelTitle}
+• *Perfil Identificado:* ${profileTitle}
+• *Nível de Prontidão:* ${readinessLevel}
+• *Caminho em 30 Dias:* ${roadmapText}
+---------------------------------------
+_Olá time EngineCore! Concluí o diagnóstico interativo e gostaria de conversar sobre a proposta para minha empresa._`;
+
+      const encodedMsg = encodeURIComponent(summaryText);
+      const whatsappUrl = `https://wa.me/${whatsTarget}?text=${encodedMsg}`;
+      document.getElementById('btnWhatsappCTA').setAttribute('href', whatsappUrl);
+
+      const emailSubject = encodeURIComponent(`Diagnóstico de Crescimento - EngineCore [${state.contact.empresa}]`);
+      const emailBody = encodeURIComponent(summaryText);
+      const mailtoUrl = `mailto:${CONTACT_EMAIL}?subject=${emailSubject}&body=${emailBody}`;
+      document.getElementById('btnEmailCTA').setAttribute('href', mailtoUrl);
+    }
+
+    // ===== Gravação do lead completo (submit principal) — motor padrão MasterCore =====
+    var leadSent = false;
+    function sendLeadToBackend() {
+      if (leadSent) return;
+      leadSent = true;
+      try {
+        var utm = {}; try { utm = JSON.parse(localStorage.getItem('ec_discovery_utm')||'{}'); } catch(e) {}
+        var refCode = ''; try { refCode = localStorage.getItem('ec_discovery_ref') || ''; } catch(e) {}
+        var payload = {
+          nome: state.contact.nome,
+          email: state.contact.email,
+          whatsapp: state.contact.whats || '',
+          origem: 'EngineCore — Diagnóstico de Crescimento',
+          utm_source: utm.utm_source || 'enginecore',
+          utm_medium: utm.utm_medium || 'social',
+          utm_campaign: utm.utm_campaign || 'lancamento_enginecore',
+          ref_code: refCode || undefined,
+          observacao: 'JORNADA ENGINECORE COMPLETA' +
+            ' | empresa: ' + (state.contact.empresa || '') +
+            ' | necessidade: ' + state.need +
+            ' | fase: ' + state.stage +
+            ' | modeloPreferencia: ' + state.model +
+            ' | prazo: ' + state.timeline +
+            ' | investimento: ' + state.budget +
+            ' | diagnosticoGerado: ' + (document.getElementById('resModelTitle') ? document.getElementById('resModelTitle').innerText : '') +
+            ' | prontidao: ' + (document.getElementById('resReadinessBadge') ? document.getElementById('resReadinessBadge').innerText : ''),
+          lgpd: true
+        };
+        fetch('https://pepti-core-plus.base44.app/api/functions/registrarLeadAppsScript', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify(payload)
+        }).catch(function(){});
+      } catch(e) {}
+    }
+
+    function restartWizard() {
+      // Limpa dados selecionados
+      state.need = '';
+      state.stage = '';
+      state.model = '';
+      state.timeline = '';
+      state.budget = '';
+
+      // Desmarca pills
+      document.querySelectorAll('.option-pill').forEach(pill => pill.classList.remove('selected'));
+
+      goToStep(1);
+    }
+  </script>
+<script>
+/* Skip artifact shell — fixed helpers served beside every artifact. */
+(function () {
+  "use strict";
+
+  var fmt = {
+    num: function (v, opts) { return new Intl.NumberFormat("pt-BR", opts || {}).format(v); },
+    brl: function (v) { return new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(v); },
+    pct: function (v) { return new Intl.NumberFormat("pt-BR", { style: "percent", maximumFractionDigits: 1 }).format(v); }
+  };
+
+  // axisFmt keeps axis tick labels short (compact notation) so long values
+  // (e.g. full BRL amounts) never clip against the plot edge.
+  function axisFmt(v) {
+    return fmt.num(v, { notation: "compact", maximumFractionDigits: 1 });
+  }
+
+  // format accepts a function OR one of the fmt names ("num" | "brl" | "pct").
+  function coerceFormat(spec) {
+    if (typeof spec === "function") return spec;
+    if (typeof spec === "string" && fmt[spec]) return fmt[spec];
+    return function (v) { return fmt.num(v); };
+  }
+
+  function accent() {
+    return getComputedStyle(document.documentElement).getPropertyValue("--accent").trim() || "#2563eb";
+  }
+  function mutedColor() {
+    return getComputedStyle(document.documentElement).getPropertyValue("--text-muted").trim() || "#5b6472";
+  }
+  function svgEl(tag, attrs) {
+    var el = document.createElementNS("http://www.w3.org/2000/svg", tag);
+    for (var k in attrs) el.setAttribute(k, attrs[k]);
+    return el;
+  }
+  function frame(el, w, h) {
+    var svg = svgEl("svg", { viewBox: "0 0 " + w + " " + h, role: "img" });
+    el.innerHTML = "";
+    el.appendChild(svg);
+    return svg;
+  }
+
+  // maxOf guards the axis scale: empty values would give -Infinity (truthy,
+  // so "|| 1" can't catch it) and a non-positive max would flip the chart.
+  function maxOf(values) {
+    var m = values.length ? Math.max.apply(null, values) : 0;
+    return m > 0 ? m : 1;
+  }
+
+  // bar(el, {labels:[], values:[], color?, format?}) — vertical bar chart.
+  function bar(el, cfg) {
+    var W = 640, H = 280, padL = 46, padB = 30, padT = 12;
+    var svg = frame(el, W, H);
+    var max = maxOf(cfg.values);
+    var n = cfg.values.length;
+    var plotW = W - padL - 12, plotH = H - padT - padB;
+    var step = plotW / n, bw = Math.min(step * 0.62, 64);
+    var color = cfg.color || accent();
+    var f = coerceFormat(cfg.format);
+    for (var g = 0; g <= 4; g++) {
+      var gy = padT + plotH - (plotH * g) / 4;
+      svg.appendChild(svgEl("line", { x1: padL, y1: gy, x2: W - 12, y2: gy, stroke: "currentColor", "stroke-opacity": 0.08 }));
+      var lbl = svgEl("text", { x: padL - 8, y: gy + 4, "text-anchor": "end", "font-size": 10, fill: mutedColor() });
+      lbl.textContent = axisFmt((max * g) / 4);
+      svg.appendChild(lbl);
+    }
+    cfg.values.forEach(function (v, i) {
+      var bh = Math.max(0, (v / max) * plotH);
+      var x = padL + i * step + (step - bw) / 2;
+      var y = padT + plotH - bh;
+      var r = svgEl("rect", { x: x, y: y, width: bw, height: bh, rx: 4, fill: color });
+      var t = svgEl("title", {});
+      t.textContent = cfg.labels[i] + ": " + f(v);
+      r.appendChild(t);
+      svg.appendChild(r);
+      var tx = svgEl("text", { x: x + bw / 2, y: H - 10, "text-anchor": "middle", "font-size": 11, fill: mutedColor() });
+      tx.textContent = cfg.labels[i];
+      svg.appendChild(tx);
+    });
+  }
+
+  // line(el, {labels:[], values:[], color?, format?}) — single-series line.
+  function line(el, cfg) {
+    var W = 640, H = 280, padL = 46, padB = 30, padT = 12;
+    var svg = frame(el, W, H);
+    var max = maxOf(cfg.values);
+    var n = cfg.values.length;
+    var plotW = W - padL - 16, plotH = H - padT - padB;
+    var color = cfg.color || accent();
+    var f = coerceFormat(cfg.format);
+    for (var g = 0; g <= 4; g++) {
+      var gy = padT + plotH - (plotH * g) / 4;
+      svg.appendChild(svgEl("line", { x1: padL, y1: gy, x2: W - 16, y2: gy, stroke: "currentColor", "stroke-opacity": 0.08 }));
+      var lbl = svgEl("text", { x: padL - 8, y: gy + 4, "text-anchor": "end", "font-size": 10, fill: mutedColor() });
+      lbl.textContent = axisFmt((max * g) / 4);
+      svg.appendChild(lbl);
+    }
+    var pts = cfg.values.map(function (v, i) {
+      var x = padL + (n === 1 ? plotW / 2 : (plotW * i) / (n - 1));
+      var y = padT + plotH - (v / max) * plotH;
+      return [x, y];
+    });
+    var d = pts.map(function (p, i) { return (i ? "L" : "M") + p[0].toFixed(1) + " " + p[1].toFixed(1); }).join(" ");
+    svg.appendChild(svgEl("path", { d: d, fill: "none", stroke: color, "stroke-width": 2, "stroke-linejoin": "round" }));
+    pts.forEach(function (p, i) {
+      var c = svgEl("circle", { cx: p[0], cy: p[1], r: 3.5, fill: color });
+      var t = svgEl("title", {});
+      t.textContent = cfg.labels[i] + ": " + f(cfg.values[i]);
+      c.appendChild(t);
+      svg.appendChild(c);
+      var tx = svgEl("text", { x: p[0], y: H - 10, "text-anchor": "middle", "font-size": 11, fill: mutedColor() });
+      tx.textContent = cfg.labels[i];
+      svg.appendChild(tx);
+    });
+  }
+
+  // donut(el, {labels:[], values:[], colors?}) — donut with center total.
+  function donut(el, cfg) {
+    var W = 320, H = 280, cx = W / 2, cy = H / 2, R = 92, r = 58;
+    var svg = frame(el, W, H);
+    var total = cfg.values.reduce(function (a, b) { return a + b; }, 0) || 1;
+    var palette = cfg.colors || [accent(), "#1baf7a", "#eda100", "#e34948", "#4a3aa7", "#e87ba4"];
+    var a0 = -Math.PI / 2;
+    cfg.values.forEach(function (v, i) {
+      var a1 = a0 + (v / total) * Math.PI * 2;
+      var large = a1 - a0 > Math.PI ? 1 : 0;
+      var p = ["M", cx + R * Math.cos(a0), cy + R * Math.sin(a0),
+        "A", R, R, 0, large, 1, cx + R * Math.cos(a1), cy + R * Math.sin(a1),
+        "L", cx + r * Math.cos(a1), cy + r * Math.sin(a1),
+        "A", r, r, 0, large, 0, cx + r * Math.cos(a0), cy + r * Math.sin(a0), "Z"].join(" ");
+      var path = svgEl("path", { d: p, fill: palette[i % palette.length] });
+      var t = svgEl("title", {});
+      t.textContent = cfg.labels[i] + ": " + fmt.num(v) + " (" + fmt.pct(v / total) + ")";
+      path.appendChild(t);
+      svg.appendChild(path);
+      a0 = a1;
+    });
+    var center = svgEl("text", { x: cx, y: cy + 5, "text-anchor": "middle", "font-size": 20, "font-weight": 650, fill: "currentColor" });
+    center.textContent = fmt.num(total);
+    svg.appendChild(center);
+  }
+
+  window.skipShell = { fmt: fmt };
+  window.skipChart = { bar: bar, line: line, donut: donut };
+})();
+
+</script>
+</body>
+</html>
