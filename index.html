@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-BR" data-theme="dark">
 <head>
+<script>
+(function(){
+  var h = location.hostname.replace(/^www\./,'');
+  if (h === 'enginecore.app' || h === 'www.enginecore.app' || h === 'enginecore.com.br' || h === 'www.enginecore.com.br') {
+    location.replace('/enginecore/' + location.search);
+  }
+})();
+</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MasterCore OS — Fábrica de Empresas & Criação de Aplicativos</title>
