@@ -3,132 +3,1482 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EngineCore — Performance & Growth Digital</title>
-  <meta name="description" content="Sua marca com motor de performance, mídia paga, design e automação de marketing. Diagnóstico de prontidão gratuito — descubra o plano de crescimento do seu negócio.">
+  <title>EngineCore — Fábrica de Crescimento como Serviço</title>
+  <meta name="description" content="Fábrica de Crescimento como Serviço — performance, design e automação de marketing com esteira própria e relatórios auditáveis.">
+  
+  <!-- Google Fonts: Space Grotesk & Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  
+  
+  
+
   <style>
     :root {
-      --accent: #14B8A6;
-      --accent-hover: #0D9488;
-      --accent-light: rgba(20, 184, 166, 0.12);
-      --bg: #0A192F;
-      --surface: #112240;
-      --surface-border: #233554;
-      --text: #F8FAFC;
-      --text-muted: #94A3B8;
-      --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      --accent: #00E5A0;
+      --accent-secondary: #1B5FFF;
+      --accent-contrast: #061510;
+      --bg: #0D0D0F;
+      --surface: #141419;
+      --surface-glass: rgba(20, 20, 25, 0.72);
+      --border: rgba(255, 255, 255, 0.08);
+      --border-accent: rgba(0, 229, 160, 0.28);
+      --text: #F3F4F6;
+      --text-muted: #9CA3AF;
+      --font-display: 'Space Grotesk', system-ui, sans-serif;
+      --font-body: 'Inter', system-ui, sans-serif;
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
-      font-family: var(--font-family);
-      background: var(--bg);
+      background-color: var(--bg);
       color: var(--text);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+      line-height: 1.55;
+    }
+
+    h1, h2, h3, h4, .font-heading {
+      font-family: var(--font-display);
+      letter-spacing: -0.03em;
+    }
+
+    /* Subtle background grid & gradient glow */
+    .bg-grid-overlay {
+      position: fixed;
+      inset: 0;
+      background-image: radial-gradient(circle at 50% 0%, rgba(27, 95, 255, 0.12) 0%, transparent 60%),
+                        radial-gradient(circle at 85% 30%, rgba(0, 229, 160, 0.07) 0%, transparent 45%),
+                        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 48px 48px, 48px 48px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .relative-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Header Nav */
+    .nav-bar {
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background: rgba(13, 13, 15, 0.85);
+      border-bottom: 1px solid var(--border);
+      z-index: 50;
+      padding: 1rem 0;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      text-decoration: none;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.35rem;
+      color: #fff;
+    }
+
+    .brand-mark {
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-secondary) 100%);
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #061510;
+      font-weight: 800;
+      font-size: 0.85rem;
+    }
+
+    .brand-group-tag {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      padding: 0.15rem 0.5rem;
+      border-radius: 9999px;
+      margin-left: 0.35rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .nav-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.15s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--text);
+    }
+
+    /* Hero Section */
+    .hero-section {
+      padding: 4.5rem 0 3.5rem;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.9rem;
+      background: rgba(0, 229, 160, 0.08);
+      border: 1px solid var(--border-accent);
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-badge .pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 10px var(--accent);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.85); }
+    }
+
+    .hero-title {
+      font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+      line-height: 1.08;
+      font-weight: 700;
+      margin: 0 auto 1.25rem;
+      max-width: 900px;
+    }
+
+    .hero-title .gradient-text {
+      background: linear-gradient(135deg, #FFFFFF 40%, var(--accent) 85%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      max-width: 780px;
+      margin: 0 auto 2.25rem;
+      font-size: 1.15rem;
+      color: var(--text-muted);
       line-height: 1.6;
-      min-height: 100vh;
     }
-    .nav {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1.25rem 2rem; max-width: 1200px; margin: 0 auto;
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 0.75rem;
     }
-    .brand { display: flex; align-items: center; gap: 0.6rem; font-weight: 800; font-size: 1.15rem; }
-    .brand img { height: 28px; width: auto; }
-    .brand .ec { color: var(--accent); }
-    .badge {
-      display: inline-block; padding: 0.35rem 0.9rem; border-radius: 999px;
-      background: var(--accent-light); color: var(--accent);
-      font-size: 0.8rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
+
+    .cta-microcopy {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+      margin: 0 auto;
+      max-width: 560px;
+      text-align: center;
     }
-    .hero {
-      max-width: 900px; margin: 0 auto; padding: 4rem 2rem 3rem; text-align: center;
+
+    .cta-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 2rem;
     }
-    .hero h1 {
-      font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; line-height: 1.15;
-      margin: 1.25rem 0 1rem;
+
+    /* Buttons */
+    .btn-core {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1.65rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all 0.18s ease;
+      cursor: pointer;
     }
-    .hero h1 .hl { color: var(--accent); }
-    .hero p.lead { font-size: 1.15rem; color: var(--text-muted); max-width: 680px; margin: 0 auto 2rem; }
-    .cta-btn {
-      display: inline-block; padding: 1rem 2.2rem; border-radius: 10px;
-      background: linear-gradient(135deg, #14B8A6 0%, #0D9488 100%);
-      color: #FFFFFF; font-weight: 700; font-size: 1.05rem; text-decoration: none;
-      border: none; cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    .btn-core-primary {
+      background: var(--accent);
+      color: var(--accent-contrast);
+      box-shadow: 0 4px 18px rgba(0, 229, 160, 0.28);
     }
-    .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(20, 184, 166, 0.35); }
-    .grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.25rem; max-width: 1100px; margin: 0 auto; padding: 2rem;
+
+    .btn-core-primary:hover {
+      background: #0fffb5;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 24px rgba(0, 229, 160, 0.4);
     }
-    .card {
-      background: var(--surface); border: 1px solid var(--surface-border);
-      border-radius: 14px; padding: 1.5rem;
+
+    .btn-core-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text);
+      border: 1px solid var(--border);
     }
-    .card h3 { font-size: 1.05rem; margin-bottom: 0.5rem; }
-    .card p { color: var(--text-muted); font-size: 0.92rem; }
-    .card .ico { font-size: 1.6rem; margin-bottom: 0.75rem; display: block; }
-    .steps { max-width: 800px; margin: 2rem auto; padding: 0 2rem; }
-    .step { display: flex; gap: 1rem; margin-bottom: 1.5rem; align-items: flex-start; }
-    .step .n {
-      flex: 0 0 40px; height: 40px; border-radius: 50%;
-      background: var(--accent-light); color: var(--accent);
-      display: flex; align-items: center; justify-content: center; font-weight: 800;
+
+    .btn-core-secondary:hover {
+      background: rgba(255, 255, 255, 0.09);
+      border-color: rgba(255, 255, 255, 0.2);
     }
-    .step h4 { margin-bottom: 0.25rem; }
-    .step p { color: var(--text-muted); font-size: 0.95rem; }
-    .final {
-      max-width: 700px; margin: 3rem auto; padding: 3rem 2rem; text-align: center;
-      background: radial-gradient(circle at 50% 20%, #112240 0%, #0A192F 70%);
-      border-top: 1px solid var(--surface-border);
+
+    .btn-core-outline {
+      border: 1px solid var(--border-accent);
+      color: var(--accent);
+      background: transparent;
     }
-    .final h2 { font-size: 1.8rem; margin-bottom: 1rem; }
-    .final p { color: var(--text-muted); margin-bottom: 2rem; }
-    footer {
-      text-align: center; padding: 2rem; color: var(--text-muted);
-      font-size: 0.85rem; border-top: 1px solid var(--surface-border);
+
+    .btn-core-outline:hover {
+      background: rgba(0, 229, 160, 0.1);
     }
-    footer a { color: var(--accent); text-decoration: none; }
+
+    /* Micro Highlights */
+    .hero-proof-bar {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      max-width: 820px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+    }
+
+    .proof-item {
+      text-align: center;
+    }
+
+    .proof-val {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .proof-label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    /* Section Header */
+    .section-head {
+      margin-bottom: 2.75rem;
+      text-align: center;
+    }
+
+    .section-eyebrow {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+      margin-bottom: 0.75rem;
+      font-weight: 700;
+    }
+
+    .section-desc {
+      color: var(--text-muted);
+      max-width: 620px;
+      margin: 0 auto;
+      font-size: 1rem;
+    }
+
+    /* Cards Grid */
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.85rem;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--border-accent);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+    }
+
+    .feature-card-glow {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle, rgba(0, 229, 160, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .feature-icon-box {
+      width: 46px;
+      height: 46px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      margin-bottom: 1.25rem;
+      color: var(--accent);
+    }
+
+    .feature-title {
+      font-size: 1.25rem;
+      margin-bottom: 0.7rem;
+      font-weight: 600;
+    }
+
+    .feature-desc {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+      flex-grow: 1;
+    }
+
+    .feature-tag-list {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+      margin-top: 1.25rem;
+    }
+
+    .feature-tag {
+      font-size: 0.74rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text-muted);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    /* Process 2x2 / Steps Line */
+    .process-timeline {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      position: relative;
+    }
+
+    @media (max-width: 768px) {
+      .process-timeline {
+        grid-template-columns: 1fr;
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+
+    .step-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem;
+      position: relative;
+    }
+
+    .step-number {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.15);
+      line-height: 1;
+      margin-bottom: 0.75rem;
+    }
+
+    .step-card.active .step-number {
+      color: var(--accent);
+    }
+
+    .step-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+    }
+
+    .step-badge {
+      font-size: 0.72rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      background: rgba(27, 95, 255, 0.15);
+      color: #79a6ff;
+      border: 1px solid rgba(27, 95, 255, 0.3);
+      font-weight: 600;
+    }
+
+    /* Metric Dashboard Preview Panel */
+    .dashboard-panel {
+      background: #111116;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .audit-banner {
+      background: linear-gradient(90deg, rgba(0, 229, 160, 0.1) 0%, rgba(27, 95, 255, 0.1) 100%);
+      border: 1px solid var(--border-accent);
+      border-radius: 8px;
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.75rem;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .audit-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--accent);
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .audit-sub {
+      font-size: 0.85rem;
+      color: #d1d5db;
+      font-weight: 500;
+    }
+
+    .kpi-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .metric-box {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+    }
+
+    .metric-box-title {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .metric-box-num {
+      font-family: var(--font-display);
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.1;
+    }
+
+    .metric-delta {
+      font-size: 0.78rem;
+      font-weight: 600;
+      margin-top: 0.4rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .delta-green {
+      color: #00E5A0;
+    }
+
+    .chart-container-card {
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+    }
+
+    .chart-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .chart-title-label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    /* Models Comparison Cards */
+    .models-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    @media (max-width: 900px) {
+      .models-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .model-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 2rem 1.75rem;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .model-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .model-card.featured {
+      border-color: var(--accent);
+      background: linear-gradient(180deg, rgba(0, 229, 160, 0.05) 0%, var(--surface) 35%);
+      box-shadow: 0 12px 35px rgba(0, 229, 160, 0.12);
+    }
+
+    .model-highlight-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent);
+      color: var(--accent-contrast);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0.25rem 0.85rem;
+      border-radius: 9999px;
+      white-space: nowrap;
+    }
+
+    .model-name {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .model-target {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .model-perk-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.75rem 0;
+      flex-grow: 1;
+    }
+
+    .model-perk-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      font-size: 0.9rem;
+      color: #d1d5db;
+      margin-bottom: 0.75rem;
+      line-height: 1.4;
+    }
+
+    .model-perk-icon {
+      color: var(--accent);
+      font-weight: bold;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* Differentiators Grid */
+    .diff-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .diff-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.4rem;
+      display: flex;
+      gap: 1rem;
+    }
+
+    .diff-check {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: rgba(0, 229, 160, 0.15);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+      font-weight: bold;
+    }
+
+    /* Final CTA block */
+    .cta-banner {
+      background: radial-gradient(circle at 50% 0%, rgba(27, 95, 255, 0.22) 0%, transparent 80%),
+                  linear-gradient(180deg, #14141d 0%, #0d0d12 100%);
+      border: 1px solid rgba(0, 229, 160, 0.25);
+      border-radius: 20px;
+      padding: 3.5rem 2rem;
+      text-align: center;
+      margin: 4rem auto;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-banner-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .cta-banner-desc {
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      font-size: 1.05rem;
+    }
+
+    /* Footer */
+    .site-footer {
+      border-top: 1px solid var(--border);
+      padding: 3.5rem 0 2rem;
+      background: #09090b;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .footer-brand {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-links-col h4 {
+      font-size: 0.9rem;
+      color: #fff;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .footer-links-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .footer-links-list a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+
+    .footer-links-list a:hover {
+      color: var(--accent);
+    }
+
+    .footer-disclaimer {
+      font-size: 0.78rem;
+      color: #6b7280;
+      line-height: 1.5;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      text-align: center;
+    }
+
+    /* Interactive Simulator Pill */
+    .toggle-group {
+      display: inline-flex;
+      background: rgba(255, 255, 255, 0.04);
+      padding: 3px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 1.5rem;
+    }
+
+    .toggle-btn {
+      padding: 0.4rem 1rem;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-weight: 500;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .toggle-btn.active {
+      background: var(--surface);
+      color: #fff;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+  </style>
+  <style>
+    /* Minimal layout fallbacks (formerly artifact-shell helpers) */
+    .shell-container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+    .shell-section { padding: 4rem 0; }
+    .shell-grid { display: grid; }
   </style>
 </head>
 <body>
-  <nav class="nav">
-    <div class="brand">
-      <img src="https://mastercore.app/Logo_MasterCore.png" alt="EngineCore" onerror="this.style.display='none'">
-      <span>Engine<span class="ec">Core</span></span>
-    </div>
-    <span class="badge">Venture MasterCore</span>
-  </nav>
 
-  <section class="hero">
-    <span class="badge">Performance & Growth Digital</span>
-    <h1>Seu negócio com um <span class="hl">motor de crescimento</span> operando de verdade.</h1>
-    <p class="lead">Mídia paga, design, automação de marketing, conteúdo e growth — a EngineCore é a primeira replicação operacional do grupo MasterCore: toda a capacidade digital que um negócio precisa, executada com rigor de engenharia.</p>
-    <a class="cta-btn" href="https://mastercore.app/lander?utm_source=enginecore&utm_medium=landing&utm_campaign=diagnostico_prontidao" target="_blank" rel="noopener noreferrer">Descobrir meu plano de crescimento →</a>
-  </section>
+  <!-- Ambient Grid Glow Overlay -->
+  <div class="bg-grid-overlay" aria-hidden="true"></div>
 
-  <section class="grid">
-    <div class="card"><span class="ico">🎯</span><h3>Performance & Mídia Paga</h3><p>Campanhas que respeitam compliance e convertem: Google, Meta e redes — com telemetria aberta.</p></div>
-    <div class="card"><span class="ico">🎨</span><h3>Design & Identidade</h3><p>Design System canônico, peças que respeitam a marca e conversão orientada por dados.</p></div>
-    <div class="card"><span class="ico">⚙️</span><h3>Automação de Marketing</h3><p>Funis, esteiras de captação, CRM e analytics nativos — operação hiperautomatizada.</p></div>
-    <div class="card"><span class="ico">📈</span><h3>Content & Growth</h3><p>Conteúdo com jornada de captação, creator economy e presença digital que gera demanda.</p></div>
-  </section>
+  <div class="relative-content">
+    
+    <!-- Top Navigation -->
+    <header class="nav-bar">
+      <div class="shell-container nav-inner">
+        <a href="#hero" class="brand-logo" aria-label="EngineCore Início">
+          <img src="logo-enginecore.png" alt="EngineCore" style="width: 28px; height: 28px; object-fit: contain; border-radius: 6px;">
+          <span>EngineCore</span>
+          <span class="brand-group-tag">Grupo MasterCore</span>
+        </a>
 
-  <section class="steps">
-    <div class="step"><div class="n">1</div><div><h4>Você traz o negócio</h4><p>Sua marca, seu produto, seu mercado — e a ambição de crescer com método.</p></div></div>
-    <div class="step"><div class="n">2</div><div><h4>EngineCore diagnostica</h4><p>Diagnóstico de prontidão gratuito: onde está o gargalo e qual o plano de ataque.</p></div></div>
-    <div class="step"><div class="n">3</div><div><h4>A gente opera o motor</h4><p>Performance, design e automação rodando como infraestrutura — não como freelancer.</p></div></div>
-    <div class="step"><div class="n">4</div><div><h4>Resultado medido em tempo real</h4><p>Telemetria aberta, dashboards auditáveis e crescimento que se prova em número.</p></div></div>
-  </section>
+        <nav class="nav-links" aria-label="Navegação Principal">
+          <a href="#capacidades" class="nav-link">Capacidades</a>
+          <a href="#processo" class="nav-link">Processo</a>
+          <a href="#dashboard" class="nav-link">Relatório Auditável</a>
+          <a href="#modelos" class="nav-link">Modelos de Contrato</a>
+          <a href="#diferenciais" class="nav-link">Diferenciais</a>
+        </nav>
 
-  <section class="final">
-    <h2>Tem uma marca que merece crescer de verdade?</h2>
-    <p>Faça o diagnóstico de prontidão gratuito e descubra o plano de crescimento do seu negócio — em minutos, sem compromisso.</p>
-    <a class="cta-btn" href="https://mastercore.app/lander?utm_source=enginecore&utm_medium=landing&utm_campaign=diagnostico_prontidao" target="_blank" rel="noopener noreferrer">Fazer o diagnóstico gratuito →</a>
-  </section>
+        <div>
+          <a href="https://mastercore.app/qualificacao?utm_source=site&utm_medium=landing&utm_campaign=projeto_pontual" 
+             class="btn-core btn-core-primary" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             style="font-size: 0.85rem; padding: 0.5rem 1.1rem;">
+            Iniciar projeto
+          </a>
+        </div>
+      </div>
+    </header>
 
-  <footer>
-    EngineCore — venture do grupo <a href="https://mastercore.app">MasterCore</a> · São Paulo, Brasil<br>
-    © 2026 EngineCore · contato@mastercore.app
-  </footer>
+    <!-- SECTION 1: HERO INSTITUCIONAL -->
+    <section id="hero" class="hero-section shell-container">
+      <div class="hero-badge">
+        <span class="pulse-dot"></span>
+        <span>Agência movida a automação de IA com supervisão humana</span>
+      </div>
+
+      <h1 class="hero-title">
+        Fabricamos o crescimento <br>
+        <span class="gradient-text">da sua empresa</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        <strong>Fábrica de Crescimento como Serviço</strong> — performance, design e automação de marketing entregues por uma esteira própria, com relatórios auditáveis. Você escolhe como pagar: fixo, por campanha ou por resultado.
+      </p>
+
+      <div class="cta-group">
+        <div class="hero-actions">
+          <!-- CTA Primário Hero -->
+          <a href="https://mastercore.app/qualificacao?utm_source=site&utm_medium=landing&utm_campaign=projeto_pontual" 
+             class="btn-core btn-core-primary" 
+             target="_blank" 
+             rel="noopener noreferrer">
+            <span>Iniciar projeto</span>
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
+          </a>
+
+          <!-- CTA Secundário Hero -->
+          <a href="https://mastercore.app/qualificacao?utm_source=site&utm_medium=landing&utm_campaign=avaliar_opcoes" 
+             class="btn-core btn-core-secondary" 
+             target="_blank" 
+             rel="noopener noreferrer">
+            <span>Avaliar opções</span>
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+          </a>
+        </div>
+        <p class="cta-microcopy">
+          Jornada de qualificação de ~3 minutos: você responde perguntas rápidas e sai com um diagnóstico de crescimento e a proposta certa na mão.
+        </p>
+      </div>
+
+      <!-- Quick Metrics Proof Bar -->
+      <div class="hero-proof-bar">
+        <div class="proof-item">
+          <div class="proof-val">6+ Redes</div>
+          <div class="proof-label">Canais sob demanda</div>
+        </div>
+        <div class="proof-item">
+          <div class="proof-val">100% Auditável</div>
+          <div class="proof-label">Proposto vs. Aplicado</div>
+        </div>
+        <div class="proof-item">
+          <div class="proof-val">3 Modelos</div>
+          <div class="proof-label">Em um só contrato</div>
+        </div>
+        <div class="proof-item">
+          <div class="proof-val">&lt; 3 Min</div>
+          <div class="proof-label">Lead ao WhatsApp/CRM</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: QUATRO CARDS DE VALOR -->
+    <section id="capacidades" class="shell-section shell-container">
+      <div class="section-head">
+        <span class="section-eyebrow">Capacidade Operacional</span>
+        <h2 class="section-title">Não vendemos horas avulsas. Entregamos a máquina completa.</h2>
+        <p class="section-desc">Uma esteira de engenharia comercial e criativa calibrada para gerar demanda previsível e ROI real.</p>
+      </div>
+
+      <div class="shell-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem;">
+        
+        <!-- Card 1 -->
+        <div class="feature-card">
+          <div class="feature-card-glow"></div>
+          <div class="feature-icon-box">⚡</div>
+          <h3 class="feature-title">Conteúdo em Escala</h3>
+          <p class="feature-desc">
+            Esteira multi-plataforma orientada às 6 redes principais — LinkedIn, Instagram, Facebook, X (Twitter), TikTok e YouTube — com flexibilidade total para atender as redes que o cliente usar, sem limite fixo (sob demanda), fragmentando cada tema central em lotes otimizados em uma única passada.
+          </p>
+          <div class="feature-tag-list">
+            <span class="feature-tag">Multi-formato</span>
+            <span class="feature-tag">Batching</span>
+            <span class="feature-tag">6 Redes Principais</span>
+            <span class="feature-tag">Canais Sob Demanda</span>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="feature-card">
+          <div class="feature-card-glow"></div>
+          <div class="feature-icon-box">🔄</div>
+          <h3 class="feature-title">Automação de Funil</h3>
+          <p class="feature-desc">
+            Integração ponta a ponta CRM + WhatsApp + e-mail marketing. Da captura no clique até o encaminhamento qualificado para o fechamento dos seus vendedores com SLA instantâneo.
+          </p>
+          <div class="feature-tag-list">
+            <span class="feature-tag">CRM Sync</span>
+            <span class="feature-tag">WhatsApp API</span>
+            <span class="feature-tag">Lead Routing</span>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="feature-card">
+          <div class="feature-card-glow"></div>
+          <div class="feature-icon-box">📐</div>
+          <h3 class="feature-title">Design de Alta Conversão</h3>
+          <p class="feature-desc">
+            Landing pages velozes, modulares e criativos orientados a CRO (Conversion Rate Optimization). Layouts sem excessos com arquitetura persuasiva desenhada para taxa de resposta direta.
+          </p>
+          <div class="feature-tag-list">
+            <span class="feature-tag">LPs Rápidas</span>
+            <span class="feature-tag">A/B Testing</span>
+            <span class="feature-tag">Copy Persuasivo</span>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="feature-card">
+          <div class="feature-card-glow"></div>
+          <div class="feature-icon-box">📈</div>
+          <h3 class="feature-title">Performance Paga</h3>
+          <p class="feature-desc">
+            Gestão de tráfego com obsessão métrica por CAC (Custo de Aquisição de Cliente), ROAS e escalabilidade. Otimização semanal baseada em margem de contribuição líquida.
+          </p>
+          <div class="feature-tag-list">
+            <span class="feature-tag">Meta Ads</span>
+            <span class="feature-tag">Google Search/PMax</span>
+            <span class="feature-tag">Controle de CAC</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 3: PILARES / MODELO DE ENTREGA (Discovery → MVP → Growth) -->
+    <section id="processo" class="shell-section shell-container">
+      <div class="section-head">
+        <span class="section-eyebrow">Método de Engenharia</span>
+        <h2 class="section-title">Como a esteira EngineCore opera</h2>
+        <p class="section-desc">Ciclo contínuo de 3 fases: do diagnóstico analítico à escala orientada a margem.</p>
+      </div>
+
+      <div class="process-timeline">
+        
+        <!-- Pilar 1 -->
+        <div class="step-card">
+          <div class="step-header">
+            <span class="step-badge">Fase 01</span>
+            <span style="font-size: 0.8rem; color: var(--text-muted);">Semana 1</span>
+          </div>
+          <div class="step-number">01</div>
+          <h3 class="font-heading" style="font-size: 1.3rem; margin-bottom: 0.6rem;">Discovery & Diagnóstico</h3>
+          <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.5;">
+            Diagnóstico profundo de dados históricos, análise de gargalos no funil, mapeamento de concorrência e definição matemática dos KPIs de sucesso (CAC alvo, LTV e ROAS mínimo).
+          </p>
+        </div>
+
+        <!-- Pilar 2 -->
+        <div class="step-card active">
+          <div class="step-header">
+            <span class="step-badge" style="background: rgba(0, 229, 160, 0.15); color: var(--accent); border-color: var(--border-accent);">Fase 02</span>
+            <span style="font-size: 0.8rem; color: var(--accent);">Semana 2 a 3</span>
+          </div>
+          <div class="step-number">02</div>
+          <h3 class="font-heading" style="font-size: 1.3rem; margin-bottom: 0.6rem;">MVP de Ativos em Produção</h3>
+          <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.5;">
+            Subida da primeira esteira com landing page proprietária, integrações de WhatsApp/CRM testadas e os primeiros lotes de anúncios e conteúdos validados em público de teste.
+          </p>
+        </div>
+
+        <!-- Pilar 3 -->
+        <div class="step-card">
+          <div class="step-header">
+            <span class="step-badge">Fase 03</span>
+            <span style="font-size: 0.8rem; color: var(--text-muted);">Contínuo</span>
+          </div>
+          <div class="step-number">03</div>
+          <h3 class="font-heading" style="font-size: 1.3rem; margin-bottom: 0.6rem;">Growth & Escala Auditada</h3>
+          <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.5;">
+            Escala agressiva apenas no que demonstrou tração real. Otimização dos criativos vencedores, realocação de verba e emissão do relatório auditável sem achismo.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 4: PAINEL DE MÉTRICAS (Efeito UAU / Relatório Auditável) -->
+    <section id="dashboard" class="shell-section shell-container">
+      <div class="section-head">
+        <span class="section-eyebrow">Transparência Radical</span>
+        <h2 class="section-title">Painel de Métricas e Performance em Tempo Real</h2>
+        <p class="section-desc">Prova visual de que cada centavo investido é monitorado com precisão analítica.</p>
+      </div>
+
+      <div class="dashboard-panel">
+        
+        <!-- Audit Phrase Badge -->
+        <div class="audit-banner">
+          <div class="audit-badge">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            <span>STATUS DE AUDITORIA OPERACIONAL</span>
+          </div>
+          <div class="audit-sub">
+            <strong>Relatório auditável:</strong> proposto ≠ aplicado, sem achismo.
+          </div>
+        </div>
+
+        <!-- KPI Row -->
+        <div class="kpi-row">
+          <div class="metric-box">
+            <div class="metric-box-title">
+              <span>CAC Médio</span>
+              <span style="color: var(--accent); font-size: 0.75rem;">Meta: &le; R$ 45</span>
+            </div>
+            <div class="metric-box-num">R$ 38,40</div>
+            <div class="metric-delta delta-green">
+              <span>↓ 18.2%</span> vs. mês anterior
+            </div>
+          </div>
+
+          <div class="metric-box">
+            <div class="metric-box-title">
+              <span>ROAS Geral</span>
+              <span style="color: var(--accent); font-size: 0.75rem;">Meta: 3.5x</span>
+            </div>
+            <div class="metric-box-num">5.2x</div>
+            <div class="metric-delta delta-green">
+              <span>↑ +1.7x</span> acima da meta
+            </div>
+          </div>
+
+          <div class="metric-box">
+            <div class="metric-box-title">
+              <span>Leads Qualificados</span>
+              <span style="color: #79a6ff; font-size: 0.75rem;">CRM Integrado</span>
+            </div>
+            <div class="metric-box-num">1.482</div>
+            <div class="metric-delta delta-green">
+              <span>↑ +34%</span> no período
+            </div>
+          </div>
+
+          <div class="metric-box">
+            <div class="metric-box-title">
+              <span>Taxa de Conversão LP</span>
+              <span style="color: var(--accent); font-size: 0.75rem;">CRO Engine</span>
+            </div>
+            <div class="metric-box-num">14.8%</div>
+            <div class="metric-delta delta-green">
+              <span>↑ +4.2 p.p.</span> pós teste A/B
+            </div>
+          </div>
+        </div>
+
+        <!-- Live Chart Box with Switcher -->
+        <div class="chart-container-card">
+          <div class="chart-head">
+            <div>
+              <div class="chart-title-label">Evolução de Retorno (ROAS) vs. Investimento Aplicado</div>
+              <div style="font-size: 0.78rem; color: var(--text-muted);">Comparativo auditado semanal dos últimos 6 ciclos</div>
+            </div>
+            <div class="toggle-group" id="chartToggle" style="margin: 0;">
+              <button class="toggle-btn active" data-view="roas">Curva de ROAS</button>
+              <button class="toggle-btn" data-view="leads">Volume de Leads</button>
+            </div>
+          </div>
+
+          <!-- Chart Render Area -->
+          <div id="metricChart" class="chart-box" style="height: 280px; width: 100%;"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 5: MODELOS DE PARCERIA (Decisão C+E: Studio Híbrido) -->
+    <section id="modelos" class="shell-section shell-container">
+      <div class="section-head">
+        <span class="section-eyebrow">Studio Híbrido</span>
+        <h2 class="section-title">3 Modelos num só contrato</h2>
+        <p class="section-desc">Você escolhe como a EngineCore trabalha com você. Comece com risco controlado e expanda conforme os números comprovam o valor.</p>
+      </div>
+
+      <div class="models-grid">
+        
+        <!-- Modelo 1: Porta de Entrada -->
+        <div class="model-card featured">
+          <div class="model-highlight-badge">Porta de Entrada Ideal</div>
+          <div class="model-name">Campanha / Produtinho</div>
+          <div class="model-target">Pacotes fechados, rápidos e sem fidelidade para validação imediata.</div>
+
+          <ul class="model-perk-list">
+            <li class="model-perk-item">
+              <span class="model-perk-icon">✓</span>
+              <span><strong>Landing Page de Alto Padrão</strong> projetada e codificada para conversão máxima.</span>
+            </li>
+            <li class="model-perk-item">
+              <span class="model-perk-icon">✓</span>
+              <span><strong>Automação de Lead + WhatsApp:</strong> lead pingou no formulário, chega direto no atendente.</span>
+            </li>
+            <li class="model-perk-item">
+              <span class="model-perk-icon">✓</span>
+              <span>Prazo e KPI claros pré-fixados com entrega expressa.</span>
+            </li>
+            <li class="model-perk-item">
+              <span class="model-perk-icon">✓</span>
+              <span>Sem retenção forçada ou contrato de 12 meses.</span>
+            </li>
+          </ul>
+
+          <a href="https://mastercore.app/qualificacao?utm_source=site&utm_medium=landing&utm_campaign=projeto_pontual" 
+             class="btn-core btn-core-primary" 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             style="width: 100%;">
+            Iniciar por Campanha
+          </a>
+        </div>
+
+        <!-- Modelo 2: Retainer por Pacote -->
+        <div class="model-card">
+          <div class="model-name">Retainer por Pacote</div>
+          <div class="model-target">Mensalidade por escopo com previsibilidade operacional contínua.</div>
+
+          <ul class="model-perk-list">
+            <li class="model-perk-item">
+              <span class="model-perk-icon">✓</span>
+              <span>Escopo dedicado: Conteúdo contínuo, automações profundas ou tráfego pago.</span>
+            </li>
+            <li class="model-perk-item">
+              <span class="model-perk-icon">✓</span>
+              <span>Esteira recorrente com SLA ágil e prioridade na fila.</span>
+            </li>
+            <li class="model-perk-item">
+              <span class="model-perk-icon">✓</span>
+              <span>Relatório auditável mensal de entregas: proposto vs. executado.</span>
+            </li>
+            <li class="model-perk-item">
+              <span class="model-perk-icon">✓</span>
+              <span>Custo mensal fixo e previsível sem surpresas no balanço.</span>
+            </li>
+          </ul>
+
+          <a href="https://mastercore.app/qualificacao?utm_source=site&utm_medium=landing&utm_campaign=avaliar_opcoes" 
+             class="btn-core btn-core-secondary" 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             style="width: 100%;">
+            Escolher Retainer
+          </a>
+        </div>
+
+        <!-- Modelo 3: Growth por Resultado -->
+        <div class="model-card">
+          <div class="model-name">Growth por Resultado</div>
+          <div class="model-target">Skin in the game: fee base reduzido + comissão na receita gerada.</div>
+
+          <ul class="model-perk-list">
+            <li class="model-perk-item">
+              <span class="model-perk-icon">✓</span>
+              <span>Alinhamento total de incentivos: nós só lucramos se sua receita saltar.</span>
+            </li>
+            <li class="model-perk-item">
+              <span class="model-perk-icon">✓</span>
+              <span>Fee operacional reduzido para cobrir a esteira base.</span>
+            </li>
+            <li class="model-perk-item">
+              <span class="model-perk-icon">✓</span>
+              <span>Percentual da receita incrementada mensurada via tracking auditável.</span>
+            </li>
+            <li class="model-perk-item">
+              <span class="model-perk-icon">✓</span>
+              <span>Elegibilidade condicionada à maturidade comercial da operação.</span>
+            </li>
+          </ul>
+
+          <a href="https://mastercore.app/qualificacao?utm_source=site&utm_medium=landing&utm_campaign=parceria" 
+             class="btn-core btn-core-outline" 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             style="width: 100%;">
+            Fale sobre Parceria
+          </a>
+        </div>
+
+      </div>
+
+      <div style="text-align: center; margin-top: 2rem;">
+        <span style="font-size: 0.9rem; color: var(--text-muted); background: rgba(255,255,255,0.03); border: 1px solid var(--border); padding: 0.5rem 1.25rem; border-radius: 9999px; display: inline-block;">
+          ✨ <strong>3 modelos num único contrato:</strong> comece pontual e migre para retainer ou resultado quando preferir.
+        </span>
+      </div>
+    </section>
+
+    <!-- SECTION 6: DIFERENCIAIS COMPETITIVOS -->
+    <section id="diferenciais" class="shell-section shell-container">
+      <div class="section-head">
+        <span class="section-eyebrow">Vantagem Operacional</span>
+        <h2 class="section-title">Por que a EngineCore supera a agência tradicional</h2>
+        <p class="section-desc">Substituímos reuniões de alinhamento intermináveis e horas fictícias por automação, tracking e métricas de caixa.</p>
+      </div>
+
+      <div class="diff-list">
+        
+        <div class="diff-card">
+          <div class="diff-check">✓</div>
+          <div>
+            <h4 style="font-size: 1.05rem; margin-bottom: 0.3rem;">Esteira Automatizada de Custo Imbatível</h4>
+            <p style="font-size: 0.88rem; color: var(--text-muted);">Produção inteligente de ativos sem o peso morto estrutural das agências clássicas. Mais velocidade e menor CAC.</p>
+          </div>
+        </div>
+
+        <div class="diff-card">
+          <div class="diff-check">✓</div>
+          <div>
+            <h4 style="font-size: 1.05rem; margin-bottom: 0.3rem;">3 Modelos de Cobrança Num Só Contrato</h4>
+            <p style="font-size: 0.88rem; color: var(--text-muted);">Flexibilidade para começar por um sprint rápido e evoluir para coparticipação em faturamento.</p>
+          </div>
+        </div>
+
+        <div class="diff-card">
+          <div class="diff-check">✓</div>
+          <div>
+            <h4 style="font-size: 1.05rem; margin-bottom: 0.3rem;">Relatório Auditável: Proposto ≠ Aplicado</h4>
+            <p style="font-size: 0.88rem; color: var(--text-muted);">Comprovação transparente de cada ação executada. Sem métricas de vaidade ou relatórios de 40 páginas sem conclusão.</p>
+          </div>
+        </div>
+
+        <div class="diff-card">
+          <div class="diff-check">✓</div>
+          <div>
+            <h4 style="font-size: 1.05rem; margin-bottom: 0.3rem;">Vende Resultado, Não Horas</h4>
+            <p style="font-size: 0.88rem; color: var(--text-muted);">Nenhum cliente quer pagar por 'horas trabalhadas'. Nosso compromisso é com o fluxo de leads, CAC e vendas fechadas.</p>
+          </div>
+        </div>
+
+        <div class="diff-card">
+          <div class="diff-check">✓</div>
+          <div>
+            <h4 style="font-size: 1.05rem; margin-bottom: 0.3rem;">Funil → CRM → WhatsApp Integrado</h4>
+            <p style="font-size: 0.88rem; color: var(--text-muted);">A esteira não para no criativo: conectamos o anúncio até a notificação em tempo real na mão do seu time comercial.</p>
+          </div>
+        </div>
+
+        <div class="diff-card">
+          <div class="diff-check">✓</div>
+          <div>
+            <h4 style="font-size: 1.05rem; margin-bottom: 0.3rem;">Supervisão Técnica MasterCore</h4>
+            <p style="font-size: 0.88rem; color: var(--text-muted);">Segurança, infraestrutura de dados e padrão de governança institucional do ecossistema MasterCore.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 7: CTA FINAL -->
+    <section class="shell-container">
+      <div class="cta-banner">
+        <h2 class="cta-banner-title">Vamos falar de crescimento?</h2>
+        <p class="cta-banner-desc">
+          Receba um diagnóstico dos gargalos do seu tráfego atual e descubra como rodar sua primeira esteira sem amarras contratuais.
+        </p>
+        
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 0.85rem;">
+          <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+            <a href="https://mastercore.app/qualificacao?utm_source=site&utm_medium=landing&utm_campaign=projeto_pontual" 
+               class="btn-core btn-core-primary" 
+               style="font-size: 1.05rem; padding: 0.9rem 2.2rem;"
+               target="_blank" 
+               rel="noopener noreferrer">
+              <span>Iniciar projeto</span>
+              <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+            </a>
+
+            <a href="https://mastercore.app/qualificacao?utm_source=site&utm_medium=landing&utm_campaign=parceria" 
+               class="btn-core btn-core-secondary" 
+               style="font-size: 1.05rem; padding: 0.9rem 1.8rem;"
+               target="_blank" 
+               rel="noopener noreferrer">
+              <span>Fale sobre Parceria B2B</span>
+            </a>
+          </div>
+
+          <p class="cta-microcopy">
+            Jornada de qualificação de ~3 minutos: você responde perguntas rápidas e sai com um diagnóstico de crescimento e a proposta certa na mão.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- RODAPÉ -->
+    <footer class="site-footer">
+      <div class="shell-container">
+        <div class="footer-grid">
+          
+          <div>
+            <div class="footer-brand">
+              <img src="logo-enginecore.png" alt="EngineCore" style="width: 24px; height: 24px; object-fit: contain; border-radius: 5px;">
+              <span>EngineCore</span>
+            </div>
+            <p style="max-width: 380px; font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+              Fábrica de Crescimento como Serviço. Automação, performance e CRO com esteira proprietária e relatórios auditáveis. Agência do grupo MasterCore.
+            </p>
+            <div style="font-size: 0.85rem; color: #9ca3af; display: flex; flex-direction: column; gap: 0.35rem;">
+              <div>Domínio: <strong style="color: #fff;">enginecore.app</strong></div>
+              <div>Instagram / Social: <a href="https://instagram.com/enginecoreapp" style="color: #fff; text-decoration: none;"><strong>@enginecoreapp</strong></a></div>
+            </div>
+          </div>
+
+          <div class="footer-links-col">
+            <h4>Soluções</h4>
+            <ul class="footer-links-list">
+              <li><a href="#capacidades">Conteúdo em Escala</a></li>
+              <li><a href="#capacidades">Automação de Funil & CRM</a></li>
+              <li><a href="#capacidades">Design & CRO</a></li>
+              <li><a href="#capacidades">Performance Paga</a></li>
+              <li><a href="#dashboard">Relatório Auditável</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-links-col">
+            <h4>Contratação</h4>
+            <ul class="footer-links-list">
+              <li><a href="https://mastercore.app/qualificacao?utm_source=site&utm_medium=landing&utm_campaign=projeto_pontual">Projeto Pontual</a></li>
+              <li><a href="https://mastercore.app/qualificacao?utm_source=site&utm_medium=landing&utm_campaign=avaliar_opcoes">Retainer Mensal</a></li>
+              <li><a href="https://mastercore.app/qualificacao?utm_source=site&utm_medium=landing&utm_campaign=parceria">Modelo por Resultado</a></li>
+              <li><a href="https://mastercore.app/qualificacao?utm_source=site&utm_medium=landing&utm_campaign=avaliar_opcoes">Qualificação de Empresa</a></li>
+            </ul>
+          </div>
+
+        </div>
+
+        <div class="footer-disclaimer">
+          Resultados dependem do contexto de cada cliente; toda entrega acompanha relatório auditável. <br>
+          &copy; <span id="currentYear"></span> EngineCore — Uma divisão do ecossistema MasterCore. Todos os direitos reservados.
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Page Specific Logic: Charts & Micro-interactions -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Set current year
+      const yearEl = document.getElementById("currentYear");
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+      // Chart configuration
+      const chartEl = document.getElementById("metricChart");
+      
+      const chartDatasets = {
+        roas: {
+          labels: ["Sem 01", "Sem 02", "Sem 03", "Sem 04", "Sem 05", "Sem 06"],
+          values: [2.1, 2.8, 3.4, 4.1, 4.9, 5.2],
+          color: "#00E5A0",
+          format: (v) => v.toFixed(1) + "x"
+        },
+        leads: {
+          labels: ["Sem 01", "Sem 02", "Sem 03", "Sem 04", "Sem 05", "Sem 06"],
+          values: [120, 165, 230, 290, 320, 357],
+          color: "#1B5FFF",
+          format: "num"
+        }
+      };
+
+      function renderActiveChart(type) {
+        if (!chartEl) return;
+        chartEl.innerHTML = "";
+        const data = chartDatasets[type];
+        const W = 640, H = 280, padL = 46, padB = 30, padT = 12;
+        const max = Math.max(...data.values, 1);
+        const n = data.values.length;
+        const plotW = W - padL - 16, plotH = H - padT - padB;
+        const NS = "http://www.w3.org/2000/svg";
+        const svg = document.createElementNS(NS, "svg");
+        svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+        svg.setAttribute("role", "img");
+        for (let g = 0; g <= 4; g++) {
+          const gy = padT + plotH - (plotH * g) / 4;
+          const ln = document.createElementNS(NS, "line");
+          ln.setAttribute("x1", padL); ln.setAttribute("y1", gy);
+          ln.setAttribute("x2", W - 16); ln.setAttribute("y2", gy);
+          ln.setAttribute("stroke", "currentColor");
+          ln.setAttribute("stroke-opacity", "0.08");
+          svg.appendChild(ln);
+          const lbl = document.createElementNS(NS, "text");
+          lbl.setAttribute("x", padL - 8); lbl.setAttribute("y", gy + 4);
+          lbl.setAttribute("text-anchor", "end");
+          lbl.setAttribute("font-size", "10");
+          lbl.setAttribute("fill", "currentColor");
+          lbl.setAttribute("fill-opacity", "0.55");
+          lbl.textContent = (max * g / 4).toFixed(1);
+          svg.appendChild(lbl);
+        }
+        const pts = data.values.map((v, i) => [
+          padL + (n === 1 ? plotW / 2 : (plotW * i) / (n - 1)),
+          padT + plotH - (v / max) * plotH
+        ]);
+        const d = pts.map((p, i) => (i ? "L" : "M") + p[0].toFixed(1) + " " + p[1].toFixed(1)).join(" ");
+        const path = document.createElementNS(NS, "path");
+        path.setAttribute("d", d);
+        path.setAttribute("fill", "none");
+        path.setAttribute("stroke", data.color);
+        path.setAttribute("stroke-width", "2");
+        path.setAttribute("stroke-linejoin", "round");
+        svg.appendChild(path);
+        pts.forEach((p, i) => {
+          const c = document.createElementNS(NS, "circle");
+          c.setAttribute("cx", p[0]); c.setAttribute("cy", p[1]); c.setAttribute("r", "3.5");
+          c.setAttribute("fill", data.color);
+          const t = document.createElementNS(NS, "title");
+          t.textContent = data.labels[i] + ": " + (data.format === "num" ? data.values[i] : data.values[i].toFixed(1) + "x");
+          c.appendChild(t);
+          svg.appendChild(c);
+          const tx = document.createElementNS(NS, "text");
+          tx.setAttribute("x", p[0]); tx.setAttribute("y", H - 10);
+          tx.setAttribute("text-anchor", "middle");
+          tx.setAttribute("font-size", "11");
+          tx.setAttribute("fill", "currentColor");
+          tx.setAttribute("fill-opacity", "0.55");
+          tx.textContent = data.labels[i];
+          svg.appendChild(tx);
+        });
+        chartEl.appendChild(svg);
+      }
+
+      // Initial chart draw
+      renderActiveChart("roas");
+
+      // Toggle buttons
+      const toggleBtns = document.querySelectorAll("#chartToggle .toggle-btn");
+      toggleBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          toggleBtns.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+          const view = btn.getAttribute("data-view");
+          renderActiveChart(view);
+        });
+      });
+    });
+  </script>
+
 </body>
 </html>
