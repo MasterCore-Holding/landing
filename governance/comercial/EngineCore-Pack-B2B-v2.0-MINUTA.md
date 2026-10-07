@@ -8,6 +8,7 @@
 ## 0. Referências normativas (herança por referência — R-Mãe A)
 - **Núcleo Universal MasterCore v1.2** (aceite provisório CEO 06/10/2026, vigência até 20/10) — fonte: `governance/nucleo/` no GitHub `MasterCore-Holding/landing`.
 - **Diretriz Córtex v2.0** — matriz canônica e faixas de risco (R-Mãe G).
+- **Manifesto Fundacional — DNA do Grupo MasterCore v1.0** (VIGENTE, aceite provisório CEO 07/10/2026) — fonte: `governance/audits/MasterCore-DNA-Manifesto-Fundacional-v1.0.md`. P-DNA 7 + Teste do DNA = gate de chancela de toda decisão comercial: (1) serve à missão? (2) gera UAU no momento zero? (3) reduz fricção? (4) maximiza renda/valor? — falhou em qualquer uma: corta/refaz.
 - **Contrato "Studio com Opção" v2** — objeto: serviços de marketing + construção de software/app marketplace (alínea e); Cláusula 1.4: exclusão de intermediação financeira. Todo escopo de software é ADITIVO citando a alínea (e) — nunca embutido no fee mensal dos planos.
 
 ---

@@ -1,7 +1,32 @@
 {
   "ledger": "MasterCore-Holding",
-  "currentVersion": "1.0.5",
+  "currentVersion": "1.0.6",
   "entries": [
+    {
+      "version": "1.0.6",
+      "date": "2026-10-07T12:55:00-03:00",
+      "type": "GOVERNANCE",
+      "description": "DNA do Grupo MasterCore gravado (P-DNA 1-8) como Manifesto Fundacional v1.0 — pre-requisito de TODA interacao do grupo (skills, personas, runbooks, produto, UX, comunicacao interna e externa). Estado VIGENTE: aceite provisorio do CEO 07/10/2026; condicao resolutiva: aprovacao definitiva em ate 15 dias (22/10/2026), sem ela retorna a minuta. Deriva do Nucleo Universal v1.2 por referencia (R-Mae A); em conflito vence o Nucleo (P2). Distribuicao normativa por referencia: Pack B2B EngineCore secao 0 atualizado no repo; skill Cortex v2.0 atualizada; Dream Teams/Core OS/Documentos Mestres (camada Adapta) = DIRECTIVE MC-DNA-001 no barramento Drive.",
+      "artifacts_consolidated": [
+        "governance/audits/MasterCore-DNA-Manifesto-Fundacional-v1.0.md"
+      ],
+      "artifacts_pending": [
+        {
+          "path": "governance/manuals/MC-PUB-001.md",
+          "reason": "rascunho v0.9, aguarda chancela CEO"
+        },
+        {
+          "path": "governance/manuals/MC-QUAL-001.md",
+          "reason": "rascunho v0.9, aguarda chancela CEO"
+        }
+      ],
+      "authorization_id": "AUT-MC-20261007-DNA (aceite provisorio CEO 07/10/2026 via runbook)",
+      "executor": "Cortex (Control Plane)",
+      "source_repo": "MasterCore-Holding/landing (org)",
+      "hashes": {
+        "governance/audits/MasterCore-DNA-Manifesto-Fundacional-v1.0.md": "43f7fdb3c3adcef175d0f896d9dc142a30f13a7c968586bf466a413c23555f87"
+      }
+    },
     {
       "version": "1.0.5",
       "date": "2026-10-07T02:05:00-03:00",

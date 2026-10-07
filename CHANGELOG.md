@@ -2,6 +2,16 @@
 
 Fonte Única de Verdade da holding. Toda decisão operacional e homologação estrutural constará aqui antes de sua ativação efetiva.
 
+## [1.0.6] - 2026-10-07
+
+### Adicionado
+- Manifesto Fundacional — DNA do Grupo MasterCore v1.0 (P-DNA 1-8) gravado em `governance/audits/MasterCore-DNA-Manifesto-Fundacional-v1.0.md` como pré-requisito de TODA interação do grupo (skills, personas, runbooks, produto, UX, comunicação interna e externa).
+- Estado VIGENTE com aceite provisório do CEO (07/10/2026); condição resolutiva: aprovação definitiva em até 15 dias (22/10/2026).
+- Herança por referência ao Núcleo Universal v1.2 (R-Mãe A); em conflito, vence o Núcleo (P2).
+- Distribuição normativa iniciada: Pack B2B EngineCore §0 (repo) + Córtex v2.0 (skill) atualizados por referência; Dream Teams/Core OS/Documentos Mestres (camada Adapta) via DIRECTIVE MC-DNA-001 no barramento Drive.
+
+*Emissor: Lúcio (CEO) · Executor: Córtex (Control Plane) — runbook "Gravação Permanente do DNA" 07/10/2026.*
+
 ## [1.0.0] - 2026-10-05
 
 ### Adicionado
