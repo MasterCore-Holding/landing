@@ -1,7 +1,39 @@
 {
   "ledger": "MasterCore-Holding",
-  "currentVersion": "1.0.6",
+  "currentVersion": "1.0.7",
   "entries": [
+    {
+      "version": "1.0.7",
+      "date": "2026-10-07T17:35:00-03:00",
+      "type": "CHANCELA",
+      "description": "PACOTE DE CHANCELA UNICO APROVADO pelo CEO (07/10/2026, via Adapta — fonte: aba HANDOVER-V2-CONECTORES linha 41 do sheet Inventario-Planilhas-Adapta 1DtXM1e). GATILHO TRIPLO autorizado: (a) disparo do Manifesto V2 nas 6 redes (1 rede por vez, >=15 min, ordem YT->LI->IG->FB->X->TT, LinkedIn somente pagina empresa, CTA mastercore.app/go/{rede}, disclaimer 100%, escassez 20 vagas, pre-check de crop); (b) submissao dos 4 templates WABA a YCloud/Meta (boas-vindas, qualificacao com triade de exames [genetico = gate eliminatorio; sangue; bioimpedancia/DEXA], confirmacao, follow-up); (c) ativacao comercial do pack B2B EngineCore tabela v2.1 (tabela externa 5/10/20, pisos internos 3/7/15 SIGILO — nao registrados aqui, ver documento de chancela; Founding Clients -30% max SOMENTE ESSENCIAL 5k->3,5k e PERFORMANCE 10k->7k; ACELERACAO TOTAL excluido do programa). Status de execucao: (c) pendente documento integral no Drive; (a) pendente master voz nova no Drive; (b) pendente verbatim dos templates. Ordem de entrega despachada ao barramento Drive (MC-EXEC-001).",
+      "artifacts_consolidated": [
+        "governance/audits/MasterCore-DNA-Manifesto-Fundacional-v1.0.md",
+        "governance/comercial/Pack-Copy-V2-Manifesto-5-Atos.md",
+        "governance/comercial/EngineCore-Pack-B2B-v2.0-MINUTA.md"
+      ],
+      "artifacts_pending": [
+        {
+          "path": "governance/manuals/MC-PUB-001.md",
+          "reason": "rascunho v0.9, aguarda chancela CEO"
+        },
+        {
+          "path": "governance/manuals/MC-QUAL-001.md",
+          "reason": "rascunho v0.9, aguarda chancela CEO"
+        },
+        {
+          "path": "MasterCore/03-Operacao/PACOTE-DE-CHANCELA-UNICO-0710 (Drive)",
+          "reason": "texto integral com templates verbatim + tabela comercial — gravar pela Adapta (MC-EXEC-001)"
+        },
+        {
+          "path": "MasterCore/03-Operacao/master-v3-voz-nova.mp4 (Drive)",
+          "reason": "master re-narrado homologado — gravar no Drive para disparo (MC-EXEC-001)"
+        }
+      ],
+      "authorization_id": "AUT-MC-20261007-CHANCELA-TRIPLO (CEO via Adapta, aba linha 41)",
+      "executor": "Cortex (Control Plane)",
+      "source_repo": "MasterCore-Holding/landing (org)"
+    },
     {
       "version": "1.0.6",
       "date": "2026-10-07T12:55:00-03:00",
