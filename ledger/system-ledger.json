@@ -1,7 +1,26 @@
 {
   "ledger": "MasterCore-Holding",
-  "currentVersion": "1.0.7",
+  "currentVersion": "1.0.8",
   "entries": [
+    {
+      "version": "1.0.8",
+      "date": "2026-10-07T18:20:00-03:00",
+      "type": "EXECUTION",
+      "description": "GATILHO TRIPLO executado (Pacote de Chancela Unico 07/10): (b) 4 templates WABA submetidos a Meta via YCloud — pepticore_boas_vindas_v2 (1640323147794234), pepticore_qualificacao_triade_v2 (200, id oficial registrado), pepticore_confirmacao_fila_v2 (1164531095903521), pepticore_followup_vagas_v2 (1734548717602499) — status PENDING na Meta (aprovacao pendente, BM verificado). (c) Ativacao comercial pack B2B v2.1: tabela externa 5/10/20 + tripé fee+10% verba+verba minima + pisos internos 3/7/15 (sigilo) + Founding Clients -30% max (ESSENCIAL 5k->3,5k, PERFORMANCE 10k->7k, ACELERACAO TOTAL excluido) registrados no pack como VIGENTE. (a) Disparo Manifesto V2 6 redes: ARMADO — aguarda master voz nova no Drive (monitor ativo); copy chancelada em governance/comercial/Pack-Copy-V2-Manifesto-5-Atos.md. ADICIONAL: MC-QUALIF-REV-001 executado na landing Master (commit 6533432) — step1 arquétipo de deal MOTOR + condicional mercado + 4 sinais estratégicos + copy fábrica de empresas; verificado em producao 3/3 superficies + index.",
+      "artifacts_consolidated": [
+        "governance/comercial/EngineCore-Pack-B2B-v2.0-MINUTA.md",
+        "governance/comercial/Pack-Copy-V2-Manifesto-5-Atos.md"
+      ],
+      "artifacts_pending": [
+        {
+          "path": "MasterCore/03-Operacao/master-v3-voz-nova.mp4 (Drive)",
+          "reason": "master re-narrado homologado — gravar no Drive para disparo 6 redes (gatilho a)"
+        }
+      ],
+      "authorization_id": "AUT-MC-20261007-CHANCELA-TRIPLO",
+      "executor": "Cortex (Control Plane)",
+      "source_repo": "MasterCore-Holding/landing (org)"
+    },
     {
       "version": "1.0.7",
       "date": "2026-10-07T17:35:00-03:00",

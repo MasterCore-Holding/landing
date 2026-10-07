@@ -123,4 +123,34 @@ Efeito prático: elimina obrigação operacional manual externa e transfere risc
 
 ---
 
+
+---
+
+## REGISTRO DE ATIVAÇÃO COMERCIAL — CHANCELA CEO 07/10/2026 (VIGENTE)
+
+**Fonte:** PACOTE DE CHANCELA ÚNICO — GRUPO MASTERCORE (07/10/2026, Drive canônico) · **Autorização:** AUT-MC-20261007-CHANCELA-TRIPLO (ledger 1.0.7)
+
+A chancela do CEO em 07/10/2026 ATIVA comercialmente a tabela v2.1 abaixo, que SUPERSEDE os preços Starter/Growth das seções 2.1/2.2 (mantidos como histórico de minuta):
+
+### Tabela Externa (âncora perceptiva de valor)
+| Plano | Fee Fixo Mensal | Percentual Variável | Verba Mínima de Mídia |
+|---|---|---|---|
+| ESSENCIAL | a partir de R$ 5.000,00/mês | + 10% da verba de mídia gerenciada | R$ 5.000,00/mês |
+| PERFORMANCE | a partir de R$ 10.000,00/mês | + 10% da verba de mídia gerenciada | R$ 10.000,00/mês |
+| ACELERAÇÃO TOTAL | a partir de R$ 20.000,00/mês | + 10% da verba de mídia gerenciada | R$ 20.000,00/mês |
+
+**Tripé obrigatório de remuneração:** Fee Fixo Mensal + 10% da Verba de Mídia Gerenciada + Verba Mínima de Mídia Obrigatória. Negociação consultiva: tabela externa = âncora; proposta final dimensionada após diagnóstico operacional.
+
+### Pisos Internos de Negociação — SIGILO OPERACIONAL
+R$ 3.000 (ESSENCIAL) · R$ 7.000 (PERFORMANCE) · R$ 15.000 (ACELERAÇÃO TOTAL). Limite inferior absoluto de viabilidade técnica. VEDADA exibição ou menção formal perante prospect ou cliente.
+
+### Programa Founding Clients (vigente)
+- Desconto máximo autorizado: até 30% (teto inegociável).
+- ESSENCIAL: R$ 5.000 → até R$ 3.500/mês (+10% mídia; verba mín. R$ 5.000).
+- PERFORMANCE: R$ 10.000 → até R$ 7.000/mês (+10% mídia; verba mín. R$ 10.000).
+- **ACELERAÇÃO TOTAL: EXCLUÍDO do programa** — âncora premium de R$ 20.000 intacta (protege piso interno de R$ 15.000).
+- Contrapartidas mandatórias (4): cessão de case (marca/métricas auditadas) · depoimento executivo em vídeo ou escrito · participação em comitês mensais de resultados · vigência mínima de 6 meses ininterruptos.
+
+*Registro executado pelo Córtex (Control Plane) em 07/10/2026 — execução do gatilho (c) do Pacote de Chancela Único.*
+
 *EngineCore — Fábrica de Crescimento como Serviço · Grupo MasterCore*
