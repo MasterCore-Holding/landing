@@ -1090,38 +1090,43 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
         <div class="step-content" id="step-pane-1">
           <div class="step-header">
             <span class="step-badge">Passo 1 de 10 — A Ideia</span>
-            <h2 class="step-question">O que você quer criar?</h2>
+            <h2 class="step-question">O que você quer construir?</h2>
           </div>
 
           <div class="option-grid" id="step1-options">
-            <label class="choice-card" data-val="app-celular">
+            <label class="choice-card" data-val="empresa-nova">
               <span class="choice-radio"></span>
               <div>
-                <div class="choice-label">Aplicativo para celular</div>
-                <div class="choice-desc">Para as pessoas baixarem na Apple Store ou Google Play</div>
+                <div class="choice-label">Uma empresa nova, do zero</div>
+                <div class="choice-desc">Arquétipo MOTOR — prioridade do grupo MasterCore</div>
               </div>
             </label>
-            <label class="choice-card" data-val="sistema-computador">
+            <label class="choice-card" data-val="produto-existente">
               <span class="choice-radio"></span>
               <div>
-                <div class="choice-label">Sistema para computador</div>
-                <div class="choice-desc">Painel ou site que abre no navegador de internet</div>
+                <div class="choice-label">Um produto dentro de uma empresa que já tenho</div>
+                <div class="choice-desc">Nova linha, canal ou operação dentro do seu negócio atual</div>
               </div>
             </label>
-            <label class="choice-card" data-val="dois-lados">
+            <label class="choice-card" data-val="projeto-pontual">
               <span class="choice-radio"></span>
               <div>
-                <div class="choice-label">Um app com dois lados (ex.: quem oferece e quem usa)</div>
-                <div class="choice-desc">Um marketplace: junta quem oferece e quem usa no mesmo lugar</div>
+                <div class="choice-label">Um projeto pontual</div>
+                <div class="choice-desc">Um app ou sistema específico, sem empresa nova</div>
               </div>
             </label>
             <label class="choice-card" data-val="ajuda">
               <span class="choice-radio"></span>
               <div>
                 <div class="choice-label">Ainda não sei — quero ajuda</div>
-                <div class="choice-desc">Tenho a ideia de negócio e quero entender o melhor formato</div>
+                <div class="choice-desc">Tenho a ideia e quero entender o melhor caminho</div>
               </div>
             </label>
+          </div>
+
+          <div class="form-group" id="step1-mercado-group" style="margin-top: 1.25rem; display: none;">
+            <label for="step1-mercado" class="input-label">Em qual mercado?</label>
+            <input type="text" id="step1-mercado" class="text-input" placeholder="Ex.: saúde, finanças, educação, agronegócio, indústria... (ou descreva o seu)">
           </div>
 
           <div class="form-group" style="margin-top: 1.25rem;">
@@ -1505,6 +1510,43 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
           <div class="form-group" id="step10-origem-outro-group" style="display: none; margin-bottom: 1.25rem;">
             <label for="step10-origem-outro" class="input-label">Como nos encontrou?</label>
             <input type="text" id="step10-origem-outro" class="text-input" placeholder="Ex.: indicação de um amigo, evento, podcast...">
+          </div>
+
+          <div class="sub-section-title">
+            4 perguntas rápidas sobre o seu momento (preparam sua análise)
+          </div>
+
+          <label class="input-label" style="display:block; margin-bottom:0.5rem;">1. Já tem tração ou receita?</label>
+          <div class="option-grid" id="s10-tracao" style="margin-bottom:1rem;">
+            <label class="choice-card" data-tracao="nada"><span class="choice-radio"></span><span class="choice-label">Nada ainda</span></label>
+            <label class="choice-card" data-tracao="primeiros"><span class="choice-radio"></span><span class="choice-label">Primeiros clientes</span></label>
+            <label class="choice-card" data-tracao="recorrente"><span class="choice-radio"></span><span class="choice-label">Receita recorrente</span></label>
+            <label class="choice-card" data-tracao="lucra"><span class="choice-radio"></span><span class="choice-label">Já lucra</span></label>
+          </div>
+
+          <label class="input-label" style="display:block; margin-bottom:0.5rem;">2. Qual tamanho você quer chegar?</label>
+          <div class="option-grid" id="s10-tam" style="margin-bottom:1rem;">
+            <label class="choice-card" data-tam="pessoal"><span class="choice-radio"></span><span class="choice-label">Renda pessoal</span></label>
+            <label class="choice-card" data-tam="100k"><span class="choice-radio"></span><span class="choice-label">Negócio de ~R$ 100k/mês</span></label>
+            <label class="choice-card" data-tam="venture"><span class="choice-radio"></span><span class="choice-label">Escala grande (venture)</span></label>
+          </div>
+
+          <label class="input-label" style="display:block; margin-bottom:0.5rem;">3. O que você já tem para alavancar?</label>
+          <div id="s10-alavancas" style="margin-bottom:1rem;">
+            <label class="checkbox-container"><input type="checkbox" value="audiencia"><span>Audiência/lista</span></label>
+            <label class="checkbox-container"><input type="checkbox" value="comunidade"><span>Comunidade</span></label>
+            <label class="checkbox-container"><input type="checkbox" value="time"><span>Time</span></label>
+            <label class="checkbox-container"><input type="checkbox" value="codigo"><span>Código ou produto pronto</span></label>
+            <label class="checkbox-container"><input type="checkbox" value="marca"><span>Domínio ou marca</span></label>
+            <label class="checkbox-container"><input type="checkbox" value="nada"><span>Nada ainda</span></label>
+          </div>
+
+          <label class="input-label" style="display:block; margin-bottom:0.5rem;">4. Quem vai executar?</label>
+          <div class="option-grid" id="s10-exec" style="margin-bottom:1.5rem;">
+            <label class="choice-card" data-exec="eu-parcial"><span class="choice-radio"></span><span class="choice-label">Eu, tempo parcial</span></label>
+            <label class="choice-card" data-exec="eu-integral"><span class="choice-radio"></span><span class="choice-label">Eu, tempo integral</span></label>
+            <label class="choice-card" data-exec="time"><span class="choice-radio"></span><span class="choice-label">Tenho time</span></label>
+            <label class="choice-card" data-exec="contratar"><span class="choice-radio"></span><span class="choice-label">Vou contratar</span></label>
           </div>
 
           <div class="sub-section-title">
@@ -2542,10 +2584,46 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
           body: JSON.stringify({ nome: nome, email: email, whatsapp: whats, origem: 'Discovery Experience',
             utm_source: utm.utm_source || 'mastercore', utm_medium: utm.utm_medium || 'landing',
             utm_campaign: utm.utm_campaign || 'avaliar_opcoes',
-            observacao: 'Discovery score: ' + (window.state ? state.score : 'n/a') + ' | ideia: ' + ideia })
+            observacao: 'Discovery score: ' + (window.state ? state.score : 'n/a') + ' | ideia: ' + ideia + ' | deal: ' + ((document.querySelector('#step1-options .choice-card.selected')||{getAttribute:function(){return ''}}).getAttribute('data-val')||'') + ' | mercado: ' + ((document.getElementById('step1-mercado')||{}).value||'') + ' | tracao: ' + ((window.sinais||{}).tracao||'') + ' | tamanho: ' + ((window.sinais||{}).tam||'') + ' | alavancas: ' + ((window.sinais||{}).alavancas||'') + ' | executor: ' + ((window.sinais||{}).exec||'') })
         }).catch(function(){});
       } catch(e) {}
     }, true);
+  })();
+</script>
+<script>
+  // MC-QUALIF-REV-001: condicional mercado + 4 sinais estrategicos
+  (function(){
+    var step1=document.getElementById('step1-options');
+    var mg=document.getElementById('step1-mercado-group');
+    if(step1&&mg){
+      step1.addEventListener('click',function(e){
+        var card=e.target.closest ? e.target.closest('.choice-card') : null;
+        if(!card)return;
+        mg.style.display=(card.getAttribute('data-val')==='empresa-nova')?'block':'none';
+      });
+    }
+    window.sinais={tracao:'',tam:'',alavancas:'',exec:''};
+    function bindGroup(id,key,attr){
+      var c=document.getElementById(id); if(!c)return;
+      c.addEventListener('click',function(e){
+        var card=e.target.closest ? e.target.closest('.choice-card') : null;
+        if(!card)return;
+        c.querySelectorAll('.choice-card').forEach(function(x){x.classList.remove('selected');});
+        card.classList.add('selected');
+        window.sinais[key]=card.getAttribute(attr)||'';
+      });
+    }
+    bindGroup('s10-tracao','tracao','data-tracao');
+    bindGroup('s10-tam','tam','data-tam');
+    bindGroup('s10-exec','exec','data-exec');
+    var al=document.getElementById('s10-alavancas');
+    if(al){
+      al.addEventListener('change',function(){
+        var vals=[];
+        al.querySelectorAll('input[type=checkbox]:checked').forEach(function(cb){vals.push(cb.value);});
+        window.sinais.alavancas=vals.join('+')||'';
+      });
+    }
   })();
 </script>
 </body>
