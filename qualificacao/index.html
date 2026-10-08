@@ -1087,9 +1087,34 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
       <div class="step-card">
         
         <!-- STEP 1: A IDEIA -->
+        <!-- STEP 1: CONTATO (captura no início — igual EngineCore) -->
         <div class="step-content" id="step-pane-1">
           <div class="step-header">
-            <span class="step-badge">Passo 1 de 10 — A Ideia</span>
+            <span class="step-badge">Passo 1 de 11 — Quem é você</span>
+            <h2 class="step-question">Pra quem vamos preparar esse diagnóstico?</h2>
+          </div>
+          <div class="form-group">
+            <label for="lead-name" class="input-label">Seu Nome *</label>
+            <input type="text" id="lead-name" class="text-input" placeholder="Ex.: Lucas Mendes" autocomplete="name">
+          </div>
+          <div class="form-group">
+            <label for="lead-email" class="input-label">Seu Melhor E-mail *</label>
+            <input type="email" id="lead-email" class="text-input" placeholder="lucas@exemplo.com.br" autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label for="lead-whatsapp" class="input-label">WhatsApp com DDD *</label>
+            <input type="tel" id="lead-whatsapp" class="text-input" placeholder="(11) 98765-4321" autocomplete="tel">
+          </div>
+          <label class="checkbox-container">
+            <input type="checkbox" id="lead-lgpd">
+            <span>Posso chamar você para conversar sobre o diagnóstico? Seus dados ficam seguros e você pode pedir para apagar a qualquer momento.</span>
+          </label>
+        </div>
+
+        <!-- STEP 2 (original): A IDEIA -->
+        <div class="step-content view-hidden" id="step-pane-2">
+          <div class="step-header">
+            <span class="step-badge">Passo 2 de 11 — A Ideia</span>
             <h2 class="step-question">O que você quer construir?</h2>
           </div>
 
@@ -1136,9 +1161,9 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
         </div>
 
         <!-- STEP 2: O PROBLEMA -->
-        <div class="step-content view-hidden" id="step-pane-2">
+        <div class="step-content view-hidden" id="step-pane-3">
           <div class="step-header">
-            <span class="step-badge">Passo 2 de 10 — O Problema</span>
+            <span class="step-badge">Passo 3 de 11 — O Problema</span>
             <h2 class="step-question">Qual problema isso resolve e para quem?</h2>
             <div class="step-hint">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;">
@@ -1162,9 +1187,9 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
         </div>
 
         <!-- STEP 3: PARA QUEM -->
-        <div class="step-content view-hidden" id="step-pane-3">
+        <div class="step-content view-hidden" id="step-pane-4">
           <div class="step-header">
-            <span class="step-badge">Passo 3 de 10 — Para Quem</span>
+            <span class="step-badge">Passo 4 de 11 — Para Quem</span>
             <h2 class="step-question">Quem vai usar o app? Descreva a pessoa típica.</h2>
           </div>
 
@@ -1211,9 +1236,9 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
         </div>
 
         <!-- STEP 4: A MÁGICA -->
-        <div class="step-content view-hidden" id="step-pane-4">
+        <div class="step-content view-hidden" id="step-pane-5">
           <div class="step-header">
-            <span class="step-badge">Passo 4 de 10 — A Mágica</span>
+            <span class="step-badge">Passo 5 de 11 — A Mágica</span>
             <h2 class="step-question">O que o app vai fazer de diferente? Qual o maior benefício?</h2>
           </div>
 
@@ -1276,9 +1301,9 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
         </div>
 
         <!-- STEP 5: COMO FUNCIONA -->
-        <div class="step-content view-hidden" id="step-pane-5">
+        <div class="step-content view-hidden" id="step-pane-6">
           <div class="step-header">
-            <span class="step-badge">Passo 5 de 10 — Como Funciona</span>
+            <span class="step-badge">Passo 6 de 11 — Como Funciona</span>
             <h2 class="step-question">Descreva no dia a dia: quem pede, quem atende e como tudo acontece do começo ao fim.</h2>
             <div class="step-hint">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;">
@@ -1297,9 +1322,9 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
         </div>
 
         <!-- STEP 6: O DINHEIRO -->
-        <div class="step-content view-hidden" id="step-pane-6">
+        <div class="step-content view-hidden" id="step-pane-7">
           <div class="step-header">
-            <span class="step-badge">Passo 6 de 10 — O Dinheiro</span>
+            <span class="step-badge">Passo 7 de 11 — O Dinheiro</span>
             <h2 class="step-question">Como o negócio ganha dinheiro?</h2>
           </div>
 
@@ -1336,9 +1361,9 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
         </div>
 
         <!-- STEP 7: OS OUTROS -->
-        <div class="step-content view-hidden" id="step-pane-7">
+        <div class="step-content view-hidden" id="step-pane-8">
           <div class="step-header">
-            <span class="step-badge">Passo 7 de 10 — Os Outros</span>
+            <span class="step-badge">Passo 8 de 11 — Os Outros</span>
             <h2 class="step-question">Quem mais já faz isso hoje no mercado? Como o seu vai ser diferente?</h2>
             <div class="step-hint">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;">
@@ -1356,9 +1381,9 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
         </div>
 
         <!-- STEP 8: PRÉ-REQUISITOS -->
-        <div class="step-content view-hidden" id="step-pane-8">
+        <div class="step-content view-hidden" id="step-pane-9">
           <div class="step-header">
-            <span class="step-badge">Passo 8 de 10 — Pré-requisitos</span>
+            <span class="step-badge">Passo 9 de 11 — Pré-requisitos</span>
             <h2 class="step-question">O que precisa existir para dar certo?</h2>
             <p style="color: var(--text-muted); font-size: 0.88rem; margin-top: 0.35rem;">
               Marque o que você já tem ou sabe que vai precisar (pode marcar mais de um):
@@ -1402,9 +1427,9 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
         </div>
 
         <!-- STEP 9: PRAZO E INVESTIMENTO -->
-        <div class="step-content view-hidden" id="step-pane-9">
+        <div class="step-content view-hidden" id="step-pane-10">
           <div class="step-header">
-            <span class="step-badge">Passo 9 de 10 — Prazo</span>
+            <span class="step-badge">Passo 10 de 11 — Prazo</span>
             <h2 class="step-question">Quando precisa estar no ar e por quê?</h2>
           </div>
 
@@ -1439,9 +1464,9 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
         </div>
 
         <!-- STEP 10: SUCESSO E CONTATO -->
-        <div class="step-content view-hidden" id="step-pane-10">
+        <div class="step-content view-hidden" id="step-pane-11">
           <div class="step-header">
-            <span class="step-badge">Passo 10 de 10 — Sucesso e Contato</span>
+            <span class="step-badge">Passo 11 de 11 — Sucesso e Contato</span>
             <h2 class="step-question">Como você vai saber que deu certo?</h2>
           </div>
 
@@ -1549,30 +1574,7 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
             <label class="choice-card" data-exec="contratar"><span class="choice-radio"></span><span class="choice-label">Vou contratar</span></label>
           </div>
 
-          <div class="sub-section-title">
-            Para onde enviamos seu diagnóstico completo?
-          </div>
 
-          <div class="form-group">
-            <label for="lead-name" class="input-label">Seu Nome *</label>
-            <input type="text" id="lead-name" class="text-input" placeholder="Ex.: Lucas Mendes" autocomplete="name">
-          </div>
-
-          <div class="form-group">
-            <label for="lead-email" class="input-label">Seu Melhor E-mail *</label>
-            <input type="email" id="lead-email" class="text-input" placeholder="lucas@exemplo.com.br" autocomplete="email">
-          </div>
-
-          <div class="form-group">
-            <label for="lead-whatsapp" class="input-label">WhatsApp com DDD *</label>
-            <input type="tel" id="lead-whatsapp" class="text-input" placeholder="(11) 98765-4321" autocomplete="tel">
-          </div>
-
-          <label class="checkbox-container">
-            <input type="checkbox" id="lead-lgpd">
-            <span>Posso chamar você para conversar sobre o diagnóstico? Seus dados ficam seguros e você pode pedir para apagar a qualquer momento.</span>
-          </label>
-        </div>
 
         <!-- Step Actions (Single forward flow) -->
         <div class="step-actions">
@@ -1733,7 +1735,7 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
       // Application State - 10 Step Journey
       const state = {
         currentStep: 1,
-        totalSteps: 10,
+        totalSteps: 11,
         data: {
           // 1. A Ideia
           ideia: '',
@@ -1999,43 +2001,45 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
       function validateCurrentStep() {
         let isValid = false;
         switch (state.currentStep) {
-          case 1: // Ideia
-            isValid = Boolean(state.data.ideia);
-            break;
-          case 2: // Problema
-            isValid = state.data.problema.length >= 8;
-            break;
-          case 3: // Para quem / acesso
-            isValid = Boolean(state.data.acessoLado);
-            break;
-          case 4: // A mágica
-            isValid = Boolean(state.data.beneficio) && (state.data.mecanicas.length > 0 || (state.data.mecanicaOutro||'').length > 2);
-            break;
-          case 5: // Como funciona
-            isValid = state.data.fluxo.length >= 8;
-            break;
-          case 6: // O dinheiro
-            isValid = state.data.receita.length > 0 || (state.data.receitaOutro||'').length > 2;
-            break;
-          case 7: // Os outros
-            isValid = state.data.outros.length >= 6;
-            break;
-          case 8: // Pré-requisitos
-            isValid = state.data.preRequisitos.length > 0;
-            break;
-          case 9: // Prazo
-            isValid = Boolean(state.data.prazo);
-            break;
-          case 10: // Sucesso e Contato
+          case 1: // Contato (captura no início)
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            isValid = Boolean(state.data.sucesso) &&
-                      Boolean(state.data.origem) &&
-                      (state.data.origem !== 'indicacao' || state.data.indicacao.length >= 2) &&
-                      (state.data.origem !== 'outro' || state.data.origemOutro.length >= 2) &&
-                      state.data.nome.length >= 2 &&
+            isValid = state.data.nome.length >= 2 &&
                       emailRegex.test(state.data.email) &&
                       state.data.whatsapp.length >= 14 &&
                       state.data.lgpd === true;
+            break;
+          case 2: // Ideia
+            isValid = Boolean(state.data.ideia);
+            break;
+          case 3: // Problema
+            isValid = state.data.problema.length >= 8;
+            break;
+          case 4: // Para quem / acesso
+            isValid = Boolean(state.data.acessoLado);
+            break;
+          case 5: // A mágica
+            isValid = Boolean(state.data.beneficio) && (state.data.mecanicas.length > 0 || (state.data.mecanicaOutro||'').length > 2);
+            break;
+          case 6: // Como funciona
+            isValid = state.data.fluxo.length >= 8;
+            break;
+          case 7: // O dinheiro
+            isValid = state.data.receita.length > 0 || (state.data.receitaOutro||'').length > 2;
+            break;
+          case 8: // Os outros
+            isValid = state.data.outros.length >= 6;
+            break;
+          case 9: // Pré-requisitos
+            isValid = state.data.preRequisitos.length > 0;
+            break;
+          case 10: // Prazo e Investimento
+            isValid = Boolean(state.data.prazo) && Boolean(state.data.investimento);
+            break;
+          case 11: // Sucesso (contato já capturado no passo 1)
+            isValid = Boolean(state.data.sucesso) &&
+                      Boolean(state.data.origem) &&
+                      (state.data.origem !== 'indicacao' || state.data.indicacao.length >= 2) &&
+                      (state.data.origem !== 'outro' || state.data.origemOutro.length >= 2);
             break;
         }
 
@@ -2089,11 +2093,32 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
         updateStepView();
       });
 
+      // Grava lead assim que o contato é validado no Passo 1 (captura abandonos)
+      function submitLeadAtStart(step) {
+        if (step !== 2) return;
+        const nome = state.data.nome || '';
+        const email = state.data.email || '';
+        const whats = state.data.whatsapp || '';
+        if (!email) return;
+        const utm = window.mc_discovery_utm || {};
+        try {
+          fetch('https://pepti-core-plus.base44.app/api/functions/registrarLeadAppsScript', {
+            method: 'POST', headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ nome: nome, email: email, whatsapp: whats, origem: 'Qualificacao Master (passo 1)',
+              utm_source: utm.utm_source || 'mastercore', utm_medium: utm.utm_medium || 'landing',
+              utm_campaign: utm.utm_campaign || 'diagnostico',
+              observacao: 'Jornada iniciada - contato capturado no passo 1 | aguarda conclusao do DPD' })
+          }).catch(function(){});
+        } catch(e) {}
+      }
+
       // Next Action
       btnNext.addEventListener('click', () => {
         if (btnNext.disabled) return;
         if (state.currentStep < state.totalSteps) {
-          state.currentStep++;
+          const next = state.currentStep + 1;
+          submitLeadAtStart(next);
+          state.currentStep = next;
           updateStepView();
         } else {
           calculateAndShowResults();
