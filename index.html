@@ -1623,6 +1623,9 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
       line-height: 1.55;
     }
 
+    /* FIX-CORTEX-0810: offset de ancora para header sticky */
+    section[id] { scroll-margin-top: 90px; }
+
     /* Scroll Reveal Animation */
     .mc-reveal {
       opacity: 0;
@@ -2570,6 +2573,20 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
         // Fallback for older browsers
         reveals.forEach(el => el.classList.add('is-visible'));
       }
+
+      // FIX-CORTEX-0810: rolagem suave e robusta para ancoras internas (qualquer navegador)
+      document.querySelectorAll('a[href^="#"]').forEach((a) => {
+        a.addEventListener('click', (e) => {
+          const href = a.getAttribute('href');
+          if (!href || href === '#') return;
+          const target = document.getElementById(href.slice(1));
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            if (history.replaceState) history.replaceState(null, '', href);
+          }
+        });
+      });
     });
   </script>
 <script>
