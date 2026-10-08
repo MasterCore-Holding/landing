@@ -1,7 +1,29 @@
 {
   "ledger": "MasterCore-Holding",
-  "currentVersion": "1.0.8",
+  "currentVersion": "1.0.9",
   "entries": [
+    {
+      "version": "1.0.9",
+      "date": "2026-10-07T21:55:00-03:00",
+      "type": "EXECUTION",
+      "description": "Estado EOD 07/10 consolidado: (1) Templates WABA 4/4 PENDING na Meta (verificado via YCloud API 21:50 — aprovacao esperada em horas; BM verificado). (2) Toolkit Google em queda intermitente desde 21:05 (manager is closed / no account) — leituras de Drive/Sheets/Docs bloqueadas; Calendar verde. (3) Landing Master: MC-QUALIF-REV-001 + hero corrigidos e no ar (commits 6533432, a00e2ee, 9b32fb4). (4) 5 docs COMANDO CORTEX recebidos no Drive (MC-PIPELINE-001/001-A, MC-HOMOLOG-001, MC-NOTIF-001, MC-ADS-CONF-001) — leitura pendente da recuperacao do toolkit. (5) CEO determinou handover EOD para rodar na camada Adapta. GATILHO (a) segue ARMADO aguardando master voz nova (monitor 30min + re-testes agendados).",
+      "artifacts_consolidated": [
+        "governance/audits/handover-v2-conectores-2026-10-07.md"
+      ],
+      "artifacts_pending": [
+        {
+          "path": "MasterCore/03-Operacao/master-v3-voz-nova.mp4 (Drive)",
+          "reason": "gatilho (a) do disparo V2 — unico ativo faltante"
+        },
+        {
+          "path": "5 docs COMANDO CORTEX no Drive",
+          "reason": "leitura pendente da recuperacao do toolkit Google (crons agendados)"
+        }
+      ],
+      "authorization_id": "AUT-MC-20261007-CHANCELA-TRIPLO",
+      "executor": "Cortex (Control Plane)",
+      "source_repo": "MasterCore-Holding/landing (org)"
+    },
     {
       "version": "1.0.8",
       "date": "2026-10-07T18:20:00-03:00",
