@@ -1,5 +1,5 @@
 # FAQ — Base Educacional PeptiCore (R25)
-**PUR v1.0 · Conteúdo candidato · 10/10/2026 · GATE: publicação exige chancela CEO (Adendo 2)**
+**PUR v1.0 · Conteúdo CHANCELADO — CEO Lucio Bicalho, 10/10/2026 · Registro: governance/audits/CHANCELA-R23-R25-2026-10-10.md**
 **Fronteira ANVISA: zero alegação de saúde/cura/eficácia/diagnóstico. Zero dose, via, frequência ou indicação de compra. Disclaimer em todo bloco.**
 
 ---

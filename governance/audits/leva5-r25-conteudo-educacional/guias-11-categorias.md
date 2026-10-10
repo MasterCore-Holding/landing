@@ -1,5 +1,5 @@
 # GUIAS POR CATEGORIA — Base Educacional PeptiCore (R25)
-**PUR v1.0 · Conteúdo candidato · 10/10/2026 · GATE: publicação exige chancela CEO**
+**PUR v1.0 · Conteúdo CHANCELADO — CEO Lucio Bicalho, 10/10/2026 · Registro: governance/audits/CHANCELA-R23-R25-2026-10-10.md**
 **Estrutura: um guia por categoria canônica (11, enum real do banco `Peptideo.jsonc` + `categoriaMap.js` — ordem B10/v1.4.81). Cada guia: o que a categoria estuda · mecanismos gerais descritos na literatura · o que o PeptiCore faz e NÃO faz · remissão ao médico. Zero dose, zero marca, zero promessa.**
 
 **Moldura comum (aplicar em todos os guias):**

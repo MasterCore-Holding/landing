@@ -1,5 +1,5 @@
 # MELHORES PRÁTICAS EDUCACIONAIS — Reconstituição, Armazenamento, Aplicação (R25)
-**PUR v1.0 · Conteúdo candidato · 10/10/2026 · GATE: publicação exige chancela CEO**
+**PUR v1.0 · Conteúdo CHANCELADO — CEO Lucio Bicalho, 10/10/2026 · Registro: governance/audits/CHANCELA-R23-R25-2026-10-10.md**
 **FRONTEIRA CRÍTICA: este módulo educa sobre a FÍSICA E A BIOQUÍMICA do material de estudo — nunca sobre conduta. Toda seção fecha remissão ao médico/farmacêutico. Zero recomendação, zero passo de uso, zero dose.**
 
 **Por que este módulo existe:** a maior fonte de risco sanitário no universo dos peptídeos não é a molécula — é a desinformação sobre procedência, manipulação e conservação. Educar sobre o que a boa prática descreve (farmacopeia, boas práticas de manipulação) reduz dano. Educar conduta prescreve — e isso é vedado.

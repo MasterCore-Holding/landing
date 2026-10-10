@@ -1,6 +1,6 @@
 # ENTREGÁVEL R23 — BLOCOS DE TEXTO DO SCORE 360 (copy educacional blindada)
-**PUR v1.0 · Origem: ADAPTA · Execução: CÓRTEX · 09/10/2026, madrugada**
-**Ambiente: conteúdo (sem build) · GATE de publicação: chancela CEO (não tocado)**
+**PUR v1.0 · Origem: ADAPTA · Execução: CÓRTEX · 09/10/2026, madrugada · CHANCELADO — CEO Lucio Bicalho, 10/10/2026 (despacho no chat web)**
+**Ambiente: conteúdo (sem build) · GATE de publicação: ATENDIDO (chancela CEO 10/10/2026) — registro em governance/audits/CHANCELA-R23-R25-2026-10-10.md**
 
 > Fronteira ANVISA desenhada em cada bloco: zero alegação de saúde, cura, eficácia ou diagnóstico. Tom UAU: "entendi meu corpo pela primeira vez" — sem prometer resultado. Regra P8: sem dados → "sem dados auditáveis", nunca número artificial.
 
