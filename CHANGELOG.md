@@ -2,6 +2,16 @@
 
 Fonte Única de Verdade da holding. Toda decisão operacional e homologação estrutural constará aqui antes de sua ativação efetiva.
 
+## [1.0.11] - 2026-10-10
+
+### Executado (runbook "Deploy e Alinhamento — 3 Sites", chancela PO 10/10)
+- **Identidade de marca aplicada nos 3 domínios** (itens 1.2/1.3/3.1): favicon dupla-hélice (MasterCore) + favicon orbe de redes (EngineCore) em produção; avatar circular do logo 3D registrado como variação oficial do Brand Kit (`assets/brand/logo-mastercore-avatar-512.png`).
+- **Peça institucional da família** (item 1.4): 3 logos lado a lado (MasterCore + PeptiCore + EngineCore) sobre tokens platina #E5E5EA / preto #0D0D0F — artefato em artifacts Córtex, registro no Brand Kit pendente de espelho.
+- **Estado de produção verificado e registrado** (regra proposto ≠ aplicado): PeptiCore v1.43.0 (ledger GitHub, commit d88f5175) SUPERSEDa v1.40.3 do runbook — tag gtag AW-18493068118 + label + pixel + tagline "cálculo de dosagem" = ZERO ocorrências no bundle; paleta canônica Opção A aplicada via tokens CSS (index.css/landing.css); EngineCore 200 standalone com acento #00E5A0/#1B5FFF e 5 seções; mastercore.app 200 com CTAs /qualificacao UTM + instrumentos normativos.
+- Commits: 67c2d03 (favicons MC+EC paths), b8d22ae (avatar), 1c39289 (favicon repo enginecore).
+
+*Emissor: Lúcio (CEO, chancela 10/10) · Executor: Córtex (Control Plane) — 10/10/2026.*
+
 ## [1.0.10] - 2026-10-09
 
 ### Aprovado (definitivo)
