@@ -1,7 +1,32 @@
 {
   "ledger": "MasterCore-Holding",
-  "currentVersion": "1.0.9",
+  "currentVersion": "1.0.10",
   "entries": [
+    {
+      "version": "1.0.10",
+      "date": "2026-10-09T23:45:00-03:00",
+      "type": "CHANCELA",
+      "description": "APROVACAO DEFINITIVA da trinca normativa + DNA pelo CEO (AUT-MC-20261009-DEFINITIVA, 09/10/2026 ~23:45 BRT, chat web Cortex): Nucleo Universal v1.2 (9cf95292...), Normas Corporativas v1.0.2 (484288eb...), MASTER_PLAN v2.2 (ac834669...), DNA do Grupo v1.0 (43f7fdb3...). Regimes provisorios encerrados: vigencias de 20/10 (Nucleo+Normas) e condicao resolutiva de 22/10 (DNA) deixam de produzir efeitos. Nenhum instrumento retorna a minuta. Derivados por referencia (R-Mae A) herdam estado definitivo. Registro integral em governance/audits/CHANCELA-DEFINITIVA-TRINCA-DNA-2026-10-09.md (commit 7d148999).",
+      "artifacts_consolidated": [
+        "governance/audits/CHANCELA-DEFINITIVA-TRINCA-DNA-2026-10-09.md"
+      ],
+      "artifacts_pending": [
+        {
+          "path": "governance/manuals/MC-PUB-001.md",
+          "reason": "rascunho v0.9, aguarda chancela CEO"
+        },
+        {
+          "path": "governance/manuals/MC-QUAL-001.md",
+          "reason": "rascunho v0.9, aguarda chancela CEO"
+        }
+      ],
+      "authorization_id": "AUT-MC-20261009-DEFINITIVA (CEO via chat web Cortex 09/10/2026)",
+      "executor": "Cortex (Control Plane)",
+      "source_repo": "MasterCore-Holding/landing (org)",
+      "hashes": {
+        "governance/audits/CHANCELA-DEFINITIVA-TRINCA-DNA-2026-10-09.md": "04b7b4578ec83e18cee172ee4e618683b2d48983e50a92f485cc8cb288b39183"
+      }
+    },
     {
       "version": "1.0.9",
       "date": "2026-10-07T21:55:00-03:00",

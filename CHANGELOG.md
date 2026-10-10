@@ -2,6 +2,20 @@
 
 Fonte Única de Verdade da holding. Toda decisão operacional e homologação estrutural constará aqui antes de sua ativação efetiva.
 
+## [1.0.10] - 2026-10-09
+
+### Aprovado (definitivo)
+- **APROVAÇÃO DEFINITIVA da trinca normativa + DNA pelo CEO** (AUT-MC-20261009-DEFINITIVA, ~23:45 BRT, comando explícito no canal web do Córtex):
+  - Núcleo Universal MasterCore **v1.2** — sai de aceite provisório (vigência 20/10) → **VIGENTE definitivo**.
+  - Normas Corporativas **v1.0.2** — sai de aceite provisório (vigência 20/10) → **VIGENTE definitivo**.
+  - MASTER_PLAN **v2.2** — vigente, base normativa agora definitiva.
+  - Manifesto Fundacional DNA do Grupo **v1.0** (P-DNA 1-8) — sai de aceite provisório (condição resolutiva 22/10) → **VIGENTE definitivo**.
+- Prazos de 20/10 e 22/10/2026 deixam de produzir efeitos — condição resolutiva cumprida com antecedência. Nenhum instrumento retorna a minuta.
+- Derivados por referência (R-Mãe A) herdam o estado definitivo: Pack B2B §0, Córtex v2.0 (skill), Dream Teams/Core OS/Documentos Mestres, playbooks das empresas.
+- Registro integral com hashes: `governance/audits/CHANCELA-DEFINITIVA-TRINCA-DNA-2026-10-09.md` (commit 7d148999).
+
+*Emissor: Lúcio (CEO) · Executor: Córtex (Control Plane) — 09/10/2026.*
+
 ## [1.0.6] - 2026-10-07
 
 ### Adicionado
