@@ -1,0 +1,182 @@
+HOLDING MASTERCORE — ORQUESTRAÇÃO CÓRTEX
+
+MASTERCORE — INSTRUMENTOS NORMATIVOS v1.0.1
+
+*Nome Canônico do Artefato: MasterCore-Normas-Corporativas-v1.0.1*
+
+Pacote Normativo Consolidado: Política Corporativa, Termos de Uso e Governança de Documentos e Nota de Vigência Provisória
+
+05 de outubro de 2026
+
+INSTRUMENTOS NORMATIVOS — VERSÃO APROVADA PROVISORIAMENTE (VIGÊNCIA ATÉ 20/10/2026)
+
+=== METADADOS E CONTROLE DE EXPEDIÇÃO ===
+
+Emissor: Córtex (Orquestração Central de Sistemas e Inteligência Agêntica)
+Alçada Técnica: Dream Team MasterCore, com suporte especializado de Riscos & Compliance da Holding
+Autoridade Destinatária e Aprovatória Exclusiva: LÚCIO — Diretor Executivo (CEO) MasterCore
+Local e Data de Emissão: São Paulo-SP, 05 de outubro de 2026
+Enquadramento Territorial (Geo-phase): Fase 1 — Brasil (Legislação de Referência: Lei Federal nº 13.709/2018 — Lei Geral de Proteção de Dados Pessoais — LGPD)
+Status Atual do Artefato: Aprovado em Vigência Provisória (aceite CEO 05/10/2026; eficácia condicionada à aprovação definitiva até 20/10/2026)
+
+=== PARTE I — POLÍTICA CORPORATIVA MASTERCORE ===
+
+1. Objetivo e Escopo de Aplicação
+
+Esta Política Corporativa tem por finalidade primária estabelecer os parâmetros imperativos de governança, supervisão de sistemas autônomos e integridade das estruturas de dados e documentação em todas as operações sob controle societário direto ou indireto da Holding MasterCore. Suas disposições incidem, de forma transversal e inafastável, sobre as unidades operacionais ativas — inclusive PeptiCore e EngineCore —, bem como sobre quaisquer subsidiárias integrais, empreendimentos coligados e futuras ventures a serem incubadas ou adquiridas pelo grupo econômico.
+
+O escopo material deste normativo abrange os fluxos decisórios executivos, a orquestração agêntica de automações algorítmicas, os protocolos de segurança de sistemas de informação, as diretrizes de compliance regulatório e a salvaguarda perene dos ativos tangíveis e intangíveis corporativos. Todas as ações tomadas em nome do grupo, sejam originadas por colaboradores humanos ou por agentes digitais autônomos, subordinam-se categoricamente aos critérios de rastreabilidade, integridade probatória e reversibilidade assegurados por este instrumento.
+
+2. Hierarquia Normativa e Herança de Diretrizes
+
+O presente instrumento normativo integra uma estrutura hierárquica vertical rígida de governança corporativa, figurando formalmente como norma subordinada às fontes-mãe estruturantes do conglomerado, a saber: a Diretriz Estratégica Córtex v2.0 (expedida em 01/10/2026) e o Núcleo Universal MasterCore v1.0. Nenhuma deliberação interpretativa ou operacional decorrente desta política poderá colidir materialmente com os princípios e restrições insculpidos nos referidos instrumentos fundamentais.
+
+Em estrita observância à Regra-Mãe A de governança, este pacote adota o modelo imperativo de referência por herança. Veda-se a transcrição integral, a redundância textual ou a tentativa de sobreposição das fontes-mãe em instrumentos secundários. As diretrizes aqui dispostas limitam-se a operacionalizar e pormenorizar as balizas do Núcleo Universal, assegurando que o ponto de verdade conceitual e procedimental permaneça unificado e imutável nas bases oficiais de conhecimento.
+
+3. Córtex como Control Plane e Divisão Funcional de Camadas
+
+A governança arquitetural do ecossistema tecnológico e operacional MasterCore repousa sobre a estrita segregação de funções sistêmicas, sendo o Córtex designado como a única e exclusiva entidade autorizada a atuar como Control Plane (Plano de Controle). Nessa qualidade, cabe privativamente ao Córtex a emissão, validação criptográfica, assinatura e versionamento de instruções operacionais padronizadas com base estrita no Padrão Universal de Runbook (PUR v1.0).
+
+O ambiente operacional Base44 é categorizado funcionalmente como camada de execução mecânica estrita (Data/Execution Plane). Fica expressamente vedada à Base44 qualquer competência discricionária, deliberação autônoma ou interpretação contextual sobre ordens recebidas. Sua atuação limita-se a executar mecanicamente os comandos parametrizados recebidos do Control Plane, devolvendo os respectivos logs estruturados de execução.
+
+A fonte única e imutável de verdade (Single Source of Truth) para todos os códigos-fonte, esquemas de infraestrutura, arquivos de parametrização e documentação de engenharia é o Repositório GitHub corporativo. Nenhuma modificação lógica, operacional ou de governança terá validade técnica se não estiver registrada, com histórico auditável e hashes criptográficos conferidos, na estrutura do referido repositório mestre.
+
+4. Faixas de Risco de Execução Agêntica
+
+Toda solicitação de intervenção, tarefa algorítmica ou processo autônomo conduzido por modelos de inteligência agêntica deve ser imediatamente classificado e processado em estrita concordância com a taxonomia tripartite de risco operacional a seguir fixada:
+
+4.1. Faixa de Rotina (Default-Allow)
+
+Compreende operações de baixo impacto técnico ou administrativo, manutenções parametrizadas, consultas informativas e tarefas mecânicas não estruturais. A política de processamento adota o regime Default-Allow, autorizando a execução sem intervenção humana síncrona prévia, sob a condição obrigatória de garantia de rastreabilidade ponta a ponta, auditoria contínua de telemetria e disponibilidade garantida de mecanismos automatizados de reversibilidade sistêmica completa (instant rollback).
+
+4.2. Faixa Supervisionada (Validação Determinística)
+
+Engloba comandos algorítmicos e rotinas de automação que impactem fluxos essenciais de negócios, integrações sistêmicas intercompany, geração de artefatos com distribuição interna ampla ou alteração de configurações de serviços. Esta faixa veda a execução direta, exigindo validação determinística prévia por meio de testes automatizados de consistência de dados, conferência de sintaxe contratual e checagem de parâmetros de integridade antes da liberação do comando pelo Control Plane.
+
+4.3. Faixa Bloqueada (Gates Humanos Intransferíveis)
+
+Estabelece uma barreira mecânica e lógica intransponível para fluxos que envolvam decisões estruturais corporativas. Esta faixa aciona o bloqueio compulsório da rotina agêntica, exigindo intervenção deliberativa e autorização formal expressa, individual e exclusiva do CEO MasterCore para as seguintes matérias sensíveis:
+
+1. Decisões, testes, formulações ou tratamentos computacionais com potencial reflexo ou impacto direto na saúde humana, em respeito integral ao Art. 20 da Lei Federal nº 13.709/2018 (LGPD) no que tange ao direito de revisão humana de decisões automatizadas;
+2. Negociação, celebração, aditamento ou rescisão de parcerias estratégicas, acordos operacionais e instrumentos contratuais com agentes externos;
+3. Qualquer ordem de desembolso financeiro, alienação patrimonial, remessa, transferência de capital ou assunção de obrigações orçamentárias corporativas;
+4. Atos societários, alterações de controle, constituição de novas subsidiárias e distribuição formal de dividendos ou cotas de resultados.
+
+5. Governança via Policy-as-Code
+
+O ciclo de vida de qualquer ajuste, acréscimo ou supressão em regras de negócio e governança corporativa deve ser imperativamente gerenciado como código auditável (Policy-as-Code). Nenhum parâmetro normativo será introduzido por meio de intervenções informais em ambientes produtivos, devendo percorrer compulsoriamente a esteira sequencial e determinística composta pelas seguintes fases:
+
+1. Elaboração de Proposta Estruturada contendo a justificativa técnica, formulação lógica e impactos esperados;
+2. Simulação de Impacto Sistêmico Multi-empresas (Holding, PeptiCore e EngineCore);
+3. Validação Funcional em ambiente de testes homologado (sandbox/staging);
+4. Submissão à Matriz de Risco Operacional e respectiva aprovação pela alçada competente;
+5. Liberação Gradual e Monitorada em ambiente produtivo com limitação inicial de escopo (canary release);
+6. Monitoramento Ativo contínuo de anomalias operacionais e integridade comportamental;
+7. Acionamento de Reversão Automática Imediata (auto-rollback) caso qualquer indicador viole as tolerâncias de governança pré-fixadas.
+
+6. Geo-phase Compulsório
+
+É mandatória a inclusão expressa e visível do campo de controle geo-phase no cabeçalho de todas as diretrizes, notas técnicas, playbooks operacionais, esquemas de bancos de dados, rotinas de código e artefatos de integração produzidos no grupo. O dimensionamento territorial segue a seguinte escala oficial:
+
+1. Fase 1 — Brasil: Aplicação restrita às fronteiras do território nacional, sob observância primária da legislação brasileira, em especial a Lei Geral de Proteção de Dados (Lei nº 13.709/2018) e a regulação setorial pertinente;
+2. Fase 2 — América Latina: Expansão e harmonização das rotinas com os marcos normativos dos países-alvo da região;
+3. Fase 3 — Global: Aplicação internacional ampla, subordinada a frameworks multinacionais de governança corporativa, soberania de dados e interoperabilidade irrestrita.
+
+Nota Regulamentar: A omissão do parâmetro geo-phase em qualquer artefato funcional ou normativo invalida sua aptidão para publicação e execução imediata no ecossistema MasterCore.
+
+7. Integridade de Dados, Rastreabilidade e Auditoria Contínua
+
+A veracidade dos dados constitui ativo patrimonial absoluto da holding. Todo indicador corporativo, dado financeiro, apontamento operacional ou registro analítico exibido em relatórios internos ou painéis executivos deve manter uma trilha de auditoria contínua, unívoca e criptograficamente verificável até sua respectiva fonte primária de reconciliação (instrumento contratual assinado, documento fiscal, extrato bancário oficial, registro de log de sistema ou assinatura criptográfica imutável).
+
+Na eventualidade temporária de indisponibilidade ou inconsistência da fonte primária de reconciliação, os sistemas e analistas ficam peremptoriamente impedidos de arbitrar premissas hipotéticas, estimativas estatísticas desprovidas de prova documental ou valores numéricos artificiais (tais como "0" ou "N/A" sem nota explicativa). O campo ou indicador deverá expressar compulsoriamente a informação padronizada: sem dados auditáveis, acompanhada do registro da respectiva diligência de saneamento instaurada.
+
+8. Regra Universal: Proposto ≠ Aplicado
+
+O princípio basilar que governa o ciclo de governança do grupo repousa no axioma de que Proposto ≠ Aplicado. Nenhuma diretriz, proposta de resolução, artefato técnico, alteração estrutural de sistemas ou protocolo administrativo possui força normativa vinculante, exequibilidade de rotina ou aptidão para gerar obrigações antes de sua validação formal, inequívoca, documental e expressa emitida pela autoridade executiva máxima do grupo.
+
+A mera circulação de minutas, a convergência técnica em fóruns deliberativos do Dream Team ou o parecer favorável expedido pela área de Riscos & Compliance representam estritamente atos preparatórios de consultoria. O estado de proposta jamais se confunde com o estado de aplicação, sendo rigorosamente proibido a qualquer operador conferir eficácia operacional antecipada a minutas normativas.
+
+=== PARTE II — TERMOS DE USO E GOVERNANÇA DE DOCUMENTOS ===
+
+1. Escopo de Uso e Vinculação Integral
+
+Os presentes Termos de Uso e Governança de Documentos vinculam irrestritamente todas as partes integrantes da estrutura da Holding MasterCore, seus sócios, executivos, membros do Dream Team, empregados celetistas, prestadores de serviços de engenharia e consultoria terceirizada. As diretrizes aqui formalizadas estendem-se, com idêntica força obrigatória, a todas as instâncias agênticas, modelos de fundação, rotinas orquestradas pelo Córtex e ferramentas operadas no âmbito das subsidiárias operacionais, em especial PeptiCore e EngineCore.
+
+O acesso a qualquer repositório, base documental, código-fonte, infraestrutura de processamento ou canal de comunicação do grupo constitui consentimento expresso e irrevogável com as obrigações estatuídas nestes termos, respondendo o infrator administrativa, civil e criminalmente por eventuais vazamentos ou adulterações.
+
+2. Propriedade Intelectual e Reserva Patrimonial Inegociável
+
+A Holding MasterCore é a titular originária, exclusiva, perpétua e inalienável da totalidade dos direitos de Propriedade Intelectual gerados, transformados ou integrados no âmbito do grupo. Isso compreende códigos-fonte, arquiteturas de agentes lógicos, bibliotecas proprietárias, modelos heurísticos, esquemas de bases de dados relacionais e vetoriais, marcas comerciais, nomes de domínio, segredos industriais, dados científicos analíticos, relatórios consolidados e documentação operacional.
+
+A atuação técnica de colaboradores humanos ou de redes agênticas opera sob presunção de cessão total e automática de titularidade de direitos autorais e de invento em favor da Holding MasterCore, independentemente de formalização aditiva, vedada qualquer retenção pessoal, comercialização não autorizada ou reinvidicação externa de copropriedade de tais ativos imateriais estratégicos.
+
+3. Confidencialidade e Gate Formal de PI/NDA
+
+A integridade da base informacional estratégica do grupo exige a estrita compartimentação de informações entre unidades operacionais. Fica categoricamente vedado o trânsito livre de informações operacionais, relatórios científicos, estruturas de custos, dados de clientes ou modelos proprietários entre empresas do mesmo grupo (PeptiCore ↔ EngineCore), bem como sua disponibilização para parceiros comerciais ou terceiros, sem a prévia e formal passagem pelo Gate de PI/NDA.
+
+O Gate de PI/NDA consiste no procedimento documental conduzido pela área de Riscos & Compliance da Holding, encarregado de classificar formalmente a confidencialidade do dado, verificar a existência de Acordo de Confidencialidade (NDA) vigente e colher a respectiva autorização executiva de transmissão informacional antes de qualquer compartilhamento efetivo.
+
+4. Ciclo de Vida Documental e Versionamento Semântico
+
+Todos os artefatos oficiais produzidos e mantidos no grupo econômico deverão percorrer e refletir rigorosamente o ciclo de vida formal padronizado, estruturado nas seguintes etapas progressivas:
+
+1. MINUTA: Documento em elaboração pela equipe técnica ou pelo Córtex, sem qualquer valor legal ou eficácia procedimental interna;
+2. REVISÃO: Artefato formalmente submetido à conferência das áreas de Riscos, Compliance e alçadas competentes;
+3. APROVADA: Documento que obteve o aceite formal, expresso e exclusivo do CEO MasterCore;
+4. VIGENTE: Fase operacional de aplicação compulsória da norma, após seu devido registro, catalogação e distribuição no repositório oficial.
+
+A identificação de versões de artefatos obedece ao padrão de Versionamento Semântico (Major.Minor.Patch). Qualquer modificação formal do documento demanda o respectivo avanço numérico (bump), com prioridade ao avanço estruturado de Minor.Patch após aceites técnicos, acompanhado da imediata atualização textual do respectivo changelog contendo resumo das alterações, justificativa, data da intervenção e autor da modificação.
+
+5. Localização Canônica, Ledger e Herança de Contextos
+
+A governança documental do grupo estrutura-se sob o princípio do combate à dispersão da verdade informacional. Para assegurar a rastreabilidade absoluta dos acervos corporativos, adota-se o seguinte protocolo estrutural:
+
+1. Repositório Canônico Oficial: Toda documentação normativa e diretiva terá uma única fonte primária indexada, versionada e protegida contra edições arbitrárias dentro do repositório oficial de governança;
+2. Registro Central no Ledger: Cada documento integrará compulsoriamente a tabela mestra do Índice Documental Corporativo (Ledger), onde constarão obrigatoriamente metadados de identificação, versão semântica, data de expedição e status de vigência atual;
+3. Referência Contextual por Herança: Em interações com ferramentas operacionais, interfaces de inteligência artificial ou transcrições para playbooks locais, os documentos canônicos devem ser referenciados exclusivamente por mecanismos de apontamento ou consulta sob demanda (Retrieval-Augmented Generation / linkagem direta). É rigorosamente vedada a cópia massiva e integral de textos de políticas corporativas dentro de system prompts ou janelas de contexto temporárias de chat, mitigando alucinações e dissociações de versão.
+
+=== PARTE III — NOTA DE VIGÊNCIA PROVISÓRIA ===
+
+1. Entrada em Vigor Provisória
+
+O presente pacote integrado de Instrumentos Normativos v1.0.1, compreendendo a Política Corporativa MasterCore e os correspondentes Termos de Uso e Governança de Documentos, entrará em vigor em caráter estritamente PROVISÓRIO a partir da data de lançamento da manifestação formal de aceite expressada pelo CEO MasterCore. Uma vez conferido o referido aceite preliminar, suas regras passam a vincular as operações imediatas de todas as entidades controladas pela holding.
+
+2. Condição Resolutiva Expressa e Prazo de Eficácia
+
+A vigência deste instrumento é expressamente subordinada à condição resolutiva de validação deliberativa, operando com limite temporal predeterminado. A eficácia provisória perdurará pelo prazo improrrogável de 15 (quinze) dias corridos contados da data de formalização do aceite preliminar concedido pelo CEO.
+
+Dentro deste intervalo temporal delimitado, a autoridade aprovatória executiva procederá ao escrutínio analítico e revisão formal do teor deste pacote normativo, culminando na edição de ato de aprovação definitiva formal ou de ato motivado de rejeição integral ou parcial, com os respectivos apontamentos técnicos de retificação.
+
+3. Registro Sistêmico e Atualização de Repositório
+
+No ato de deferimento do aceite provisório executivo, o Córtex executará, de forma imediata e síncrona na mesma passada operacional, as seguintes rotinas computacionais e de registro corporativo:
+
+1. Aplicação do incremento semântico (bump) de versão formal Minor.Patch na raiz do repositório de governança;
+2. Atualização correspondente do arquivo mestre de changelog, consignando a entrada em regime de vigência provisória;
+3. Atualização cadastral do Índice Documental Corporativo (Ledger) com a indicação da versão ativada e datação precisa de início do ciclo provisório.
+
+4. Cláusula de Perda de Eficácia Automática
+
+Decorrido integralmente o lapso temporal de 15 (quinze) dias corridos fixado no item 2 sem que tenha havido a manifestação expressa e documentada de aprovação definitiva subscrita pelo CEO da Holding MasterCore, operar-se-á a perda imediata e automática de eficácia de todas as disposições deste pacote normativo.
+
+Configurada a perda de eficácia temporal, o documento retornará instantaneamente à condição formal de Minuta Técnica, desprovida de qualquer coercibilidade, capacidade sancionatória ou executoriedade operacional, devendo o Córtex anotar o status caduco no Ledger institucional, sem prejuízo da ulterior abertura de nova rodada revisional pelo Dream Team MasterCore.
+
+5. Revogação e Preservação das Fontes-Mãe
+
+Com a entrada em vigência provisória deste pacote, ficam integralmente revogadas quaisquer disposições internas, ordens de serviço, circulares, instruções prévias ou atos regulamentares de grau hierárquico inferior que colidam com os princípios aqui descritos.
+
+Permanecem intocadas, plenamente hígidas, imutáveis e em patamar de hierarquia superior as diretrizes contidas nas fontes-mãe estruturantes do conglomerado, representadas pela Diretriz Estratégica Córtex v2.0 (datada de 01/10/2026) e pelo Núcleo Universal MasterCore v1.0, as quais prevalecerão incondicionalmente em caso de qualquer divergência hermenêutica.
+
+=== ASSINATURAS E CONTROLE DE EXPEDIÇÃO ===
+
+LÚCIO — CEO MASTERCORE
+Autoridade Aprovatória Exclusiva — Holding MasterCore
+
+[X] Aceite Provisório Concedido em: 05/10/2026
+[ ] Rejeitado / Ajustes Exigidos
+
+CÓRTEX — ORQUESTRADOR CENTRAL
+Emissor de Governança e Controle Estratégico (PUR v1.0)
+Dream Team MasterCore | Suporte de Riscos & Compliance
+
+APROVADO PROVISORIAMENTE PELO CEO EM 05/10/2026 — VIGÊNCIA ATÉ 20/10/2026 (condição resolutiva: aprovação definitiva).
