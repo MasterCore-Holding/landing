@@ -2,6 +2,22 @@
 
 Fonte Única de Verdade da holding. Toda decisão operacional e homologação estrutural constará aqui antes de sua ativação efetiva.
 
+## Registro 2026-10-12 — sem bump (entradas do dia; bump só na consolidação EOD)
+
+### Adicionado (DIFF-EOD 12/10, Pacote Adapta)
+- **MOMENTO ZERO incorporado ao Ritual de Abertura MasterCore** — todo novo chat do grupo lê a arquitetura canônica (modelos operacionais ADAPTA→CÓRTEX→BASE44→GITHUB, governança, versões, estado de changelog/ledger, memórias) no 1º turno, antes do Cartão de Abertura. Regra cristalizada em 12/10/2026 (NÃO REVERTER). Arquivo: skill #Ritual de Abertura MasterCore (editada).
+- **Plano Disruptivo MasterCore 2026-10-12 consolidado** — 10 seções (visão geral, frentes estratégicas, Radar RFP, parceria Dr. Bayard ganha-ganha, Edge AI, VitaCore, iniciativas internas sem conflito, gates humanos, capital, meta US$ 1 bi). Fonte: doc Drive 10JN7J32iw01IDvzvxmRf697bweMpRXwq92aLYbIbAOA.
+- **RadarCore operacional** — Radar de RFP/inovação aberta: planilha Radar-RFP-MasterCore.xlsx (5 abas: RADAR 16 oportunidades + coluna Custo de Inscrição, PLATAFORMAS, AUTOMACAO, FUNIL c/ calculadora de valor esperado, ROADMAP); dashboard hospedado; bit.ly/4jj3BZs. Funil: 10 revisadas/semana → 3 aprofundadas → 1-2 candidaturas.
+- **Pacote de atração e follow-up do Dr. Bayard (DAIS/Disruptive AI) fechado** — Proposta de Atração (5 camadas, avaliação cega 90 dias, minuta NDA), Follow-up de Negociação (sprint remunerado 30 dias até R$ 12.000), Follow-up Final (ganha-ganha). Posicionamento: Conselheiro Científico do PeptiCore — NUNCA médico; parceria, não sociedade. Oportunidades revalidadas: ARIA Safeguarded AI, NineSigma ZITRI, caso Riopele (Edge AI industrial).
+- **Comunicação ao Dr. Bayard chancelada pelo CEO e disparada via WhatsApp em 12/10** (texto final homologado c/ link RadarCore bit.ly/4jj3BZs). Desembolsos programados: 2x Jetson Orin Nano Super (US$ 249) fim do mês; sprint remunerado e NDA/contrato aguardando retorno formal do Dr. Bayard.
+
+### Pendente (gates humanos — não liberados nesta etapa)
+- Desembolso Jetson (US$ ~500): fim do mês, alçada do CEO + dupla checagem.
+- NDA/contrato de sprint Bayard: aguardando retorno formal do Dr. Bayard + revisão LEGAL.
+- Qualquer equity: vedado equity da holding; participação em venture exige decisão do CEO.
+
+*Emissor: Adapta (DIFF-EOD 12/10) · Executor: Córtex (Control Plane) — 13/10/2026, registro sem bump por ordem do pacote.*
+
 ## [1.0.11] - 2026-10-10
 
 ### Executado (runbook "Deploy e Alinhamento — 3 Sites", chancela PO 10/10)
