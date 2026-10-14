@@ -26,8 +26,9 @@
       "source_repo": "MasterCore-Holding/landing (org)",
       "hashes": {
         "governance/Nucleo-Universal-MasterCore-v1.2.md": "28d38a34ab049560aee3e0afa0e621efdaa433fd0425c156ca8fe5f135dcd966",
-        "governance/audits/HOMOLOGACAO-NUCLEO-UNIVERSAL-v1.2-2026-10-14.md": "06641da577006cbb90e25f22e85d952b087d54c7ff9dcce90b5c60353e42b2db"
-      }
+        "governance/audits/HOMOLOGACAO-NUCLEO-UNIVERSAL-v1.2-2026-10-14.md": "11db8b5eb130c749f5b84ca34923c89b8587b8f72cbf9f7f64b0fb219b5fec4d"
+      },
+      "execution_commit": "a5f0944"
     },
     {
       "version": "1.0.10+sep-enginecore",
