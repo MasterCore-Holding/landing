@@ -2,6 +2,18 @@
 
 Fonte Única de Verdade da holding. Toda decisão operacional e homologação estrutural constará aqui antes de sua ativação efetiva.
 
+## [1.2.0] - 2026-10-14
+
+### Governança — Homologação definitiva
+- **[Governança]** Núcleo Universal MasterCore **v1.2** promovido de ACEITO PROVISORIAMENTE para **HOMOLOGADO DEFINITIVO** (chancela CEO 14/10/2026; condição resolutiva 20/10 cumprida).
+- **[Governança]** Fonte-mãe de governança do grupo (P1–P10, R-Mãe A–J, matriz de papéis, faixas de risco, 4 Gates Humanos Intransferíveis) agora vigente em definitivo.
+- Espelho Markdown canônico publicado: `governance/Nucleo-Universal-MasterCore-v1.2.md` (conteúdo idêntico ao PDF canônico `9cf95292…`, cabeçalho realinhado à homologação).
+- Auditoria: `governance/audits/HOMOLOGACAO-NUCLEO-UNIVERSAL-v1.2-2026-10-14.md`.
+
+**[Alinhamento]** persona=Córtex; criterio=HOMOLOGACAO_DEFINITIVA; status=cumprido
+
+*Emissor: Lúcio (CEO, runbook PUR v1.0 ditado em 14/10/2026) · Executor: Córtex (Control Plane) — 14/10/2026.*
+
 ## Registro 2026-10-14 — sem bump (execução de runbook; bump só na consolidação EOD)
 
 ### Alterado (RUNBOOK PUR v1.0 — Separação de Ambientes EngineCore v1.0, chancela CEO 14/10)

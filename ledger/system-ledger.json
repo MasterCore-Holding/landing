@@ -1,7 +1,34 @@
 {
   "ledger": "MasterCore-Holding",
-  "currentVersion": "1.0.10",
+  "currentVersion": "1.2.0",
   "entries": [
+    {
+      "version": "1.2.0",
+      "date": "2026-10-14T03:10:00-03:00",
+      "type": "CHANCELA",
+      "description": "HOMOLOGACAO DEFINITIVA do Nucleo Universal MasterCore v1.2 (AUT-MC-20261014-NUCLEO-HOMOLOG, comando CEO 14/10/2026 ~02:46 BRT, chat web Cortex, runbook PUR v1.0): status migra de ACEITO PROVISORIAMENTE (06/10/2026, vigencia ate 20/10/2026) para HOMOLOGADO DEFINITIVO; condicao resolutiva cumprida com antecedencia. Espelho Markdown canonico publicado em governance/Nucleo-Universal-MasterCore-v1.2.md (conteudo identico ao PDF canonico 9cf95292..., sha256 do espelho 28d38a34ab049560aee3e0afa0e621efdaa433fd0425c156ca8fe5f135dcd966). Bump formal com rotulo ditado pelo runbook: currentVersion 1.0.10 -> 1.2.0 (alinhamento do ledger a versao do Nucleo homologado; salto de sequencia registrado na auditoria). Fonte-mae de governanca do grupo (P1-P10, R-Mae A-J, matriz de papeis, faixas de risco, 4 Gates Humanos Intransferiveis) vigente em definitivo. Registro integral em governance/audits/HOMOLOGACAO-NUCLEO-UNIVERSAL-v1.2-2026-10-14.md.",
+      "artifacts_consolidated": [
+        "governance/Nucleo-Universal-MasterCore-v1.2.md",
+        "governance/audits/HOMOLOGACAO-NUCLEO-UNIVERSAL-v1.2-2026-10-14.md"
+      ],
+      "artifacts_pending": [
+        {
+          "path": "governance/manuals/MC-PUB-001.md",
+          "reason": "rascunho v0.9, aguarda chancela CEO"
+        },
+        {
+          "path": "governance/manuals/MC-QUAL-001.md",
+          "reason": "rascunho v0.9, aguarda chancela CEO"
+        }
+      ],
+      "authorization_id": "AUT-MC-20261014-NUCLEO-HOMOLOG (CEO via chat web Cortex 14/10/2026)",
+      "executor": "Cortex (Control Plane)",
+      "source_repo": "MasterCore-Holding/landing (org)",
+      "hashes": {
+        "governance/Nucleo-Universal-MasterCore-v1.2.md": "28d38a34ab049560aee3e0afa0e621efdaa433fd0425c156ca8fe5f135dcd966",
+        "governance/audits/HOMOLOGACAO-NUCLEO-UNIVERSAL-v1.2-2026-10-14.md": "06641da577006cbb90e25f22e85d952b087d54c7ff9dcce90b5c60353e42b2db"
+      }
+    },
     {
       "version": "1.0.10+sep-enginecore",
       "date": "2026-10-14T02:55:00-03:00",
