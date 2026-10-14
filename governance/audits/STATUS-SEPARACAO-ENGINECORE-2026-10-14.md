@@ -28,11 +28,13 @@
 
 ## 3. Evidência de runtime (Proposto ≠ Aplicado) — preenchida pós-deploy
 
-- [ ] `https://enginecore.app` → HTTP 200, hash live = hash repo (base de comparação: sha256 index.html repo próprio `924de2f4...` pré-deploy)
-- [ ] `https://www.enginecore.app` → HTTP 200/301 → site próprio
-- [ ] `https://mastercore.app/enginecore/` → stub redirect → enginecore.app
-- [ ] `https://mastercore.app/go/enginecore/` → redirect → enginecore.app/qualificacao/
-- [ ] Portal mastercore.app: link Conhecer venture → enginecore.app
+Re-verificação ao vivo pelo Córtex em 02:58 BRT 14/10 (curl): 5/5 VERDES.
+
+- [x] `https://enginecore.app` → HTTP 200, hash live = hash repo (sha256 index.html `924de2f4...` — batem byte-a-byte)
+- [x] `https://www.enginecore.app` → HTTP 301 → https://enginecore.app/
+- [x] `https://mastercore.app/enginecore/` → stub redirect → enginecore.app (query preservada)
+- [x] `https://mastercore.app/go/enginecore/` → redirect → enginecore.app/qualificacao/ (UTMs pass-through)
+- [x] Portal mastercore.app: link Conhecer venture → enginecore.app (+UTM conhecer_venture) e host-matcher ativo
 
 ## 4. Pendências fora do escopo do Córtex (ação do CEO)
 
