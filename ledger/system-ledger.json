@@ -3,6 +3,22 @@
   "currentVersion": "1.0.10",
   "entries": [
     {
+      "version": "1.0.10+sep-enginecore",
+      "date": "2026-10-14T02:55:00-03:00",
+      "type": "RUNBOOK",
+      "description": "RUNBOOK PUR v1.0 — Separação de Ambientes EngineCore (v1.0, chancela CEO 14/10): vínculo EngineCore→holding encerrado na camada de conteúdo. Recon ao vivo provou passos 1-3 já executados (repo MasterCore-Holding/enginecore + Pages + cert até 2027 + DNS www operante desde 11/10); runbook assumia topologia antiga (repo mastercore-holding.github.io inexistente, org enginecoreapp 404). Executado: go/enginecore → enginecore.app/qualificacao/, link Conhecer venture → enginecore.app/, host-matcher → enginecore.app/, pasta legada enginecore/ = stubs redirect 1:1 + assets removidos. PQ-013 (.com.br/DNS GoDaddy) permanece ação do CEO.",
+      "artifacts_consolidated": [
+        "governance/audits/STATUS-SEPARACAO-ENGINECORE-2026-10-14.md"
+      ],
+      "artifacts_pending": [],
+      "authorization_id": "RUNBOOK PUR v1.0 Separação Ambientes EngineCore v1.0 (CEO via chat web Córtex 14/10/2026)",
+      "executor": "Córtex (Control Plane)",
+      "source_repo": "MasterCore-Holding/landing (org)",
+      "hashes": {
+        "governance/audits/STATUS-SEPARACAO-ENGINECORE-2026-10-14.md": "e6aea8fae22e63a1b9aadb89a36202bd93c6c0d4781b9a21daa565c5b6e25ed9"
+      }
+    },
+    {
       "version": "1.0.10",
       "date": "2026-10-09T23:45:00-03:00",
       "type": "CHANCELA",

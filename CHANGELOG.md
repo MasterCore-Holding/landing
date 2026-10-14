@@ -2,6 +2,19 @@
 
 Fonte Única de Verdade da holding. Toda decisão operacional e homologação estrutural constará aqui antes de sua ativação efetiva.
 
+## Registro 2026-10-14 — sem bump (execução de runbook; bump só na consolidação EOD)
+
+### Alterado (RUNBOOK PUR v1.0 — Separação de Ambientes EngineCore v1.0, chancela CEO 14/10)
+- **Vínculo EngineCore→holding encerrado na camada de conteúdo** — site próprio (repo `MasterCore-Holding/enginecore`, Pages standalone, domínio enginecore.app + cert aprovado) passa a ser a ÚNICA fonte pública da EngineCore:
+  - `go/enginecore/` agora redireciona para `https://enginecore.app/qualificacao/` (antes: cópia legada `mastercore.app/enginecore/`).
+  - Link "Conhecer venture" do portal aponta para `https://enginecore.app/` (antes: cópia legada).
+  - Host-matcher do `index.html` (visitas via domínio EngineCore caídas na holding) redireciona para `https://enginecore.app/` em vez da pasta legada.
+  - Pasta legada `enginecore/` convertida em stubs de redirect 1:1 (index, lander, qualificacao) — links de posts antigos continuam funcionando; assets binários legados removidos.
+  - Estado pré-existente verificado ao vivo (recon 14/10 ~02:50 BRT): repo próprio + Pages + DNS www já operavam desde 11/10 (último push 00:46 14/10) — passos 1-3 do runbook já estavam executados; divergência de topologia documentada em `governance/audits/STATUS-SEPARACAO-ENGINECORE-2026-10-14.md`.
+- Evidência de runtime: apex/www enginecore.app HTTP 200 + hash live = hash repo; redirects verificados pós-deploy.
+
+*Emissor: Lúcio (CEO, runbook PUR v1.0) · Executor: Córtex (Control Plane) — 14/10/2026.*
+
 ## Registro 2026-10-12 — sem bump (entradas do dia; bump só na consolidação EOD)
 
 ### Adicionado (DIFF-EOD 12/10, Pacote Adapta)
