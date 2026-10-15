@@ -2,6 +2,19 @@
 
 Fonte Única de Verdade da holding. Toda decisão operacional e homologação estrutural constará aqui antes de sua ativação efetiva.
 
+## [1.3.0] - 2026-10-15
+
+### Alterado (RUNBOOK MC-LANDING-ALIGN-01 — Item 1, chancela CEO 15/10 + Adendos)
+- **[Landing]** Banner de simulação inserido acima do Painel de Telemetria e Transparência (texto exato do runbook, discreto, desktop+mobile).
+- **[Landing]** Seção de ventures substituída: título "Ventures na esteira MasterCore" + 5 cards (PeptiCore beta fechado, EngineCore operante, LongevCore em fundação, StyleCore em estudos — token {{NOME_VENTURE_MODA}} substituído por StyleCore conforme Adendo 15/10, DAIS em estruturação) + frase de fechamento (IFRS 10/CPC 36, telemetria auditável, supervisão humana mandatória, automação até 90% nunca além).
+- **[Landing]** Link da EngineCore nas ventures aponta para https://enginecore.app com UTM conheçer_venture (legado mastercore.app/enginecore removido — zero ocorrências).
+- **[Landing]** Nomenclatura: "MasterCore OS" deixou de ser sujeito (4 reescritas + 2 no bloco DPD) — padrão "nossa plataforma proprietária, o MasterCore OS…". MasterCore = holding; MasterCore OS = plataforma.
+- **[Landing]** Novo bloco "O Ecossistema MasterCore" antes do footer (texto exato do runbook + links PeptiCore/EngineCore com UTM ecossistema).
+- **[Landing]** Manifesto do grupo no footer + assinatura "MasterCore · PeptiCore · EngineCore — empresas do Grupo MasterCore."
+- Escopo congelado respeitado; public/index.html (cópia legada obsoleta) intocado. Evidência de runtime em governance/audits/.
+
+*Emissor: Adapta (runbook MC-LANDING-ALIGN-01, adendos 15/10) · Executor: Córtex (Control Plane) — 15/10/2026.*
+
 ## [1.2.0] - 2026-10-14
 
 ### Governança — Homologação definitiva
