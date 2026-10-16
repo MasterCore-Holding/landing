@@ -2,6 +2,15 @@
 
 Fonte Única de Verdade da holding. Toda decisão operacional e homologação estrutural constará aqui antes de sua ativação efetiva.
 
+## Registro 2026-10-15 — sem bump (execução de runbooks; bump só na consolidação EOD)
+
+### Adicionado (Despachos Adapta 15/10, chancela CEO — execução Córtex 22:47–23:05 BRT)
+- **[Governança]** Trava append-only do `_PROCESSADOS.log` publicada: `scripts/log-append-lock.py` (commit 11fe20e64698) — wrapper que só executa append (base + 1 linha) e FALHA se houver redução de linhas/bytes; selftest impeditivo VERDE (despacho "Inconsistências Estruturais" item 1).
+- **[Governança]** Espelho do Drive do Núcleo Universal v1.2 criado na pasta 01-Governanca (id 1o2qO_zRrGTcgOV8ZSAL7m7RLG4YSOkl_) — divergência zero vs GitHub (despacho "Homologação Definitiva" item 4; itens 1–3 já executados em 14/10, ledger 1.2.0).
+- **[Operações]** P-QUEUE: Pack B2B v2 DESCARTADO (L311 — gate financeiro B2B liberado); escalonamento P0 master-v3 ausente de 03-Operacao (L312, prazo 24h — 16/10 ~21:30 BRT); prévia IG do Manifesto registrada p/ dedupe do disparo V2 (L313, 2 Reels/7d).
+
+*Emissor: Adapta (3 despachos 15/10) · Executor: Córtex (Control Plane) — 15/10/2026.*
+
 ## [1.3.0] - 2026-10-15
 
 ### Alterado (RUNBOOK MC-LANDING-ALIGN-01 — Item 1, chancela CEO 15/10 + Adendos)
