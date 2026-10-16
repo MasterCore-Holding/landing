@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /radar
+Disallow: /cockpit
+Disallow: /custos
