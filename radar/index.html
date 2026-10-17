@@ -4,49 +4,66 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Demo do Radar RFP MasterCore: monitor global de RFPs, prêmios e challenges de R&D com triagem por IA. Amostra com dados 100% fictícios.">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/brand/favicon-mastercore-32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/brand/favicon-mastercore-16.png">
-    <meta name="robots" content="noindex, nofollow, noarchive">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/brand/favicon-mastercore-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/brand/favicon-mastercore-16.png">
+<meta name="robots" content="noindex, nofollow, noarchive">
 <title>Radar RFP — MasterCore · Demo (dados fictícios)</title>
 <style>
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { background:#0A192F; color:#F8FAFC; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Arial,sans-serif; min-height:100vh; }
-  .wrap { max-width:1100px; margin:0 auto; padding:28px 20px 64px; }
-  .banner { position:sticky; top:0; z-index:9; background:#F59E0B; color:#0A192F; font-weight:800; font-size:13px; letter-spacing:.08em; text-transform:uppercase; text-align:center; padding:9px 12px; }
-  .top { display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:8px; }
-  .brand { display:flex; align-items:center; gap:10px; font-weight:700; font-size:15px; }
-  .brand .dot { width:10px; height:10px; border-radius:50%; background:#14B8A6; box-shadow:0 0 12px #14B8A6; }
-  .google-btn { display:inline-flex; align-items:center; gap:8px; border:1px solid #1E3A5F; background:rgba(14,30,56,.7); color:#CBD5E1; font-size:12.5px; padding:8px 14px; border-radius:999px; text-decoration:none; }
-  .google-btn:hover { border-color:#14B8A6; color:#F8FAFC; }
-  .glogo { width:14px; height:14px; border-radius:50%; background:conic-gradient(#EA4335 0 25%,#4285F4 0 50%,#34A853 0 75%,#FBBC05 0); display:inline-block; }
-  h1 { font-size:clamp(24px,4.5vw,38px); line-height:1.15; margin:26px 0 10px; }
-  .sub { color:#B8C4D6; font-size:15px; line-height:1.6; max-width:760px; margin-bottom:28px; }
-  .impact { display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:14px; margin-bottom:34px; }
-  .imp-card { background:linear-gradient(180deg,rgba(20,184,166,.10),rgba(16,35,63,.55)); border:1px solid rgba(20,184,166,.30); border-radius:14px; padding:18px; }
-  .imp-card b { display:block; font-size:26px; color:#14B8A6; margin-bottom:4px; }
-  .imp-card span { color:#94A3B8; font-size:12.5px; line-height:1.45; }
-  .tbl { width:100%; border-collapse:collapse; background:rgba(14,30,56,.55); border:1px solid #1E3A5F; border-radius:14px; overflow:hidden; font-size:13.5px; }
-  .tbl th { text-align:left; padding:12px 14px; color:#14B8A6; font-size:11px; letter-spacing:.12em; text-transform:uppercase; border-bottom:1px solid #1E3A5F; }
-  .tbl td { padding:12px 14px; border-bottom:1px solid rgba(30,58,95,.55); vertical-align:middle; }
-  .tbl tr:last-child td { border-bottom:0; }
-  .score { display:inline-flex; align-items:center; justify-content:center; width:44px; height:44px; border-radius:50%; font-weight:800; font-size:14px; transform:rotate(45deg); margin:4px 8px; }
-  .score > span { transform:rotate(-45deg); }
-  .s-high { background:rgba(20,184,166,.16); border:2px solid #14B8A6; color:#5EEAD4; }
-  .s-mid { background:rgba(245,158,11,.14); border:2px solid #F59E0B; color:#FCD34D; }
-  .s-low { background:rgba(239,68,68,.12); border:2px solid #EF4444; color:#FCA5A5; }
-  .sem { display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:6px; }
-  .sem-g { background:#22C55E; box-shadow:0 0 8px #22C55E88; } .sem-y { background:#EAB308; } .sem-r { background:#EF4444; }
-  .cta-box { margin:44px 0 0; text-align:center; background:linear-gradient(180deg,rgba(20,184,166,.08),rgba(10,24,47,.4)); border:1px solid rgba(20,184,166,.35); border-radius:18px; padding:34px 22px; }
-  .cta-box h2 { font-size:clamp(20px,3.5vw,28px); margin-bottom:8px; }
-  .cta-box p { color:#94A3B8; font-size:14.5px; margin-bottom:22px; line-height:1.6; }
-  .btns { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
-  .btn { display:inline-block; padding:14px 28px; border-radius:12px; font-weight:700; font-size:15px; text-decoration:none; }
-  .btn-primary { background:#14B8A6; color:#04211B; box-shadow:0 8px 30px rgba(20,184,166,.35); }
-  .btn-primary:hover { filter:brightness(1.08); }
-  .btn-sec { border:1px solid #1E3A5F; color:#E2E8F0; }
-  .btn-sec:hover { border-color:#14B8A6; }
-  .foot { margin-top:34px; text-align:center; color:#8FA3BD; font-size:12px; line-height:1.7; }
-  @media (max-width:720px){ .tbl { font-size:12px; display:block; overflow-x:auto; white-space:nowrap; } .score { width:36px; height:36px; font-size:12px; } }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#0A192F; color:#F8FAFC; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Arial,sans-serif; min-height:100vh; }
+.wrap { max-width:1100px; margin:0 auto; padding:0 20px 64px; }
+.banner { position:sticky; top:0; z-index:9; background:#F59E0B; color:#0A192F; font-weight:800; font-size:13px; letter-spacing:.08em; text-transform:uppercase; text-align:center; padding:9px 12px; }
+.top { display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; margin:22px 0 34px; }
+.brand { display:flex; align-items:center; gap:10px; font-weight:700; font-size:15px; }
+.brand .dot { width:10px; height:10px; border-radius:50%; background:#14B8A6; box-shadow:0 0 12px #14B8A6; }
+.gbtn { display:inline-flex; align-items:center; gap:8px; padding:8px 16px; border:1px solid #1E3A5F; border-radius:999px; color:#CBD5E1; font-size:13px; font-weight:600; text-decoration:none; }
+.gbtn:hover { border-color:#3B82F6; color:#F8FAFC; }
+.hero { text-align:center; margin-bottom:40px; }
+.chip { display:inline-block; border:1px solid #14B8A6; color:#14B8A6; font-size:11px; letter-spacing:2px; padding:6px 14px; border-radius:999px; margin-bottom:18px; text-transform:uppercase; }
+h1 { font-size:clamp(26px,5vw,42px); line-height:1.15; font-weight:800; margin-bottom:14px; letter-spacing:-.01em; }
+.sub { color:#94A3B8; font-size:16px; line-height:1.6; max-width:640px; margin:0 auto; }
+.kpis { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:44px; }
+.kpi { background:#0D1B33; border:1px solid #1E3A5F; border-radius:12px; padding:22px 14px; text-align:center; }
+.kpi .n { font-size:clamp(30px,4.5vw,44px); font-weight:800; background:linear-gradient(135deg,#14B8A6,#2DD4BF); -webkit-background-clip:text; background-clip:text; color:transparent; text-shadow:0 0 24px rgba(20,184,166,.35); }
+.kpi .l { color:#94A3B8; font-size:12px; margin-top:6px; line-height:1.4; }
+.tabs { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-bottom:18px; }
+.tab { padding:7px 16px; border-radius:999px; border:1px solid #1E3A5F; color:#94A3B8; font-size:13px; font-weight:600; cursor:pointer; background:transparent; }
+.tab.on { background:#14B8A6; border-color:#14B8A6; color:#0A192F; }
+.tblwrap { overflow-x:auto; border:1px solid #1E3A5F; border-radius:12px; }
+table { width:100%; border-collapse:collapse; font-size:14px; min-width:760px; }
+th { text-align:left; padding:14px 16px; color:#94A3B8; font-size:11px; letter-spacing:1.5px; text-transform:uppercase; border-bottom:1px solid #1E3A5F; background:#0D1B33; }
+td { padding:14px 16px; border-bottom:1px solid rgba(30,58,95,.55); }
+tr:last-child td { border-bottom:none; }
+tr:hover td { background:rgba(20,184,166,.05); }
+.opp { font-weight:600; max-width:340px; }
+.chipd { display:inline-block; padding:3px 10px; border-radius:999px; font-size:12px; font-weight:700; border:1px solid #1E3A5F; color:#CBD5E1; white-space:nowrap; }
+.score { font-weight:800; font-size:15px; white-space:nowrap; }
+.s-gold { background:linear-gradient(135deg,#F59E0B,#FBBF24); -webkit-background-clip:text; background-clip:text; color:transparent; }
+.s-teal { color:#14B8A6; }
+.s-mut { color:#94A3B8; }
+.sema { display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:7px; vertical-align:middle; }
+.sv { background:#34D399; box-shadow:0 0 8px #34D399; }
+.sa { background:#FBBF24; box-shadow:0 0 8px #FBBF24; }
+.sr { background:#F87171; }
+.legend { color:#64748B; font-size:12px; text-align:center; margin:14px 0 44px; }
+.cta { text-align:center; margin-bottom:26px; }
+.btn-gold { display:inline-block; padding:15px 34px; border-radius:999px; font-weight:800; font-size:16px; color:#0A192F; text-decoration:none; background:linear-gradient(135deg,#F59E0B,#FBBF24); box-shadow:0 8px 30px rgba(245,158,11,.35); }
+.btn-gold:hover { filter:brightness(1.08); }
+.btn-ghost { display:inline-block; margin-left:12px; padding:15px 28px; border-radius:999px; border:1px solid #14B8A6; color:#14B8A6; font-weight:700; font-size:15px; text-decoration:none; }
+.btn-ghost:hover { background:rgba(20,184,166,.08); }
+.micro { color:#94A3B8; font-size:13px; margin-top:14px; }
+.hook { color:#64748B; font-size:12.5px; margin-top:10px; }
+.foot { text-align:center; color:#64748B; font-size:12px; padding:26px 0 0; border-top:1px solid #1E3A5F; }
+@media (max-width:760px){
+  .kpis { grid-template-columns:repeat(2,1fr); }
+  .tblwrap { border:none; }
+  table, thead, tbody, th, td, tr { display:block; }
+  thead { display:none; }
+  tr { background:#0D1B33; border:1px solid #1E3A5F; border-radius:12px; margin-bottom:12px; padding:14px; }
+  td { border:none; padding:5px 8px; }
+  td.opp { font-size:15px; padding-bottom:10px; }
+  .cd-l { color:#64748B; font-size:11px; text-transform:uppercase; letter-spacing:1px; }
+}
 </style>
 </head>
 <body>
@@ -54,43 +71,67 @@
 <div class="wrap">
   <div class="top">
     <div class="brand"><span class="dot"></span> Radar RFP · MasterCore</div>
-    <a class="google-btn" href="/radar/real/" title="Versão interna (autenticada)"><span class="glogo"></span> Entrar com Google</a>
+    <a class="gbtn" href="/radar/real/" title="Acesso à versão interna (dados reais)">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M21.35 11.1H12v3.9h5.35c-.5 2.4-2.6 3.9-5.35 3.9a6 6 0 1 1 0-12c1.5 0 2.9.55 4 1.5l2.9-2.9A10 10 0 0 0 12 2a10 10 0 1 0 0 20c5.8 0 9.6-4 9.6-9.7 0-.7-.1-1.2-.25-1.2z" fill="#4285F4"/></svg>
+      Entrar com Google
+    </a>
   </div>
-  <h1>Radar de oportunidades de inovação — visão demo</h1>
-  <p class="sub">Monitor global de RFPs, prêmios e challenges de R&amp;D com triagem automatizada por IA — da descoberta à proposta. Abaixo, uma amostra com <strong>dados 100% fictícios</strong> para você ver como funciona na prática.</p>
-
-  <div class="impact">
-    <div class="imp-card"><b>142</b><span>oportunidades monitoradas por mês em 40+ fontes globais (exemplo fictício)</span></div>
-    <div class="imp-card"><b>&lt;60s</b><span>triagem inicial por IA com score de aderência 0–100 (exemplo fictício)</span></div>
-    <div class="imp-card"><b>18</b><span>propostas submetidas no trimestre pela carteira demo (dados fictícios)</span></div>
+  <div class="hero">
+    <div class="chip">Demo · Dados 100% fictícios</div>
+    <h1>DA DESCOBERTA À PROPOSTA. EM UM SÓ RADAR.</h1>
+    <p class="sub">Varredura global de RFPs, prêmios e challenges — triagem por IA em segundos.</p>
   </div>
-
-  <table class="tbl">
-    <thead><tr><th>Score</th><th>Oportunidade</th><th>Owner</th><th>Parceiro</th><th>Status</th></tr></thead>
-    <tbody>
-      <tr><td><span class="score s-high"><span>92</span></span></td><td>Programa de Inovação Aberta — Indústria 4.0</td><td>EngineCore</td><td>Consórcio Alfa (fictício)</td><td><span class="sem sem-g"></span>Proposta</td></tr>
-      <tr><td><span class="score s-high"><span>88</span></span></td><td>Prêmio Global de Saúde Digital</td><td>PeptiCore</td><td>Fundação Exemplo (fictícia)</td><td><span class="sem sem-g"></span>Análise</td></tr>
-      <tr><td><span class="score s-high"><span>85</span></span></td><td>Challenge: IA para diagnóstico apoiado</td><td>PeptiCore</td><td>Instituto Demo (fictício)</td><td><span class="sem sem-y"></span>Triagem</td></tr>
-      <tr><td><span class="score s-mid"><span>81</span></span></td><td>Edital de P&amp;D em Biotecnologia</td><td>PeptiCore</td><td>Agência Beta (fictícia)</td><td><span class="sem sem-y"></span>Triagem</td></tr>
-      <tr><td><span class="score s-mid"><span>78</span></span></td><td>Hackathon de automação de agentes</td><td>MasterCore OS</td><td>Corp Exemplo S.A. (fictícia)</td><td><span class="sem sem-y"></span>Análise</td></tr>
-      <tr><td><span class="score s-mid"><span>74</span></span></td><td>Chamada: energia limpa e Edge AI</td><td>EngineCore</td><td>Consórcio Gama (fictício)</td><td><span class="sem sem-y"></span>Triagem</td></tr>
-      <tr><td><span class="score s-mid"><span>71</span></span></td><td>Programa de aceleração deep tech</td><td>MasterCore</td><td>Hub Inovação Demo (fictício)</td><td><span class="sem sem-r"></span>Mapeado</td></tr>
-      <tr><td><span class="score s-low"><span>68</span></span></td><td>RFP: segurança cibernética para IoT</td><td>CyberSecurity</td><td>Indústria Delta (fictícia)</td><td><span class="sem sem-r"></span>Mapeado</td></tr>
-      <tr><td><span class="score s-low"><span>64</span></span></td><td>Prêmio de longevidade e qualidade de vida</td><td>LongevCore</td><td>Instituto Ômega (fictício)</td><td><span class="sem sem-r"></span>Mapeado</td></tr>
-      <tr><td><span class="score s-low"><span>59</span></span></td><td>Challenge: moda inteligente sustentável</td><td>StyleCore</td><td>Grupo Sigma (fictício)</td><td><span class="sem sem-r"></span>Mapeado</td></tr>
-    </tbody>
-  </table>
-
-  <div class="cta-box">
-    <h2>Quero um radar assim para o meu negócio</h2>
-    <p>Este radar é uma demonstração com dados fictícios. Na versão real, o Radar RFP monitora fontes reais, pontua aderência ao seu portfólio e prepara a proposta — com curadoria humana.</p>
-    <div class="btns">
-      <a class="btn btn-primary" href="https://pepticore.app/agendar?utm_source=landing&amp;utm_medium=radar_demo&amp;utm_campaign=radar_rfp">Quero o Radar para o meu negócio</a>
-      <a class="btn btn-sec" href="https://mastercore.app/#ventures">Conhecer mais</a>
-    </div>
+  <div class="kpis">
+    <div class="kpi"><div class="n">40+</div><div class="l">Fontes globais monitoradas</div></div>
+    <div class="kpi"><div class="n">24/7</div><div class="l">Triagem contínua</div></div>
+    <div class="kpi"><div class="n">30s</div><div class="l">Da descoberta à triagem</div></div>
+    <div class="kpi"><div class="n">38</div><div class="l">Países cobertos</div></div>
   </div>
-
-  <div class="foot">Grupo MasterCore · Radar RFP — página de demonstração.<br>Todos os nomes de organizações, valores e status nesta página são fictícios e servem apenas para ilustrar o produto. Nenhum dado pessoal é coletado nesta página.</div>
+  <div class="tabs" id="tabs">
+    <button class="tab on" data-f="all">Todas (8)</button>
+    <button class="tab" data-f="rfp">RFPs (4)</button>
+    <button class="tab" data-f="cha">Challenges (3)</button>
+    <button class="tab" data-f="pre">Prêmios (1)</button>
+  </div>
+  <div class="tblwrap">
+    <table id="t">
+      <thead><tr><th>Oportunidade</th><th>Tipo</th><th>Prazo</th><th>Score IA</th><th>Status</th></tr></thead>
+      <tbody>
+<tr data-t="cha"><td class="opp">Programa nacional — Edge AI para drones autônomos</td><td><span class="chipd">Challenge</span></td><td><span class="cd-l">Prazo&nbsp;</span><span class="chipd">23 dias</span></td><td class="score s-gold">92</td><td><span class="sema sv"></span>Alta aderência</td></tr>
+<tr data-t="pre"><td class="opp">Prêmio internacional de longevidade — Edição 2</td><td><span class="chipd">Prêmio</span></td><td><span class="cd-l">Prazo&nbsp;</span><span class="chipd">41 dias</span></td><td class="score s-gold">88</td><td><span class="sema sv"></span>Alta aderência</td></tr>
+<tr data-t="rfp"><td class="opp">Agência europeia de inovação — Longevidade celular</td><td><span class="chipd">RFP</span></td><td><span class="cd-l">Prazo&nbsp;</span><span class="chipd">12 dias</span></td><td class="score s-gold">85</td><td><span class="sema sa"></span>Prazo apertado</td></tr>
+<tr data-t="cha"><td class="opp">Hackathon global — Bio-Matching genômico</td><td><span class="chipd">Challenge</span></td><td><span class="cd-l">Prazo&nbsp;</span><span class="chipd">7 dias</span></td><td class="score s-gold">81</td><td><span class="sema sa"></span>Prazo apertado</td></tr>
+<tr data-t="rfp"><td class="opp">Consórcio industrial — Materiais avançados</td><td><span class="chipd">RFP</span></td><td><span class="cd-l">Prazo&nbsp;</span><span class="chipd">30 dias</span></td><td class="score s-teal">76</td><td><span class="sema sv"></span>Alta aderência</td></tr>
+<tr data-t="rfp"><td class="opp">Agência de fomento — Inovação Indústria 4.0</td><td><span class="chipd">RFP</span></td><td><span class="cd-l">Prazo&nbsp;</span><span class="chipd">18 dias</span></td><td class="score s-teal">72</td><td><span class="sema sv"></span>Alta aderência</td></tr>
+<tr data-t="cha"><td class="opp">Challenge corporativo — Captura de carbono</td><td><span class="chipd">Challenge</span></td><td><span class="cd-l">Prazo&nbsp;</span><span class="chipd">55 dias</span></td><td class="score s-mut">68</td><td><span class="sema sr"></span>Baixa aderência</td></tr>
+<tr data-t="rfp"><td class="opp">Instituto de inovação — Sensoriamento remoto</td><td><span class="chipd">RFP</span></td><td><span class="cd-l">Prazo&nbsp;</span><span class="chipd">25 dias</span></td><td class="score s-mut">64</td><td><span class="sema sr"></span>Baixa aderência</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="legend">Score IA 0-100 = aderência estimada ao perfil da venture (simulação de demonstração).</p>
+  <div class="cta">
+    <a class="btn-gold" href="https://pepticore.app/lista-de-espera?utm_source=landing&utm_medium=radar_demo&utm_campaign=radar_rfp">Quero o Radar para o meu negócio</a>
+    <a class="btn-ghost" href="/#ventures">Conhecer mais</a>
+    <div class="micro">Resposta em 1 dia útil · sem compromisso</div>
+    <div class="hook">Ativar alertas — na versão real do Radar</div>
+  </div>
+  <div class="foot">Grupo MasterCore · Radar RFP — página de demonstração. Todos os nomes de organizações, valores e status são fictícios e servem apenas para ilustrar o produto. Nenhum dado pessoal é coletado nesta página.</div>
 </div>
+<script>
+(function(){
+  var tabs=document.querySelectorAll('#tabs .tab');
+  var rows=document.querySelectorAll('#t tbody tr');
+  tabs.forEach(function(b){
+    b.addEventListener('click',function(){
+      tabs.forEach(function(x){x.classList.remove('on');});
+      b.classList.add('on');
+      var f=b.getAttribute('data-f');
+      rows.forEach(function(r){
+        r.style.display=(f==='all'||r.getAttribute('data-t')===f)?'':'none';
+      });
+    });
+  });
+})();
+</script>
 </body>
 </html>
