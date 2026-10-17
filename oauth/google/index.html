@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MasterCore · Verificando acesso…</title>
+<style>
+  body { margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center; background:#081125; color:#F8FAFC; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Arial,sans-serif; text-align:center; }
+  .box { max-width:520px; padding:40px 24px; }
+  .line { width:72px; height:4px; background:#3B82F6; margin:0 auto 28px; border-radius:2px; }
+  h1 { font-size:22px; margin:0 0 12px; }
+  p { color:#CBD5E1; font-size:15px; line-height:1.6; margin:0 0 8px; }
+  a { color:#67E8F9; }
+</style>
+</head>
+<body>
+<div class="box">
+  <div class="line"></div>
+  <h1 id="t">Verificando acesso…</h1>
+  <p id="m">Confirmando sua conta Google contra a allowlist da área interna.</p>
+  <p id="x" style="margin-top:16px"></p>
+</div>
+<script>
+(function(){
+  // MC-RADAR-AUTH-002 — OAuth Google (response_type=id_token, implicit) p/ versao REAL do Radar.
+  // Allowlist: hashes SHA-256 (hex) dos e-mails autorizados — valores NUNCA em texto puro no repo.
+  // Default (L330): contato@mastercore.app + conta pessoal do CEO (hash a registrar no canal seguro).
+  var ALLOW = [
+    'e282a500d7fdf4f818a944ab097390281516093c4d540baa5a6b24ddd029e1f0' /* contato@mastercore.app */
+    /* + hash do e-mail pessoal do CEO a inserir via canal seguro (PQ-022) */
+  ];
+  function sha256hex(s){
+    // sha256 via SubtleCrypto (async) — wrapper Promise
+    return crypto.subtle.digest('SHA-256', new TextEncoder().encode(s)).then(function(b){
+      return Array.prototype.map.call(new Uint8Array(b), function(x){ return ('0'+x.toString(16)).slice(-2); }).join('');
+    });
+  }
+  var h = window.location.hash || '';
+  var m = {};
+  h.replace(/^#/, '').split('&').forEach(function(kv){ var p = kv.split('='); if(p[0]) m[p[0]] = decodeURIComponent((p[1]||'').replace(/\+/g,' ')); });
+  var t = document.getElementById('t'), msg = document.getElementById('m'), x = document.getElementById('x');
+  if (m.error) {
+    t.textContent = 'Acesso não concluído';
+    msg.textContent = 'Autorização Google cancelada. Volte ao Radar e tente novamente.';
+    x.innerHTML = '<a href="/radar">← Voltar ao Radar</a>';
+    return;
+  }
+  if (!m.id_token) {
+    t.textContent = 'Resposta inválida';
+    msg.textContent = 'Nenhum token recebido do Google. Volte ao Radar e tente novamente.';
+    x.innerHTML = '<a href="/radar">← Voltar ao Radar</a>';
+    return;
+  }
+  try {
+    var payload = JSON.parse(atob(m.id_token.split('.')[1].replace(/-/g,'+').replace(/_/g,'/')));
+    var email = (payload.email || '').toLowerCase();
+    if (!email || payload.email_verified === false) { deny(); return; }
+    sha256hex(email).then(function(hash){
+      if (ALLOW.indexOf(hash) !== -1) {
+        sessionStorage.setItem('mc_radar_google', JSON.stringify({ email: email, exp: payload.exp || 0 }));
+        t.textContent = 'Acesso autorizado ✓';
+        msg.textContent = 'Bem-vindo, ' + email + '. Abrindo a versão interna do Radar…';
+        setTimeout(function(){ window.location.href = '/radar/?auth=1'; }, 1200);
+      } else { deny(); }
+    });
+  } catch(e) { deny(); }
+  function deny(){
+    t.textContent = 'Acesso não autorizado';
+    msg.textContent = 'Esta conta não está na allowlist da área interna. Solicite acesso à equipe MasterCore.';
+    x.innerHTML = '<a href="/radar">← Voltar ao Radar</a>';
+  }
+})();
+</script>
+</body>
+</html>
