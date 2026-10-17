@@ -1,6 +1,0 @@
-User-agent: *
-Disallow: /radar
-Disallow: /cockpit
-Disallow: /custos
-Disallow: /stylecore
-Disallow: /longevcore
