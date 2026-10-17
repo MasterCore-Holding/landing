@@ -1,3 +1,4 @@
+successfully downloaded text file (SHA: b063aacfefb3798b40badcba70b04d43a5f243e4)
 <!DOCTYPE html>
 <html lang="pt-BR" data-theme="dark">
 <head>
@@ -1023,6 +1024,16 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
       border-color: var(--border-accent);
       color: var(--accent-text);
     }
+
+    /* CARDS-LANDING-1710-v2: acentos por card - RADAR RFP (cyan #06B6D4) e Cybersecurity Venture (vermelho #EF4444) sobre Deep Navy */
+    .mc-venture-card.accent-cyan::before { background: linear-gradient(90deg, transparent, #06B6D4, transparent); }
+    .mc-venture-card.accent-red::before { background: linear-gradient(90deg, transparent, #EF4444, transparent); }
+    .mc-venture-card.accent-cyan .mc-venture-monogram { background: rgba(6, 182, 212, 0.12); border-color: #06B6D4; color: #67E8F9; box-shadow: 0 0 15px rgba(6, 182, 212, 0.25); }
+    .mc-venture-card.accent-red .mc-venture-monogram { background: rgba(239, 68, 68, 0.12); border-color: #EF4444; color: #FCA5A5; box-shadow: 0 0 15px rgba(239, 68, 68, 0.25); }
+    .mc-venture-card.accent-cyan .mc-chip { background: rgba(6, 182, 212, 0.14); border-color: rgba(6, 182, 212, 0.35); color: #67E8F9; }
+    .mc-venture-card.accent-red .mc-chip { background: rgba(239, 68, 68, 0.14); border-color: rgba(239, 68, 68, 0.35); color: #FCA5A5; }
+    .mc-venture-card.accent-cyan:hover { border-color: rgba(6, 182, 212, 0.45); box-shadow: 0 14px 34px rgba(0, 0, 0, 0.4), 0 0 24px rgba(6, 182, 212, 0.25); }
+    .mc-venture-card.accent-red:hover { border-color: rgba(239, 68, 68, 0.45); box-shadow: 0 14px 34px rgba(0, 0, 0, 0.4), 0 0 24px rgba(239, 68, 68, 0.25); }
 
     .mc-venture-desc {
       font-size: 0.96rem;
@@ -2327,17 +2338,34 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
             </div>
           </div>
 
-        <div class="mc-venture-card mc-reveal">
+        <div class="mc-venture-card mc-reveal accent-cyan">
             <div class="mc-card-header">
-              <div class="mc-venture-monogram" aria-hidden="true">D</div>
-              <h3 class="mc-venture-name">DAIS</h3>
-              <span class="mc-chip">Em estruturação</span>
+              <div class="mc-venture-monogram" aria-hidden="true">R</div>
+              <h3 class="mc-venture-name">RADAR RFP</h3>
+              <span class="mc-chip">Em operação</span>
             </div>
             <p class="mc-venture-desc">
-              Inovação aberta acelerada por IA: radar global de desafios de R&amp;D, triagem científica automatizada e monetização de resoluções via prêmios e contratos de pesquisa.
+              Inteligência de inovação aberta: radar global de RFPs, prêmios e desafios de R&amp;D, com triagem automatizada por IA — da descoberta à proposta.
             </p>
             <div class="mc-venture-footer">
-              <span class="mc-venture-meta">Inovação Aberta · Em estruturação</span>
+              <span class="mc-venture-meta">Inovação Aberta · Em operação</span>
+              <a href="https://mastercore.app/radar?utm_source=mastercore&utm_medium=landing&utm_campaign=conhecer_radar" target="_blank" rel="noopener noreferrer" class="mc-cta-btn mc-cta-primary" style="font-size: 0.9rem; padding: 0.65rem 1.6rem; font-weight: 700;">
+                Acessar Radar
+              </a>
+            </div>
+          </div>
+
+        <div class="mc-venture-card mc-reveal accent-red">
+            <div class="mc-card-header">
+              <div class="mc-venture-monogram" aria-hidden="true">C</div>
+              <h3 class="mc-venture-name">Cybersecurity Venture</h3>
+              <span class="mc-chip">Em estudos e validação</span>
+            </div>
+            <p class="mc-venture-desc">
+              Segurança para sistemas de IA e agentes autônomos: governança por intenção — zero privilégio permanente para identidades de máquina —, avaliações de segurança de IA e resposta a ameaças agênticas.
+            </p>
+            <div class="mc-venture-footer">
+              <span class="mc-venture-meta">Cibersegurança · Em estudos e validação</span>
             </div>
           </div>
         </div>
