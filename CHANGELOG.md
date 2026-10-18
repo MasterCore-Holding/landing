@@ -2,6 +2,18 @@
 
 Fonte Única de Verdade da holding. Toda decisão operacional e homologação estrutural constará aqui antes de sua ativação efetiva.
 
+## Registro 2026-10-18 — sem bump (execução de DIRECTIVE; bump só na consolidação EOD)
+
+### Adicionado/Alterado (DIRECTIVE MC-LANDING-MASTER-PKG-001, chancela CEO 18/10 — execução Córtex)
+- **[Landing]** Card DAIS adicionado como 7º card (linha 3 full-width, destaque dourado sutil): chip "Em negociação", copy verbatim da landing /dais/, CTA "Conhecer venture" → mastercore.app/dais/ com UTMs. Grid 3x2 + full-width; mobile: DAIS por último.
+- **[Landing]** Rename "Radar RFP" → "RadarCore" no card (subtítulo descritivo preservado); rota canônica /radarcore no ar (demo verbatim, copy intocada); /radar vira redirect 301-style para /radarcore preservando querystring; /radarcore/real (interna) espelhada; robots.txt bloqueia /radarcore.
+- **[Landing]** LP CyberSecurity nova em /cybersecurity: chip "Em estudos e validação", 5 ofertas (copy real do card), zero claim de resultado, CTA "Agendar conversa" → form LGPD v1.4 → registrarLeadAppsScript (UTMs venture_lp/cybersecurity_lp).
+- **[Landing]** LP LongevCore nova em /longevcore: chip "Em fundação", posicionamento honesto ("Irmã da PeptiCore"), CTA lista de espera → form LGPD v1.4 (UTMs venture_lp/longevcore_lp), zero promessa terapêutica + aviso legal educacional. Cockpit interno movido para /longevcore/cockpit/ (permanece bloqueado no robots.txt).
+- **[Landing]** CTAs nos cards CyberSecurity e LongevCore → /cybersecurity e /longevcore (sem link morto: LPs publicadas no mesmo push).
+- **[Landing]** Harmonização de chips: rodapé StyleCore "Vertical de Moda · Em fundação" → "Vertical de Moda · Em estudos e validação" (alinhado ao chip).
+
+*Emissor: Adapta (DIRECTIVE MC-LANDING-MASTER-PKG-001, chancela CEO 18/10) · Executor: Córtex (Control Plane) — 18/10/2026.*
+
 ## Registro 2026-10-15 — sem bump (execução de runbooks; bump só na consolidação EOD)
 
 ### Adicionado (Despachos Adapta 15/10, chancela CEO — execução Córtex 22:47–23:05 BRT)

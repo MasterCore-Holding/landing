@@ -1,5 +1,6 @@
 User-agent: *
 Disallow: /radar
+Disallow: /radarcore
 Disallow: /cockpit
 Disallow: /custos
 Disallow: /longevcore
