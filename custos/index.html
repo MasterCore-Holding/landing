@@ -22,8 +22,16 @@
     font-weight:700; font-size:16px; cursor:pointer; }
   button:hover { filter:brightness(1.1); }
   .err { color:#F87171; font-size:14px; min-height:20px; margin-bottom:8px; }
+  .okline { color:#34D399; font-size:13px; margin:18px 0 10px; }
+  .datapre { text-align:left; white-space:pre-wrap; background:#0D1B33; border:1px solid #1E3A5F; border-radius:10px;
+    padding:18px; font-size:13px; color:#CBD5E1; margin-top:16px; }
+  .sair { margin-top:16px; padding:8px 22px; background:transparent; color:#64748B; border:1px solid #1E3A5F;
+    border-radius:8px; font-weight:600; font-size:13px; cursor:pointer; }
+  .sair:hover { color:#F8FAFC; border-color:#3B82F6; }
+  #gbtn { display:flex; justify-content:center; margin-top:22px; min-height:44px; }
   .foot { margin-top:30px; font-size:12px; color:#64748B; }
 </style>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
 <div class="box">
@@ -32,40 +40,58 @@
   <h1>Dashboard de Custos</h1>
   <p>Telemetria de despesas e consumo do Grupo MasterCore.</p>
   <p>Área interna — acesso controlado.</p>
-  <input id="k" type="password" placeholder="Chave de acesso" autocomplete="off" onkeydown="if(event.key==='Enter')go()">
-  <div class="err" id="e"></div>
-  <button onclick="go()">Entrar</button>
+  <div id="gate">
+    <div id="gbtn"></div>
+    <div class="err" id="e"></div>
+  </div>
+  <div id="panel" style="display:none">
+    <div class="okline" id="who"></div>
+    <pre id="data" class="datapre">Carregando…</pre>
+    <button class="sair" onclick="sair()">Sair</button>
+  </div>
   <div class="foot">Grupo MasterCore · control plane</div>
 </div>
 <script>
-function go(){
-  var k=document.getElementById('k').value.trim();
-  if(!k){document.getElementById('e').textContent='Digite a chave.';return;}
-  sessionStorage.setItem('mc_custos_key',k);
-  load();
+<script>
+var HUB='https://master-core-hub.base44.app/api/apps/6ac33e5bd58233f964488e87/functions/radarGate';
+var SES='mc_custos_session', CRED='mc_custos_cred';
+function sair(){ try{localStorage.removeItem(SES);}catch(e){} try{sessionStorage.removeItem(CRED);}catch(e){} location.reload(); }
+function showData(email, cred){
+  document.getElementById('gate').style.display='none';
+  document.getElementById('panel').style.display='block';
+  document.getElementById('who').textContent='Sessão ativa: '+email;
+  var pre=document.getElementById('data');
+  fetch(HUB,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({credential:cred,action:'data'})})
+    .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+    .then(function(d){ pre.textContent = (d.data && d.data.length) ? d.data : 'Base de Custos ainda não sincronizada — o conteúdo aparecerá aqui na primeira sincronização.'; })
+    .catch(function(){ pre.textContent='Indisponível — tente novamente.'; });
 }
-function load(){
-  var k=sessionStorage.getItem('mc_custos_key')||'';
-  fetch('custos-data.json',{cache:'no-store'}).then(function(r){
-    if(r.status===403){throw 0;}
-    if(!r.ok){throw 1;}
-    return r.text();
-  }).then(function(t){
-    document.getElementById('e').textContent='';
-    var pre=document.createElement('pre');
-    pre.style.cssText='text-align:left;white-space:pre-wrap;background:#0D1B33;border:1px solid #1E3A5F;border-radius:10px;padding:18px;font-size:13px;color:#CBD5E1;margin-top:24px;';
-    pre.textContent=t;
-    document.body.querySelector('.box').appendChild(pre);
-  }).catch(function(x){
-    if(x===0){
-      document.getElementById('e').textContent='Chave inválida.';
-      sessionStorage.removeItem('mc_custos_key');
-    } else {
-      document.getElementById('e').textContent='Indisponível — tente novamente.';
-    }
-  });
+function onCred(resp){
+  var cred=resp.credential;
+  fetch(HUB,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({credential:cred})})
+    .then(function(r){ return r.json().then(function(d){ return {ok:r.ok, d:d}; }); })
+    .then(function(x){
+      if(x.ok && x.d.ok){
+        try{ localStorage.setItem(SES, JSON.stringify({email:x.d.email, exp:Date.now()+12*3600*1000})); sessionStorage.setItem(CRED, cred);}catch(e){}
+        showData(x.d.email, cred);
+      } else if(x.d && x.d.error==='acesso_nao_autorizado'){ document.getElementById('e').textContent='Acesso não autorizado.'; }
+      else { document.getElementById('e').textContent='Não foi possível concluir o login — tente novamente.'; }
+    })
+    .catch(function(){ document.getElementById('e').textContent='Indisponível — tente novamente.'; });
 }
-if(sessionStorage.getItem('mc_custos_key')){load();}
+function boot(){
+  var sess=null, cred=null;
+  try{ sess=JSON.parse(localStorage.getItem(SES)||'null'); }catch(e){}
+  try{ cred=sessionStorage.getItem(CRED); }catch(e){}
+  if(sess && cred && sess.exp>Date.now()){ showData(sess.email, cred); return; }
+  try{ localStorage.removeItem(SES); }catch(e){}
+  fetch(HUB).then(function(r){ return r.json(); }).then(function(cfg){
+    if(!cfg.ready){ document.getElementById('e').textContent='Autenticação Google em configuração final — volte em instantes.'; return; }
+    google.accounts.id.initialize({ client_id: cfg.client_id, callback: onCred });
+    google.accounts.id.renderButton(document.getElementById('gbtn'), {theme:'filled_blue', size:'large', text:'signin_with', shape:'pill', locale:'pt-BR'});
+  }).catch(function(){ document.getElementById('e').textContent='Indisponível — tente novamente.'; });
+}
+window.addEventListener('load', boot);
 </script>
 </body>
 </html>
