@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TradingCore Cockpit — Trial</title>
+<meta name="robots" content="noindex, nofollow">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  :root { --accent:#14B8A6; --accent-text:#5EEAD4; --bg:#0A192F; --surface:#10233F; --text:#F8FAFC; --text-muted:#94A3B8; --border:#1E3A5F; --border-accent:rgba(20,184,166,.35); }
+  body { background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif; line-height:1.6; }
+  .wrap { max-width:1020px; margin:0 auto; padding:0 24px; }
+  header { padding:20px 0; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; }
+  .brand { font-weight:800; color:var(--text); text-decoration:none; }
+  .brand span { color:var(--accent-text); }
+  .who { font-size:.85rem; color:var(--text-muted); }
+  .gate { max-width:460px; margin:80px auto; text-align:center; }
+  .gate h1 { font-size:1.4rem; margin-bottom:12px; }
+  .gate p { color:var(--text-muted); font-size:.95rem; margin-bottom:20px; }
+  .gbtn { min-height:44px; }
+  .err { color:#FCA5A5; font-size:.9rem; margin-top:12px; min-height:1.2em; }
+  .panel { display:none; padding:24px 0 60px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1rem; margin-top:1rem; }
+  .card { background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:1.4rem; }
+  .card h3 { font-size:1rem; margin-bottom:.7rem; color:var(--accent-text); }
+  .card p, .card li { font-size:.9rem; color:var(--text-muted); }
+  .ctx { display:flex; gap:.6rem; flex-wrap:wrap; }
+  .pill { border:1px solid var(--border); border-radius:999px; padding:.35rem .8rem; font-size:.82rem; color:var(--text); background:rgba(20,184,166,.08); }
+  .lbl { display:inline-block; font-size:.75rem; letter-spacing:1px; text-transform:uppercase; color:var(--accent-text); border:1px solid var(--border-accent); border-radius:6px; padding:.25rem .6rem; margin-bottom:.8rem; background:rgba(20,184,166,.1); }
+  table { width:100%; border-collapse:collapse; font-size:.85rem; }
+  th, td { text-align:left; padding:.45rem .5rem; border-bottom:1px solid var(--border); color:var(--text-muted); }
+  th { color:var(--text); }
+  .ok { color:var(--accent-text); } .warn { color:#FBBF24; } .bad { color:#FCA5A5; }
+  .modal-bg { position:fixed; inset:0; background:rgba(2,8,20,.9); display:flex; align-items:center; justify-content:center; z-index:50; }
+  .modal { background:var(--surface); border:1px solid var(--border); border-radius:16px; max-width:560px; width:92%; padding:1.8rem; max-height:86vh; overflow:auto; }
+  .modal h2 { font-size:1.15rem; margin-bottom:.8rem; }
+  .modal p { font-size:.9rem; color:var(--text-muted); margin-bottom:.8rem; }
+  .modal a { color:var(--accent-text); }
+  .chk { display:flex; gap:.6rem; align-items:flex-start; font-size:.85rem; color:var(--text-muted); margin:.8rem 0; }
+  .btn { background:var(--accent); color:#04211d; font-weight:700; border:0; border-radius:8px; padding:.8rem 1.6rem; font-size:1rem; cursor:pointer; width:100%; }
+  .btn:disabled { opacity:.5; cursor:not-allowed; }
+  .foot { margin-top:1rem; font-size:.78rem; color:var(--text-muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="brand" href="/tradingcore/">Master<span>Core</span> · TradingCore Cockpit</a>
+    <span class="who" id="who"></span>
+  </header>
+
+  <div class="gate" id="gate">
+    <h1>Entrar no Cockpit</h1>
+    <p>Acesso ao trial via Google. Seu consentimento LGPD será registrado no primeiro acesso.</p>
+    <div id="gbtn" class="gbtn"></div>
+    <div class="err" id="e"></div>
+  </div>
+
+  <div class="panel" id="panel">
+    <div class="grid">
+      <div class="card">
+        <h3>Contexto de mercado (dado público, com atraso)</h3>
+        <div class="ctx" id="ctx"><span class="pill">carregando…</span></div>
+        <p style="margin-top:.7rem;font-size:.8rem;">Fonte: APIs públicas gratuitas com atraso. Contexto informativo — não é recomendação.</p>
+      </div>
+      <div class="card">
+        <h3>Leitura técnica automatizada</h3>
+        <span class="lbl">Leitura técnica — não é recomendação</span>
+        <p id="leitura">Aguardando dado de contexto…</p>
+        <p style="margin-top:.7rem;font-size:.8rem;">Narrativa gerada por IA a partir do contexto acima; pode conter imprecisões.</p>
+      </div>
+      <div class="card">
+        <h3>Co-piloto comportamental</h3>
+        <p id="copiloto">Defina seu plano de risco para começar: limite de perda diária, nº de operações e stop.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.5rem;margin-top:.8rem;">
+          <input id="p-perda" type="number" placeholder="Perda máx. R$" style="background:#0D1B33;border:1px solid var(--border);border-radius:8px;padding:.6rem;color:var(--text);font-size:.85rem;">
+          <input id="p-ops" type="number" placeholder="Nº ops/dia" style="background:#0D1B33;border:1px solid var(--border);border-radius:8px;padding:.6rem;color:var(--text);font-size:.85rem;">
+          <input id="p-stop" type="number" placeholder="Stop (R$)" style="background:#0D1B33;border:1px solid var(--border);border-radius:8px;padding:.6rem;color:var(--text);font-size:.85rem;">
+        </div>
+        <button class="btn" style="margin-top:.8rem;" onclick="salvarPlano()">Salvar plano de risco</button>
+        <div id="plano-msg" style="font-size:.82rem;color:var(--accent-text);margin-top:.5rem;min-height:1em;"></div>
+      </div>
+      <div class="card">
+        <h3>Revisão de operações</h3>
+        <p style="margin-bottom:.6rem;">Registre suas operações (manual ou CSV) e revise: "em quais você saiu do seu plano?"</p>
+        <input type="file" id="csv" accept=".csv" style="font-size:.8rem;color:var(--text-muted);margin-bottom:.6rem;">
+        <table id="tb"><thead><tr><th>Ativo</th><th>Data</th><th>Resultado</th><th>No plano?</th></tr></thead><tbody></tbody></table>
+      </div>
+    </div>
+    <p class="foot">Trial controlado · dado público com atraso · zero conexão com corretora · <a href="/tradingcore/termos-de-uso.html" style="color:var(--accent-text);">Termos</a> · <a href="/tradingcore/politica-privacidade.html" style="color:var(--accent-text);">Privacidade</a></p>
+  </div>
+</div>
+
+<!-- Modal LGPD impeditivo -->
+<div class="modal-bg" id="modal" style="display:none;">
+  <div class="modal">
+    <h2>Consentimento LGPD — necessário para continuar</h2>
+    <p>Ao entrar, o TradingCore coleta: identidade Google (nome/e-mail), dados de uso do cockpit (perfil, operações, plano de risco) e registro de consentimento. Base legal: consentimento (LGPD Art. 7º I). Antes de qualquer processamento por IA, seus dados passam por pseudoanonimização.</p>
+    <p>WhatsApp é <strong>opcional e separado</strong> — você pode ativar depois, nas configurações. Não aderir não afeta o uso do cockpit.</p>
+    <label class="chk"><input type="checkbox" id="c1"> <span>Autorizo o tratamento dos meus dados para operação do cockpit, conforme a <a href="/tradingcore/politica-privacidade.html" target="_blank">Política de Privacidade v1.0</a> e os <a href="/tradingcore/termos-de-uso.html" target="_blank">Termos de Uso v1.0</a>.</span></label>
+    <button class="btn" id="c-btn" disabled>Aceitar e continuar</button>
+    <p class="foot">Você pode solicitar exclusão dos seus dados a qualquer momento via contato@mastercore.app.</p>
+  </div>
+</div>
+
+<script>
+(function(){
+  var HUB='https://master-core-hub.base44.app/api/apps/6ac33e5bd58233f964488e87/functions/tradingGate';
+  var SES='mc_trading_session', CRED='mc_trading_cred';
+  function $(i){ return document.getElementById(i); }
+  function save(email, cred){ try{ localStorage.setItem(SES, JSON.stringify({email:email, exp:Date.now()+12*3600*1000})); sessionStorage.setItem(CRED, cred); }catch(e){} }
+  function sess(){ try{ var s=JSON.parse(localStorage.getItem(SES)||'null'); var c=sessionStorage.getItem(CRED); if(s&&c&&s.exp>Date.now()) return {email:s.email, cred:c}; }catch(e){} return null; }
+  function onCred(resp){
+    fetch(HUB,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({credential:resp.credential})})
+      .then(function(r){ return r.json().then(function(d){ return {ok:r.ok,d:d}; }); })
+      .then(function(x){
+        if(x.ok && x.d.ok){ save(x.d.email, resp.credential); show(x.d.email, resp.credential); }
+        else if(x.d && x.d.error==='acesso_nao_autorizado'){ $('e').textContent='Acesso não autorizado (trial restrito).'; }
+        else { $('e').textContent='Não foi possível concluir o login — tente novamente.'; }
+      })
+      .catch(function(){ $('e').textContent='Indisponível — tente novamente.'; });
+  }
+  function show(email, cred){
+    $('gate').style.display='none'; $('panel').style.display='block';
+    $('who').textContent='Sessão: '+email;
+    var c1=localStorage.getItem('tc_consent_'+email);
+    if(!c1){ $('modal').style.display='flex'; }
+    else { bootData(cred); }
+    $('c1').addEventListener('change', function(){ $('c-btn').disabled=!this.checked; });
+    $('c-btn').addEventListener('click', function(){
+      try{ localStorage.setItem('tc_consent_'+email, JSON.stringify({consentimento_lgpd_data:new Date().toISOString(), consentimento_lgpd_versao:'1.0'})); }catch(e){}
+      $('modal').style.display='none'; bootData(cred);
+    });
+  }
+  function bootData(cred){
+    fetch(HUB,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({credential:cred,action:'data'})})
+      .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+      .then(function(d){ renderCtx(d.data); })
+      .catch(function(){ renderCtx(null); });
+  }
+  function renderCtx(d){
+    var ctx=$('ctx');
+    if(d && d.ctx){ ctx.innerHTML=''; d.ctx.forEach(function(c){ var s=document.createElement('span'); s.className='pill'; s.textContent=c; ctx.appendChild(s); }); $('leitura').textContent=d.leitura||'Leitura indisponível agora.'; }
+    else { ctx.innerHTML='<span class="pill">Dado de contexto ainda não sincronizado — o cockpit mostrará aqui o contexto de mercado na primeira sincronização.</span>'; $('leitura').textContent='Aguardando sincronização do dado de contexto.'; }
+  }
+  window.salvarPlano=function(){
+    var p={perda:$('p-perda').value, ops:$('p-ops').value, stop:$('p-stop').value};
+    if(!p.perda&&!p.ops&&!p.stop){ $('plano-msg').textContent='Preencha ao menos um limite.'; return; }
+    try{ localStorage.setItem('tc_plano', JSON.stringify(p)); }catch(e){}
+    $('plano-msg').textContent='Plano salvo neste dispositivo (trial). Comparação execução × plano ativa.';
+  };
+  $('csv').addEventListener('change', function(ev){
+    var f=ev.target.files[0]; if(!f) return;
+    var rd=new FileReader();
+    rd.onload=function(){ var tb=$('tb').querySelector('tbody'); tb.innerHTML='';
+      rd.result.split(/\r?\n/).slice(0,50).forEach(function(l){ var c=l.split(','); if(c.length>=3&&c[0]&&isNaN(Date.parse(c[1]))===false){
+        var tr=document.createElement('tr');
+        [c[0],c[1],c[2],'—'].forEach(function(v){ var td=document.createElement('td'); td.textContent=v.trim(); tr.appendChild(td); });
+        tb.appendChild(tr);
+      }});
+    };
+    rd.readAsText(f);
+  });
+  function boot(){
+    var s=sess(); if(s){ show(s.email, s.cred); return; }
+    fetch(HUB).then(function(r){ return r.json(); }).then(function(cfg){
+      if(!cfg.ready){ $('e').textContent='Autenticação Google em configuração final — volte em instantes.'; return; }
+      google.accounts.id.initialize({ client_id: cfg.client_id, callback: onCred });
+      google.accounts.id.renderButton($('gbtn'), {theme:'filled_blue', size:'large', text:'signin_with', shape:'pill', locale:'pt-BR'});
+    }).catch(function(){ $('e').textContent='Indisponível — tente novamente.'; });
+  }
+  window.addEventListener('load', boot);
+})();
+</script>
+</body>
+</html>

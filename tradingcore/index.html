@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TradingCore — Cockpit de decisão para o trader | MasterCore</title>
+<meta name="description" content="Cockpit de decisão para o trader: contexto de mercado, leitura técnica visualizada e co-piloto comportamental. Ferramenta educacional e de apoio à decisão — não é recomendação de investimento.">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  :root {
+    --accent:#14B8A6; --accent-hover:#2DD4BF; --accent-contrast:#04211d; --accent-text:#5EEAD4;
+    --bg:#0A192F; --surface:#10233F; --text:#F8FAFC; --text-muted:#94A3B8;
+    --border:#1E3A5F; --border-accent:rgba(20,184,166,.35);
+  }
+  body { background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif; line-height:1.6; }
+  .wrap { max-width:960px; margin:0 auto; padding:0 24px; }
+  header { padding:28px 0; border-bottom:1px solid var(--border); }
+  .brand { font-weight:800; letter-spacing:-.02em; font-size:1.1rem; color:var(--text); text-decoration:none; }
+  .brand span { color:var(--accent-text); }
+  .hero { padding:64px 0 40px; text-align:center; }
+  .badge { display:inline-block; border:1px solid var(--border-accent); color:var(--accent-text); font-size:12px; letter-spacing:2px; padding:6px 16px; border-radius:999px; margin-bottom:24px; text-transform:uppercase; background:rgba(20,184,166,.12); }
+  h1 { font-size:clamp(30px,6vw,52px); line-height:1.12; font-weight:800; letter-spacing:-.02em; margin-bottom:18px; }
+  h1 em { font-style:normal; color:var(--accent-text); }
+  .sub { color:var(--text-muted); font-size:1.05rem; max-width:720px; margin:0 auto 32px; }
+  .cta { display:inline-block; background:var(--accent); color:var(--accent-contrast); font-weight:700; font-size:1.05rem; padding:.95rem 2.2rem; border-radius:8px; text-decoration:none; transition:all .2s ease; }
+  .cta:hover { background:var(--accent-hover); }
+  .cta-note { margin-top:.8rem; font-size:.85rem; color:var(--text-muted); }
+  h2 { font-size:clamp(24px,4vw,32px); margin-bottom:16px; }
+  section { padding:40px 0; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1rem; margin-top:24px; }
+  .passo { background:linear-gradient(180deg,var(--surface) 0%,rgba(16,35,63,.55) 100%); border:1px solid var(--border); border-radius:14px; padding:1.4rem; text-align:left; }
+  .passo .n { display:inline-block; width:28px; height:28px; border-radius:50%; background:rgba(20,184,166,.14); border:1px solid var(--border-accent); color:var(--accent-text); font-weight:700; text-align:center; line-height:26px; margin-bottom:.6rem; font-size:.9rem; }
+  .passo h3 { font-size:1rem; margin-bottom:.4rem; }
+  .passo p { font-size:.9rem; color:var(--text-muted); }
+  .duas { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:24px; }
+  .box { background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:1.6rem; text-align:left; }
+  .box h3 { font-size:1.05rem; margin-bottom:.8rem; }
+  .box.ok h3 { color:var(--accent-text); }
+  .box.nao h3 { color:#FCA5A5; }
+  ul.lista { list-style:none; padding:0; }
+  ul.lista li { padding:.35rem 0 .35rem 1.6rem; position:relative; color:var(--text-muted); font-size:.92rem; }
+  .box.ok ul.lista li::before { content:"→"; position:absolute; left:0; color:var(--accent-text); }
+  .box.nao ul.lista li::before { content:"✕"; position:absolute; left:0; color:#FCA5A5; }
+  .disclaimer { border:1px solid var(--border); border-left:3px solid var(--accent); background:var(--surface); border-radius:10px; padding:1.2rem 1.4rem; font-size:.88rem; color:var(--text-muted); text-align:left; margin:32px auto 0; max-width:860px; }
+  footer { border-top:1px solid var(--border); padding:24px 0; font-size:.85rem; color:var(--text-muted); text-align:center; }
+  footer a { color:var(--text-muted); }
+  @media (max-width:640px){ .duas { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+  <div class="wrap">
+  <header>
+    <a class="brand" href="/">Master<span>Core</span> · TradingCore</a>
+  </header>
+  <section class="hero">
+    <span class="badge">Trial controlado · acesso restrito</span>
+    <h1>Cockpit de decisão para o trader — <em>contexto, leitura técnica e co-piloto comportamental.</em></h1>
+    <p class="sub">Ferramenta educacional e de apoio à decisão: organiza o contexto de mercado, visualiza leitura técnica automatizada e compara sua execução com o seu próprio plano de risco.</p>
+    <a class="cta" href="/tradingcore/cockpit/">Entrar com Google</a>
+    <p class="cta-note">Trial atual: acesso restrito · sem custo nesta fase</p>
+  </section>
+  <section>
+    <h2>Onboarding em 4 passos</h2>
+    <div class="grid">
+      <div class="passo"><span class="n">1</span><h3>Perfil</h3><p>Você conta como opera hoje: mercado, frequência e estilo.</p></div>
+      <div class="passo"><span class="n">2</span><h3>Histórico / simulação</h3><p>Registre ou importe suas operações (CSV) para criar sua linha de base.</p></div>
+      <div class="passo"><span class="n">3</span><h3>Limites de risco</h3><p>Você define seu plano: perda máxima diária, nº de operações e stop.</p></div>
+      <div class="passo"><span class="n">4</span><h3>Canal</h3><p>Acompanhe pelo navegador; WhatsApp é opcional, com seu consentimento separado.</p></div>
+    </div>
+  </section>
+  <section>
+    <div class="duas">
+      <div class="box ok">
+        <h3>O que é</h3>
+        <ul class="lista">
+          <li>Contexto de mercado com dado público e com atraso</li>
+          <li>Leitura técnica visualizada, gerada por IA, sempre rotulada</li>
+          <li>Co-piloto comportamental: sua execução vs. seu próprio plano</li>
+          <li>Revisão de operações: "em quais você saiu do seu plano?"</li>
+          <li>Alertas de desvio e sugestão de pausa — apenas aviso</li>
+        </ul>
+      </div>
+      <div class="box nao">
+        <h3>O que NÃO é</h3>
+        <ul class="lista">
+          <li>Não é recomendação de investimento</li>
+          <li>Não emite sinais de compra ou venda</li>
+          <li>Não promete rentabilidade ou "% de acerto"</li>
+          <li>Não executa ordens nem conecta à sua corretora</li>
+          <li>Não é consultoria individualizada</li>
+        </ul>
+      </div>
+    </div>
+    <div class="disclaimer">
+      <strong>Leitura técnica automatizada — não é recomendação de investimento.</strong> O TradingCore é uma ferramenta educacional e de organização pessoal de decisão. Conteúdos gerados por IA podem conter imprecisões. Decisões de investimento são suas e envolvem risco de perda. Nenhum conteúdo desta página constitui oferta, solicitação ou recomendação de investimento.
+    </div>
+  </section>
+  <footer>
+    TradingCore é uma empresa do Grupo MasterCore · <a href="/tradingcore/termos-de-uso.html">Termos de Uso</a> · <a href="/tradingcore/politica-privacidade.html">Política de Privacidade</a> · <a href="mailto:contato@mastercore.app">contato@mastercore.app</a><br>
+    Ferramenta educacional e não-recomendativa. Sem promessa de resultado específico.
+  </footer>
+  </div>
+</body>
+</html>
