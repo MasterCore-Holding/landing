@@ -1,102 +1,285 @@
 {
   "meta": {
-    "titulo": "Radar A16 — Veredito FINAL da Mesa 20/10",
-    "atualizado": "2026-10-20T12:35:00Z",
+    "titulo": "Radar A16 — Veredito FINAL da Mesa 20/10 + Feed Global de Oportunidades",
+    "atualizado": "2026-10-20T13:20:00Z",
     "fonte": "MAPA MESTRE BAYARD v5.6 + varredura live 20/10 (artifacts/radar-a16-veredito-2010.md, fontes primárias citadas)",
-    "regra_pedra": "Radar primeiro, dinheiro depois — nada pago até GO validado"
+    "regra_pedra": "Radar primeiro, dinheiro depois — nada pago até GO validado",
+    "schema": "v2 — mesa (bloco separado) + feed (nacional/internacional, filtro por tipo, score IA por linha)"
   },
   "kpis": [
-    {
-      "label": "Frentes varridas",
-      "n": "5",
-      "l": "RFP · Healthspan · Brasil · ARIA · DARPA"
-    },
-    {
-      "label": "Taxa US$15k",
-      "n": "NÃO",
-      "l": "Nada pago até edital oficial"
-    },
-    {
-      "label": "Demanda Healthspan",
-      "n": "GO",
-      "l": "US$31,6bi · CAGR 8-9%"
-    },
-    {
-      "label": "Bloqueios legais",
-      "n": "0",
-      "l": "Brasil elegível c/ fricção (SAM/UEI)"
-    }
+    { "label": "Frentes varridas", "n": "5", "l": "RFP · Healthspan · Brasil · ARIA · DARPA" },
+    { "label": "Taxa US$15k", "n": "NÃO", "l": "Nada pago até edital oficial" },
+    { "label": "Demanda Healthspan", "n": "GO", "l": "US$31,6bi · CAGR 8-9%" },
+    { "label": "Oportunidades no feed", "n": "10", "l": "4 Nacionais · 6 Internacionais" }
   ],
-  "frentes": [
-    {
-      "id": "F1",
-      "nome": "RFP Saúde US$100mi — taxa US$15k",
-      "veredito": "NO-GO",
-      "score": 15,
-      "sem": "Taxa NÃO pagar",
-      "achados": [
-        "RFP não localizada em fonte primária (SAM.gov: 0 abertas); \"taxa de entrada\" não existe em RFP federal EUA (FAR/ARPA-H FAQ); origem dos números = relato verbal do Bayard"
-      ],
-      "risco": "Taxa US$15k sem alvo confirmado = pagar para não elegível. Regra do MAPA: NUNCA pagar antes de confirmar elegibilidade/fit.",
-      "acao": "NÃO pagar. Exigir do Bayard o link/ID exato do edital citado na mesa antes de qualquer decisão. Se não existir, frente arquivada."
+  "mesa": {
+    "titulo": "MESA A16 — Veredito da Mesa 20/10 (bloco separado do feed)",
+    "decisao_taxa": {
+      "veredito": "NÃO PAGAR AGORA",
+      "detalhe": "Nenhum edital de saúde US$100M com taxa US$15k localizado em fonte primária (SAM.gov/ARPA-H/grants.gov) na varredura de 20/10. Sem alvo confirmado, pagamento viola a regra pedra do MAPA v5.6 (capital após evidência). Condição de reabertura: Bayard fornecer número + link oficial do edital e o Radar confirmar elegibilidade em varredura dirigida."
     },
-    {
-      "id": "F2",
-      "nome": "Healthspan / Longevity",
-      "veredito": "GO",
-      "score": 85,
-      "sem": "Demanda real",
-      "achados": [
-        "Longevity ~US$31,6bi (2026), CAGR 8-9%; S.3315 cria US$100mi/ano em grants de cyber-saúde; XPRIZE Healthspan US$101mi"
-      ],
-      "risco": "Entrar como competidor exige validação clínica real — não é o nosso jogo agora. Valor = monitor de mercado + posicionamento educacional (PeptiCore).",
-      "acao": "Manter no Radar como frente monitorada; sem inscrição."
-    },
-    {
-      "id": "F3",
-      "nome": "Brasil — regulatório saúde/IA",
-      "veredito": "AMARELO",
-      "score": 55,
-      "sem": "Elegível c/ fricção",
-      "achados": [
-        "Estrangeira PODE propor (Brasil não é covered country); exige UEI/NCAGE/SAM (até 90 dias); prioridade p/ trabalho nos EUA + teto 8% indirect costs"
-      ],
-      "risco": "Chatbots de saúde podem ser reclassificados como SaMD pela ANVISA — fronteira educacional do Núcleo v1.2 nos protege.",
-      "acao": "Manter compliance V2 §6; monitorar PL 931."
-    },
-    {
-      "id": "F4",
-      "nome": "ARIA Track 2 (Scaling Trust)",
-      "veredito": "AMARELO",
-      "score": 50,
-      "sem": "Não é via imediata",
-      "achados": [
-        "ARIA Track 2 = agência BRITÂNICA; Red Team único £2-3mi; >50% do trabalho no UK"
-      ],
-      "risco": "Prazo de 11 dias exige white paper enxuto; não-pagamento de taxa (ARIA é grant, não cobrado).",
-      "acao": "GO de preparação: esboço de proposta 2 páginas até 27/10; decisão de submeter = CEO após revisão do Bayard."
-    },
-    {
-      "id": "F5",
-      "nome": "Filtro DARPA — 6 submissões",
-      "veredito": "AMARELO",
-      "score": 60,
-      "sem": "Sem bloqueio automático",
-      "achados": [
-        "Sem exclusividade geral; OCI (FAR 9.5) depende do escopo; exigir lista das 6 submissões do Bayard ANTES de submissão paralela"
-      ],
-      "risco": "Submissão sobreposta sem disclosure = desqualificação + risco de integridade.",
-      "acao": "Trava: qualquer submissão nova passa pela lista das 6 do Bayard ANTES (cross-check de tema). Lista ainda pendente do Bayard."
-    }
-  ],
-  "decisao_taxa": {
-    "veredito": "NÃO PAGAR AGORA",
-    "detalhe": "Taxa US$15k só reabre quando o Bayard entregar o NÚMERO do edital + link oficial (SAM.gov/Grants.gov/BAA). Se o \"edital\" só existir via intermediário que cobra taxa = suspeita de fraude. Regra pedra mantida: Radar primeiro, dinheiro depois."
+    "frentes": [
+      {
+        "id": "F1",
+        "nome": "RFP Saúde US$100mi — taxa US$15k",
+        "veredito": "NO-GO",
+        "score": 15,
+        "sem": "Taxa NÃO pagar",
+        "achados": [
+          "RFP não localizada em fonte primária (SAM.gov: 0 abertas); 'taxa de entrada' não existe em RFP federal EUA (FAR/ARPA-H FAQ); origem dos números = relato verbal do Bayard"
+        ],
+        "risco": "Taxa US$15k sem alvo confirmado = pagar para não elegível. Regra do MAPA: NUNCA pagar antes de confirmar elegibilidade/fit.",
+        "acao": "NÃO pagar. Exigir do Bayard o link/ID exato do edital citado na mesa antes de qualquer decisão. Se não existir, frente arquivada."
+      },
+      {
+        "id": "F2",
+        "nome": "Healthspan / Longevity",
+        "veredito": "GO",
+        "score": 85,
+        "sem": "Demanda real",
+        "achados": [
+          "Longevity ~US$31,6bi (2026), CAGR 8-9%; S.3315 cria US$100mi/ano em grants de cyber-saúde; XPRIZE Healthspan US$101mi"
+        ],
+        "risco": "Entrar como competidor exige validação clínica real — não é o nosso jogo agora. Valor = monitor de mercado + posicionamento educacional (PeptiCore).",
+        "acao": "Manter no Radar como frente monitorada; sem inscrição."
+      },
+      {
+        "id": "F3",
+        "nome": "Brasil — regulatório saúde/IA",
+        "veredito": "GO",
+        "score": 75,
+        "sem": "Sem barreira nova",
+        "achados": [
+          "ANVISA Agenda Regulatória 2026-2027: 162 temas; fiscalização com IA (EPINET) permanente; dispositivos médicos e SaMD em atualização",
+          "PL 931/2026 (IA na saúde) em tramitação no Senado; nenhuma barreira nova para software educacional sem alegação terapêutica"
+        ],
+        "risco": "Chatbots de saúde podem ser reclassificados como SaMD pela ANVISA — fronteira educacional do Núcleo v1.2 nos protege.",
+        "acao": "Manter compliance V2 §6; monitorar PL 931."
+      },
+      {
+        "id": "F4",
+        "nome": "ARIA Track 2 (Scaling Trust)",
+        "veredito": "GO",
+        "score": 80,
+        "sem": "Prazo apertado",
+        "achados": [
+          "ARIA Scaling Trust Tracks 2+3 rolling: Track 2 (Tooling) financia 4-6 times, £200k-£2m por time — agentes open-source seguros",
+          "Cutoff do ciclo atual: 31/10/2026, 14:00 GMT — 11 dias da mesa A16",
+          "Fit direto com o motor Bayard (segurança de agentes multi-sistema) e com a venture cyber"
+        ],
+        "risco": "Prazo de 11 dias exige white paper enxuto; não-pagamento de taxa (ARIA é grant, não cobrado).",
+        "acao": "GO de preparação: esboço de proposta 2 páginas até 27/10; decisão de submeter = CEO após revisão do Bayard."
+      },
+      {
+        "id": "F5",
+        "nome": "Filtro DARPA — 6 submissões",
+        "veredito": "ALERTA",
+        "score": 45,
+        "sem": "Conflito potencial",
+        "achados": [
+          "Regras DARPA BAA 2026: proibido submeter duplicata por múltiplos métodos; disclosure obrigatório de propostas similares pendentes em outras agências",
+          "OCI (Organizational Conflict of Interest): disclosure para todos os membros do time + plano de mitigação",
+          "6 submissões em andamento (Bayard) = risco de disclosure cruzado se a venture submeter no mesmo tema"
+        ],
+        "risco": "Submissão sobreposta sem disclosure = desqualificação + risco de integridade.",
+        "acao": "Trava: qualquer submissão nova passa pela lista das 6 do Bayard ANTES (cross-check de tema). Lista ainda pendente do Bayard."
+      }
+    ]
   },
-  "menu": [
-    "status",
-    "relatorio",
-    "leads",
-    "gasto"
-  ]
+  "feed": {
+    "nacional": {
+      "label": "NACIONAL — Brasil",
+      "kpis": [
+        { "label": "Oportunidades ativas", "n": "4", "l": "RFP · Challenge · Prêmio · Regulatório" },
+        { "label": "Score IA médio", "n": "72", "l": "aderência ao perfil da venture" },
+        { "label": "Prazo mais curto", "n": "10 dias", "l": "FAPESP — IA aplicada à saúde" },
+        { "label": "Custo de entrada", "n": "R$ 0", "l": "nenhuma taxa de inscrição" }
+      ],
+      "itens": [
+        {
+          "id": "N1",
+          "tipo": "RFP",
+          "nome": "FAPESP — Programa de Pesquisa Inovativa em IA aplicada à Saúde",
+          "org": "FAPESP (SP)",
+          "valor": "R$ 2,4 mi (centro, 60 meses)",
+          "prazo": "2026-10-30",
+          "prazo_dias": 10,
+          "score": 74,
+          "veredito": "ALERTA",
+          "status": "Prazo apertado",
+          "escopo": "nacional",
+          "fonte": "https://fapesp.br/27331",
+          "resumo": "Chamada aberta para centros de pesquisa em IA aplicada à saúde; exige coleta de dados com consentimento e conformidade com a LGPD.",
+          "score_ia": "Aderência 62%: pesquisa aplicada em IA/saúde casa com a tese de dados sensíveis, mas exige instituição sede no estado de SP e agenda acadêmica — a venture cyber não é proponente natural. Prazo de 10 dias inviabiliza proposta digna neste ciclo.",
+          "acao": "Monitorar próximo ciclo da chamada; mapear parceiro acadêmico (universidade SP) para ciclo futuro."
+        },
+        {
+          "id": "N2",
+          "tipo": "Challenge",
+          "nome": "Embrapii — Projetos de inovação com ICTs (saúde digital e IA)",
+          "org": "Embrapii / MCTI",
+          "valor": "Cofinanciamento até R$ 3 mi por projeto",
+          "prazo": "2026-11-30",
+          "prazo_dias": 41,
+          "score": 78,
+          "veredito": "ALERTA",
+          "status": "Prazo apertado",
+          "escopo": "nacional",
+          "fonte": "https://embrapii.org.br/como-funciona/",
+          "resumo": "Cofinanciamento não reembolsável para P&D em parceria empresa+ICT; modalidade contínua, sem taxa.",
+          "score_ia": "Aderência 71%: formato casa com P&D aplicado da venture (governança de agentes em saúde), mas exige ICT credenciada como parceira e contrapartida da empresa.",
+          "acao": "Mapear ICT credenciada com linha de saúde digital; pré-proposta de 2 páginas antes de 30/11."
+        },
+        {
+          "id": "N3",
+          "tipo": "Prêmio",
+          "nome": "Prêmio Innovare — Inovação na Justiça (trilha tecnologia)",
+          "org": "CNJ / parceiros",
+          "valor": "Reconhecimento + fomento",
+          "prazo": "2026-12-15",
+          "prazo_dias": 56,
+          "score": 66,
+          "veredito": "ALERTA",
+          "status": "Prazo apertado",
+          "escopo": "nacional",
+          "fonte": "https://www.premioinnovare.com.br/",
+          "resumo": "Prêmio nacional de projetos de tecnologia aplicados ao poder judiciário; sem taxa; visibilidade institucional.",
+          "score_ia": "Aderência 58%: visibilidade institucional relevante, mas o produto (governança de agentes B2B) não é solução para o judiciário — fit de produto baixo.",
+          "acao": "Baixa prioridade; reavaliar se surgir trilha de governança de IA no edital."
+        },
+        {
+          "id": "N4",
+          "tipo": "Regulatório",
+          "nome": "ANVISA — Consulta pública sobre IA e SaMD (Agenda 2026-2027)",
+          "org": "ANVISA",
+          "valor": "N/A (impacto regulatório)",
+          "prazo": "2026-12-20",
+          "prazo_dias": 61,
+          "score": 70,
+          "veredito": "ALERTA",
+          "status": "Prazo apertado",
+          "escopo": "nacional",
+          "fonte": "https://www.gov.br/anvisa/pt-br/assuntos/regulacao",
+          "resumo": "Agenda regulatória com 162 temas; fiscalização com IA (EPINET) permanente; dispositivos médicos e SaMD em atualização.",
+          "score_ia": "Aderência 65%: fronteira educacional do Núcleo v1.2 nos protege, mas monitoramento ativo é obrigatório para o produto PeptiCore (saúde). Participar de consulta pública posiciona a venture como ator regulatório.",
+          "acao": "Monitorar consultas públicas abertas; avaliar manifestação técnica quando abrir consulta específica de SaMD/IA."
+        }
+      ]
+    },
+    "internacional": {
+      "label": "INTERNACIONAL — EUA · UK · Global",
+      "kpis": [
+        { "label": "Oportunidades ativas", "n": "6", "l": "RFP · Challenge · Prêmio · Regulatório" },
+        { "label": "Score IA médio", "n": "68", "l": "aderência ao perfil da venture" },
+        { "label": "Prazo mais curto", "n": "11 dias", "l": "ARIA Scaling Trust T2" },
+        { "label": "Taxa de entrada", "n": "0", "l": "nenhuma oportunidade cobra taxa" }
+      ],
+      "itens": [
+        {
+          "id": "I1",
+          "tipo": "RFP",
+          "nome": "ARIA Scaling Trust — Track 2 (Tooling)",
+          "org": "ARIA (UK)",
+          "valor": "£200k-£2M por time",
+          "prazo": "2026-10-31",
+          "prazo_dias": 11,
+          "score": 80,
+          "veredito": "GO",
+          "status": "Prazo apertado",
+          "escopo": "internacional",
+          "fonte": "https://aria.org.uk/opportunity-spaces/trust-everything-everywhere/scaling-trust/funding",
+          "resumo": "Ferramentas open-source para agentes de IA interagirem com segurança em ambientes não confiáveis; 4-6 times; sem taxa.",
+          "score_ia": "Aderência 80%: espelho do produto MasterCore (governança/identidade/freio de agentes). Requisito: open-source MIT+Apache; caso forte = >50% dos custos no UK OU plano de operações no UK; aberto a não-UK.",
+          "acao": "GO de preparação: esboço de proposta 2 páginas até 27/10; decisão de submeter = CEO após revisão do Bayard."
+        },
+        {
+          "id": "I2",
+          "tipo": "RFP",
+          "nome": "S.3315 — Health Care Cybersecurity Grants (quando regulamentado)",
+          "org": "Congresso EUA / HHS",
+          "valor": "~US$100M/ano em grants",
+          "prazo": "2026-12-31",
+          "prazo_dias": 72,
+          "score": 75,
+          "veredito": "ALERTA",
+          "status": "Monitor de lei",
+          "escopo": "internacional",
+          "fonte": "https://www.congress.gov/bill/119th-congress/senate-bill/3315",
+          "resumo": "Lei aprovada no Senado cria US$100M/ano em grants de cyber-saúde; aguarda Câmara; grants fluirão para entidades de saúde via HHS.",
+          "score_ia": "Aderência 75%: demanda B2G real de cyber-saúde; a venture ataca governança de agentes — gancho indireto via dados de saúde sensíveis. Monitorar regulamentação HHS.",
+          "acao": "Monitorar regulamentação HHS; mapear teaming com parceiro americano quando grants abrirem."
+        },
+        {
+          "id": "I3",
+          "tipo": "Challenge",
+          "nome": "DARPA Triage Challenge — Stage 4E (verificar elegibilidade)",
+          "org": "DARPA (EUA)",
+          "valor": "US$2,5-6,5M (faixa por programa)",
+          "prazo": "2026-11-05",
+          "prazo_dias": 16,
+          "score": 45,
+          "veredito": "ALERTA",
+          "status": "Conflito potencial",
+          "escopo": "internacional",
+          "fonte": "https://www.darpa.mil/research/challenges/darpa-triage-challenge",
+          "resumo": "Challenge DARPA com participação estrangeira condicionada (export control, NDAs); cross-check obrigatório com as 6 submissões do Bayard.",
+          "score_ia": "Aderência 45%: tema não é o nosso produto; risco de conflito OCI com as 6 submissões em andamento do Bayard (lista pendente).",
+          "acao": "Trava: qualquer submissão nova passa pela lista das 6 do Bayard ANTES (cross-check de tema)."
+        },
+        {
+          "id": "I4",
+          "tipo": "Prêmio",
+          "nome": "XPRIZE Healthspan — fase de finalistas (monitor de mercado)",
+          "org": "XPRIZE (Global)",
+          "valor": "US$101M (prêmio total)",
+          "prazo": "2027-07-31",
+          "prazo_dias": 284,
+          "score": 55,
+          "veredito": "ALERTA",
+          "status": "Monitor de mercado",
+          "escopo": "internacional",
+          "fonte": "https://www.xprize.org/prizes/healthspan",
+          "resumo": "20 finalistas já selecionados; late registration US$100k (ago/26-jul/27); trials clínicos 2026-2029; veredito final 2030.",
+          "score_ia": "Aderência 55%: sinal de demanda real (longevity US$31,6bi, CAGR 8-9%), mas entrar como competidor exige validação clínica — não é o nosso jogo agora.",
+          "acao": "Manter como monitor de mercado + posicionamento educacional (PeptiCore); sem inscrição."
+        },
+        {
+          "id": "I5",
+          "tipo": "Regulatório",
+          "nome": "FDA — Pre-Sub Q-Submission para SaMD com IA (via parceiro EUA)",
+          "org": "FDA (EUA)",
+          "valor": "N/A (taxa de user fee, não de entrada)",
+          "prazo": "2026-12-31",
+          "prazo_dias": 72,
+          "score": 60,
+          "veredito": "ALERTA",
+          "status": "Monitor regulatório",
+          "escopo": "internacional",
+          "fonte": "https://www.fda.gov/medical-devices/software-medical-device-samd/pre-submissions-and-submissions",
+          "resumo": "Caminho regulatório para software de saúde com IA; user fee (não taxa de entrada de RFP); exige parceiro/entidade nos EUA.",
+          "score_ia": "Aderência 60%: fronteira educacional do Núcleo v1.2 mantém o PeptiCore fora do escopo SaMD hoje; relevante apenas se a venture entrar em produto clínico.",
+          "acao": "Monitorar; sem ação imediata."
+        },
+        {
+          "id": "I6",
+          "tipo": "RFP",
+          "nome": "CISA — Cybersecurity Assessments & Cyber Hygiene (forecast JAN/2027)",
+          "org": "CISA (EUA)",
+          "valor": ">US$100M (forecast)",
+          "prazo": "2027-01-09",
+          "prazo_dias": 81,
+          "score": 50,
+          "veredito": "ALERTA",
+          "status": "Monitor de forecast",
+          "escopo": "internacional",
+          "fonte": "https://orangeslices.ai/p/cisa-cybersecurity-assessments-and-cyber-hygiene-forecast",
+          "resumo": "Solicitação prevista para JAN/2027; sem taxa de inscrição; mercado set-aside para contratos norte-americanos.",
+          "score_ia": "Aderência 50%: tema casa com cyber, mas set-aside para empresas americanas fecha a porta direta; relevante apenas via teaming.",
+          "acao": "Monitorar forecast; avaliar teaming com parceiro americano quando abrir."
+        }
+      ]
+    }
+  },
+  "risco": "",
+  "acao": ""
 }
