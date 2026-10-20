@@ -1,7 +1,21 @@
 {
  "ledger": "MasterCore-Holding",
- "currentVersion": "1.2.2",
+ "currentVersion": "1.2.3",
  "entries": [
+  {
+   "version": "1.2.3",
+   "date": "2026-10-20T17:05:00-03:00",
+   "type": "EVT",
+   "description": "LICAO DE FONTE DE ESTADO (directive MC-GOV-002 Item 1, rotina documentada — Default-Allow com auditoria, sem gate humano): Runtime (Ledger/GitHub/Drive canonico) e a UNICA fonte de ESTADO; documentos datados (Master Plan, Nucleos, planos) sao fonte de CONTEUDO normativo, nunca de estado. Antes de emitir qualquer directive que afirme estado ('pendente', 'em vigor', 'concluido'), a ADAPTA le o Ledger/repo primeiro; a regra Proposto != Aplicado vale nas duas direcoes. Origem: Item 1 da MC-GOV-001 partia de premissa defasada (Nucleo v1.2 ja homologado desde 14/10 — ledger 1.2.0, commit a5f0944) porque o Master Plan v2.2 §9 (datado 06/10) foi usado como fonte de estado sem verificacao de runtime; a vedacao da directive foi respeitada e nenhuma reabertura normativa ocorreu. Referencias cruzadas: MC-GOV-001 (executada 3/3 em 20/10/2026, commit fd10c5b, ledger 1.2.2) e MC-GOV-002 (doc Drive 1E1CeqznbJgUoOCSST8oSm7w9HQuU1th6H8Q6gRDMYZk). Bump Patch 1.2.2 -> 1.2.3 — correcao de processo, sem mudanca normativa (Nucleo e Master Plan intocados nesta passada).",
+   "artifacts_consolidated": [
+    "governance/audits/DIR-2026-10-20-02-ITEM-1.md"
+   ],
+   "artifacts_pending": [],
+   "authorization_id": "AUT-MC-20261020-MC-GOV-002-ITEM1 (Adapta via ponte, P1 executar direto — Modo Assistido)",
+   "executor": "Cortex (Control Plane)",
+   "source_repo": "MasterCore-Holding/landing (org)",
+   "hashes": {}
+  },
   {
    "version": "1.2.2",
    "date": "2026-10-20T16:20:00-03:00",

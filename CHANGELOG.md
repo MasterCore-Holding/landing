@@ -2,6 +2,15 @@
 
 Fonte Única de Verdade da holding. Toda decisão operacional e homologação estrutural constará aqui antes de sua ativação efetiva.
 
+## [1.2.3] - 2026-10-20
+
+### Corrigido (DIRECTIVE MC-GOV-002, Item 1 — registro da lição de fonte de estado; bump Patch, correção de processo sem mudança normativa)
+- **[Governança]** Lição cristalizada e registrada no Ledger (entrada EVT 1.2.3): **Runtime (Ledger/GitHub/Drive canônico) é a ÚNICA fonte de ESTADO; documentos datados (Master Plan, Núcleos, planos) são fonte de CONTEÚDO normativo, nunca de estado.** Antes de emitir qualquer directive que afirme estado ("pendente", "em vigor", "concluído"), a ADAPTA lê o Ledger/repo primeiro — a regra Proposto ≠ Aplicado vale nas duas direções.
+- **[Governança]** Origem: o Item 1 da MC-GOV-001 partia de premissa defasada (Núcleo v1.2 já homologado desde 14/10/2026 — ledger 1.2.0, commit a5f0944) porque o Master Plan v2.2 §9 (datado 06/10) foi usado como fonte de estado sem verificação de runtime. Vedação respeitada: nenhuma reabertura normativa ocorreu; Núcleo e Master Plan intocados nesta passada.
+- **[Governança]** Auditoria do §9 do Master Plan v2.2 executada como PROPOSTA (Item 2 da MC-GOV-002): diff item a item em `governance/audits/DIR-2026-10-20-02-ITEM-2.md` — bump v2.3 do §9 SOMENTE após leitura pela ADAPTA e chancela do CEO (silêncio = NÃO executar).
+
+*Emissor: Adapta (DIRECTIVE MC-GOV-002, 20/10) · Executor: Córtex (Control Plane) — 20/10/2026.*
+
 ## Registro 2026-10-20 — bump Minor.Patch 1.2.1 → 1.2.2 (DIRECTIVE MC-GOV-001)
 
 ### Adicionado/Alterado (execução Córtex 20/10/2026, chancela CEO 20/10)
