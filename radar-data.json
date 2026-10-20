@@ -1,0 +1,114 @@
+{
+  "meta": {
+    "titulo": "Radar A16 — Veredito da Mesa 20/10",
+    "atualizado": "2026-10-20T12:20:00Z",
+    "fonte": "MAPA MESTRE BAYARD v5.6 (doc Drive 1hU3cc45) + varredura live web 20/10",
+    "regra_pedra": "Radar primeiro, dinheiro depois — nada pago até GO validado"
+  },
+  "kpis": [
+    {
+      "label": "Frentes varridas",
+      "n": "5",
+      "l": "RFP · Healthspan · Brasil · ARIA · DARPA"
+    },
+    {
+      "label": "GO",
+      "n": "2",
+      "l": "Healthspan monitor · ARIA Track 2"
+    },
+    {
+      "label": "Alerta",
+      "n": "2",
+      "l": "RFP US$100mi · DARPA conflito"
+    },
+    {
+      "label": "Taxa US$15k",
+      "n": "NÃO",
+      "l": "sem alvo confirmado — não pagar"
+    }
+  ],
+  "frentes": [
+    {
+      "id": "F1",
+      "nome": "RFP Saúde US$100mi — taxa US$15k",
+      "veredito": "ALERTA",
+      "score": 40,
+      "sem": "Prazo apertado",
+      "achados": [
+        "Nenhum edital de saúde ~US$100M com taxa de inscrição US$15k encontrado na varredura live (SAM.gov, ARPA-H, grants.gov).",
+        "Mais próximo real: CISA — Cybersecurity Assessments & Cyber Hygiene, >US$100M, forecast 09/09/2026 — SEM taxa de inscrição; mercado set-aside p/ contratos norte-americanos.",
+        "XPRIZE Healthspan cobra taxa, mas é prêmio (não RFP): late registration US$100k (ago/26–jul/27)."
+      ],
+      "risco": "Taxa US$15k sem alvo confirmado = pagar para não elegível. Regra do MAPA: NUNCA pagar antes de confirmar elegibilidade/fit.",
+      "acao": "NÃO pagar. Exigir do Bayard o link/ID exato do edital citado na mesa antes de qualquer decisão. Se não existir, frente arquivada."
+    },
+    {
+      "id": "F2",
+      "nome": "Healthspan / Longevity",
+      "veredito": "GO",
+      "score": 85,
+      "sem": "Alta aderência",
+      "achados": [
+        "XPRIZE Healthspan US$101M: 10 finalistas premiados com US$1M em 11/08/2026; triais clínicos 2026–2029; veredito final 2030.",
+        "Janela de late registration US$100k aberta ago/2026–jul/2027 — alta, fora do nosso gate.",
+        "Sinal de demanda: 600+ times de 58 países; mercado de longevity em expansão com validação institucional."
+      ],
+      "risco": "Entrar como competidor exige validação clínica real — não é o nosso jogo agora. Valor = monitor de mercado + posicionamento educacional (PeptiCore).",
+      "acao": "Manter no Radar como frente monitorada; sem inscrição."
+    },
+    {
+      "id": "F3",
+      "nome": "Brasil — regulatório saúde/IA",
+      "veredito": "GO",
+      "score": 75,
+      "sem": "Alta aderência",
+      "achados": [
+        "ANVISA Agenda Regulatória 2026-2027: 162 temas; fiscalização com IA (EPINET) permanente; dispositivos médicos e SaMD em atualização.",
+        "PL 931/2026 (IA na saúde) em tramitação no Senado — transparência, explicabilidade e governança; alinhado ao que já praticamos (conteúdo 100% educacional).",
+        "Nenhuma barreira nova para software educacional sem alegação terapêutica."
+      ],
+      "risco": "Chatbots de saúde podem ser reclassificados como SaMD pela ANVISA — fronteira educacional do Núcleo v1.2 nos protege.",
+      "acao": "Manter compliance V2 §6; monitorar PL 931."
+    },
+    {
+      "id": "F4",
+      "nome": "ARIA Track 2 (Scaling Trust)",
+      "veredito": "GO",
+      "score": 80,
+      "sem": "Prazo apertado",
+      "achados": [
+        "ARIA Scaling Trust Tracks 2+3 rolling: Track 2 (Tooling) financia 4–6 times, £200k–£2m por time — agentes open-source seguros.",
+        "Cutoff do ciclo atual: 31/10/2026, 14:00 GMT — 11 dias da mesa A16.",
+        "Fit direto com o motor Bayard (segurança de agentes multi-sistema) e com a venture cyber."
+      ],
+      "risco": "Prazo de 11 dias exige white paper enxuto; não-pagamento de taxa (ARIA é grant, não cobrado).",
+      "acao": "GO de preparação: esboço de proposta 2 páginas até 27/10; decisão de submeter = CEO após revisão do Bayard."
+    },
+    {
+      "id": "F5",
+      "nome": "Filtro DARPA — 6 submissões",
+      "veredito": "ALERTA",
+      "score": 45,
+      "sem": "Conflito potencial",
+      "achados": [
+        "Regras DARPA BAA 2026: proibido submeter duplicata por múltiplos métodos; disclosure obrigatório de propostas similares pendentes em outras agências.",
+        "OCI (Organizational Conflict of Interest): disclosure para todos os membros do time + plano de mitigação.",
+        "6 submissões em andamento (Bayard) = risco de disclosure cruzado se a venture submeter no mesmo tema."
+      ],
+      "risco": "Submissão sobreposta sem disclosure = desqualificação + risco de integridade.",
+      "acao": "Trava: qualquer submissão nova passa pela lista das 6 do Bayard ANTES (cross-check de tema). Lista ainda pendente do Bayard."
+    }
+  ],
+  "decisao_taxa": {
+    "valor": "US$15,000",
+    "recomendacao": "NÃO PAGAR AGORA",
+    "motivo": "Nenhum edital de saúde US$100M com taxa US$15k foi localizado na fonte primária (SAM.gov/ARPA-H/grants.gov) na varredura de 20/10. Sem alvo confirmado, pagamento viola a regra pedra do MAPA v5.6 (capital após evidência).",
+    "condicao_go": "Pagar somente se o Bayard fornecer o ID/link do edital e o Radar confirmar elegibilidade em nova varredura dirigida."
+  },
+  "menu": [
+    "status",
+    "relatorio",
+    "leads",
+    "gasto"
+  ]
+}
