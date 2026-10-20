@@ -1,7 +1,24 @@
 {
  "ledger": "MasterCore-Holding",
- "currentVersion": "1.2.1",
+ "currentVersion": "1.2.2",
  "entries": [
+  {
+   "version": "1.2.2",
+   "date": "2026-10-20T16:20:00-03:00",
+   "type": "DEC",
+   "description": "REGISTRO DE DECISAO DE ROTA (directive MC-GOV-001 Item 3, chancela CEO 20/10/2026): a trilha-base P0 PeptiCore -> P1 EngineCore -> holding PERMANECE, e a ativacao de venture da holding pode antecipar a fila SOMENTE sob gate de tracao: (i) Porta 1 validada — problema critico com clientes pagantes; (ii) PeptiCore nao abandonada em estagio critico (prototipo do metodo); (iii) gargalo do CEO medido por tempo real, nao por entusiasmo. Mudanca de rota = evidencia de tracao, nunca 'mercado mais quente'. Fonte: DIRECTIVE MC-GOV-001 (Adapta->Cortex, 20/10/2026, doc Drive 1v4F6XY3HsPDj_ao8V1kS4npvba1Lwd44W7m6k6AWVlU). Registro de rotina documentada — nenhum gate humano acionado.",
+   "artifacts_consolidated": [
+    "governance/comercial/ARGUMENTARIO-VENDAS-HOLDING-v2.0-POS-VARREDURA-2026-10-20.md"
+   ],
+   "artifacts_pending": [],
+   "authorization_id": "AUT-MC-20261020-MC-GOV-001 (CEO via Adapta, chancela 20/10/2026)",
+   "executor": "Cortex (Control Plane)",
+   "source_repo": "MasterCore-Holding/landing (org)",
+   "hashes": {
+    "governance/comercial/ARGUMENTARIO-VENDAS-HOLDING-v2.0-POS-VARREDURA-2026-10-20.md": "e823d69933b89ae348fba6718cee28a5bae1ac99d08dbd54252967c09e92767f",
+    "governance/audits/STATUS_MC-GOV-001-2026-10-20.md": "5b89eddd464f3dedf7e47cca219c0ea0f13feeb4a426a926dfa52c46e05fbd66"
+   }
+  },
   {
    "version": "1.2.1",
    "date": "2026-10-17T04:45:00-03:00",

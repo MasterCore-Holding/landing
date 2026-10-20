@@ -2,6 +2,15 @@
 
 Fonte Única de Verdade da holding. Toda decisão operacional e homologação estrutural constará aqui antes de sua ativação efetiva.
 
+## Registro 2026-10-20 — bump Minor.Patch 1.2.1 → 1.2.2 (DIRECTIVE MC-GOV-001)
+
+### Adicionado/Alterado (execução Córtex 20/10/2026, chancela CEO 20/10)
+- **[Governança]** Núcleo Universal v1.2 verificado em RUNTIME: homologação definitiva vigente desde 14/10/2026 (ledger 1.2.0, commit a5f0944, CHANGELOG [1.2.0]) — premissa da diretiva (ACEITO PROVISORIAMENTE até 20/10) estava defasada; nenhuma republicação necessária, zero reabertura normativa.
+- **[Comercial]** Argumentário de vendas da holding v2.0 pós-varredura publicado: `governance/comercial/ARGUMENTARIO-VENDAS-HOLDING-v2.0-POS-VARREDURA-2026-10-20.md` — correções chanceladas: (a) "raro, não único" com landscape nomeado (5 global + 3 Brasil); (b) claim central "auditável, não só automatizado"; (c) diferencial fundador-operator (20+ anos enterprise cyber + rede ~10 CISOs); (d) barra de claims financeiros (público = zero número sem evidência; interno = qualificadores). Landing de founders e one-pager de investidores permanecem congelados.
+- **[Governança]** DEC de rota registrada no Ledger (1.2.2): trilha P0 PeptiCore → P1 EngineCore → holding permanece; antecipação de venture da holding só sob gate de tração (Porta 1 + PeptiCore não abandonada + gargalo do CEO por tempo real). Mudança de rota = evidência de tração, nunca "mercado mais quente".
+
+*Emissor: Adapta (DIRECTIVE MC-GOV-001, chancela CEO 20/10) · Executor: Córtex (Control Plane) — 20/10/2026.*
+
 ## Registro 2026-10-18 — sem bump (execução de DIRECTIVE; bump só na consolidação EOD)
 
 ### Adicionado/Alterado (DIRECTIVE MC-LANDING-MASTER-PKG-001, chancela CEO 18/10 — execução Córtex)
