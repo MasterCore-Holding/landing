@@ -1037,6 +1037,14 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
     .mc-venture-card.accent-cyan:hover { border-color: rgba(6, 182, 212, 0.45); box-shadow: 0 14px 34px rgba(0, 0, 0, 0.4), 0 0 24px rgba(6, 182, 212, 0.25); }
     .mc-venture-card.accent-red:hover { border-color: rgba(239, 68, 68, 0.45); box-shadow: 0 14px 34px rgba(0, 0, 0, 0.4), 0 0 24px rgba(239, 68, 68, 0.25); }
 
+    /* MC-LANDING-MASTER-PKG-001 (18/10): DAIS — 7º card, linha 3 full-width com destaque dourado sutil */
+    .mc-venture-card.accent-gold::before { background: linear-gradient(90deg, transparent, #D4AF37, transparent); }
+    .mc-venture-card.accent-gold .mc-venture-monogram { background: rgba(212, 175, 55, 0.12); border-color: #D4AF37; color: #F5E6A8; box-shadow: 0 0 15px rgba(212, 175, 55, 0.25); }
+    .mc-venture-card.accent-gold .mc-chip { background: rgba(212, 175, 55, 0.14); border-color: rgba(212, 175, 55, 0.35); color: #F5E6A8; }
+    .mc-venture-card.accent-gold:hover { border-color: rgba(212, 175, 55, 0.45); box-shadow: 0 14px 34px rgba(0, 0, 0, 0.4), 0 0 24px rgba(212, 175, 55, 0.25); }
+    .mc-venture-card.mc-card-full { grid-column: 1 / -1; }
+    @media (max-width: 768px) { .mc-venture-card.mc-card-full { grid-column: auto; } }
+
     .mc-venture-desc {
       font-size: 0.96rem;
       color: var(--text-muted);
@@ -2302,11 +2310,11 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
               <span class="mc-chip">Em operação</span>
             </div>
             <p class="mc-venture-desc">
-              Growth digital como serviço, já captando clientes externos.
+              Performance como serviço: tráfego pago (Meta, Google, LinkedIn e TikTok Ads) · funis de conversão · esteira de conteúdo multi-plataforma com IA · aceleração digital para negócios externos.
             </p>
             <div class="mc-venture-footer">
               <span class="mc-venture-meta">Performance &amp; Growth · Replicação</span>
-              <a href="https://enginecore.app/?utm_source=mastercore&utm_medium=landing&utm_campaign=conhecer_venture" target="_blank" rel="noopener noreferrer" class="mc-cta-btn mc-cta-primary" style="font-size: 0.9rem; padding: 0.65rem 1.6rem; font-weight: 700;">
+              <a href="/enginecore" target="_blank" rel="noopener noreferrer" class="mc-cta-btn mc-cta-primary" style="font-size: 0.9rem; padding: 0.65rem 1.6rem; font-weight: 700;">
                 Conhecer venture
               </a>
             </div>
@@ -2315,7 +2323,7 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
         <div class="mc-venture-card mc-reveal accent-cyan">
             <div class="mc-card-header">
               <div class="mc-venture-monogram" aria-hidden="true">R</div>
-              <h3 class="mc-venture-name">Radar RFP</h3>
+              <h3 class="mc-venture-name">RadarCore</h3>
               <span class="mc-chip">Em operação</span>
             </div>
             <p class="mc-venture-desc">
@@ -2323,7 +2331,7 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
             </p>
             <div class="mc-venture-footer">
               <span class="mc-venture-meta">Inovação Aberta · Em operação</span>
-              <a href="https://mastercore.app/radar?utm_source=mastercore&utm_medium=landing&utm_campaign=conhecer_radar" target="_blank" rel="noopener noreferrer" class="mc-cta-btn mc-cta-primary" style="font-size: 0.9rem; padding: 0.65rem 1.6rem; font-weight: 700;">
+              <a href="/radarcore?utm_source=mastercore&utm_medium=landing&utm_campaign=conhecer_venture" target="_blank" rel="noopener noreferrer" class="mc-cta-btn mc-cta-primary" style="font-size: 0.9rem; padding: 0.65rem 1.6rem; font-weight: 700;">
                 Acessar Radar
               </a>
             </div>
@@ -2340,6 +2348,9 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
             </p>
             <div class="mc-venture-footer">
               <span class="mc-venture-meta">Vertical de Longevidade · Em fundação</span>
+              <a href="/longevcore?utm_source=mastercore&amp;utm_medium=venture_card&amp;utm_campaign=conhecer_venture" target="_blank" rel="noopener noreferrer" class="mc-cta-btn mc-cta-primary" style="font-size: 0.9rem; padding: 0.65rem 1.6rem; font-weight: 700;">
+                Quero ser avisado no lançamento
+              </a>
             </div>
           </div>
 
@@ -2354,9 +2365,11 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
             </p>
             <div class="mc-venture-footer">
               <span class="mc-venture-meta">Cibersegurança · Em estudos e validação</span>
+              <a href="/cybersecurity?utm_source=mastercore&amp;utm_medium=venture_card&amp;utm_campaign=conhecer_venture" target="_blank" rel="noopener noreferrer" class="mc-cta-btn mc-cta-primary" style="font-size: 0.9rem; padding: 0.65rem 1.6rem; font-weight: 700;">
+                Conhecer venture
+              </a>
             </div>
           </div>
-
         <div class="mc-venture-card mc-reveal">
             <div class="mc-card-header">
               <div class="mc-venture-monogram" aria-hidden="true">S</div>
@@ -2364,10 +2377,47 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
               <span class="mc-chip">Em estudos e validação</span>
             </div>
             <p class="mc-venture-desc">
-              Próxima da esteira: moda inteligente com IA — o armário que se preenche sozinho.
+              Moda inteligente com IA: stylist que monta looks com peças reais · armário que se preenche sozinho · análise de estilo e reposição automáticas — moda masculina e feminina, integrada a marketplaces.
             </p>
             <div class="mc-venture-footer">
-              <span class="mc-venture-meta">Vertical de Moda · Em estudos</span>
+              <span class="mc-venture-meta">Vertical de Moda · Em estudos e validação</span>
+              <a href="/stylecore" class="mc-cta-btn mc-cta-primary" style="font-size: 0.9rem; padding: 0.65rem 1.6rem; font-weight: 700;">
+                Conhecer venture
+              </a>
+            </div>
+          </div>
+
+        <div class="mc-venture-card mc-reveal">
+            <div class="mc-card-header">
+              <div class="mc-venture-monogram" aria-hidden="true">T</div>
+              <h3 class="mc-venture-name">TradCore</h3>
+              <span class="mc-chip">Trial controlado</span>
+            </div>
+            <p class="mc-venture-desc">
+              Cockpit de decisão para o trader: contexto de mercado, leitura técnica visualizada e co-piloto comportamental que compara a sua execução com o seu próprio plano de risco. Ferramenta educacional — não é recomendação.
+            </p>
+            <div class="mc-venture-footer">
+              <span class="mc-venture-meta">Ferramentas para Traders · Trial controlado</span>
+              <a href="/tradcore" class="mc-cta-btn mc-cta-primary" style="font-size: 0.9rem; padding: 0.65rem 1.6rem; font-weight: 700;">
+                Conhecer venture
+              </a>
+            </div>
+          </div>
+
+        <div class="mc-venture-card mc-reveal accent-gold">
+            <div class="mc-card-header">
+              <div class="mc-venture-monogram" aria-hidden="true">D</div>
+              <h3 class="mc-venture-name">DAIS</h3>
+              <span class="mc-chip">Em negociação</span>
+            </div>
+            <p class="mc-venture-desc">
+              Agentes inteligentes. Engenharia com governança. Pesquisa avançada em eficiência de agentes autônomos aplicada a desafios reais de execução crítica. Mais precisão, menos custo por acerto e auditabilidade irrestrita.
+            </p>
+            <div class="mc-venture-footer">
+              <span class="mc-venture-meta">Pesquisa &amp; Agentes Autônomos · Em negociação</span>
+              <a href="https://mastercore.app/dais/?utm_source=mastercore&amp;utm_medium=landing&amp;utm_campaign=conhecer_venture" target="_blank" rel="noopener noreferrer" class="mc-cta-btn mc-cta-primary" style="font-size: 0.9rem; padding: 0.65rem 1.6rem; font-weight: 700;">
+                Conhecer venture
+              </a>
             </div>
           </div>
         </div>

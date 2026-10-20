@@ -1,0 +1,102 @@
+{
+  "meta": {
+    "titulo": "Radar A16 — Veredito FINAL da Mesa 20/10",
+    "atualizado": "2026-10-20T12:35:00Z",
+    "fonte": "MAPA MESTRE BAYARD v5.6 + varredura live 20/10 (artifacts/radar-a16-veredito-2010.md, fontes primárias citadas)",
+    "regra_pedra": "Radar primeiro, dinheiro depois — nada pago até GO validado"
+  },
+  "kpis": [
+    {
+      "label": "Frentes varridas",
+      "n": "5",
+      "l": "RFP · Healthspan · Brasil · ARIA · DARPA"
+    },
+    {
+      "label": "Taxa US$15k",
+      "n": "NÃO",
+      "l": "Nada pago até edital oficial"
+    },
+    {
+      "label": "Demanda Healthspan",
+      "n": "GO",
+      "l": "US$31,6bi · CAGR 8-9%"
+    },
+    {
+      "label": "Bloqueios legais",
+      "n": "0",
+      "l": "Brasil elegível c/ fricção (SAM/UEI)"
+    }
+  ],
+  "frentes": [
+    {
+      "id": "F1",
+      "nome": "RFP Saúde US$100mi — taxa US$15k",
+      "veredito": "NO-GO",
+      "score": 15,
+      "sem": "Taxa NÃO pagar",
+      "achados": [
+        "RFP não localizada em fonte primária (SAM.gov: 0 abertas); \"taxa de entrada\" não existe em RFP federal EUA (FAR/ARPA-H FAQ); origem dos números = relato verbal do Bayard"
+      ],
+      "risco": "Taxa US$15k sem alvo confirmado = pagar para não elegível. Regra do MAPA: NUNCA pagar antes de confirmar elegibilidade/fit.",
+      "acao": "NÃO pagar. Exigir do Bayard o link/ID exato do edital citado na mesa antes de qualquer decisão. Se não existir, frente arquivada."
+    },
+    {
+      "id": "F2",
+      "nome": "Healthspan / Longevity",
+      "veredito": "GO",
+      "score": 85,
+      "sem": "Demanda real",
+      "achados": [
+        "Longevity ~US$31,6bi (2026), CAGR 8-9%; S.3315 cria US$100mi/ano em grants de cyber-saúde; XPRIZE Healthspan US$101mi"
+      ],
+      "risco": "Entrar como competidor exige validação clínica real — não é o nosso jogo agora. Valor = monitor de mercado + posicionamento educacional (PeptiCore).",
+      "acao": "Manter no Radar como frente monitorada; sem inscrição."
+    },
+    {
+      "id": "F3",
+      "nome": "Brasil — regulatório saúde/IA",
+      "veredito": "AMARELO",
+      "score": 55,
+      "sem": "Elegível c/ fricção",
+      "achados": [
+        "Estrangeira PODE propor (Brasil não é covered country); exige UEI/NCAGE/SAM (até 90 dias); prioridade p/ trabalho nos EUA + teto 8% indirect costs"
+      ],
+      "risco": "Chatbots de saúde podem ser reclassificados como SaMD pela ANVISA — fronteira educacional do Núcleo v1.2 nos protege.",
+      "acao": "Manter compliance V2 §6; monitorar PL 931."
+    },
+    {
+      "id": "F4",
+      "nome": "ARIA Track 2 (Scaling Trust)",
+      "veredito": "AMARELO",
+      "score": 50,
+      "sem": "Não é via imediata",
+      "achados": [
+        "ARIA Track 2 = agência BRITÂNICA; Red Team único £2-3mi; >50% do trabalho no UK"
+      ],
+      "risco": "Prazo de 11 dias exige white paper enxuto; não-pagamento de taxa (ARIA é grant, não cobrado).",
+      "acao": "GO de preparação: esboço de proposta 2 páginas até 27/10; decisão de submeter = CEO após revisão do Bayard."
+    },
+    {
+      "id": "F5",
+      "nome": "Filtro DARPA — 6 submissões",
+      "veredito": "AMARELO",
+      "score": 60,
+      "sem": "Sem bloqueio automático",
+      "achados": [
+        "Sem exclusividade geral; OCI (FAR 9.5) depende do escopo; exigir lista das 6 submissões do Bayard ANTES de submissão paralela"
+      ],
+      "risco": "Submissão sobreposta sem disclosure = desqualificação + risco de integridade.",
+      "acao": "Trava: qualquer submissão nova passa pela lista das 6 do Bayard ANTES (cross-check de tema). Lista ainda pendente do Bayard."
+    }
+  ],
+  "decisao_taxa": {
+    "veredito": "NÃO PAGAR AGORA",
+    "detalhe": "Taxa US$15k só reabre quando o Bayard entregar o NÚMERO do edital + link oficial (SAM.gov/Grants.gov/BAA). Se o \"edital\" só existir via intermediário que cobra taxa = suspeita de fraude. Regra pedra mantida: Radar primeiro, dinheiro depois."
+  },
+  "menu": [
+    "status",
+    "relatorio",
+    "leads",
+    "gasto"
+  ]
+}

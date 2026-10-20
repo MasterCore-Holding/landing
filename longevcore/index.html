@@ -3,69 +3,112 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="robots" content="noindex, nofollow, noarchive">
-<title>LongevCore — Cockpit da Venture — MasterCore · Acesso Restrito</title>
+<title>LongevCore — Longevidade para o público comum | MasterCore</title>
+<meta name="description" content="Longevidade para o público comum: ciência, dados e supervisão humana — sem jargão de laboratório e sem promessa terapêutica. Entre na lista de espera para o lançamento.">
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
-  body { background:#081125; color:#F8FAFC; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Arial,sans-serif;
-    min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px; }
-  .box { max-width:560px; width:100%; text-align:center; }
-  .line { width:72px; height:4px; background:#3B82F6; margin:0 auto 32px; border-radius:2px; }
-  .badge { display:inline-block; border:1px solid #3B82F6; color:#3B82F6; font-size:12px; letter-spacing:2px;
-    padding:6px 16px; border-radius:999px; margin-bottom:28px; text-transform:uppercase; }
-  h1 { font-size:clamp(26px,5vw,40px); line-height:1.15; font-weight:700; margin-bottom:14px; }
-  p { color:#CBD5E1; font-size:16px; line-height:1.6; margin-bottom:10px; }
-  input { width:100%; padding:14px 16px; margin:22px 0 14px; background:#0D1B33; border:1px solid #1E3A5F;
-    border-radius:10px; color:#F8FAFC; font-size:16px; text-align:center; outline:none; }
-  input:focus { border-color:#3B82F6; }
-  button { width:100%; padding:14px; background:#3B82F6; color:#FFFFFF; border:0; border-radius:10px;
-    font-weight:700; font-size:16px; cursor:pointer; }
-  button:hover { filter:brightness(1.1); }
-  .err { color:#F87171; font-size:14px; min-height:20px; margin-bottom:8px; }
-  .foot { margin-top:30px; font-size:12px; color:#64748B; }
+  :root {
+    --accent:#0ea5e9; --accent-hover:#38bdf8; --accent-contrast:#041c32; --accent-text:#38bdf8;
+    --bg:#0a192f; --surface:#10233f; --surface-elevated:#162f52; --text:#f8fafc; --text-muted:#94a3b8;
+    --border:#1e3a5f; --border-accent:rgba(14,165,233,.35);
+  }
+  body { background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif; line-height:1.6; }
+  .wrap { max-width:960px; margin:0 auto; padding:0 24px; }
+  header { padding:28px 0; border-bottom:1px solid var(--border); }
+  .brand { font-weight:800; letter-spacing:-.02em; font-size:1.1rem; color:var(--text); text-decoration:none; }
+  .brand span { color:var(--accent-text); }
+  .hero { padding:64px 0 40px; text-align:center; }
+  .badge { display:inline-block; border:1px solid var(--border-accent); color:var(--accent-text); font-size:12px; letter-spacing:2px; padding:6px 16px; border-radius:999px; margin-bottom:24px; text-transform:uppercase; background:rgba(14,165,233,.12); }
+  h1 { font-size:clamp(30px,6vw,52px); line-height:1.12; font-weight:800; letter-spacing:-.02em; margin-bottom:18px; }
+  h1 em { font-style:normal; color:var(--accent-text); }
+  .sub { color:var(--text-muted); font-size:1.05rem; max-width:720px; margin:0 auto 32px; }
+  .box { background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:1.75rem; margin:40px 0; text-align:left; }
+  .box p { margin-bottom:1rem; }
+  ul.lista { list-style:none; padding:0; }
+  ul.lista li { padding:.4rem 0 .4rem 1.6rem; position:relative; color:var(--text-muted); font-size:.95rem; }
+  ul.lista li::before { content:"→"; position:absolute; left:0; color:var(--accent-text); }
+  .ctabox { padding:48px 0 64px; text-align:center; }
+  h2 { font-size:clamp(24px,4vw,34px); margin-bottom:12px; }
+  form { max-width:560px; margin:0 auto; text-align:left; }
+  .frow { display:grid; grid-template-columns:1fr; gap:.75rem; margin-bottom:1rem; }
+  input[type=text], input[type=email], input[type=tel] { width:100%; background:#0D1B33; border:1px solid var(--border); border-radius:8px; padding:.85rem 1rem; color:var(--text); font-size:1rem; }
+  input:focus { outline:1px solid var(--border-accent); }
+  .lgpd-check { display:flex; gap:.6rem; align-items:flex-start; font-size:.82rem; color:var(--text-muted); margin-bottom:1.25rem; }
+  .lgpd-check a { color:var(--accent-text); }
+  .cta { display:inline-block; background:var(--accent); color:var(--accent-contrast); font-weight:700; font-size:1rem; padding:.9rem 2rem; border-radius:8px; text-decoration:none; transition:all .2s ease; }
+  .cta:hover { background:var(--accent-hover); }
+  .cta-note { margin-top:1rem; font-size:.9rem; color:var(--accent-text); min-height:1.2em; }
+  .legal { font-size:.78rem; color:var(--text-muted); max-width:640px; margin:1.5rem auto 0; text-align:center; }
+  footer { border-top:1px solid var(--border); padding:24px 0; font-size:.85rem; color:var(--text-muted); text-align:center; }
+  footer a { color:var(--text-muted); }
+  @media (max-width:560px){ .frow { grid-template-columns:1fr; } }
 </style>
 </head>
 <body>
-<div class="box">
-  <div class="line"></div>
-  <div class="badge">MasterCore · Uso interno</div>
-  <h1>LongevCore — Cockpit da Venture</h1>
-  <p>Cockpit interno da venture LongevCore (Grupo MasterCore).</p>
-  <p>Área interna — acesso controlado.</p>
-  <input id="k" type="password" placeholder="Chave de acesso" autocomplete="off" onkeydown="if(event.key==='Enter')go()">
-  <div class="err" id="e"></div>
-  <button onclick="go()">Entrar</button>
-  <div class="foot">Grupo MasterCore · control plane</div>
-</div>
+  <div class="wrap">
+  <header>
+    <a class="brand" href="/">Master<span>Core</span> · LongevCore</a>
+  </header>
+  <section class="hero">
+    <span class="badge">Em fundação</span>
+    <h1>Longevidade para o <em>público comum.</em></h1>
+    <p class="sub">Ciência, dados e supervisão humana — sem jargão de laboratório e sem promessa terapêutica.</p>
+    <p class="sub" style="margin-top:8px;">Irmã da PeptiCore — entrada condicionada à validação da primeira venture.</p>
+  </section>
+  <section>
+    <div class="box">
+      <p><strong>MasterCore OS</strong> — a mesma plataforma proprietária que opera as ventures do grupo: orquestração de agentes com supervisão humana mandatória, telemetria auditável de cada execução e governança por política como código.</p>
+      <ul class="lista">
+        <li>Conteúdo 100% educacional — zero promessa terapêutica</li>
+        <li>Supervisão humana mandatória em cada jornada</li>
+        <li>Conformidade contínua (LGPD)</li>
+      </ul>
+    </div>
+  </section>
+  <section class="ctabox">
+    <h2>Lista de espera</h2>
+    <p class="sub" style="margin-bottom:24px;">Quero ser avisado no lançamento — deixe seu contato e avisaremos quando a LongevCore abrir.</p>
+    <form id="lead-form">
+      <div class="frow">
+        <input type="text" id="f-nome" placeholder="Seu nome *" required autocomplete="name">
+        <input type="email" id="f-email" placeholder="Seu melhor e-mail *" required autocomplete="email">
+        <input type="tel" id="f-whats" placeholder="WhatsApp com DDD *" required autocomplete="tel">
+      </div>
+      <label class="lgpd-check"><input type="checkbox" id="f-lgpd" required> <span>Autorizo o contato da LongevCore/MasterCore para avisar sobre o lançamento, conforme a <a href="https://pepticore.app/politica-privacidade.html" target="_blank" rel="noopener">Política de Privacidade v1.4</a>. Posso pedir exclusão dos dados a qualquer momento.</span></label>
+      <button type="submit" class="cta" style="border:0;cursor:pointer;">Quero ser avisado no lançamento</button>
+      <div id="form-msg" class="cta-note" role="status"></div>
+      <p class="legal">Aviso legal: conteúdo educacional. Nada nesta página constitui promessa terapêutica, diagnóstico ou prescrição. Qualquer jornada envolve avaliação e supervisão de profissionais habilitados.</p>
+    </form>
+  </section>
+  <footer>
+    LongevCore é uma empresa do Grupo MasterCore · <a href="mailto:contato@mastercore.app">contato@mastercore.app</a> · Informações educacionais. Sem promessa terapêutica.
+  </footer>
+  </div>
 <script>
-function go(){
-  var k=document.getElementById('k').value.trim();
-  if(!k){document.getElementById('e').textContent='Digite a chave.';return;}
-  sessionStorage.setItem('mc_longevcore_key',k);
-  load();
-}
-function load(){
-  var k=sessionStorage.getItem('mc_longevcore_key')||'';
-  fetch('longevcore-data.json',{cache:'no-store'}).then(function(r){
-    if(r.status===403){throw 0;}
-    if(!r.ok){throw 1;}
-    return r.text();
-  }).then(function(t){
-    document.getElementById('e').textContent='';
-    var pre=document.createElement('pre');
-    pre.style.cssText='text-align:left;white-space:pre-wrap;background:#0D1B33;border:1px solid #1E3A5F;border-radius:10px;padding:18px;font-size:13px;color:#CBD5E1;margin-top:24px;';
-    pre.textContent=t;
-    document.body.querySelector('.box').appendChild(pre);
-  }).catch(function(x){
-    if(x===0){
-      document.getElementById('e').textContent='Chave inválida.';
-      sessionStorage.removeItem('mc_longevcore_key');
-    } else {
-      document.getElementById('e').textContent='Indisponível — tente novamente.';
-    }
+  (function(){
+    try {
+      var p=new URLSearchParams(window.location.search);
+      var utm={utm_source:p.get('utm_source')||'',utm_medium:p.get('utm_medium')||'',utm_campaign:p.get('utm_campaign')||''};
+      if(utm.utm_source||utm.utm_campaign) localStorage.setItem('mc_discovery_utm',JSON.stringify(utm));
+    } catch(e){}
+  })();
+  document.getElementById('lead-form').addEventListener('submit',function(ev){
+    ev.preventDefault();
+    var msg=document.getElementById('form-msg');
+    var nome=document.getElementById('f-nome').value.trim();
+    var email=document.getElementById('f-email').value.trim();
+    var whats=document.getElementById('f-whats').value.trim();
+    if(!nome||!email||!whats||!document.getElementById('f-lgpd').checked){ msg.textContent='Preencha os campos e autorize o contato.'; return; }
+    var utm={}; try{ utm=JSON.parse(localStorage.getItem('mc_discovery_utm')||'{}'); }catch(e){}
+    var btn=this.querySelector('button'); btn.disabled=true; msg.textContent='Enviando…';
+    fetch('https://pepti-core-plus.base44.app/api/functions/registrarLeadAppsScript',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({nome:nome,email:email,whatsapp:whats,origem:'LP LongevCore (mastercore.app/longevcore)',
+        utm_source:utm.utm_source||'mastercore',utm_medium:utm.utm_medium||'venture_lp',utm_campaign:utm.utm_campaign||'longevcore_lp',
+        observacao:'LP LongevCore - lista de espera para o lancamento (interesse em longevidade educacional)'})
+    }).then(function(r){ if(r.ok){ msg.textContent='Recebido! Você está na lista de espera da LongevCore.'; document.getElementById('lead-form').reset(); } else { throw 0; } })
+    .catch(function(){ msg.textContent='Não foi possível enviar agora — tente novamente ou escreva para contato@mastercore.app.'; btn.disabled=false; });
   });
-}
-if(sessionStorage.getItem('mc_longevcore_key')){load();}
 </script>
 </body>
 </html>

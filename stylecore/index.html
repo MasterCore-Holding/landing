@@ -3,69 +3,116 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="robots" content="noindex, nofollow, noarchive">
-<title>StyleCore — Cockpit da Venture — MasterCore · Acesso Restrito</title>
+<title>StyleCore — O armário que se preenche sozinho | MasterCore</title>
+<meta name="description" content="Moda inteligente com IA: stylist que monta looks com peças reais, armário que se preenche sozinho, análise de estilo e reposição automáticas — moda masculina e feminina, integrada a marketplaces. Em fundação — entre na lista de espera.">
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
-  body { background:#081125; color:#F8FAFC; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Arial,sans-serif;
-    min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px; }
-  .box { max-width:560px; width:100%; text-align:center; }
-  .line { width:72px; height:4px; background:#3B82F6; margin:0 auto 32px; border-radius:2px; }
-  .badge { display:inline-block; border:1px solid #3B82F6; color:#3B82F6; font-size:12px; letter-spacing:2px;
-    padding:6px 16px; border-radius:999px; margin-bottom:28px; text-transform:uppercase; }
-  h1 { font-size:clamp(26px,5vw,40px); line-height:1.15; font-weight:700; margin-bottom:14px; }
-  p { color:#CBD5E1; font-size:16px; line-height:1.6; margin-bottom:10px; }
-  input { width:100%; padding:14px 16px; margin:22px 0 14px; background:#0D1B33; border:1px solid #1E3A5F;
-    border-radius:10px; color:#F8FAFC; font-size:16px; text-align:center; outline:none; }
-  input:focus { border-color:#3B82F6; }
-  button { width:100%; padding:14px; background:#3B82F6; color:#FFFFFF; border:0; border-radius:10px;
-    font-weight:700; font-size:16px; cursor:pointer; }
-  button:hover { filter:brightness(1.1); }
-  .err { color:#F87171; font-size:14px; min-height:20px; margin-bottom:8px; }
-  .foot { margin-top:30px; font-size:12px; color:#64748B; }
+  :root {
+    --accent:#0ea5e9; --accent-hover:#38bdf8; --accent-contrast:#041c32; --accent-text:#38bdf8;
+    --bg:#0a192f; --surface:#10233f; --surface-elevated:#162f52; --text:#f8fafc; --text-muted:#94a3b8;
+    --border:#1e3a5f; --border-accent:rgba(14,165,233,.35); --glow-blue:rgba(14,165,233,.2);
+    --gold:#F59E0B; --gold2:#FBBF24;
+  }
+  body { background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif; line-height:1.6; }
+  .wrap { max-width:960px; margin:0 auto; padding:0 24px; }
+  header { padding:28px 0; border-bottom:1px solid var(--border); }
+  .brand { font-weight:800; letter-spacing:-.02em; font-size:1.1rem; color:var(--text); text-decoration:none; }
+  .brand span { color:var(--accent-text); }
+  .hero { padding:64px 0 40px; text-align:center; }
+  .badge { display:inline-block; border:1px solid rgba(245,158,11,.45); color:var(--gold2); font-size:12px; letter-spacing:2px; padding:6px 16px; border-radius:999px; margin-bottom:24px; text-transform:uppercase; background:rgba(245,158,11,.10); }
+  h1 { font-size:clamp(30px,6vw,52px); line-height:1.12; font-weight:800; letter-spacing:-.02em; margin-bottom:18px; }
+  h1 em { font-style:normal; color:var(--gold2); }
+  .sub { color:var(--text-muted); font-size:1.05rem; max-width:720px; margin:0 auto 32px; }
+  .caps { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1rem; margin:40px 0; }
+  .cap { background:linear-gradient(180deg,var(--surface) 0%,rgba(16,35,63,.55) 100%); border:1px solid var(--border); border-radius:14px; padding:1.4rem 1.2rem; text-align:left; position:relative; overflow:hidden; }
+  .cap::before { content:""; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,transparent,var(--gold),transparent); opacity:.75; }
+  .cap h3 { font-size:1rem; font-weight:700; margin-bottom:.4rem; }
+  .cap p { color:var(--text-muted); font-size:.9rem; }
+  section { padding:36px 0; }
+  h2 { font-size:clamp(22px,4vw,30px); font-weight:800; letter-spacing:-.02em; margin-bottom:14px; }
+  .box { background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:1.6rem; }
+  .box p { color:var(--text-muted); margin-bottom:.8rem; }
+  .box strong { color:var(--text); }
+  .ctabox { text-align:center; padding:44px 0 64px; }
+  .cta { display:inline-block; background:var(--accent); color:var(--accent-contrast); font-weight:700; font-size:1rem; padding:16px 38px; border-radius:12px; text-decoration:none; box-shadow:0 4px 14px var(--glow-blue); transition:transform .15s; }
+  .cta:hover { transform:translateY(-2px); background:var(--accent-hover); }
+  .cta-note { color:var(--text-muted); font-size:.85rem; margin-top:12px; }
+  footer { border-top:1px solid var(--border); padding:22px 0 30px; color:var(--text-muted); font-size:.8rem; text-align:center; }
+  footer a { color:var(--accent-text); text-decoration:none; }
+  .frow { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:12px; margin-bottom:14px; text-align:left; }
+  .frow input { width:100%; padding:14px 16px; background:var(--surface-elevated); border:1px solid var(--border); border-radius:10px; color:var(--text); font-size:16px; outline:none; }
+  .frow input:focus { border-color:var(--accent); }
+  .lgpd-check { display:flex; gap:10px; align-items:flex-start; text-align:left; color:var(--text-muted); font-size:.82rem; margin:0 auto 20px; max-width:640px; }
+  .lgpd-check input { margin-top:3px; }
+  .lgpd-check a { color:var(--accent-text); }
 </style>
 </head>
 <body>
-<div class="box">
-  <div class="line"></div>
-  <div class="badge">MasterCore · Uso interno</div>
-  <h1>StyleCore — Cockpit da Venture</h1>
-  <p>Cockpit interno da venture StyleCore (Grupo MasterCore).</p>
-  <p>Área interna — acesso controlado.</p>
-  <input id="k" type="password" placeholder="Chave de acesso" autocomplete="off" onkeydown="if(event.key==='Enter')go()">
-  <div class="err" id="e"></div>
-  <button onclick="go()">Entrar</button>
-  <div class="foot">Grupo MasterCore · control plane</div>
-</div>
+<header><div class="wrap"><a class="brand" href="/">Master<span>Core</span> · StyleCore</a></div></header>
+<main class="wrap">
+  <div class="hero">
+    <div class="badge">StyleCore · Em fundação</div>
+    <h1>O armário que se <em>preenche sozinho</em></h1>
+    <p class="sub">Moda inteligente com IA: stylist que monta looks com peças reais · armário que se preenche sozinho · análise de estilo e reposição automáticas — moda masculina e feminina, integrada a marketplaces.</p>
+    <div class="caps">
+      <div class="cap"><h3>Stylist com IA</h3><p>Montagem de looks com peças reais, a partir do seu armário e do seu estilo.</p></div>
+      <div class="cap"><h3>Armário inteligente</h3><p>Seu guarda-roupa digital que se preenche sozinho conforme o estilo definido.</p></div>
+      <div class="cap"><h3>Análise de estilo</h3><p>Leitura automática das suas preferências e do seu histórico de looks.</p></div>
+      <div class="cap"><h3>Reposição automática</h3><p>Sugestões de reposição quando a peça ideal entra no seu radar.</p></div>
+      <div class="cap"><h3>Masculino e feminino</h3><p>Curadoria para todos os estilos, sem viés de gênero.</p></div>
+      <div class="cap"><h3>Integração a marketplaces</h3><p>Peças reais, de onde você já compra — sem estoque próprio.</p></div>
+    </div>
+  </div>
+  <section>
+    <h2>Desenho de produto (proposto)</h2>
+    <div class="box">
+      <p><strong>StyleCore está em fundação.</strong> O que você vê acima é o desenho de produto que estamos validando — capacidades propostas, não funcionalidades lançadas. Sem prazo prometido, sem preço, sem claim de resultado.</p>
+      <p>O produto nasce dentro do padrão MasterCore: automação com supervisão humana mandatória, telemetria auditável e conformidade LGPD desde o primeiro dia.</p>
+    </div>
+  </section>
+  <section class="ctabox">
+    <h2>Quero ser avisado no lançamento</h2>
+    <p class="sub" style="margin-bottom:24px;">Entre na lista de espera e seja o primeiro a saber quando o StyleCore abrir.</p>
+    <form id="lead-form">
+      <div class="frow">
+        <input type="text" id="f-nome" placeholder="Seu nome *" required autocomplete="name">
+        <input type="email" id="f-email" placeholder="Seu melhor e-mail *" required autocomplete="email">
+        <input type="tel" id="f-whats" placeholder="WhatsApp com DDD *" required autocomplete="tel">
+      </div>
+      <label class="lgpd-check"><input type="checkbox" id="f-lgpd" required> <span>Autorizo o contato da MasterCore/StyleCore sobre o lançamento, conforme a <a href="https://pepticore.app/politica-privacidade.html" target="_blank" rel="noopener">Política de Privacidade v1.4</a>. Posso pedir exclusão dos dados a qualquer momento.</span></label>
+      <button type="submit" class="cta" style="border:0;cursor:pointer;">Quero ser avisado no lançamento</button>
+      <div id="form-msg" class="cta-note" role="status"></div>
+    </form>
+  </section>
+</main>
+<footer>
+  StyleCore é uma venture em fundação do Grupo MasterCore · <a href="mailto:contato@mastercore.app">contato@mastercore.app</a> · Desenho de produto proposto. Sem promessa de resultado, prazo ou preço.
+</footer>
 <script>
-function go(){
-  var k=document.getElementById('k').value.trim();
-  if(!k){document.getElementById('e').textContent='Digite a chave.';return;}
-  sessionStorage.setItem('mc_stylecore_key',k);
-  load();
-}
-function load(){
-  var k=sessionStorage.getItem('mc_stylecore_key')||'';
-  fetch('stylecore-data.json',{cache:'no-store'}).then(function(r){
-    if(r.status===403){throw 0;}
-    if(!r.ok){throw 1;}
-    return r.text();
-  }).then(function(t){
-    document.getElementById('e').textContent='';
-    var pre=document.createElement('pre');
-    pre.style.cssText='text-align:left;white-space:pre-wrap;background:#0D1B33;border:1px solid #1E3A5F;border-radius:10px;padding:18px;font-size:13px;color:#CBD5E1;margin-top:24px;';
-    pre.textContent=t;
-    document.body.querySelector('.box').appendChild(pre);
-  }).catch(function(x){
-    if(x===0){
-      document.getElementById('e').textContent='Chave inválida.';
-      sessionStorage.removeItem('mc_stylecore_key');
-    } else {
-      document.getElementById('e').textContent='Indisponível — tente novamente.';
-    }
+  (function(){
+    try {
+      var p=new URLSearchParams(window.location.search);
+      var utm={utm_source:p.get('utm_source')||'',utm_medium:p.get('utm_medium')||'',utm_campaign:p.get('utm_campaign')||''};
+      if(utm.utm_source||utm.utm_campaign) localStorage.setItem('mc_discovery_utm',JSON.stringify(utm));
+    } catch(e){}
+  })();
+  document.getElementById('lead-form').addEventListener('submit',function(ev){
+    ev.preventDefault();
+    var msg=document.getElementById('form-msg');
+    var nome=document.getElementById('f-nome').value.trim();
+    var email=document.getElementById('f-email').value.trim();
+    var whats=document.getElementById('f-whats').value.trim();
+    if(!nome||!email||!whats||!document.getElementById('f-lgpd').checked){ msg.textContent='Preencha os campos e autorize o contato.'; return; }
+    var utm={}; try{ utm=JSON.parse(localStorage.getItem('mc_discovery_utm')||'{}'); }catch(e){}
+    var btn=this.querySelector('button'); btn.disabled=true; msg.textContent='Enviando…';
+    fetch('https://pepti-core-plus.base44.app/api/functions/registrarLeadAppsScript',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({nome:nome,email:email,whatsapp:whats,origem:'LP StyleCore (mastercore.app/stylecore)',
+        utm_source:utm.utm_source||'mastercore',utm_medium:utm.utm_medium||'venture_card',utm_campaign:utm.utm_campaign||'stylecore_lp',
+        observacao:'LP StyleCore - lista de espera (venture em fundacao)'})
+    }).then(function(r){ if(r.ok){ msg.textContent='Na lista! Você será avisado no lançamento do StyleCore.'; document.getElementById('lead-form').reset(); } else { throw 0; } })
+    .catch(function(){ msg.textContent='Não foi possível enviar agora — tente novamente ou escreva para contato@mastercore.app.'; btn.disabled=false; });
   });
-}
-if(sessionStorage.getItem('mc_stylecore_key')){load();}
 </script>
 </body>
 </html>
