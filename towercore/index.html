@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Demo do TowerCore MasterCore: radar de pré-lançamentos imobiliários em São Paulo com score IA e comparáveis auditáveis. Amostra com dados 100% fictícios — exceto 1 sinal real identificado.">
+  <meta name="description" content="Demo do TowerCore MasterCore: radar de pré-lançamentos imobiliários em São Paulo com score IA e comparáveis auditáveis. Amostra com dados 100% fictícios — exceto sinais reais identificados.">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/brand/favicon-mastercore-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/brand/favicon-mastercore-16.png">
   <meta name="robots" content="noindex, nofollow, noarchive">
-  <title>TowerCore — Radar Pré-Lançamento SP · MasterCore · Demo (dados fictícios)</title>
+  <title>TowerCore — Radar Pré-Lançamento SP · MasterCore · Demo (dados fictícios + sinais reais)</title>
   <style>
 * { margin:0; padding:0; box-sizing:border-box; }
 body { background:#0A192F; color:#F8FAFC; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Arial,sans-serif; min-height:100vh; }
@@ -59,7 +59,7 @@ tr:hover td { background:rgba(20,184,166,.05); }
 .sr { background:#F87171; }
 .legend { color:#64748B; font-size:12px; text-align:center; margin:14px 0 34px; }
 /* Comparáveis auditáveis */
-.comp { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:44px; }
+.comp { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:44px; }
 .ccard { background:#0D1B33; border:1px solid #1E3A5F; border-radius:12px; padding:18px; text-align:center; }
 .ccard .v { font-size:clamp(18px,2.6vw,24px); font-weight:800; color:#F8FAFC; }
 .ccard .k { color:#94A3B8; font-size:12px; margin-top:5px; line-height:1.45; }
@@ -90,7 +90,7 @@ tr:hover td { background:rgba(20,184,166,.05); }
 </style>
 </head>
 <body>
-<div class="banner">Demo — dados fictícios · exceto 1 sinal real identificado</div>
+<div class="banner">Demo — dados fictícios · exceto sinais reais identificados</div>
 <div class="wrap">
   <div class="top">
     <div class="brand"><span class="dot"></span> TowerCore · MasterCore</div>
@@ -110,12 +110,12 @@ tr:hover td { background:rgba(20,184,166,.05); }
     <span class="rchip soon">Distress — em breve</span>
   </div>
   <div class="hero">
-    <div class="chip">Demo · Dados 100% fictícios + 1 sinal real</div>
+    <div class="chip">Demo · Dados 100% fictícios + sinais reais identificados</div>
     <h1>DO PRÉ-LANÇAMENTO AO NÚMERO AUDITÁVEL.</h1>
     <p class="sub">Radar de pré-lançamentos imobiliários em São Paulo — score IA por unidade, comparáveis de preço/m² auditáveis e fonte declarada em cada sinal.</p>
   </div>
   <div class="kpis">
-    <div class="kpi"><div class="n">10</div><div class="l">Sinais monitorados (9 demo + 1 real)</div></div>
+    <div class="kpi"><div class="n">14</div><div class="l">Sinais monitorados (9 demo + 5 reais)</div></div>
     <div class="kpi"><div class="n">6</div><div class="l">Bairros de SP cobertos</div></div>
     <div class="kpi"><div class="n">8</div><div class="l">Campos por sinal (schema v1)</div></div>
     <div class="kpi"><div class="n">24/7</div><div class="l">Varredura contínua de fontes</div></div>
@@ -163,15 +163,20 @@ tr:hover td { background:rgba(20,184,166,.05); }
 <tr data-b="pinheiros" data-p="12a15" data-e="pronto"><td class="opp">Vila Nova Concept<span class="inc">Morada Sul (fictícia)</span></td><td>Vila Madalena</td><td>un. 58 (5º)</td><td>R$ 1.540.000</td><td>R$ 12.800</td><td>abr/2027</td><td><span class="chipd">Pronto</span></td><td class="score s-mut">69</td><td><span class="sema sa"></span>demo</td></tr>
 <tr data-b="moema" data-p="ate12" data-e="obras"><td class="opp">Água Branca Park Life<span class="inc">Vertta Desenvolvimento (fictício)</span></td><td>Água Branca</td><td>un. 96 (9º)</td><td>R$ 1.310.000</td><td>R$ 10.400</td><td>set/2027</td><td><span class="chipd">Em obras</span></td><td class="score s-mut">66</td><td><span class="sema sr"></span>demo</td></tr>
 <tr data-b="brooklin" data-p="15mais" data-e="lancamento" style="outline:1px solid rgba(245,158,11,.45); outline-offset:-1px;"><td class="opp">Lindenberg Vista Brooklin <span class="chipd chip-real">SINAL REAL</span><span class="inc">EZTEC</span></td><td>Brooklin</td><td>un. 102 (10º andar)</td><td>R$ 5.023.600</td><td>R$ 19.028,79</td><td>fev/2028</td><td><span class="chipd">Lançamento</span></td><td class="score s-gold">91</td><td><span class="sema sa"></span>corretor</td></tr>
+<tr data-p="15mais" style="outline:1px solid rgba(245,158,11,.45); outline-offset:-1px;"><td class="opp">Château Jardin · Harmonie <span class="chipd chip-real">SINAL REAL</span><span class="inc">185 m² · 3 vagas · valores "a partir de"</span></td><td>—</td><td>tipologia 185 m² (sem un. ref.)</td><td>R$ 3.934.082*</td><td>≈ R$ 21.000*</td><td>n/d</td><td><span class="chipd">n/d</span></td><td class="score s-gold">88</td><td><span class="sema sa"></span>corretor</td></tr>
+<tr data-p="15mais" style="outline:1px solid rgba(245,158,11,.45); outline-offset:-1px;"><td class="opp">Château Jardin · Harmonie <span class="chipd chip-real">SINAL REAL</span><span class="inc">215 m² · 4 vagas · valores "a partir de"</span></td><td>—</td><td>tipologia 215 m² (sem un. ref.)</td><td>R$ 4.571.909*</td><td>≈ R$ 21.000*</td><td>n/d</td><td><span class="chipd">n/d</span></td><td class="score s-gold">86</td><td><span class="sema sa"></span>corretor</td></tr>
+<tr data-p="15mais" style="outline:1px solid rgba(245,158,11,.45); outline-offset:-1px;"><td class="opp">Château Jardin · Harmonie <span class="chipd chip-real">SINAL REAL</span><span class="inc">248 m² · 4 vagas · valores "a partir de"</span></td><td>—</td><td>tipologia 248 m² (sem un. ref.)</td><td>R$ 5.281.574*</td><td>≈ R$ 21.000*</td><td>n/d</td><td><span class="chipd">n/d</span></td><td class="score s-teal">84</td><td><span class="sema sa"></span>corretor</td></tr>
+<tr data-p="15mais" style="outline:1px solid rgba(245,158,11,.45); outline-offset:-1px;"><td class="opp">Château Jardin · Lumière <span class="chipd chip-real">SINAL REAL</span><span class="inc">355 m² · 5 vagas · valores "a partir de"</span></td><td>—</td><td>tipologia 355 m² (sem un. ref.)</td><td>R$ 8.142.436*</td><td>≈ R$ 22.900*</td><td>n/d</td><td><span class="chipd">n/d</span></td><td class="score s-teal">82</td><td><span class="sema sa"></span>corretor</td></tr>
       </tbody>
     </table>
   </div>
-  <p class="legend">Score IA 0-100 = aderência estimada ao perfil do investidor (simulação de demonstração). Linha destacada = 1º sinal real da base (L382/L383, fornecido pelo CEO).</p>
+  <p class="legend">Score IA 0-100 = aderência estimada ao perfil do investidor (simulação de demonstração). Linhas destacadas = sinais reais com fonte declarada. Château Jardin (21/10, corretor Tegra+Exto via WhatsApp): valores de tabela "a partir de" (*), sem unidade de referência e sem previsão de entrega — gaps rotulados n/d.</p>
 
   <div class="comp">
     <div class="ccard"><div class="v">R$ 12,5–17,1 mil/m²</div><div class="k">Brooklin — faixa de comparáveis (planta, 20/10)</div></div>
     <div class="ccard"><div class="v">R$ 11,8–20,6 mil/m²</div><div class="k">Cidade Jardim — faixa de comparáveis (planta, 20/10)</div></div>
     <div class="ccard"><div class="v">R$ 12.206/m²</div><div class="k">FipeZAP São Paulo — média de referência</div></div>
+    <div class="ccard"><div class="v">R$ 21,0–22,9 mil/m²</div><div class="k">Château Jardin — comparáveis reais (corretor, 21/10)</div></div>
   </div>
 
   <details class="schema">
@@ -188,7 +193,7 @@ tr:hover td { background:rgba(20,184,166,.05); }
     <div class="micro">Resposta em 1 dia útil · captação B2B própria · sem compromisso</div>
     <div class="hook">Alertas de novos pré-lançamentos — na versão real do radar</div>
   </div>
-  <div class="foot">Grupo MasterCore · TowerCore (Radar Pré-Lançamento) — página de demonstração. Os empreendimentos fictícios, valores e status servem apenas para ilustrar o produto; a linha marcada SINAL REAL é dado real com fonte declarada. Nenhum dado pessoal é coletado nesta página.</div>
+  <div class="foot">Grupo MasterCore · TowerCore (Radar Pré-Lançamento) — página de demonstração. Os empreendimentos fictícios, valores e status servem apenas para ilustrar o produto; as linhas marcadas SINAL REAL são dados reais com fonte declarada. Nenhum dado pessoal é coletado nesta página.</div>
 </div>
 <script>
 (function(){
