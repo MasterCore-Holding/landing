@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Demo do TowerCore MasterCore: radar de pré-lançamentos imobiliários em São Paulo com score IA e comparáveis auditáveis. Amostra com dados 100% fictícios — exceto 1 sinal real identificado.">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/brand/favicon-mastercore-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/brand/favicon-mastercore-16.png">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <title>TowerCore — Radar Pré-Lançamento SP · MasterCore · Demo (dados fictícios)</title>
+  <style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#0A192F; color:#F8FAFC; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Arial,sans-serif; min-height:100vh; }
+.wrap { max-width:1100px; margin:0 auto; padding:0 20px 64px; }
+.banner { position:sticky; top:0; z-index:9; background:#F59E0B; color:#0A192F; font-weight:800; font-size:13px; letter-spacing:.08em; text-transform:uppercase; text-align:center; padding:9px 12px; }
+.top { display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; margin:22px 0 10px; }
+.brand { display:flex; align-items:center; gap:10px; font-weight:700; font-size:15px; }
+.brand .dot { width:10px; height:10px; border-radius:50%; background:#14B8A6; box-shadow:0 0 12px #14B8A6; }
+.gbtn { display:inline-flex; align-items:center; gap:8px; padding:8px 16px; border:1px solid #1E3A5F; border-radius:999px; color:#CBD5E1; font-size:13px; font-weight:600; text-decoration:none; }
+.gbtn:hover { border-color:#3B82F6; color:#F8FAFC; }
+/* PLATAFORMA DE RADARES — menu compartilhado (RADAR-PLATFORM-001) */
+.radares { display:flex; gap:8px; flex-wrap:wrap; align-items:center; padding:14px 0 6px; border-bottom:1px solid #1E3A5F; margin-bottom:34px; }
+.rlabel { color:#64748B; font-size:11px; letter-spacing:1.5px; text-transform:uppercase; margin-right:4px; }
+.rchip { display:inline-flex; align-items:center; gap:6px; padding:6px 13px; border-radius:999px; border:1px solid #1E3A5F; color:#94A3B8; font-size:12.5px; font-weight:600; text-decoration:none; }
+.rchip:hover { border-color:#3B82F6; color:#F8FAFC; }
+.rchip.on { background:rgba(20,184,166,.12); border-color:#14B8A6; color:#14B8A6; }
+.rchip.on .rdot { width:7px; height:7px; border-radius:50%; background:#14B8A6; box-shadow:0 0 8px #14B8A6; }
+.rchip.soon { opacity:.55; }
+.hero { text-align:center; margin-bottom:40px; }
+.chip { display:inline-block; border:1px solid #14B8A6; color:#14B8A6; font-size:11px; letter-spacing:2px; padding:6px 14px; border-radius:999px; margin-bottom:18px; text-transform:uppercase; }
+h1 { font-size:clamp(26px,5vw,42px); line-height:1.15; font-weight:800; margin-bottom:14px; letter-spacing:-.01em; }
+.sub { color:#94A3B8; font-size:16px; line-height:1.6; max-width:680px; margin:0 auto; }
+.kpis { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:44px; }
+.kpi { background:#0D1B33; border:1px solid #1E3A5F; border-radius:12px; padding:22px 14px; text-align:center; }
+.kpi .n { font-size:clamp(30px,4.5vw,44px); font-weight:800; background:linear-gradient(135deg,#14B8A6,#2DD4BF); -webkit-background-clip:text; background-clip:text; color:transparent; text-shadow:0 0 24px rgba(20,184,166,.35); }
+.kpi .l { color:#94A3B8; font-size:12px; margin-top:6px; line-height:1.4; }
+.fgroups { display:flex; flex-direction:column; gap:10px; margin-bottom:18px; }
+.fgroup { display:flex; gap:8px; flex-wrap:wrap; align-items:center; justify-content:center; }
+.flabel { color:#64748B; font-size:11px; letter-spacing:1.5px; text-transform:uppercase; margin-right:4px; }
+.tab { padding:7px 16px; border-radius:999px; border:1px solid #1E3A5F; color:#94A3B8; font-size:13px; font-weight:600; cursor:pointer; background:transparent; }
+.tab.on { background:#14B8A6; border-color:#14B8A6; color:#0A192F; }
+.tblwrap { overflow-x:auto; border:1px solid #1E3A5F; border-radius:12px; }
+table { width:100%; border-collapse:collapse; font-size:14px; min-width:860px; }
+th { text-align:left; padding:14px 16px; color:#94A3B8; font-size:11px; letter-spacing:1.5px; text-transform:uppercase; border-bottom:1px solid #1E3A5F; background:#0D1B33; }
+td { padding:14px 16px; border-bottom:1px solid rgba(30,58,95,.55); }
+tr:last-child td { border-bottom:none; }
+tr:hover td { background:rgba(20,184,166,.05); }
+.opp { font-weight:600; max-width:300px; }
+.opp .inc { display:block; color:#94A3B8; font-weight:400; font-size:12.5px; margin-top:2px; }
+.chipd { display:inline-block; padding:3px 10px; border-radius:999px; font-size:12px; font-weight:700; border:1px solid #1E3A5F; color:#CBD5E1; white-space:nowrap; }
+.chip-real { border-color:#F59E0B; color:#FBBF24; background:rgba(245,158,11,.08); }
+.score { font-weight:800; font-size:15px; white-space:nowrap; }
+.s-gold { background:linear-gradient(135deg,#F59E0B,#FBBF24); -webkit-background-clip:text; background-clip:text; color:transparent; }
+.s-teal { color:#14B8A6; }
+.s-mut { color:#94A3B8; }
+.sema { display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:7px; vertical-align:middle; }
+.sv { background:#34D399; box-shadow:0 0 8px #34D399; }
+.sa { background:#FBBF24; box-shadow:0 0 8px #FBBF24; }
+.sr { background:#F87171; }
+.legend { color:#64748B; font-size:12px; text-align:center; margin:14px 0 34px; }
+/* Comparáveis auditáveis */
+.comp { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:44px; }
+.ccard { background:#0D1B33; border:1px solid #1E3A5F; border-radius:12px; padding:18px; text-align:center; }
+.ccard .v { font-size:clamp(18px,2.6vw,24px); font-weight:800; color:#F8FAFC; }
+.ccard .k { color:#94A3B8; font-size:12px; margin-top:5px; line-height:1.45; }
+@media (max-width:760px){ .comp { grid-template-columns:1fr; } }
+/* Schema */
+.schema { background:#0D1B33; border:1px solid #1E3A5F; border-radius:12px; padding:16px 18px; margin-bottom:44px; font-size:13px; color:#CBD5E1; }
+.schema summary { cursor:pointer; font-weight:700; color:#F8FAFC; }
+.schema code { font-family:'JetBrains Mono',monospace; font-size:12px; color:#7DD3FC; }
+.schema .fields { margin-top:10px; line-height:1.9; }
+.cta { text-align:center; margin-bottom:26px; }
+.btn-gold { display:inline-block; padding:15px 34px; border-radius:999px; font-weight:800; font-size:16px; color:#0A192F; text-decoration:none; background:linear-gradient(135deg,#F59E0B,#FBBF24); box-shadow:0 8px 30px rgba(245,158,11,.35); }
+.btn-gold:hover { filter:brightness(1.08); }
+.btn-ghost { display:inline-block; margin-left:12px; padding:15px 28px; border-radius:999px; border:1px solid #14B8A6; color:#14B8A6; font-weight:700; font-size:15px; text-decoration:none; }
+.btn-ghost:hover { background:rgba(20,184,166,.08); }
+.micro { color:#94A3B8; font-size:13px; margin-top:14px; }
+.hook { color:#64748B; font-size:12.5px; margin-top:10px; }
+.foot { text-align:center; color:#64748B; font-size:12px; padding:26px 0 0; border-top:1px solid #1E3A5F; }
+@media (max-width:760px){
+  .kpis { grid-template-columns:repeat(2,1fr); }
+  .tblwrap { border:none; }
+  table, thead, tbody, th, td, tr { display:block; }
+  thead { display:none; }
+  tr { background:#0D1B33; border:1px solid #1E3A5F; border-radius:12px; margin-bottom:12px; padding:14px; }
+  td { border:none; padding:5px 8px; }
+  td.opp { font-size:15px; padding-bottom:10px; }
+  .cd-l { color:#64748B; font-size:11px; text-transform:uppercase; letter-spacing:1px; }
+}
+</style>
+</head>
+<body>
+<div class="banner">Demo — dados fictícios · exceto 1 sinal real identificado</div>
+<div class="wrap">
+  <div class="top">
+    <div class="brand"><span class="dot"></span> TowerCore · MasterCore</div>
+    <a class="gbtn" href="/radarcore/" title="Plataforma de Radares MasterCore">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#14B8A6" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2" fill="#14B8A6"/></svg>
+      Plataforma de Radares
+    </a>
+  </div>
+  <div class="radares" aria-label="Plataforma de Radares MasterCore">
+    <span class="rlabel">Radares</span>
+    <a class="rchip" href="/radarcore/"><span class="rdot" style="width:7px;height:7px;border-radius:50%;background:#14B8A6;display:inline-block;"></span> Radar RFP</a>
+    <a class="rchip on" href="/towercore/"><span class="rdot"></span> Radar Pré-Lançamento · TowerCore</a>
+    <span class="rchip soon">Radar Innovation — em breve</span>
+    <span class="rchip soon">Security — em breve</span>
+    <span class="rchip soon">Fomento — em breve</span>
+    <span class="rchip soon">Regulatório — em breve</span>
+    <span class="rchip soon">Distress — em breve</span>
+  </div>
+  <div class="hero">
+    <div class="chip">Demo · Dados 100% fictícios + 1 sinal real</div>
+    <h1>DO PRÉ-LANÇAMENTO AO NÚMERO AUDITÁVEL.</h1>
+    <p class="sub">Radar de pré-lançamentos imobiliários em São Paulo — score IA por unidade, comparáveis de preço/m² auditáveis e fonte declarada em cada sinal.</p>
+  </div>
+  <div class="kpis">
+    <div class="kpi"><div class="n">10</div><div class="l">Sinais monitorados (9 demo + 1 real)</div></div>
+    <div class="kpi"><div class="n">6</div><div class="l">Bairros de SP cobertos</div></div>
+    <div class="kpi"><div class="n">8</div><div class="l">Campos por sinal (schema v1)</div></div>
+    <div class="kpi"><div class="n">24/7</div><div class="l">Varredura contínua de fontes</div></div>
+  </div>
+
+  <div class="fgroups" id="fgroups">
+    <div class="fgroup" data-g="bairro">
+      <span class="flabel">Bairro</span>
+      <button class="tab on" data-f="all">Todos</button>
+      <button class="tab" data-f="brooklin">Brooklin</button>
+      <button class="tab" data-f="cidade-jardim">Cidade Jardim</button>
+      <button class="tab" data-f="itaim">Itaim Bibi</button>
+      <button class="tab" data-f="vila-olimpia">Vila Olímpia</button>
+      <button class="tab" data-f="pinheiros">Pinheiros</button>
+      <button class="tab" data-f="moema">Moema</button>
+    </div>
+    <div class="fgroup" data-g="faixa">
+      <span class="flabel">Faixa de preço/m²</span>
+      <button class="tab on" data-f="all">Todas</button>
+      <button class="tab" data-f="ate12">até R$ 12 mil</button>
+      <button class="tab" data-f="12a15">R$ 12–15 mil</button>
+      <button class="tab" data-f="15mais">R$ 15 mil+</button>
+    </div>
+    <div class="fgroup" data-g="estagio">
+      <span class="flabel">Estágio da obra</span>
+      <button class="tab on" data-f="all">Todos</button>
+      <button class="tab" data-f="planta">Planta</button>
+      <button class="tab" data-f="lancamento">Lançamento</button>
+      <button class="tab" data-f="obras">Em obras</button>
+      <button class="tab" data-f="pronto">Pronto</button>
+    </div>
+  </div>
+
+  <div class="tblwrap">
+    <table id="t">
+      <thead><tr><th>Empreendimento</th><th>Bairro</th><th>Unidade/Andar</th><th>Preço total</th><th>Preço/m²</th><th>Entrega</th><th>Estágio</th><th>Score IA</th><th>Fonte</th></tr></thead>
+      <tbody>
+<tr data-b="itaim" data-p="12a15" data-e="planta"><td class="opp">Vista Alameda Residence<span class="inc">Vertta Desenvolvimento (fictício)</span></td><td>Itaim Bibi</td><td>un. 84 (8º)</td><td>R$ 3.180.000</td><td>R$ 15.900</td><td>dez/2027</td><td><span class="chipd">Planta</span></td><td class="score s-gold">88</td><td><span class="sema sv"></span>demo</td></tr>
+<tr data-b="cidade-jardim" data-p="15mais" data-e="lancamento"><td class="opp">Parque Cidade Alta<span class="inc">Alta Vista Incorporadora (fictícia)</span></td><td>Cidade Jardim</td><td>un. 31 (3º)</td><td>R$ 4.750.000</td><td>R$ 19.800</td><td>mar/2028</td><td><span class="chipd">Lançamento</span></td><td class="score s-gold">85</td><td><span class="sema sv"></span>demo</td></tr>
+<tr data-b="brooklin" data-p="12a15" data-e="lancamento"><td class="opp">Skyline Brooklin Novo<span class="inc">Portella (fictícia)</span></td><td>Brooklin</td><td>un. 173 (17º)</td><td>R$ 2.970.000</td><td>R$ 16.500</td><td>jan/2028</td><td><span class="chipd">Lançamento</span></td><td class="score s-gold">86</td><td><span class="sema sv"></span>demo</td></tr>
+<tr data-b="vila-olimpia" data-p="15mais" data-e="planta"><td class="opp">Duque Square Vila Olímpia<span class="inc">Grupo Marfim (fictício)</span></td><td>Vila Olímpia</td><td>un. 61 (6º)</td><td>R$ 3.890.000</td><td>R$ 17.300</td><td>nov/2027</td><td><span class="chipd">Planta</span></td><td class="score s-teal">82</td><td><span class="sema sv"></span>demo</td></tr>
+<tr data-b="pinheiros" data-p="12a15" data-e="obras"><td class="opp">Horizonte Pinheiros<span class="inc">Morada Sul (fictícia)</span></td><td>Pinheiros</td><td>un. 122 (12º)</td><td>R$ 2.460.000</td><td>R$ 14.100</td><td>jul/2027</td><td><span class="chipd">Em obras</span></td><td class="score s-teal">79</td><td><span class="sema sv"></span>demo</td></tr>
+<tr data-b="cidade-jardim" data-p="15mais" data-e="planta"><td class="opp">Jardim Europa Terraces<span class="inc">Alta Vista Incorporadora (fictícia)</span></td><td>Cidade Jardim</td><td>un. 12 (1º)</td><td>R$ 6.120.000</td><td>R$ 20.400</td><td>dez/2028</td><td><span class="chipd">Planta</span></td><td class="score s-teal">81</td><td><span class="sema sv"></span>demo</td></tr>
+<tr data-b="moema" data-p="ate12" data-e="obras"><td class="opp">Reserva Moema<span class="inc">Casa Verde Inc. (fictícia)</span></td><td>Moema</td><td>un. 45 (4º)</td><td>R$ 1.980.000</td><td>R$ 11.200</td><td>ago/2027</td><td><span class="chipd">Em obras</span></td><td class="score s-teal">74</td><td><span class="sema sv"></span>demo</td></tr>
+<tr data-b="pinheiros" data-p="12a15" data-e="pronto"><td class="opp">Vila Nova Concept<span class="inc">Morada Sul (fictícia)</span></td><td>Vila Madalena</td><td>un. 58 (5º)</td><td>R$ 1.540.000</td><td>R$ 12.800</td><td>abr/2027</td><td><span class="chipd">Pronto</span></td><td class="score s-mut">69</td><td><span class="sema sa"></span>demo</td></tr>
+<tr data-b="moema" data-p="ate12" data-e="obras"><td class="opp">Água Branca Park Life<span class="inc">Vertta Desenvolvimento (fictício)</span></td><td>Água Branca</td><td>un. 96 (9º)</td><td>R$ 1.310.000</td><td>R$ 10.400</td><td>set/2027</td><td><span class="chipd">Em obras</span></td><td class="score s-mut">66</td><td><span class="sema sr"></span>demo</td></tr>
+<tr data-b="brooklin" data-p="15mais" data-e="lancamento" style="outline:1px solid rgba(245,158,11,.45); outline-offset:-1px;"><td class="opp">Lindenberg Vista Brooklin <span class="chipd chip-real">SINAL REAL</span><span class="inc">EZTEC</span></td><td>Brooklin</td><td>un. 102 (10º andar)</td><td>R$ 5.023.600</td><td>R$ 19.028,79</td><td>fev/2028</td><td><span class="chipd">Lançamento</span></td><td class="score s-gold">91</td><td><span class="sema sa"></span>corretor</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="legend">Score IA 0-100 = aderência estimada ao perfil do investidor (simulação de demonstração). Linha destacada = 1º sinal real da base (L382/L383, fornecido pelo CEO).</p>
+
+  <div class="comp">
+    <div class="ccard"><div class="v">R$ 12,5–17,1 mil/m²</div><div class="k">Brooklin — faixa de comparáveis (planta, 20/10)</div></div>
+    <div class="ccard"><div class="v">R$ 11,8–20,6 mil/m²</div><div class="k">Cidade Jardim — faixa de comparáveis (planta, 20/10)</div></div>
+    <div class="ccard"><div class="v">R$ 12.206/m²</div><div class="k">FipeZAP São Paulo — média de referência</div></div>
+  </div>
+
+  <details class="schema">
+    <summary>Schema TOWERCORE-SIGNAL-v1 — formato canônico de cada sinal</summary>
+    <div class="fields">
+      <code>empreendimento</code> · <code>incorporadora</code> · <code>bairro</code> · <code>unidade/andar</code> · <code>preco_total</code> · <code>preco_m2</code> · <code>previsao_entrega</code> · <code>fonte</code><br>
+      Todo sinal entra no radar com fonte declarada. Dados fictícios são rotulados <code>demo</code>; sinais reais carregam a origem (ex.: <code>corretor</code>).
+    </div>
+  </details>
+
+  <div class="cta">
+    <a class="btn-gold" href="mailto:contato@mastercore.app?subject=Quero%20o%20TowerCore">Quero o TowerCore</a>
+    <a class="btn-ghost" href="/#ventures">Conhecer mais</a>
+    <div class="micro">Resposta em 1 dia útil · captação B2B própria · sem compromisso</div>
+    <div class="hook">Alertas de novos pré-lançamentos — na versão real do radar</div>
+  </div>
+  <div class="foot">Grupo MasterCore · TowerCore (Radar Pré-Lançamento) — página de demonstração. Os empreendimentos fictícios, valores e status servem apenas para ilustrar o produto; a linha marcada SINAL REAL é dado real com fonte declarada. Nenhum dado pessoal é coletado nesta página.</div>
+</div>
+<script>
+(function(){
+  var state={bairro:'all',faixa:'all',estagio:'all'};
+  var rows=document.querySelectorAll('#t tbody tr');
+  function apply(){
+    rows.forEach(function(r){
+      var ok=true;
+      ['bairro','faixa','estagio'].forEach(function(g){
+        if(state[g]!=='all'&&r.getAttribute('data-'+g)!==state[g]) ok=false;
+      });
+      r.style.display=ok?'':'none';
+    });
+  }
+  document.querySelectorAll('.fgroup').forEach(function(grp){
+    var g=grp.getAttribute('data-g');
+    grp.querySelectorAll('.tab').forEach(function(b){
+      b.addEventListener('click',function(){
+        grp.querySelectorAll('.tab').forEach(function(x){x.classList.remove('on');});
+        b.classList.add('on');
+        state[g]=b.getAttribute('data-f');
+        apply();
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>

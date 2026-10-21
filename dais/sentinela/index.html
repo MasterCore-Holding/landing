@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sentinela — Segurança para a era agêntica | DAIS · MasterCore</title>
+  <meta name="description" content="SOC hiperautônomo 24×7 com MDR, governança de identidades de máquina e segurança de IA em borda — com supervisão humana mandatória. Parceria DAIS · MasterCore.">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/brand/favicon-mastercore-32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --accent: #14B8A6; --accent-dark: #0D9488; --accent-glow: rgba(20, 184, 166, 0.25);
+      --bg-deep: #0A192F; --bg-surface: #0F2444; --bg-surface-elevated: #162E52;
+      --text-main: #F8FAFC; --text-muted: #94A3B8;
+      --border-subtle: rgba(148, 163, 184, 0.15); --border-accent: rgba(20, 184, 166, 0.4);
+      --font-display: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg-deep); color: var(--text-main); font-family: var(--font-body); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    .mono { font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.04em; }
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+    section { padding: 88px 0; }
+    .section-tag { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.1rem; }
+    .section-tag::before { content: ""; width: 22px; height: 1px; background: var(--accent); }
+    h2 { font-family: var(--font-display); font-size: clamp(1.7rem, 3.4vw, 2.5rem); font-weight: 800; line-height: 1.18; letter-spacing: -0.02em; margin-bottom: 1rem; }
+    .section-desc { color: var(--text-muted); max-width: 640px; font-size: 1.02rem; }
+    /* NAV */
+    .navbar { position: sticky; top: 0; z-index: 50; background: rgba(10, 22, 39, 0.85); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border-subtle); }
+    .nav-container { max-width: 1140px; margin: 0 auto; padding: 0 24px; height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .brand-group { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .brand-mark { width: 38px; height: 38px; border-radius: 10px; background: rgba(20, 184, 166, 0.12); border: 1px solid var(--border-accent); display: flex; align-items: center; justify-content: center; }
+    .brand-mark svg { width: 20px; height: 20px; stroke: var(--accent); fill: none; }
+    .brand-text { display: flex; flex-direction: column; line-height: 1.15; }
+    .brand-name { font-family: var(--font-display); font-weight: 800; font-size: 1.05rem; color: var(--text-main); letter-spacing: 0.06em; }
+    .brand-sub { font-size: 0.68rem; color: var(--text-muted); letter-spacing: 0.08em; }
+    .nav-links { display: none; gap: 1.8rem; }
+    @media (min-width: 900px) { .nav-links { display: flex; } }
+    .nav-link { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color .18s; }
+    .nav-link:hover { color: var(--text-main); }
+    .btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--accent); color: #06201C; font-family: var(--font-display); font-weight: 700; font-size: 0.92rem; padding: 0.7rem 1.4rem; border-radius: 10px; border: none; cursor: pointer; text-decoration: none; transition: all .18s; }
+    .btn-primary:hover { background: var(--accent-dark); box-shadow: 0 6px 22px var(--accent-glow); }
+    .btn-secondary { display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: var(--text-main); font-family: var(--font-display); font-weight: 600; font-size: 0.92rem; padding: 0.7rem 1.4rem; border-radius: 10px; border: 1px solid var(--border-subtle); cursor: pointer; text-decoration: none; transition: all .18s; }
+    .btn-secondary:hover { border-color: var(--border-accent); color: var(--accent); }
+    /* HERO */
+    .hero { position: relative; padding: 96px 0 88px; overflow: hidden; }
+    .hero::before { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 70% 20%, rgba(20,184,166,0.12), transparent 65%); pointer-events: none; }
+    .hero-grid { display: grid; gap: 3rem; align-items: center; }
+    @media (min-width: 960px) { .hero-grid { grid-template-columns: 1.15fr 0.85fr; } }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 0.6rem; border: 1px solid var(--border-accent); background: rgba(20,184,166,0.08); border-radius: 999px; padding: 0.42rem 1rem; font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.4rem; }
+    .hero-eyebrow-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px var(--accent); animation: pulse 2.2s infinite; }
+    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
+    .hero h1 { font-family: var(--font-display); font-size: clamp(2.1rem, 5vw, 3.4rem); font-weight: 800; line-height: 1.12; letter-spacing: -0.025em; margin-bottom: 1.2rem; }
+    .hero h1 .highlight { color: var(--accent); }
+    .hero-desc { color: var(--text-muted); font-size: 1.08rem; max-width: 560px; margin-bottom: 2rem; }
+    .hero-actions { display: flex; gap: 0.9rem; flex-wrap: wrap; }
+    /* Radar visual */
+    .radar-box { display: none; }
+    @media (min-width: 960px) { .radar-box { display: block; } }
+    .radar-box svg { width: 100%; max-width: 380px; display: block; margin: 0 auto; }
+    .radar-sweep { transform-origin: 200px 200px; animation: sweep 5.5s linear infinite; }
+    @keyframes sweep { to { transform: rotate(360deg); } }
+    .ping-point { animation: ping 2.4s infinite; }
+    @keyframes ping { 0%,100% { opacity: 1; } 50% { opacity: 0.25; } }
+    .radar-telemetry { display: flex; align-items: center; justify-content: center; gap: 0.6rem; margin-top: 1rem; }
+    /* CARDS */
+    .cards-grid { display: grid; gap: 1.4rem; margin-top: 2.6rem; }
+    @media (min-width: 700px) { .cards-grid.c3 { grid-template-columns: repeat(3, 1fr); } .cards-grid.c4 { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1000px) { .cards-grid.c4 { grid-template-columns: repeat(4, 1fr); } }
+    .card { background: rgba(15, 36, 68, 0.5); border: 1px solid var(--border-subtle); border-radius: 14px; padding: 1.7rem 1.5rem; transition: all .2s; }
+    .card:hover { border-color: var(--border-accent); background: rgba(15, 36, 68, 0.75); transform: translateY(-2px); }
+    .card.alert { border-color: rgba(239, 68, 68, 0.25); }
+    .card.alert:hover { border-color: rgba(239, 68, 68, 0.5); }
+    .card-icon { width: 44px; height: 44px; border-radius: 10px; background: rgba(20, 184, 166, 0.12); border: 1px solid var(--border-accent); display: flex; align-items: center; justify-content: center; margin-bottom: 1.1rem; font-size: 1.25rem; }
+    .card.alert .card-icon { background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.3); }
+    .card h3 { font-family: var(--font-display); font-size: 1.08rem; font-weight: 700; margin-bottom: 0.55rem; }
+    .card p { color: var(--text-muted); font-size: 0.9rem; }
+    /* BACKED BOX */
+    .backed { background: linear-gradient(180deg, rgba(15,36,68,0.35), rgba(10,22,39,0.2)); border: 1px solid var(--border-subtle); border-radius: 18px; padding: 2.6rem 2rem; text-align: center; }
+    .backed .pill { display: inline-block; border: 1px solid var(--border-accent); color: var(--accent); font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; padding: 0.4rem 1rem; border-radius: 999px; margin-bottom: 1.2rem; }
+    .backed ul { list-style: none; display: grid; gap: 0.7rem; margin-top: 1.6rem; }
+    @media (min-width: 760px) { .backed ul { grid-template-columns: repeat(3, 1fr); text-align: left; } }
+    .backed li { color: var(--text-muted); font-size: 0.9rem; padding-left: 1.4rem; position: relative; }
+    .backed li::before { content: "◆"; position: absolute; left: 0; color: var(--accent); font-size: 0.7rem; top: 0.28rem; }
+    .backed li strong { color: var(--text-main); }
+    /* FORM */
+    .form-box { max-width: 640px; margin: 2.6rem auto 0; background: rgba(15, 36, 68, 0.5); border: 1px solid var(--border-subtle); border-radius: 16px; padding: 2.2rem 1.8rem; }
+    .form-box label { display: block; font-size: 0.82rem; font-weight: 600; color: var(--text-main); margin: 0 0 0.4rem; }
+    .form-box input[type="text"], .form-box input[type="email"], .form-box input[type="tel"] { width: 100%; background: rgba(10, 22, 39, 0.7); border: 1px solid var(--border-subtle); border-radius: 10px; color: var(--text-main); font-family: var(--font-body); font-size: 0.95rem; padding: 0.85rem 1rem; margin-bottom: 1.1rem; outline: none; transition: border-color .18s; }
+    .form-box input:focus { border-color: var(--accent); }
+    .lgpd-check { display: flex; gap: 0.6rem; align-items: flex-start; font-size: 0.78rem; color: var(--text-muted); margin-bottom: 1.3rem; cursor: pointer; }
+    .lgpd-check input { margin-top: 0.22rem; accent-color: var(--accent); }
+    .lgpd-check a { color: var(--accent); }
+    .form-msg { min-height: 1.4rem; font-size: 0.85rem; margin-top: 0.9rem; color: var(--accent); }
+    /* FOOTER */
+    footer { border-top: 1px solid var(--border-subtle); padding: 2.2rem 0 2.6rem; text-align: center; color: var(--text-muted); font-size: 0.82rem; }
+    footer a { color: var(--accent); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="#" class="brand-group" aria-label="Sentinela — página inicial">
+        <div class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">SENTINELA</span>
+          <span class="brand-sub">por DAIS · MasterCore</span>
+        </div>
+      </a>
+      <nav class="nav-links" aria-label="Navegação principal">
+        <a href="#por-que-agora" class="nav-link">Por que agora</a>
+        <a href="#solucao" class="nav-link">Solução</a>
+        <a href="#plataforma" class="nav-link">Plataforma</a>
+      </nav>
+      <a href="#contato" class="btn-primary">Iniciar conversa <span aria-hidden="true">→</span></a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="hero-eyebrow"><span class="hero-eyebrow-dot" aria-hidden="true"></span><span>Cibersegurança · Era Agêntica · Governança</span></div>
+        <h1>Vigilância contínua para a <span class="highlight">era agêntica.</span></h1>
+        <p class="hero-desc">SOC hiperautônomo 24×7 com MDR, governança de identidades de máquina com zero privilégio permanente e segurança de IA em borda — tudo sob supervisão humana mandatória.</p>
+        <div class="hero-actions">
+          <a href="#contato" class="btn-primary">Agendar conversa <span aria-hidden="true">→</span></a>
+          <a href="#solucao" class="btn-secondary">Conhecer a solução</a>
+        </div>
+      </div>
+      <div class="radar-box" aria-hidden="true">
+        <svg viewBox="0 0 400 400">
+          <defs>
+            <radialGradient id="sweepGrad" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#14B8A6" stop-opacity="0.35"/>
+              <stop offset="100%" stop-color="#14B8A6" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <circle cx="200" cy="200" r="180" fill="none" stroke="rgba(148,163,184,0.12)" stroke-width="1" stroke-dasharray="4 4"/>
+          <circle cx="200" cy="200" r="135" fill="none" stroke="rgba(148,163,184,0.18)" stroke-width="1"/>
+          <circle cx="200" cy="200" r="90" fill="none" stroke="rgba(20,184,166,0.25)" stroke-width="1.2"/>
+          <circle cx="200" cy="200" r="45" fill="none" stroke="rgba(20,184,166,0.4)" stroke-width="1"/>
+          <line x1="20" y1="200" x2="380" y2="200" stroke="rgba(148,163,184,0.15)" stroke-width="1"/>
+          <line x1="200" y1="20" x2="200" y2="380" stroke="rgba(148,163,184,0.15)" stroke-width="1"/>
+          <g class="radar-sweep"><path d="M 200 200 L 380 200 A 180 180 0 0 0 200 20 Z" fill="url(#sweepGrad)"/><line x1="200" y1="200" x2="380" y2="200" stroke="#14B8A6" stroke-width="1.5"/></g>
+          <circle cx="260" cy="140" r="4.5" fill="#14B8A6" class="ping-point"/>
+          <circle cx="150" cy="270" r="3.5" fill="#38BDF8" class="ping-point" style="animation-delay:1.2s;"/>
+          <circle cx="290" cy="240" r="4" fill="#14B8A6" class="ping-point" style="animation-delay:0.6s;"/>
+          <circle cx="120" cy="130" r="3" fill="#F8FAFC" class="ping-point" style="animation-delay:1.8s;"/>
+          <circle cx="200" cy="200" r="6" fill="#14B8A6"/>
+          <circle cx="200" cy="200" r="12" fill="none" stroke="#14B8A6" stroke-width="1.5" opacity="0.6"/>
+        </svg>
+        <div class="radar-telemetry mono"><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#14B8A6;"></span><span style="color:#F8FAFC;">VIGILÂNCIA ATIVA</span><span style="color:var(--text-muted);">|</span><span style="color:var(--accent);">SUPERVISÃO HUMANA</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="por-que-agora">
+    <div class="container">
+      <div class="section-tag">Por que agora</div>
+      <h2>A superfície de ataque mudou de escala.</h2>
+      <p class="section-desc">Identidades de máquina e agentes autônomos se multiplicam em produção — e as ferramentas tradicionais não foram desenhadas para essa era.</p>
+      <div class="cards-grid c3">
+        <div class="card alert">
+          <div class="card-icon" aria-hidden="true">⚙️</div>
+          <h3>Identidades de máquina em explosão</h3>
+          <p>Credenciais de serviço, chaves de API e agentes conectados multiplicam a superfície de ataque muito além do perímetro humano.</p>
+        </div>
+        <div class="card alert">
+          <div class="card-icon" aria-hidden="true">🧩</div>
+          <h3>Ferramentas legadas fora da era agêntica</h3>
+          <p>Perímetro, endpoint e SIEM clássicos não enxergam o comportamento de agentes autônomos nem governam identidades não humanas.</p>
+        </div>
+        <div class="card alert">
+          <div class="card-icon" aria-hidden="true">🤖</div>
+          <h3>Agentes em produção = nova classe de risco</h3>
+          <p>Agentes com poder de execução exigem supervisão, trilha de auditoria e contenção — antes do primeiro incidente, não depois.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="solucao" style="background: rgba(15, 36, 68, 0.18); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
+    <div class="container">
+      <div class="section-tag">A solução</div>
+      <h2>Quatro frentes, uma única sentinela.</h2>
+      <p class="section-desc">Operação contínua com supervisão humana mandatória — a decisão final é sempre humana.</p>
+      <div class="cards-grid c4">
+        <div class="card">
+          <div class="card-icon" aria-hidden="true">🛡️</div>
+          <h3>SOC hiperautônomo 24×7 com MDR</h3>
+          <p>Monitoramento e resposta gerenciados de forma contínua, com agentes orquestrados sob supervisão humana.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon" aria-hidden="true">🔑</div>
+          <h3>Governança de identidades de máquina</h3>
+          <p>Zero privilégio permanente: acesso mínimo, auditável e revogável para cada identidade não humana.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon" aria-hidden="true">📡</div>
+          <h3>Segurança de IA em borda</h3>
+          <p>Proteção de inferência e de agentes em dispositivos de borda, do laboratório à operação.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon" aria-hidden="true">🚨</div>
+          <h3>Resposta a ameaças agênticas</h3>
+          <p>Detecção e contenção de comportamento anômalo de agentes autônomos em produção.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="plataforma">
+    <div class="container">
+      <div class="backed">
+        <div class="pill">Backed by MasterCore OS</div>
+        <h2>A mesma plataforma que opera as ventures do grupo.</h2>
+        <p class="section-desc" style="margin: 0 auto;">A Sentinela roda sobre o MasterCore OS — a plataforma proprietária do Grupo MasterCore.</p>
+        <ul>
+          <li><strong>Telemetria auditável</strong> de cada execução de agente</li>
+          <li><strong>Supervisão humana mandatória</strong> — automação nunca além</li>
+          <li><strong>Zero claim sem métrica auditável</strong></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="contato" style="padding-top: 0;">
+    <div class="container">
+      <div style="text-align:center;">
+        <div class="section-tag" style="justify-content:center;">Contato</div>
+        <h2>Agendar conversa</h2>
+        <p class="section-desc" style="margin: 0 auto;">Deixe seu contato e a equipe retorna para alinhar escopo — sem compromisso.</p>
+      </div>
+      <div class="form-box">
+        <form id="sentinela-form">
+          <label for="f-nome">Seu nome / cargo</label>
+          <input type="text" id="f-nome" placeholder="Ex.: Dra. Ana Lima — Head de Segurança" required autocomplete="name">
+          <label for="f-email">E-mail corporativo</label>
+          <input type="email" id="f-email" placeholder="voce@empresa.com.br" required autocomplete="email">
+          <label for="f-whats">WhatsApp com DDD</label>
+          <input type="tel" id="f-whats" placeholder="+55 11 90000-0000" required autocomplete="tel">
+          <label class="lgpd-check"><input type="checkbox" id="f-lgpd" required> <span>Autorizo o contato da DAIS/MasterCore sobre esta conversa, conforme a <a href="https://pepticore.app/politica-privacidade.html" target="_blank" rel="noopener">Política de Privacidade v1.4</a>. Posso pedir exclusão dos dados a qualquer momento.</span></label>
+          <button type="submit" class="btn-primary" style="width:100%; justify-content:center; padding:0.95rem 1.4rem;">Agendar conversa</button>
+          <div id="form-msg" class="form-msg" role="status"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Sentinela é uma frente da <strong style="color:var(--text-main)">DAIS</strong> em parceria com o Grupo MasterCore · <a href="mailto:contato@mastercore.app">contato@mastercore.app</a><br>
+    Informações comerciais. Sem promessa de resultado específico. Zero dado pessoal além do contato para retorno comercial (LGPD).
+  </footer>
+
+  <script>
+  /* Captura Sentinela -> backend canônico de leads (registrarLeadAppsScript), padrão DAIS landing */
+  (function () {
+    var utm = { utm_source: 'dais', utm_medium: 'landing', utm_campaign: 'sentinela_landing' };
+    try {
+      var p = new URLSearchParams(location.search);
+      ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(function (k) {
+        var v = p.get(k); if (v) utm[k] = v;
+      });
+    } catch (e) {}
+    document.getElementById('sentinela-form').addEventListener('submit', function (ev) {
+      ev.preventDefault();
+      var msg = document.getElementById('form-msg');
+      try {
+        fetch('https://pepti-core-plus.base44.app/api/functions/registrarLeadAppsScript', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            nome: document.getElementById('f-nome').value || '',
+            email: document.getElementById('f-email').value || '',
+            whatsapp: document.getElementById('f-whats').value || '',
+            origem: 'DAIS Sentinela',
+            utm_source: utm.utm_source,
+            utm_medium: utm.utm_medium,
+            utm_campaign: utm.utm_campaign,
+            observacao: 'DAIS Sentinela landing | frente 2 parceria CEO×Baiar | lgpd: ' + (document.getElementById('f-lgpd').checked ? 'ok' : 'não marcado')
+          })
+        }).then(function () {
+          msg.textContent = 'Recebido — a equipe retorna em 1 dia útil.';
+          ev.target.reset();
+        }).catch(function () {
+          msg.textContent = 'Não foi possível enviar agora — escreva para contato@mastercore.app.';
+        });
+      } catch (e) {
+        msg.textContent = 'Não foi possível enviar agora — escreva para contato@mastercore.app.';
+      }
+    }, true);
+  })();
+  </script>
+</body>
+</html>
