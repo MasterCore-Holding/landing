@@ -1,7 +1,7 @@
 {
  "meta": {
   "titulo": "Radar A16 — Veredito FINAL da Mesa 20/10 + Feed Global de Oportunidades",
-  "atualizado": "2026-10-20T13:20:00Z",
+  "atualizado": "2026-10-22T16:45:00Z",
   "fonte": "MAPA MESTRE BAYARD v5.6 + varredura live 20/10 (artifacts/radar-a16-veredito-2010.md, fontes primárias citadas)",
   "regra_pedra": "Radar primeiro, dinheiro depois — nada pago até GO validado",
   "schema": "v2 — mesa (bloco separado) + feed (nacional/internacional, filtro por tipo, score IA por linha)"
@@ -108,7 +108,7 @@
    "kpis": [
     {
      "label": "Oportunidades ativas",
-     "n": "4",
+     "n": "5",
      "l": "RFP · Challenge · Prêmio · Regulatório"
     },
     {
@@ -128,6 +128,18 @@
     }
    ],
    "itens": [
+    {
+     "tipo": "Radar Pré-Lançamento",
+     "fonte": "TowerCore · sinal real (projeção EZTEC VENDAS emitida 08/10/2026, enviada pelo CEO 21/10)",
+     "titulo": "Town Residences by Lindenberg (SP) — 4 tipologias na base TowerCore",
+     "valor": "Studio 29m² R$507.500 · 1 dorm 39m² R$682.500 · 2 dorm 69m² R$1.138.500 · 3 dorm 100m² R$1.650.000 (R$16,5-17,5 mil/m²; entrega estimada out/2030)",
+     "prazo_dias": null,
+     "veredito": "MONITOR — 4º empreendimento real da base; projeção ilustrativa EZTEC (não tabela oficial)",
+     "score_ia": 87,
+     "justificativa": "R$16,5-17,5 mil/m² na crista da faixa Brooklin (R$12,5-17,1k) — coerente com produto EZTEC; 2º empreendimento do mesmo bairro na base",
+     "acao": "Confirmar tabela oficial e vagas no lançamento; atualizar comparáveis do Brooklin",
+     "url": "https://mastercore.app/towercore/"
+    },
     {
      "tipo": "Radar Pré-Lançamento",
      "fonte": "TowerCore · sinal real (corretor Tegra+Exto via WhatsApp, 21/10/2026)",
