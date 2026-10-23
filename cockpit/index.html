@@ -74,7 +74,7 @@ function onCred(resp){
       if(x.ok && x.d.ok){
         try{ localStorage.setItem(SES, JSON.stringify({email:x.d.email, exp:Date.now()+12*3600*1000})); sessionStorage.setItem(CRED, cred);}catch(e){}
         showData(x.d.email, cred);
-      } else if(x.d && x.d.error==='acesso_nao_autorizado'){ document.getElementById('e').textContent='Acesso não autorizado.'; }
+      } else if(x.d && x.d.error==='acesso_nao_autorizado'){ document.getElementById('e').textContent='Acesso não autorizado — radar restrito à allowlist MasterCore.'; }
       else { document.getElementById('e').textContent='Não foi possível concluir o login — tente novamente.'; }
     })
     .catch(function(){ document.getElementById('e').textContent='Indisponível — tente novamente.'; });

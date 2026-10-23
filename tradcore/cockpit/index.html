@@ -116,7 +116,7 @@
       .then(function(r){ return r.json().then(function(d){ return {ok:r.ok,d:d}; }); })
       .then(function(x){
         if(x.ok && x.d.ok){ save(x.d.email, resp.credential); show(x.d.email, resp.credential); }
-        else if(x.d && x.d.error==='acesso_nao_autorizado'){ $('e').textContent='Acesso não autorizado (trial restrito).'; }
+        else if(x.d && x.d.error==='acesso_nao_autorizado'){ $('e').textContent='Acesso não autorizado — radar restrito à allowlist MasterCore.'; }
         else { $('e').textContent='Não foi possível concluir o login — tente novamente.'; }
       })
       .catch(function(){ $('e').textContent='Indisponível — tente novamente.'; });
