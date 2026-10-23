@@ -4,7 +4,15 @@
   "atualizado": "2026-10-22T16:45:00Z",
   "fonte": "MAPA MESTRE BAYARD v5.6 + varredura live 20/10 (artifacts/radar-a16-veredito-2010.md, fontes primárias citadas)",
   "regra_pedra": "Radar primeiro, dinheiro depois — nada pago até GO validado",
-  "schema": "v2 — mesa (bloco separado) + feed (nacional/internacional, filtro por tipo, score IA por linha)"
+  "schema": "v2 — mesa (bloco separado) + feed (nacional/internacional, filtro por tipo, score IA por linha)",
+  "ultima_varredura": "2026-10-23T04:01:01Z",
+  "varredura": {
+   "frequencia": "diária 09:20 BRT (cron 5c11a5f39de034b2, MC-RADAR-CRON-001)",
+   "fontes": 10,
+   "log": "scripts/radar-rfp/state/scan-YYYYMMDD.log (timestamp UTC por fonte)",
+   "indice_autonomia_meta": ">=90% (ciclos fechados sem intervenção / ciclos totais)",
+   "spec": "SPEC-RADAR-RFP-CRON-001.md"
+  }
  },
  "kpis": [
   {
