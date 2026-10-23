@@ -65,10 +65,15 @@
         <p style="margin-top:.7rem;font-size:.8rem;">Fonte: APIs públicas gratuitas com atraso. Contexto informativo — não é recomendação.</p>
       </div>
       <div class="card">
+        <h3>Dado de fechamento (EOD) — fonte auditável</h3>
+        <div id="dj"><span class="pill">carregando…</span></div>
+        <p style="margin-top:.7rem;font-size:.8rem;">Proveniência registrada no JSON (source, source_plan, as_of, delay_notice). Dado de fechamento (EOD) — não são cotações em tempo real. Não é recomendação de investimento.</p>
+      </div>
+      <div class="card">
         <h3>Leitura técnica automatizada</h3>
         <span class="lbl">Leitura técnica — não é recomendação</span>
         <p id="leitura">Aguardando dado de contexto…</p>
-        <p style="margin-top:.7rem;font-size:.8rem;">Narrativa gerada por IA a partir do contexto acima; pode conter imprecisões.</p>
+        <p style="margin-top:.7rem;font-size:.8rem;">Dados de fechamento (EOD) — não são cotações em tempo real. Narrativa gerada por IA a partir do contexto acima; pode conter imprecisões. Não é recomendação de investimento.</p>
       </div>
       <div class="card">
         <h3>Co-piloto comportamental</h3>
@@ -134,10 +139,20 @@
     });
   }
   function bootData(cred){
+    fetch('/tradcore/data.json').then(function(r){ if(!r.ok) throw 0; return r.json(); }).then(function(j){ renderDataJson(j); }).catch(function(){ renderDataJson(null); });
     fetch(HUB,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({credential:cred,action:'data'})})
       .then(function(r){ if(!r.ok) throw 0; return r.json(); })
       .then(function(d){ renderCtx(d.data); })
       .catch(function(){ renderCtx(null); });
+  }
+  function renderDataJson(j){
+    var dj=$('dj');
+    if(!j){ dj.innerHTML='<span class="pill">Sem dados auditáveis</span>'; return; }
+    if(j.status && j.status!=='ok'){ dj.innerHTML='<span class="pill">Sem dados auditáveis</span><p style="font-size:.8rem;margin-top:.5rem;">Fonte EOD temporariamente indisponível — exibição de dado artificial é vedada (Núcleo P8).</p>'; return; }
+    var rows=(j.tickers||[]).map(function(t){
+      return '<tr><td>'+t.ticker+'</td><td>'+(t.close!=null?t.close:'—')+'</td><td>'+(t.change_pct!=null?((t.change_pct>0?'+':'')+t.change_pct+'%'):'—')+'</td><td>'+(t.date||'—')+'</td></tr>';
+    }).join('');
+    dj.innerHTML='<p style="font-size:.75rem;color:var(--text-muted);margin-bottom:.5rem;">'+(j.delay_notice||'Dados de fechamento (EOD) — não são cotações em tempo real.')+' · fonte: '+(j.source||'—')+' ('+(j.source_plan||'—')+') · as_of '+(j.as_of||'—')+'</p><table><thead><tr><th>Ticker</th><th>Fechamento</th><th>Var.</th><th>Data</th></tr></thead><tbody>'+(rows||'<tr><td colspan=4>—</td></tr>')+'</tbody></table>';
   }
   function renderCtx(d){
     var ctx=$('ctx');

@@ -1,0 +1,9 @@
+{
+  "source": "Tiingo",
+  "source_plan": "free/end-of-day",
+  "status": "unavailable",
+  "as_of": "2026-10-23T22:20:00Z",
+  "delay_notice": "Dados de fechamento (EOD) — não são cotações em tempo real.",
+  "tickers": [],
+  "note": "Fonte EOD indisponível no momento da publicação (ativação da conta free Tiingo bloqueada por challenge anti-bot no signup; retry pendente). Interface exibe 'sem dados auditáveis' — Padrão de Integridade dos Dados, Núcleo P8: vedado exibir zeros artificiais ou dado inventado. Nenhum dado B3. Zero claim de tempo real. Licenciamento comercial em consulta escrita a Tiingo e Twelve Data (23/10)."
+}
