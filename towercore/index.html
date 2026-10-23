@@ -18,6 +18,8 @@ body { background:#0A192F; color:#F8FAFC; font-family:-apple-system,BlinkMacSyst
 .brand .dot { width:10px; height:10px; border-radius:50%; background:#14B8A6; box-shadow:0 0 12px #14B8A6; }
 .gbtn { display:inline-flex; align-items:center; gap:8px; padding:8px 16px; border:1px solid #1E3A5F; border-radius:999px; color:#CBD5E1; font-size:13px; font-weight:600; text-decoration:none; }
 .gbtn:hover { border-color:#3B82F6; color:#F8FAFC; }
+.sair { background:transparent; color:#64748B; border:1px solid #1E3A5F; border-radius:8px; font-weight:600; font-size:12.5px; padding:7px 18px; cursor:pointer; }
+.sair:hover { color:#F8FAFC; border-color:#3B82F6; }
 /* PLATAFORMA DE RADARES — menu compartilhado (RADAR-PLATFORM-001) */
 .radares { display:flex; gap:8px; flex-wrap:wrap; align-items:center; padding:14px 0 6px; border-bottom:1px solid #1E3A5F; margin-bottom:34px; }
 .rlabel { color:#64748B; font-size:11px; letter-spacing:1.5px; text-transform:uppercase; margin-right:4px; }
@@ -88,12 +90,23 @@ tr:hover td { background:rgba(20,184,166,.05); }
   .cd-l { color:#64748B; font-size:11px; text-transform:uppercase; letter-spacing:1px; }
 }
 </style>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
 <div class="banner">Demo — dados fictícios · exceto sinais reais identificados</div>
-<div class="wrap">
+<div id="gate" style="display:none">
+  <div class="wrap" style="padding-top:90px; text-align:center;">
+    <div class="chip">Uso interno</div>
+    <h1>TowerCore — Radar Pré-Lançamento</h1>
+    <p class="sub">Área interna — acesso controlado por conta Google autorizada.<br>Mesmo fluxo de autenticação da Plataforma de Radares MasterCore.</p>
+    <div id="gbtn" style="display:flex; justify-content:center; margin-top:22px; min-height:44px;"></div>
+    <div id="e" style="color:#F87171; font-size:14px; min-height:20px; margin:14px 0 8px; text-align:center;"></div>
+  </div>
+</div>
+<div class="wrap" id="panel" style="display:none">
   <div class="top">
     <div class="brand"><span class="dot"></span> TowerCore · MasterCore</div>
+    <button class="sair" onclick="sair()">Sair</button>
     <a class="gbtn" href="/radarcore/" title="Plataforma de Radares MasterCore">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#14B8A6" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2" fill="#14B8A6"/></svg>
       Plataforma de Radares
@@ -200,6 +213,38 @@ tr:hover td { background:rgba(20,184,166,.05); }
   </div>
   <div class="foot">Grupo MasterCore · TowerCore (Radar Pré-Lançamento) — página de demonstração. Os empreendimentos fictícios, valores e status servem apenas para ilustrar o produto; as linhas marcadas SINAL REAL são dados reais com fonte declarada. Nenhum dado pessoal é coletado nesta página.</div>
 </div>
+<script>
+var HUB='https://master-core-hub.base44.app/api/apps/6ac33e5bd58233f964488e87/functions/radarGate';
+var SES='tc_ses', CRED='tc_cred';
+function sair(){ try{localStorage.removeItem(SES);sessionStorage.removeItem(CRED);}catch(e){} location.reload(); }
+function showPanel(){ document.getElementById('gate').style.display='none'; document.getElementById('panel').style.display='block'; }
+function onCred(resp){
+  var cred=resp.credential;
+  fetch(HUB,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({credential:cred})})
+    .then(function(r){ return r.json().then(function(d){ return {ok:r.ok,d:d}; }); })
+    .then(function(x){
+      if(x.ok && x.d.ok){
+        try{ localStorage.setItem(SES, JSON.stringify({email:x.d.email, exp:Date.now()+12*3600*1000})); sessionStorage.setItem(CRED, cred);}catch(e){}
+        showPanel();
+      } else if(x.d && x.d.error==='acesso_nao_autorizado'){ document.getElementById('e').textContent='Acesso não autorizado.'; }
+      else { document.getElementById('e').textContent='Não foi possível concluir o login — tente novamente.'; }
+    })
+    .catch(function(){ document.getElementById('e').textContent='Indisponível — tente novamente.'; });
+}
+(function(){
+  var sess=null, cred=null;
+  try{ sess=JSON.parse(localStorage.getItem(SES)||'null'); }catch(e){}
+  try{ cred=sessionStorage.getItem(CRED); }catch(e){}
+  if(sess && cred && sess.exp>Date.now()){ showPanel(); return; }
+  try{ localStorage.removeItem(SES); }catch(e){}
+  document.getElementById('gate').style.display='block';
+  fetch(HUB).then(function(r){ return r.json(); }).then(function(cfg){
+    if(!cfg.ready){ document.getElementById('e').textContent='Autenticação Google em configuração final — volte em instantes.'; return; }
+    google.accounts.id.initialize({ client_id: cfg.client_id, callback: onCred });
+    google.accounts.id.renderButton(document.getElementById('gbtn'), {theme:'filled_blue', size:'large', text:'signin_with', shape:'pill', locale:'pt-BR'});
+  }).catch(function(){ document.getElementById('e').textContent='Indisponível — tente novamente.'; });
+})();
+</script>
 <script>
 (function(){
   var state={bairro:'all',faixa:'all',estagio:'all'};
