@@ -1,0 +1,47 @@
+010ddafa7f81d67feecbb23ec0c22fe033c878e0|base44-builder[bot]|2026-10-26 02:11:54 +0000|Implementar dashboard operacional do Tech Radar com leitura de banco e filtros
+402ad27eb9a751809ae4f8b9603388cc132fe312|base44-builder[bot]|2026-10-26 02:00:36 +0000|Adiciona registro de radares e página centralizadora de monitoramento
+d6e051340f535421f2a8ab17acc6f42200edaf37|base44-builder[bot]|2026-10-26 00:06:11 +0000|Update base44 packages
+2ca1be5361fe07139e8c6cdef75bca9eff281cb6|base44-builder[bot]|2026-10-25 01:06:55 +0000|Add PNCP radar cycle support to entities and functions
+68ccb6802fbaaabea35447fcaab87036bfe0fc7f|base44-builder[bot]|2026-10-25 00:12:58 +0000|Ajustar lógica de alocação de slots no digest de radares
+2de852e977c5b350ee665de5ae95ee6d09dee171|base44-builder[bot]|2026-10-25 00:11:59 +0000|Implementar regra de auto-renew no ciclo do radar
+f8b7fbb3c7f484e58e7db9cf9d81a9c954a45c12|base44-builder[bot]|2026-10-25 00:03:40 +0000|Implementar parser de bundle JS para o coletor Tegra
+1cbf92bd237eb5becd7048b8a1b6e4db95760560|base44-builder[bot]|2026-10-24 23:59:03 +0000|Migrar sinais para banco de dados e atualizar página TowerCore
+004aa9406737adbedaa852f9ebb7b5660590e3ef|base44-builder[bot]|2026-10-24 23:34:27 +0000|Incluir limites e status de verificação na resposta do medidor
+ad9deef0eea5a13276b19f98848a6cfa3c240384|base44-builder[bot]|2026-10-24 23:33:12 +0000|Implementar mecanismo automático de contagem e validação de persona
+19616bb71e080e62a0d38a894551c8227b7d8bcb|base44-builder[bot]|2026-10-24 23:31:14 +0000|Migrar Ledger Vivo para registro estruturado no formato JSONC
+9be4e1867a8ff32a100e2a673e8e8f87b89c0b9a|base44-builder[bot]|2026-10-24 23:29:22 +0000|Implementar sistema de esteira de validação com orquestrador e rede de proteção
+5de7ac2ba21b4a52ccf8d056ed6ac125b8f35780|base44-builder[bot]|2026-10-24 23:26:48 +0000|Registrar chancela e status de candidatura na proposta
+805f12f52da4a9b4b66225ebdd960aac7ed82d04|base44-builder[bot]|2026-10-24 23:23:24 +0000|Implementar validação de status HTTP 005 para fontes e domínios no RadarCore
+fc5182ee92cab1ad9a0c4695fd4aad116e8a68db|base44-builder[bot]|2026-10-24 23:19:44 +0000|Workflow archived via API
+a032262eddacef6117aa68b9c3c8fed2cce01d5c|base44-builder[bot]|2026-10-24 23:03:09 +0000|Executar ciclo 003 e configurar workflows de automação e digest
+647b91d65d7c3956bbe5560dfbcbd3a5dc89a1b6|base44-builder[bot]|2026-10-24 22:58:35 +0000|Implementar entidade de achados e função de radar digest
+abff6d80b21d071c923b1f1f037a72e4b4b8597b|base44-builder[bot]|2026-10-22 13:37:28 +0000|Update base44 packages
+e7fa7f7af238b5d141be374ad4c34181a2dd49c0|base44-builder[bot]|2026-10-19 11:06:26 +0000|Manual code change
+e7c6832656b5956adf8e3d9d4445692d4df45f9e|base44-builder[bot]|2026-10-19 03:36:02 +0000|Manual code change
+3a387cde280315f6c42e70a504ad922041946caf|base44-builder[bot]|2026-10-19 03:32:49 +0000|Manual code change
+05f0c7c405d0025ad59def16e1cc26d2fc3434fa|base44-builder[bot]|2026-10-19 03:32:26 +0000|Visual edits
+7c075c0eabb276b320b2c5dbfa24b31c11334b5d|base44-builder[bot]|2026-10-19 03:31:05 +0000|Manual code change
+c42455547729b869eedbd1d1bbfb479f770ea3d8|base44-builder[bot]|2026-10-19 03:30:42 +0000|Manual code change
+c1b39752589e094398b830f04a3f3c9c6e655ff8|base44-builder[bot]|2026-10-19 02:42:19 +0000|Manual code change
+ef269b5ae1df816df2e3c5674d9fe811a7cc6390|base44-builder[bot]|2026-10-19 02:41:31 +0000|Manual code change
+c293e9673bf9eed70c827ea3a7d85d1a872af34c|base44-builder[bot]|2026-10-19 02:40:59 +0000|Manual code change
+4532f32d07c183b01075a22c00493581444ed1bd|base44-builder[bot]|2026-10-19 02:40:42 +0000|Manual code change
+545bea85e211b33651082107607bad8dbc9f738e|base44-builder[bot]|2026-10-19 02:07:39 +0000|Manual code change
+24000522757cbb7489ed81787d4a8eb88af53a2f|base44-builder[bot]|2026-10-19 02:07:32 +0000|Visual edits
+4fd7d59305187643ef13f5305f269be39a945491|base44-builder[bot]|2026-10-19 02:06:27 +0000|Manual code change
+e5591a6f611824a11d07dfc6d9ee60a665622614|base44-builder[bot]|2026-10-19 02:04:07 +0000|Visual edits
+6e3c4db0bd48f943ab121d369c4897834137a60a|base44-builder[bot]|2026-10-19 02:02:01 +0000|Visual edits
+1e8020f696a6f8bb3cbb94c49d4706b56d47bb64|base44-builder[bot]|2026-10-19 01:59:02 +0000|Visual edits
+cb2dcc3858d28dd314e384aced51e4d30eeac003|base44-builder[bot]|2026-10-19 01:56:01 +0000|Visual edits
+78540d3dd010a5eb42036f13641614ecc74584ac|base44-builder[bot]|2026-10-19 01:24:53 +0000|Visual edits
+96e6d5aedb438a915124f0d1f723e833d518b649|base44-builder[bot]|2026-10-17 21:18:50 +0000|Manual code change
+032898eb937d593fd9bfe69097365414bbe28680|base44-builder[bot]|2026-10-17 21:18:17 +0000|Manual code change
+8de8cbefe06e1b30f2bb7dc76a0622e6f7dba2a5|base44-builder[bot]|2026-10-17 21:18:09 +0000|Manual code change
+939d1f201462038f2893bc25e077b650d1257b60|base44-builder[bot]|2026-10-17 21:17:19 +0000|Manual code change
+28b919144b15d35aba2fcabc7c8b2e92e8d3bbbe|base44-builder[bot]|2026-10-17 17:40:26 +0000|Manual code change
+f0f5729cbb35abf73f174a079a633edfa01f2b59|base44-builder[bot]|2026-10-17 17:38:11 +0000|Manual code change
+aa6c21a06d69c3d2f936cd8829b3af3ed9c918db|base44-builder[bot]|2026-10-17 17:34:29 +0000|Manual code change
+6ec03d83b6a9255f4f1b6ecac3cecc6f24263561|base44-builder[bot]|2026-10-17 17:32:48 +0000|Manual code change
+2f1356f99ecd1471fcd6b76acfec22848bff6c8b|base44-builder[bot]|2026-10-17 04:46:14 +0000|Update base44 packages
+0d052deaec04d30758e6a10e73a7b86bc7c95dca|base44-builder[bot]|2026-10-07 05:48:19 +0000|Update base44 packages
+6528a4f07f413a103633b0d405a6637f496cf139|base44-bot|2026-10-04 13:27:47 +0000|Initial commit

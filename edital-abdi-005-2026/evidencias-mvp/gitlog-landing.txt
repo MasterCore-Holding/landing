@@ -1,0 +1,204 @@
+f034e19af4dd0216a38451791424f4cac3fda6fb|PicoClaw Agent|2026-10-23 19:04:58 -0300|feat(tradcore): MC-TRADCORE-DATA-001 — data.json EOD (status unavailable, P8) + cockpit consome arquivo com rótulo EOD e disclaimer
+0c836f529e91df426c8905e69501fe5e8c5f7233|Pepticore App|2026-10-23 02:03:57 -0300|governanca: arquivamento do despacho de origem da consolidacao v1.3 (copia fiel, conteudo nao editado, premissa stale preservada — correcao vive em DEC-0004/auditoria/minuta) — elo inicial da cadeia chancela->registro->vigencia [AUT-MC-20261023-EIXO0]
+024c77c0109eefe48b6702f38840adaf455c5778|Pepticore App|2026-10-23 01:02:12 -0300|L401-A: radar-data.json meta.varredura (cron diario MC-RADAR-CRON-001, 10 fontes, log timestamp, indice autonomia >=90%)
+1d08c31b9f1d968274a6bffb4ab7f2318eaec669|Pepticore App|2026-10-23 01:01:45 -0300|governanca: Eixo 0 no ledger 1.2.4 — auditoria de vigencia Nucleo v1.2 (DEC-0004 Ledger Vivo) [AUT-MC-20261023-EIXO0]
+e0b0a315bc6555853ca52cff5931fa5467f03abb|Pepticore App|2026-10-23 01:01:26 -0300|governanca: Eixo 0 — auditoria de vigencia do Nucleo v1.2 (HOMOLOGADO DEFINITIVO desde 14/10, premissa do despacho stale, zero reabertura) + achado LGPD P4 (Art.11/20 trocados) — DEC-0004 Ledger Vivo [AUT-MC-20261023-EIXO0]
+dcd0dad03d2bfcb804e740f6c15b16046cb44943|Pepticore App|2026-10-22 23:45:11 -0300|L399 B1: Town Lindenberg 4a unidade - saldo financiamento R$1.072.482 (projecao EZTEC 08/10)
+9cc7102a6524f7b41767de3ad07bb28295dd18cc|Pepticore App|2026-10-22 23:43:46 -0300|L399: hub RadarCore (A2) + 1 card Radar na landing (A1) + redirect 1 salto (A4) + copy bloqueio padrao (A5) + Town 4a unidade saldo (B1)
+32c0ddcc336fe82bdb876aec9c7d32c6a1046a68|Pepticore App|2026-10-22 23:37:26 -0300|TradCore Cockpit: fix Indisponivel - carregar script GIS (mesmo padrao TowerCore/radarGate)
+e030fb927acf0edb2e5e066ca38738d2d7b78582|Pepticore App|2026-10-22 22:54:29 -0300|L393 item 7: TowerCore gate GIS (radarGate, mesmo fluxo RadarCore) - auth por design
+c5df9b5dd0df4fc9bd692827359bda63b5edd561|Pepticore App|2026-10-22 22:25:04 -0300|L398 item 3: repoint definitivo CTAs towercore/radarcore -> /radar-qualificacao (UTM preservado)
+9a836ae31d15bf85b1a0ecb802353514174e067a|Pepticore App|2026-10-22 22:23:38 -0300|L398: CTAs radar -> /qualificacao (UTM) + build /radar-qualificacao (5 passos, origem Radar Qualificacao)
+b64d66bcd8468fcd6d6f314dd69aae3b90ac5ade|PicoClaw Agent|2026-10-22 20:38:02 -0300|fix(L393): item 6 RadarCore conteudo centralizado (headings/prosa; tabelas left p/ legibilidade) + item 8 LongevCore secao proposta de valor reescrita (P8, zero claim terapeutico)
+11d2af08eb223bf33d42ca2e768448c0c36d1503|Pepticore App|2026-10-22 13:56:25 -0300|feat(towercore): TOWN-LINDENBERG-TABELA-001 — 4 sinais reais EZTEC (projeção 08/10, P8 rotulado) + comparáveis Brooklin + radar-data v2
+450642f28b5fa87ea93d900d44716082c4af57f9|Pepticore App|2026-10-21 17:22:12 -0300|TOWERCORE: +4 sinais reais Chateau Jardin (TABELA-001) + radar-data feed nacional
+f88b29ab9ef24cbb84edb205f4c5ebecffb0d165|Pepticore App|2026-10-21 16:28:55 -0300|RODADA 2110: UI-DEBT-CLOSE (CTA Radar B2B mailto; enginecore redirect+UTM card; cockpit rotulo DEMO; longevcore cockpit GIS radarGate) + DAIS Sentinela landing + TowerCore demo (TOWERCORE-SIGNAL-v1, sinal real Lindenberg) + menu de radares (RADAR-PLATFORM-001) + card Por que agora (cybersec) + card TowerCore no portfolio
+03deb24b4bec6c517eb0124934283bbb18e479ea|Pepticore App|2026-10-20 23:53:04 -0300|video: balanca-mente narrado 74s (lote balanca v2, chancela CEO +YT)
+ca878b2cdedd85284ac904af012d30c6b7dc1999|Pepticore App|2026-10-20 23:47:15 -0300|art: balanca-mente hero 1080x1350 (lote balanca v2)
+0b3f6bd2e7cc9ba36f2c5476fc9fbe4fa170891d|Pepticore App|2026-10-20 20:35:50 -0300|cortex: carrossel P1 v2 paths (bypass cache CDN)
+98d6b9e251690e8a5fd6830e7a2949aea749e1f2|Pepticore App|2026-10-20 20:33:13 -0300|cortex: carrossel P1 Fundamentos 6 slides (binario)
+73e57c4bebf4853ccf8bb96e62aaef38806942c8|Pepticore App|2026-10-20 20:32:47 -0300|fix: carrossel P1 slides como binarios reais (blobs base64)
+c314e66bcaf0c9173b53976e45e5af705bbca8d3|Pepticore App|2026-10-20 20:32:24 -0300|fix blobs binarios carrossel P1
+cb74248cc99011ca8dfed8f9245af106e9de2b31|Pepticore App|2026-10-20 20:32:22 -0300|fix: blobs binarios carrossel P1
+01c911cc475c261143ab332e1b1e1d2de7db8fd6|Pepticore App|2026-10-20 20:31:17 -0300|cortex: carrossel P1 Fundamentos - 6 slides
+3c57d8434b3483c4b9b57687ad11ce5726a17a0b|Pepticore App|2026-10-20 20:30:18 -0300|cortex: carrossel P1 Fundamentos (6 slides 1080x1350) - conteudo proprio compliance V2 s6
+8749d4902b6e6126b2c35222edf2dc3ffc17470b|Cortex|2026-10-20 16:59:14 -0300|governanca: MC-GOV-002 ITEM-1 — evidencia de runtime completa (commit d2d5ec4 + readback remoto verde)
+d2d5ec433027f55a686948ba9b2b4bd1aad57232|Cortex|2026-10-20 16:58:49 -0300|governanca: MC-GOV-002 — licao de fonte de estado no ledger 1.2.3 (EVT) + CHANGELOG bump patch + auditoria do §9 do Master Plan v2.2 como PROPOSTA (diff item a item, chancela CEO pendente)
+fd10c5b0954fbaf18ae76319e574a3245dc4e8c3|Pepticore App|2026-10-20 16:10:15 -0300|governanca: MC-GOV-001 — Nucleo v1.2 verificado em runtime (homologado desde 14/10) + argumentario holding v2.0 pos-varredura + DEC rota no ledger 1.2.2 + CHANGELOG bump
+9db9ca2dcf4f280776d703d3dcb58b22964b3dcb|Pepticore App|2026-10-20 13:26:04 -0300|fix2: restaura demo radarcore/index.html (blob original da18c80b) — v2 permanece somente em radarcore/real/
+d0e50fb6919fff8a9b8acefbb17435aecb23d18c|Pepticore App|2026-10-20 13:23:35 -0300|fix: radarcore/real/index.html = dashboard v2 (tabs+filtros+score); demo radarcore/index.html restaurada
+0d57479f7e6f03ceb2d7d8c74a8c29ccd761dd82|Pepticore App|2026-10-20 13:20:10 -0300|radarcore v2: tabs NACIONAL/INTERNACIONAL + filtros por tipo + score IA por linha + MESA A16 preservada (radar-data.json enriquecido)
+dd43a4aa1c74a4f71fced05e3913b1c54dc7ff5d|PicoClaw Agent|2026-10-20 13:17:12 -0300|Merge remote-tracking branch 'origin/main'
+9a18f031f1ad05ae3da00d6672463e8fb7f92755|Pepticore App|2026-10-20 12:30:39 -0300|MC-RADARCORE-A16-002 (20/10): radar-data.json veredito FINAL A16 (fontes primárias citadas)
+ebfe8bfb399d9271e21c4a35e716f9090235626c|Pepticore App|2026-10-20 12:24:15 -0300|MC-RADARCORE-A16-001 (20/10): dashboard visual do Radar A16 no /radarcore/real + /radar/real + radar-data.json (veredito mesa 20/10, chancela CEO inbound)
+6144f23ce1de77c8bf476b9f9dcd652fe6dec69b|Pepticore App|2026-10-19 17:38:43 -0300|MC-LANDING-DAIS-ALIGN-001 (19/10): card DAIS alinhado ao grid — mc-card-full removido (TradCore + DAIS lado a lado na linha 3, ritmo 3-3-2 restaurado)
+bb6959ea7e4930837f4bf7b903e40c73cba534bc|Pepticore App|2026-10-19 08:09:22 -0300|MC-AUTH-HOLDING-001 T3 fix: remove duplicate <script> tag (boot() nunca executava)
+5150b89b1de37c0393ead5c4eac86caa19ffe4c7|Pepticore App|2026-10-19 08:07:59 -0300|MC-AUTH-HOLDING-001 T3: GIS no /cockpit e /custos (gate unica radarGate, allowlist server-side, sessao 12h por app)
+04c19c838799cfcf2a89f79b3f8c1cec5f9fd718|PicoClaw Agent|2026-10-18 22:59:31 -0300|MC-TRADINGCORE-002 ADDENDUM: rename TRADINGCORE -> TRADCORE (decisao CEO 18/10) - pasta /tradcore + copy + links; nomenclatura canônica TradCore
+110886b89aa59ef855a02ea6b6ff8566b6bb6b7c|Cortex Control Plane|2026-10-18 22:24:16 -0300|MC-TRADINGCORE-002 E1+E2+E4-client: LP /tradingcore + card home + cockpit (GIS padrão radarGate, dado free, LGPD v1.0) + termos/privacidade
+366d94c846358b7cb268953e05f877b202ed4525|Cortex (Control Plane)|2026-10-18 13:18:06 -0300|MC-LANDING-MASTER-PKG-001: card DAIS (full-width dourado) + rename RadarCore (+/radarcore + redirect /radar) + LPs /cybersecurity e /longevcore + CTAs nos cards + chips harmonizados (chancela CEO 18/10)
+ad7b8049f4dddd9ef14813696e46ce2c1ff250b3|Pepticore App|2026-10-17 19:27:41 -0300|MC-LANDING-VENTURES-LP-001: robots.txt — /stylecore indexavel (LP publica Em fundacao); radar/cockpit/custos/longevcore permanecem bloqueados
+b5b046142472c979fd93704cfc4a7d78cbdd7297|Pepticore App|2026-10-17 19:24:23 -0300|MC-LANDING-CARDS-COPY-001 + MC-LANDING-VENTURES-LP-001: copy travada EngineCore/StyleCore (vitrine ofertas) + LP /enginecore oferta-first (substitui stub redirect) + LP /stylecore Em fundacao (substitui cockpit interno) + CTAs card -> LPs internas
+5030e65b4eaf1ac0f6fb8eb1ad55966bcf0e0d65|Pepticore App|2026-10-17 18:14:43 -0300|MC-RADAR-DEMO-002: demo v2 copy travada (hero DA DESCOBERTA À PROPOSTA, 4 KPIs capacidade, 8 oportunidades fictícias verbatim, tabs filtro, CTA dourado radar_demo, legenda score, hook alertas; Entrar com Google -> /radar/real/)
+0946c112b148ec4cba38c6d8e5ffaf021e98a823|PicoClaw Agent|2026-10-17 17:43:02 -0300|changelog-draft: ENGC-DISCOVERY-ROTA-1710-v2 swap wa.me wizards (c27a7d4f/650ff498)
+c27a7d4f25031cb9711c3db49d4b328e4cf3a7ed|PicoClaw Agent|2026-10-17 17:41:07 -0300|ENGC-DISCOVERY-ROTA-1710-v2: swap wa.me wizard Master — pessoal CEO 5511986735432 -> oficial Cortex 5511955031020 (msg pre-preenchida intacta)
+0908b8da0a88b63e06bd9168073dd8bd97b46fbb|Cortex|2026-10-17 17:16:54 -0300|MC-LANDING-CARDS-ORDEM-002: fix residual StyleCore full-width — card movido para dentro do mc-ventures-grid (3a coluna linha 2), copy/chips/CTA intactos
+a3e41e763632013a0b3facbdadf58ebda42db4f6|PicoClaw Agent|2026-10-17 15:07:45 -0300|MC-RADAR-DEMO-001: favicon na demo (elimina 404 console); noindex mantido por design (demo nao indexa)
+fde6d94b26b6891b9a4cee5daec53ab9e73451c2|PicoClaw Agent|2026-10-17 15:06:18 -0300|MC-RADAR-DEMO-001 DoD: meta description + contraste foot (Lighthouse SEO/a11y)
+8e3255ad1e6abf5a82c184c14da1367d8ed2ace6|PicoClaw Agent|2026-10-17 14:43:04 -0300|MC-RADAR-DEMO-001: /radar = demo publica ficticia (banner, CTA funil radar_demo, botao Entrar com Google) + /radar/real = gate GIS allowlist server-side (392d6cf preservado)
+e723b1498e2f638eae81775ea6da37acd45ecb37|PicoClaw Agent|2026-10-17 14:41:21 -0300|MC-RADAR-DEMO-001 + MC-RADAR-AUTH-002 reconciliados: /radar = demo publica ficticia (maquina de lead, banner, CTA funil) + /radar/real = gate GIS Entrar com Google (allowlist server-side hub Base44, commit 392d6cf preservado)
+fc6aa7dccf44e669db2a0850201acea4e7cf07d8|PicoClaw Agent|2026-10-17 14:40:22 -0300|MC-LANDING-CARDS-ORDEM-001 + MC-RADAR-DEMO-001: ordem canonica 6 cards (P,E,R,L,C,S chancela CEO 17/10) + demo publica /radar (dados ficticios, banner, CTA funil, botao Entrar com Google -> /radar/real placeholder MC-RADAR-AUTH-002)
+392d6cf27c6225299ee14e4ba1cf8a3e26ef93c0|Pepticore App|2026-10-17 14:37:08 -0300|MC-LANDING-CARDS-ORDEM-001 + MC-RADAR-AUTH-002 (passada unica): ordem canonica dos 6 cards (PeptiCore, EngineCore, Radar RFP | LongevCore, CyberSecurity Venture, StyleCore) + gate /radar v2 Entrar com Google (GIS) com allowlist server-side no hub Base44
+29da2ea6a420dff4f09bd51d66d54cd7bd956c06|Cortex|2026-10-17 14:15:07 -0300|evid: print cards v8 (Radar RFP title case) para STATUS MC-LANDING-CARDS-1710-CLOSE
+f4a83cd4cd2820718bbf93e72b1cf8fc8c130cd3|Cortex|2026-10-17 14:07:39 -0300|CARDS-LANDING-1710 v8: titulo card RADAR RFP -> Radar RFP (title case, chancela CEO 17/10); slug /radar intocado
+1724551113c97306ed8578da845598cbb5adbc78|Pepticore App|2026-10-17 13:32:10 -0300|MC-FUNIL-003 D: rota /agendar -> redirect pepticore.app/agendar
+463993b95aade983c922287fad2707e7a0191edf|Pepticore App|2026-10-17 05:53:08 -0300|RESTORE-1710: restaura arvore completa (CNAME, governance, ledger, rotas) apagada por 07ff6981 — mantem index.html v5+v6 (blob 9b398b3) — mastercore.app 404 causado pela remocao do CNAME
+07ff6981e95cf2bda72b68a591de2d4c68c7d4d2|Pepticore App|2026-10-17 05:43:41 -0300|landing: CARDS-LANDING-1710 v5+v6 — SOC+MDR no card CyberSecurity Venture, chip EngineCore EM OPERACAO, grelha 3x2 reordenada (DOM canonico)
+4456df394073209c010e7a60a08aa666d8ae9970|Pepticore App|2026-10-17 04:52:28 -0300|governance: changelog-draft + entrada Gate F1.1 fechado/sincronizado (ledger 1.2.1) [ciclo 04:45 BRT]
+7b1215b688a6d7a702534eb242202922a5660910|Pepticore App|2026-10-17 04:49:06 -0300|ledger: 1.2.1 execution_commit do GATE F1.1 (f7ddd79) [readback]
+1006530dd73b3fc5fb89e9a9a6c9f4e0567235c1|Pepticore App|2026-10-17 04:48:57 -0300|runbook: F1.1 validacao motores — espelho canonico do runbook (gate FECHADO 17/10) [ledger 1.2.1]
+22def266e7ae6963de027752e2a486b1ffd25bd9|Pepticore App|2026-10-17 04:48:07 -0300|ledger: 1.2.1 GATE F1.1 fechado (entry + hash) [sync _RETORNO 168p-Ya6]
+f7ddd79effd8be1e98e7bd3b0df5561bcee1bd36|Pepticore App|2026-10-17 04:48:06 -0300|governance: GATE F1.1 FECHADO 17/10 (4 pareceres + ratificacao CEO) [ledger 1.2.1]
+032baeefad29f8667a82defc93ebb78ba16e980d|Pepticore App|2026-10-17 03:25:07 -0300|CARDS-LANDING-1710-v4: card cyber + CISO as a Service + Edge AI · chips 2x2 · frase parceria v3 (opcao C) [chancela CEO 17/10]
+569fbad72f801d932d53330f1e77c9748066c896|Pepticore App|2026-10-17 03:20:17 -0300|CARDS-LANDING-1710-v2 FIX: remove metadado de transporte da 1a linha (quirks-mode) — blob limpo do mesmo conteudo v2
+b0101e14e6148ff4fb62e7fc8ee4992d8325ea6c|Pepticore App|2026-10-17 03:14:53 -0300|CARDS-LANDING-1710-v2: DAIS->RADAR RFP (Em operação, CTA /radar, acento cyan) + novo card Cybersecurity Venture (Em estudos e validação, acento vermelho) — supersede v1 nos 2 cards [chancela CEO 17/10]
+1d4590dc15a11b2a5d34eae58ccad2a378f0472f|Pepticore App|2026-10-17 00:50:11 -0300|docs(governance): P1 e2e no ci + entradas de governanca 16-17/10 no changelog-draft
+ec14f6b36fa631a3a1787ca566d2d6c6627042f0|Córtex (MasterCore)|2026-10-16 23:16:38 -0300|governanca: changelog-draft PACOTAO NOITE 16-10 (B5 dashboards 5/5, B4 drift-check heartbeat, B1-B4 parcial)
+688d85f845b147de9ebba0c66c318dd6d6d7dc4e|Córtex (MasterCore)|2026-10-16 23:10:15 -0300|HOST-001/B5: rotas internas /stylecore /longevcore com gate de acesso (noindex + robots disallow; dados server-side gated)
+74d0fc4b5f616c280f45c3524e0cd9bf557148c3|Cortex-Control-Plane|2026-10-16 19:52:36 -0300|HOST-001: rotas internas /radar /cockpit /custos com gate de acesso (noindex + robots disallow; dados server-side gated)
+8043283cc88699808960895dca6c47fe84ffb5cb|Pepticore App|2026-10-15 23:05:02 -0300|governanca: registro 15/10 sem bump — trava append-only (11fe20e6) + espelho Drive Nucleo v1.2 + P-QUEUE (Pack B2B descartado, master-v3 24h, previa IG)
+11fe20e646982f4abf77d7e3c0ae82f8379a9f69|Pepticore App|2026-10-15 22:58:59 -0300|governanca: trava append-only do _PROCESSADOS.log (despacho Inconsistencias Estruturais 15/10, item 1) - wrapper que bloqueia compactacao/truncamento; selftest impeditivo incluido
+a6466aa0f5a4f06919e96b0a1d58eadd362043f9|Cortex (Control Plane)|2026-10-15 20:53:28 -0300|RUNBOOK MC-LANDING-ALIGN-01 Item 1 (MasterCore): banner telemetria, 5 ventures (StyleCore chancelado), nomenclatura OS, Ecossistema, manifesto+rodape — bump 1.3.0
+c8edf3c2929375826e1acddba331e5ea40c0cf04|Cortex (Control Plane)|2026-10-14 22:05:29 -0300|pacote x tiktok pub2
+cde8232b89ce3c727dbcf4fcc7421daf65b25bc8|Pepticore App|2026-10-14 17:51:02 -0300|media: frame pub2 onyx (amostra chancela CEO)
+c18f72b44bcefd1dca8d51c6d3c7c869b273f924|Cortex (Control Plane)|2026-10-14 17:50:31 -0300|assets: frame PUB2 ONYX (9:16) para chancela via WhatsApp [PUB2-FRAME]
+f10feaeb664acdec7eb03b938ef45d7ad26f8380|Cortex (Control Plane)|2026-10-14 03:00:29 -0300|AUDIT: evidencias runtime secao 3 do STATUS Separação EngineCore (5/5 verdes, re-verificadas 02:58 BRT)
+b9479940b6dfbdb47c26c1a0b908c3d21422f0ab|Cortex (Control Plane)|2026-10-14 03:00:13 -0300|AUDIT: evidencias runtime secao 3 do STATUS Separação EngineCore (5/5 verdes, re-verificadas 02:58 BRT)
+f97a238c1c3fdb0492ac47038767e7bb00977316|Cortex (Control Plane)|2026-10-14 02:58:24 -0300|governanca: evidencia CI (pages build success a5f0944) na auditoria da homologacao do Nucleo v1.2 — hash auditoria no ledger [AUT-MC-20261014-NUCLEO-HOMOLOG]
+a5f0944463134731e099a06562c71ff46e4b55f8|Cortex (Control Plane)|2026-10-14 02:57:05 -0300|governanca: HOMOLOGACAO DEFINITIVA do Nucleo Universal MasterCore v1.2 — espelho MD canonico + bump 1.0.10 -> 1.2.0 + ledger + auditoria [AUT-MC-20261014-NUCLEO-HOMOLOG]
+75c5bb6f48d6734a34396ba6d63eaec214f8887a|Cortex (Control Plane)|2026-10-14 02:49:36 -0300|runbook(enginecore): separação de ambientes — go/enginecore + Conhecer venture + host-matcher → enginecore.app; pasta legada = stubs redirect 1:1; ledger RUNBOOK + STATUS auditoria [SEP-ENGINECORE-1014]
+caf7558ae66f9d96fb7844c6480e0dc0df88476d|Pepticore App|2026-10-13 21:46:04 -0300|fix(qualificacao): passo 10 travado - grid de investimento ausente no pane 10 (Avancar nunca habilitava); restaura bloco data-invest + badge Prazo e Investimento [FIX-CORTEX-1014-QUALIF-P10]
+d21cd6dc21b56fa782b3ed96451c509c4a2a6607|Pepticore App|2026-10-13 12:46:57 -0300|governance: Comando Unico Master v2 - STATUS + relatorio (B1/B2/B3 evidencia runtime; bump v1.45.0 commit 9c44aadb)
+08bec33ebdef41956d4f8567d059d62866cd9682|Pepticore App|2026-10-13 12:43:18 -0300|PUB2 ONYX: master 1:1 (pub2-onyx-11.mp4) — lote aguardando chancela CEO
+86fbce7dd966f2f5ca809930fd0eeb6d6c5531b0|Pepticore App|2026-10-13 12:40:16 -0300|docs(master): plano disruptivo 2026-10-12 consolidado (espelho do doc Drive)
+6b07b725604a202fd885638efabc12a6a425dc5b|Pepticore App|2026-10-13 12:37:14 -0300|docs(holding): registros 12/10 no CHANGELOG (5 entradas Adapta, sem bump)
+31bc32d9ea88c076b618bc7a2ac252cc6c94caf2|Pepticore App|2026-10-13 11:54:32 -0300|PUB2 ONYX: master 16:9 + 9:16 (voz Onyx chancelada, CTA pepticore.app/go/)
+aa0bebf77bb649c3e43b786c49be5d000fa4d119|Pepticore App|2026-10-11 22:28:23 -0300|assets: amostras de voz PUB 2.0 — candidatos 4-5 (Bob/Sterling) [cortex]
+af9e0a19a32816b20bc7f644ac802a71292845e6|Pepticore App|2026-10-11 22:27:29 -0300|assets: amostras de voz PUB 2.0 (5 candidatos paulista) [cortex]
+26b02055012a498599b92481dc7f81b59bfe8290|PicoClaw Agent|2026-10-11 19:44:07 -0300|status: STATUS_VERIFICACAO_ARTEFATOS_REPO_2026-10-11 — mapa das evoluções da semana no ar (pedido CEO 19:43)
+913a885006988d8ecdbd32e33501d11d1cd4f3dc|PicoClaw Agent|2026-10-11 19:36:02 -0300|directive: MC-VERIFY-1110 — verificacao e relatorio (solicitacao Adapta via CEO)
+dc1331d5d5aea3d6761c86ae9d10e299ae5b1fd6|Pepticore App|2026-10-11 18:21:19 -0300|fix: restaura site completo (revert do kill-switch MC-KILLSWITCH-PUB-001 - remocao de escopo excedente derrubou mastercore.app)
+bb5a6712ad85682cc14b699ba2dc3d56e9f295a0|Cortex-Control-Plane|2026-10-11 18:20:39 -0300|fix(pages): restaura site completo + CNAME mastercore.app — kill-switch ecc6932 removeu arquivos demais (FIX-CORTEX-1110-PAGES404)
+ecc6932cfa0b5179291c5c1642cd941407debecd|Cortex|2026-10-11 14:06:00 -0300|MC-KILLSWITCH-PUB-001: kill-switch publicacao + politica v1.0 PERFIL-ALVO + status despacho compliance
+e3921c56c552184ce067edb44870897942e7095d|PicoClaw Agent|2026-10-11 10:22:24 -0300|feat(ads): 3 paginas policy-safe para sitelinks (composicao/sobre/contato) - FIX-CORTEX-1110-SITELINKS
+d0a971221f82bdf84462f23f04d6f70ee917035d|Pepticore App|2026-10-11 02:25:32 -0300|governanca: Padrão de Fechamento de Ciclo Automático (Opção A) — schema _RETORNO + mecânica de fechamento + telemetria (workflow pendente de permissão PAT)
+940359fdc8b66e7c9a314e34d61c378abb424ce1|PicoClaw Agent|2026-10-11 02:08:44 -0300|STATUS_DESPACHO_3T3_2026-10-10 (Córtex) — Operação 3+3 + captação segmentada + Data Agent + pacote Bayard + funil
+68fcc9de36a17ba04569ee261085cbbb76d9519d|PicoClaw Agent|2026-10-10 23:48:54 -0300|story v3 A/B - opcoes story BL-040 (feedback CEO)
+91e3422983fafadf3ef3d6e0e2594af67aba5235|Pepticore App|2026-10-10 19:51:46 -0300|despachos 1010 noite: matriz captacao segmentada BL-040 (8 canais + copias) + STATUS (LinkedIn publicado, Facebook bloqueado plataforma, Politica v1.4 bump 1.44.0 verificado, PDF publico ainda v1.0)
+09d8ad6c6e2bcebc5a7e8c64bad346b6cc8642a7|Pepticore App|2026-10-10 19:45:49 -0300|STATUS_DESTRAVAR_FUNIL_2026-10-10 (Córtex) — despacho funil 10/10 executado
+2bebb060c7a55343f9366c326e17eb0eac39af48|PicoClaw Agent|2026-10-10 19:35:59 -0300|governance: matriz BL-040 captação segmentada + STATUS disparo canais 1-2
+28f65f5ca8063f39ab2200c47ac23890936599b7|PicoClaw Agent|2026-10-10 19:31:14 -0300|assets: card IG captação segmentada (beta fechado, 20 vagas)
+08984d75761414b7ceaff66af4eb115bac1687b1|Pepticore App|2026-10-10 19:23:58 -0300|CHANCELA CEO R23+R25 (10/10): registro do ato + artefatos chancelados com hashes — publicacao autorizada
+6b9142f57440b7b740ecb0e6dc38ce1437caa418|Pepticore App|2026-10-10 18:41:39 -0300|leva5 R23-R28: STATUS/ENTREGAVEIS no _RETORNO (blocos score360, bio-matching, seguranca prebeta, autonomia c/ correcao saldo YCloud, matriz riscos) + despacho
+0c3093cf10aaac8e2e8fedcbc93681e66c5e6603|Pepticore App|2026-10-10 18:40:20 -0300|leva5 R25: base conteudo educacional (FAQ 13Qs + 11 guias + melhores praticas) - conteudo candidato, gate CEO
+29cd92b7749db0cd245fcd654cb06c12863c96d7|Cortex|2026-10-10 13:06:46 -0300|fix(dais): restaura versao completa apresentavel (Skip higienizado) — doc FONTE perdeu estrutura de divs na conversao Docs (metricas/cards/nav quebrados) [FIX-CORTEX-1010]
+c33f460af79b8ae91862051e558b0a1a7dad9a92|Cortex|2026-10-10 12:08:01 -0300|feat(dais): substitui landing por versao FONTE canonica (doc Drive DAIS_LANDING_PAGE_HTML_FONTE, chancela CEO 10/10) — autocontida, mailto CTA, DS grupo [FIX-CORTEX-1010]
+58e955cb6e7b4df061ac06a28f971bed38da7c42|Cortex|2026-10-10 12:06:37 -0300|feat(dais): landing page DAIS publicada em /dais — DS grupo navy/teal, PT-BR, sem exposicao de motor, captura via backend canonico [FIX-CORTEX-1010]
+8dd5f2237f3b824d97f3581c0f0f0e412ecd9682|PicoClaw Agent|2026-10-10 11:53:36 -0300|chore(ledger): v1.0.11 — runbook 3 sites executado (favicons, avatar, peça família, estado verificado) [FIX-CORTEX-1010]
+b8d22aef94ebb491fa275c4e6e2ac936c5404cd1|PicoClaw Agent|2026-10-10 11:51:44 -0300|feat(brand): avatar circular oficial do logo 3D (item 1.3) — variações homologadas no Brand Kit [FIX-CORTEX-1010]
+67c2d03b507c44fd2fd2f6e51c56de9a06323d9f|PicoClaw Agent|2026-10-10 11:51:19 -0300|feat(brand): favicons dupla-helice (MasterCore) + orbe redes (EngineCore) — runbook 3 sites item 1.2/3.1 [FIX-CORTEX-1010]
+98a8e761f20cfdbfea0e4bc13c6454367b448ab3|Pepticore App|2026-10-10 03:14:05 -0300|roteiro: importacao HubSpot + triagem beta (PUR v1.0) — emitido pelo Cortex 10/10
+02120e29b3cc02b10ae76f5a40308046ce554fca|Pepticore App|2026-10-10 01:08:52 -0300|addendum handover-1010: URL final Ads concluida (GAQL), ledger 1.43.0, V1-V4 executado
+7d2d3959be02c8ba529e04faafd3d60f85773068|Pepticore App|2026-10-10 00:52:50 -0300|handover: pendencias e destraves 10/10 (A bloqueados CEO, B fila Cortex, C monitorados, D caixa canonica)
+8891c68dc74df650fabbb476b006914d0ee51476|Pepticore App|2026-10-10 00:22:04 -0300|docs(audits): HANDOVER-DESTRave-1010 — resposta MC-FOLLOWUP-001 + VERIFICACAO estado 08-09/10 (R11-16, chancela definitiva, pendencias CEO)
+bb20059971687f6c8eb2d742623ed20ad1e3cc09|Pepticore App|2026-10-09 23:46:48 -0300|ledger 1.0.10: CHANCELA DEFINITIVA trinca + DNA (AUT-MC-20261009-DEFINITIVA) + CHANGELOG da holding
+7d1489994f00ec9572015ced6cd81f21761845c1|Pepticore App|2026-10-09 23:46:10 -0300|chancela: CEO aprova DEFINITIVAMENTE Nucleo v1.2 + Normas v1.0.2 + MASTER_PLAN v2.2 + DNA v1.0 (encerra regimes provisorios 20/10 e 22/10) — AUT-MC-20261009-DEFINITIVA
+6e1396b0aed763d9cbdcdf1c202ecab405ca7cfb|PicoClaw Agent|2026-10-08 20:05:03 -0300|fix: botao Avancar visivel em todos os passos do DPD + ancora Iniciar Contato
+a6ae818d9cc6d28438103ccbe96ad984186c138a|Cortex|2026-10-07 22:33:17 -0300|Captura de contato no Passo 1 (3 superficies Master, 10->11 passos, lead gravado na entrada); bloco DPD consolidado sem botao na landing
+0472954fc78491cc1c499fc1b786619b05db3660|Cortex|2026-10-07 22:26:29 -0300|Landing Master: bloco DPD consolidado (jargao do grupo) sem botao CTA — Diagnostico de Prontidao Disruptiva
+b74a4fb17611cc0af6ee207d1acb0dea56de1aa1|Cortex|2026-10-07 22:05:09 -0300|docs(audits): HANDOVER MC-WA-002 07/10 — WABA verified, Tier 2K, janela 24h aberta; templates pendentes (ação Adapta)
+a567ab1d8de33acac9477eec1b3fea673be8e8ac|Pepticore App|2026-10-07 21:58:43 -0300|EOD 07/10: estado consolidado — templates PENDING na Meta, toolkit Google em queda, handover EOD emitido — ledger 1.0.9
+c6dea76f2f9238414a2e8235b666568c550558e4|Cortex|2026-10-07 21:51:17 -0300|Landing Master: badge Oferta B azul igual Studio; CTA Diagnostico flutuante centralizado abaixo dos cards (texto + botao)
+dde7302a585269b309fe6c1d65e10425e2eba86e|Cortex|2026-10-07 18:54:21 -0300|EngineCore: card 'Campanha / Produtinho' renomeado para 'Campanha / Produto'
+f82b48f8804b58a060fb12f2c0495536f7272800|Cortex|2026-10-07 18:51:15 -0300|Landing Master: card fabrica de empresas com texto canonico unico + CTA qualificacao; H1 'Nos fazemos acontecer'
+9b32fb4ced7ec8c6196eda5a0852aa6af99b4998|Cortex|2026-10-07 18:17:53 -0300|Hero MasterCore: title + meta description alinhados à fábrica de empresas
+a00e2eea139d44b26c5aae0e1fb900c5f6b0bbd3|Cortex|2026-10-07 18:14:52 -0300|Hero MasterCore: H1 + subtitle alinhados à narrativa fábrica de empresas (MC-QUALIF-REV-001 complemento)
+7517591f685c7a7a62b3944cbbc06d180ab6d4af|Cortex|2026-10-07 18:10:41 -0300|Gatilho triplo: (b) templates WABA 4/4 submetidos Meta/YCloud + (c) pack B2B v2.1 ativado (tabela 5/10/20, pisos sigilo, Founding Clients) — ledger 1.0.8
+65334329f93f2189ca86079d553c81c2ec6cbeec|Cortex|2026-10-07 18:06:07 -0300|MC-QUALIF-REV-001: landing master — step1 arquétipo de deal (MOTOR) + condicional mercado + 4 sinais estratégicos no form + copy fábrica de empresas no card A (hero index)
+ec15330dce82f01c7a86d0969a1f29ba6e6ab31e|Pepticore App|2026-10-07 17:33:15 -0300|directive(mc-adapta-shutdown-001): CEO encerra esteira Adapta — Córtex assume execução integral (transição + fontes pendentes)
+6c46efe4625230fafb7bc80e04289c2e579d1eb6|Pepticore App|2026-10-07 17:28:17 -0300|CHANCELA do Pacote Unico registrada (gatilho triplo: disparo V2 6 redes + templates WABA + pack B2B v2.1) — ledger 1.0.7
+41a33dbcd26a1fabccb26627d9cb9d92ad1ec7c6|Pepticore App|2026-10-07 14:28:34 -0300|canary #3: teste limpo pos-edit do webhook (instrucao de registro em memoria)
+3b9bf78622fe3255c050287f31706d964e74d386|Pepticore App|2026-10-07 14:21:29 -0300|canary #2: teste do ciclo completo pos-fix (webhook com secret na URL)
+e1dca50ce4488147bd43fc3d482fc6a8c6d57cc7|Pepticore App|2026-10-07 14:14:17 -0300|canary: teste de latencia do webhook Nivel 3 (auto-destrutivo apos leitura)
+4d1b728d21ff39e9a172b756776b8caa5db6f884|Pepticore App|2026-10-07 13:44:18 -0300|Pack de Copy V2 (Manifesto 5 atos) canonizado em governance/comercial/ — aguardando chancela CEO; gate P-DNA 7 anotado
+8c1d1ff0f279891b85b58577cd979824a3c6ea07|Pepticore App|2026-10-07 12:54:15 -0300|DNA do Grupo MasterCore — Manifesto Fundacional v1.0 (P-DNA 1-8) + ledger 1.0.6 + changelog + distribuicao normativa (Pack B2B §0)
+756176d3b69f43a8bc2c92d5aae5f5b58e6383d4|Pepticore App|2026-10-07 10:08:48 -0300|HANDOVER Revisao Qualificacao Master+Engine (spec integral p/ Adapta)
+bce17a6f1c7e2fe5d3ab0c0dcb6d6c466d59aeb6|Pepticore App|2026-10-07 10:08:03 -0300|DIRECTIVE MC-QUALIF-REV-001: revisao de qualificacao Master+Engine (previews p/ chancela CEO)
+26e0276d818fd67fa41d1b22a4548c2a1e774f43|Pepticore App|2026-10-07 09:47:18 -0300|HANDOVER V2 — expansão de conectores (barramento Adapta, leitura PULL)
+525f5384afbae3c99be103123b9af4521c5c44b9|Pepticore App|2026-10-06 23:00:11 -0300|chore(ledger): v1.0.5 — chancela Nucleo v1.2 + Padrão Operacional Despacho v1.0 + EOD 06/10 (Córtex)
+717aebe50c2a3e2eae13820d95d66e0c6ddb9e55|Cortex|2026-10-06 11:33:24 -0300|docs(audits): handoff 2026-10-06 — estado canônico p/ barramento Adapta (PULL)
+2eed0d1e806edc3f25c0098980de6dd5804a461a|Pepticore App|2026-10-06 10:41:56 -0300|canary: ponte repo MC-CANARY-001
+618ac0c0e91408a668a4f1941d959f8e845d2325|PicoClaw Agent|2026-10-06 10:27:26 -0300|governance: pack B2B EngineCore v2.0 MINUTA canonizado (resolucao D2 AUDIT_REPORT Adapta) + ledger v1.0.4
+36942d1ca78ed1bd5b21a40751c1703c8d60f4f7|Cortex|2026-10-06 09:25:20 -0300|Ledger v1.0.3: trinca canônica (Núcleo v1.2 aceito provisoriamente + Normas v1.0.2 + Master Plan v2.2)
+9a9a7254dc348206fea19cb371bd56780488976d|Cortex|2026-10-06 09:25:09 -0300|Governança: trinca canônica — Núcleo v1.2 (aceite provisório 06/10), Normas v1.0.2, Master Plan v2.2
+2f7c11f85678393ff6844d2bace6f84a87a430fd|Cortex|2026-10-06 02:23:09 -0300|Ledger v1.0.2: registro do Núcleo Universal v1.0 (P2 — minuta)
+75940b705819ea85043ccb5a84580614feb740ab|Cortex|2026-10-06 02:23:01 -0300|P2: Núcleo Universal MasterCore v1.0 (minuta — aguarda aceite CEO)
+a65aab1945432b3ab28002383ac9a972b7bcb700|PicoClaw Agent|2026-10-06 02:07:31 -0300|copy: comunica modelo real de Parceria de Resultado (aporte mínimo + sociedade) — remove messaging 'grátis'
+1f2ba46479fbc4d53f4f682887eec4522d365af4|Cortex|2026-10-06 01:42:56 -0300|fix(pages): CNAME volta a mastercore.app — dominio principal precisa estar no ar (Google Ads aponta para ca); enginecore.app migrara para repo Pages proprio
+fa58dee030def805abb15682e47851bc1bdb5184|Pepticore App|2026-10-06 01:37:00 -0300|Update CNAME
+8f1eb2228a725b39137a71560db9eed89b3d3ce1|PicoClaw Agent|2026-10-06 01:35:48 -0300|chore(pages): re-trigger build p/ propagacao enginecore.app (2)
+3e01d54634f28ffb3dcdd57217febcfc70a950d4|PicoClaw Agent|2026-10-06 01:31:29 -0300|chore(pages): build vazio para propagar domínio enginecore.app
+bbefbbda09e31d0f4b8e809b79402fc2d2c1f15c|Cortex|2026-10-06 01:17:39 -0300|Pages: redirect por hostname — enginecore.app/.com.br servem /enginecore/
+0a9feaa934496cc46683d5d6c1ca03d261486b0e|Cortex|2026-10-06 01:13:24 -0300|fix(pages): restaura CNAME mastercore.app (enginecore.app derrubou o domínio principal)
+301de0cf183f29e201e71dbdf60e1f4d133ca72f|Cortex|2026-10-06 01:02:56 -0300|Pages: domínio custom enginecore.app (CNAME)
+f575813ed648819bb181a02ac17cbe3cf2b767fa|Pepticore App|2026-10-06 00:44:11 -0300|fix(go): /go/enginecore → jornada EngineCore (era jornada Master) + passa-through de UTMs do post
+750edfa42dcb87fc1c0cfa8fb5cd316acff4dc6b|Pepticore App|2026-10-06 00:43:56 -0300|feat(enginecore): jornada de qualificação com motor de persistência — lead completo → registrarLeadAppsScript (planilha→CRM) + captura UTM/ref_code first-touch + links canônicos
+25940db722248ce1f69e413d1cbe94b2e67f28d4|Cortex|2026-10-06 00:35:19 -0300|EngineCore: CTAs apontam para enginecore.app (domínio próprio, UTMs preservadas)
+54f8d7468ba67543ac64874cf8505ed81824c522|Cortex|2026-10-06 00:33:56 -0300|Ledger v1.0.1: hash do PDF oficial do aceite CEO
+30ef406942d7256ad8ae83090c5a4b82704f6ef2|Cortex|2026-10-06 00:33:52 -0300|Governança: substitui PDF v1.0.1 pela versão oficial do aceite CEO (sha256 192adba1...)
+4372d0da745bf3ff837564e73443f8f44be4d595|Cortex|2026-10-06 00:28:25 -0300|Ledger v1.0.1: registro dos Instrumentos Normativos (P1 fechada)
+41269e7c6b80bfc7b14181e64bb7c329650130ce|Cortex|2026-10-06 00:28:14 -0300|Governança: Instrumentos Normativos v1.0.1 (aceite provisório CEO 05/10/2026, vigência até 20/10) — P1
+264309491609376aecaa6e178dadea0c1700247f|Cortex|2026-10-06 00:04:46 -0300|EngineCore: go/enginecore aponta para jornada de qualificação (UTM enginecore/go)
+39a481ceabb9e8d8eee8371900f56bbe9d4be753|Cortex|2026-10-05 23:39:21 -0300|EngineCore: nova landing Fábrica de Crescimento como Serviço (CTA → /qualificacao)
+2b8f43990f95d4d9efc4e6c844c6a36f8cacd5c1|Cortex|2026-10-05 16:24:42 -0300|feat(video): V2 9:16 e 1:1 para distribuicao multicanal
+d8507bb575df40de7bff2203d5d1159a76b935ae|Cortex|2026-10-05 15:49:54 -0300|feat(ads): landing de anuncio estatica e limpa (zero substancias, zero bundle)
+e6c6cbb7f0dbbd4ff59f53f1c29367d519e15185|Pepticore App|2026-10-05 13:25:13 -0300|feat(discovery) v4: motor de afiliados PeptiCore reaproveitado — captura ref_code first-touch (?ref= ou /r/) e envia no payload registrarLeadAppsScript
+37eee3c20e603ae6b32cd5cf6cbb3e7836a5a1f2|Cortex|2026-10-05 12:50:55 -0300|feat(oauth): pagina de callback para apps OAuth (X/LinkedIn/TikTok)
+2d9f14b0d89ab6fe295699877c76be117bc0b518|Pepticore App|2026-10-05 12:34:14 -0300|feat(discovery) v3: "Como você chegou até a MasterCore?" — origem c/ indicação condicional (nome/grupo) + outro; indicador de afiliado no payload e no resumo
+30d5ebd0be3ed025f372e410e01a5c46aab0c519|Pepticore App|2026-10-05 12:26:43 -0300|feat(discovery) v2: multi-seleção mecânicas/receita + opção Outro + sem investimento na jornada pública + conexões = decisão MasterCore + lead COMPLETO gravado no submit principal
+8e7e4633d952b6a20cb5c0a2dd1bf85bcf68437d|Pepticore App|2026-10-05 12:06:53 -0300|fix(discovery): logo por referência + .nojekyll (build travado por arquivo 371KB)
+53d0e590ce06e0043bd4f9c5b0509a973a9570e5|Pepticore App|2026-10-05 12:06:50 -0300|chore: .nojekyll para deploy instantâneo
+e02523dab87381692598872ae6230faaedc0a9b2|Pepticore App|2026-10-05 11:46:17 -0300|feat(discovery): accent azul #0ea5e9 (padrão landing Master) + logo real + step 4 genérico
+4653353745fcfe616caaca627f4f6c9f419ce380|Pepticore App|2026-10-05 10:45:07 -0300|feat: endpoint oauth/linkedin — captura code de autorizacao OAuth
+c629026c3e68ad72e7367bbb508309cd64e654ae|Pepticore App|2026-10-05 10:36:08 -0300|links: go/youtube/index.html redirect
+9014da6a9f5dd2ed22d9306b6edb09f18506038e|Pepticore App|2026-10-05 10:36:07 -0300|links: go/x/index.html redirect
+bf0b1233472b760854b53f0747d1f2ba880defed|Pepticore App|2026-10-05 10:36:06 -0300|links: go/waitlist/index.html redirect
+b36a6e0cdec2d95caca7160dd627665f378c2dc4|Pepticore App|2026-10-05 10:36:05 -0300|links: go/tiktok/index.html redirect
+a89768fcea47aad9ac02463d6dbb547032cb918f|Pepticore App|2026-10-05 10:36:03 -0300|links: go/linkedin/index.html redirect
+00f457ab29f43a98428e48335a8e0b3e65aaaed6|Pepticore App|2026-10-05 10:36:02 -0300|links: go/instagram/index.html redirect
+f44474676a108cc6a712664926a3947453a27492|Pepticore App|2026-10-05 10:36:01 -0300|links: go/index.html redirect
+4c1a4dc6c5d77ca6323c9a6931d2bd59feee54f1|Pepticore App|2026-10-05 10:36:00 -0300|links: go/google/index.html redirect
+0b6014c9a22c221ef3238c312eedfcb640f5006b|Pepticore App|2026-10-05 10:35:59 -0300|links: go/facebook/index.html redirect
+89b215cb567abfdf8b9ed019386b991187505a96|Pepticore App|2026-10-05 10:35:58 -0300|links: go/enginecore/index.html redirect
+3ea6ea618ef548313ca7e83ca029cbae09932172|Pepticore App|2026-10-05 10:25:46 -0300|feat: video linkedin 191 (post inaugural fase 3)
+3cc2dbd9559f5ce03bbe4445d53d4070dbbe0945|Pepticore App|2026-10-05 09:59:41 -0300|feat: Discovery Experience EngineCore (variante verde)
+0be4f9d9e3bdf138f9d02e4934f7d0ca5faafd84|Pepticore App|2026-10-05 09:59:40 -0300|feat: variante MasterCore (teal Vital + navy) — DS canônico
+fc43e6188286e8c0e4db556952f5e6087367bd59|Pepticore App|2026-10-05 09:59:38 -0300|feat: variante MasterCore (teal Vital + navy) — DS canônico
+cbbb55ea41333214ebeeab3bbafc1ddb4b9f5901|Pepticore App|2026-10-05 09:52:31 -0300|feat: alias /qualificacao — mesmo mini site (caminho usado pelo Lucio)
+52a2f42bb630a0eb16868c95536c85e456e366aa|Pepticore App|2026-10-05 05:12:24 -0300|assets: video master 9:16 hospedado p/ publicacao social
+af26b2742ebdfd449ba9b46d60f9f36f38bacdab|Pepticore App|2026-10-05 05:11:54 -0300|fix: link 'Conhecer venture' EngineCore aponta para landing real
+269ca3affa6ce7be2bebf8db8318b79996882580|Pepticore App|2026-10-05 05:11:53 -0300|fix: link 'Conhecer venture' EngineCore aponta para landing real
+57b14f9bcfc3bb60914f16eeba3da0e1467113ba|Pepticore App|2026-10-05 05:10:24 -0300|feat: landing EngineCore — mesma jornada de captação do mini site (Diagnóstico de Prontidão), DNA MasterCore
+a48203f38a29f278b2c7f09c934a25674072460c|Pepticore App|2026-10-05 05:09:19 -0300|feat: suaviza mencoes de custo zero (modelo Studio) + CTA final 'ideia disruptiva'
+5f5215b14496f4a779a10eae1d3b0f23bbe32b5f|Pepticore App|2026-10-05 05:09:18 -0300|feat: suaviza mencoes de custo zero (modelo Studio) + CTA final 'ideia disruptiva'
+b617a0c095082676c8a132b5af943c1fd01d1ec5|Pepticore App|2026-10-05 05:03:13 -0300|feat: espelho discovery.html sincronizado c/ captura de lead + UTM
+6d5fef67f7d8f4bc36e1f2101391ce55306ad9a7|Pepticore App|2026-10-05 05:03:12 -0300|feat: Discovery com captura de lead (Apps Script) + UTM first-touch
+f5f25f9074947976ba82a6630cbabf25c53d26bc|Pepticore App|2026-10-05 04:46:34 -0300|feat: logo canonico MasterCore no servido (referenciado pela landing, sha256 4d3c5fcf)
+365feb4477459378571aff8a86bf07f5f5bdd969|Pepticore App|2026-10-05 04:32:48 -0300|feat: Discovery Experience em /lander (caminho da UTM avaliar_opcoes)
+68b305e08f54606daa34746cec8de49a52cf2a3a|Pepticore App|2026-10-05 04:32:16 -0300|Create CNAME
+462f2c67efedef5f203c9c0a0c48dcfb07c582d1|Pepticore App|2026-10-05 04:26:38 -0300|feat: Discovery Experience — Diagnostico de Prontidao (mini site de qualificacao, wa.me corrigido p/ numero real)
+df2c1133abba00c3412f151be7e2a87fc322139c|Pepticore App|2026-10-05 03:54:28 -0300|feat: public/index.html = versao canonica MasterCore OS (fonte Adapta f91cdef1, sha256 98724f23)
+310604fe208c50825a5acf0c8d94e3443f408049|Pepticore App|2026-10-05 03:54:26 -0300|feat: index.html = versao canonica MasterCore OS (fonte Adapta f91cdef1, sha256 98724f23)
+a854a23ba57b1190441a1af6eef923b7eb2bed2b|Pepticore App|2026-10-05 03:29:22 -0300|feat: index.html na raiz p/ GitHub Pages (espelho byte-a-byte de public/index.html)
+89b9b15e56055cc1dda661cad42718cb799b880f|Pepticore App|2026-10-05 03:26:35 -0300|feat: consolidacao inicial holding — index.html + logo canonico + ledger baseline v1.0.0
+2a0dbdb4faed84ebfadb3f8cfcf60f02bbdba5e3|Pepticore App|2026-10-04 15:27:32 -0300|Add files via upload

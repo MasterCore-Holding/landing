@@ -1,0 +1,855 @@
+created_date_utc,name,preview_status,build_ended_at,git_commit_hash,is_github_sync
+2026-09-12T23:23:50.805000,"Implementar MVP do PeptiCore com catálogo, onboarding e dashboard",ready,2026-10-02T07:15:37.413000,2e8932a514461658c9e54c1150c827b0cd9fcef8,False
+2026-09-12T23:51:38.179000,Redirecionar para dashboard após autenticação e cadastro,ready,2026-10-02T07:15:37.414000,42f37ed6a6b598783e833dd7cbecd9a4627db0a0,False
+2026-09-13T00:05:02.356000,Implementar tour guiado no Dashboard,ready,2026-10-02T07:15:37.519000,d34b6b088b8319d587008adc1edf22a3ceda48bd,False
+2026-09-13T00:12:35.728000,Limpeza de base peptídeos,ready,2026-10-02T07:15:37.403000,d34b6b088b8319d587008adc1edf22a3ceda48bd,False
+2026-09-13T00:15:22.110000,Ajuste e higienização base,ready,2026-10-02T07:15:37.400000,d34b6b088b8319d587008adc1edf22a3ceda48bd,False
+2026-09-13T00:19:25.962000,Depuração da lista final,ready,2026-10-02T07:15:37.389000,d34b6b088b8319d587008adc1edf22a3ceda48bd,False
+2026-09-13T00:19:40.005000,Relatório de base limpa,ready,2026-10-02T07:15:37.403000,d34b6b088b8319d587008adc1edf22a3ceda48bd,False
+2026-09-13T00:28:17.402000,Implementar módulo de IA com gating para plano GOLD,ready,2026-10-02T07:15:37.403000,b338a752199ed64f33b31fa58ecc5a759bf49273,False
+2026-09-13T00:34:36.459000,Implementar rotas do wizard de protocolo e ferramentas de gestão,ready,2026-10-02T07:15:37.392000,734585ee3ab310e761193a89b5bfc8b537cb7bd5,False
+2026-09-13T00:49:09.949000,Validação da base produção,ready,2026-10-02T07:15:37.397000,734585ee3ab310e761193a89b5bfc8b537cb7bd5,False
+2026-09-13T00:53:36.556000,Migrar seleção de peptídeos para busca dinâmica via API,ready,2026-10-02T07:15:37.397000,fbc60fbad1e9ed9cfb5d940842b9d43d18d7f5d7,False
+2026-09-13T01:09:39.199000,Atualizar rótulos de categorias e simplificar interface de seleção de peptídeos,ready,2026-10-02T07:15:37.400000,f450dc33f961939fc1f39f82d5d0e4ccfeec1a6a,False
+2026-09-13T01:21:10.030000,Filtrar peptídeos por objetivo e aprimorar interface de seleção,ready,2026-10-02T07:15:37.389000,076f148ee206c01bef40ecc4f9143d5e7a0524a9,False
+2026-09-13T01:55:43.718000,Ajuste de Mapeamento Peptídeos,ready,2026-10-02T07:15:37.407000,076f148ee206c01bef40ecc4f9143d5e7a0524a9,False
+2026-09-13T01:58:23.919000,Alinhamento de Categorias Reais,ready,2026-10-02T07:15:37.407000,076f148ee206c01bef40ecc4f9143d5e7a0524a9,False
+2026-09-13T02:00:35.935000,untitled,ready,2026-09-13T02:00:35.985000,076f148ee206c01bef40ecc4f9143d5e7a0524a9,False
+2026-09-13T02:00:46.027000,Alinhamento das Categorias Cadastradas,ready,2026-10-02T07:15:37.400000,076f148ee206c01bef40ecc4f9143d5e7a0524a9,False
+2026-09-13T02:05:20.845000,Padronização de dados integrada,ready,2026-09-13T02:05:20.899000,076f148ee206c01bef40ecc4f9143d5e7a0524a9,False
+2026-09-13T02:12:27.029000,untitled,ready,2026-10-02T07:15:37.408000,076f148ee206c01bef40ecc4f9143d5e7a0524a9,False
+2026-09-13T02:16:43.353000,Padronizar tipos de substâncias conforme valores do banco,ready,2026-10-02T07:15:37.389000,c79f8e70610f6b05a5747183a3e6dd554f612c01,False
+2026-09-13T03:26:05.619000,Criar página Meu Protocolo e ajustar navegação do menu,ready,2026-10-02T07:15:37.389000,d6b489af9d4f6300dbd73f7efd5e6fc5bb3cfab0,False
+2026-09-13T03:44:19.318000,Criar página de detalhes do protocolo e ajustar navegação,ready,2026-10-02T07:15:37.389000,ba2b11c7974ee3a85c52bffd22ecbdda57668415,False
+2026-09-13T13:19:51.713000,Sincronização de Schemas Base44,ready,2026-10-02T07:15:37.389000,ba2b11c7974ee3a85c52bffd22ecbdda57668415,False
+2026-09-13T13:44:25.852000,Expandir schema do Peptideo com novos campos de estudo e biohacking,ready,2026-10-02T07:15:37.389000,10138d7684a001f165a8f3770e7c67dbd1e7da57,False
+2026-09-13T14:28:22.517000,Adicionar campo meia_vida_descricao em Peptideo.jsonc,ready,2026-10-02T07:15:37.389000,4bd04adac574bb983c9e8d0a4673347ff6b2fb94,False
+2026-09-13T15:05:12.183000,Adicionar campo meia-vida à ficha técnica do catálogo,ready,2026-10-02T07:15:37.388000,12aabcdfe823e0c04f59baa8570a447d023abd89,False
+2026-09-13T15:06:50.004000,Implementação da meia-vida concluída,ready,2026-10-02T07:15:37.380000,12aabcdfe823e0c04f59baa8570a447d023abd89,False
+2026-09-13T15:18:51.604000,Definição da Ferramenta Dosagem,ready,2026-10-02T07:15:37.381000,12aabcdfe823e0c04f59baa8570a447d023abd89,False
+2026-09-13T15:24:34.442000,Criação da Calculadora Dosagem,ready,2026-10-02T07:15:37.381000,12aabcdfe823e0c04f59baa8570a447d023abd89,False
+2026-09-13T15:33:02.203000,Adicionar calculadora de dosagem como aba em Ferramentas,ready,2026-10-02T07:15:37.381000,9d538e4624cc558b1c618a6d3c32b41013b09ec8,False
+2026-09-13T15:36:41.018000,Reverter Ferramentas.jsx para 4 abas e remover CalculadoraDosagem,ready,2026-10-02T07:15:37.380000,d8788780cc2ec47ec07c316faf445522dcb53c08,False
+2026-09-13T15:42:21.222000,Implementar listagem de doses e calendário de registro no dashboard e protocolo,ready,2026-10-02T07:15:37.380000,88d28fb9d2e6bd3bcc08307aa6ac41d4491bc10f,False
+2026-09-13T15:57:03.916000,"Corrigir seleção de peptídeo, ajustar frequência e adicionar custo do vial",ready,2026-10-02T07:15:37.381000,edf794a05186f15be32c1bae431f0272bc8681dc,False
+2026-09-13T16:09:16.075000,Refatorar lógica de posologia e ajustar interface de agendamento de doses,ready,2026-10-02T07:15:37.381000,2c14dda23ecbdc485089f339aa4b209bc746d411,False
+2026-09-13T16:09:38.746000,Migração de UI liberada,ready,2026-10-02T07:15:37.381000,2c14dda23ecbdc485089f339aa4b209bc746d411,False
+2026-09-13T16:13:57.313000,Refatorar lógica de custos e centralizar cálculos de protocolo,ready,2026-10-02T07:15:37.381000,1e39af83cb43cf1d2ff86488928320c6415bf98d,False
+2026-09-13T16:35:38.249000,Implementar todas as funcionalidades do escopo do protocolo,ready,2026-10-02T07:15:37.380000,821d34b3f9e614495c61fecb2b09b08fe941a5aa,False
+2026-09-13T16:58:14.929000,Implementar estrutura completa e persistência do wizard de protocolos,ready,2026-10-02T07:15:37.380000,24a8e6ebe2197e1322e7681aa137526975c718fd,False
+2026-09-13T17:06:33.705000,Implementar escopo v1.4.22 e corrigir cálculo de viais com dias vazios,ready,2026-10-02T07:15:37.381000,1a7dd6d7a9393f62fc4fdc92654b7c5c5e24d49d,False
+2026-09-13T17:52:37.330000,Envolver rota /meu-protocolo com ProtocoloWizardProvider,ready,2026-10-02T07:15:37.381000,57f150f920f1222f0beaf9c1533e592cfd6bfde2,False
+2026-09-13T18:19:47.381000,Deploy e verificação concluídos,ready,2026-10-02T07:15:37.380000,57f150f920f1222f0beaf9c1533e592cfd6bfde2,False
+2026-09-13T18:21:25.455000,Validação concluída: Etapa 1,ready,2026-10-02T07:15:37.381000,57f150f920f1222f0beaf9c1533e592cfd6bfde2,False
+2026-09-13T18:23:42.776000,Importar Outlet para corrigir erro de lint,ready,2026-10-02T07:15:37.381000,77fad9ead6dbff457e0afa7242bea9658d40853e,False
+2026-09-13T18:27:15.178000,Corrigir cálculo de viais com fases e unificar lógica de posologia,ready,2026-10-02T07:15:37.381000,48aed88c860ca0ee2c7bc8763a9d8ac17806f9c2,False
+2026-09-13T18:32:28.501000,Padronizar via de administração e implementar seletor de seringa,ready,2026-10-02T07:15:37.381000,881ac22bd0a9b9e0b8ad8c0209aa97ce9a92257d,False
+2026-09-13T18:36:01.757000,"Corrigir cálculo de estoque, adicionar seletor de caneta e persistir multi-dose no protocolo",ready,2026-10-02T07:15:37.380000,af2070ba6cc365afa35db3287c6048edff3f05fa,False
+2026-09-13T18:48:45.276000,untitled,ready,2026-09-13T18:48:45.319000,af2070ba6cc365afa35db3287c6048edff3f05fa,False
+2026-09-13T18:51:28.244000,Implementar lógica de controle de estoque e alertas de vials,ready,2026-10-02T07:15:37.350000,fecd1eea8f2864fbba1a7df2850191796399ff5f,False
+2026-09-13T18:58:32.560000,untitled,ready,2026-10-02T07:15:37.350000,fecd1eea8f2864fbba1a7df2850191796399ff5f,False
+2026-09-13T19:02:26.559000,Migrar campos de controle de vial do peptídeo para o protocolo,ready,2026-10-02T07:15:37.350000,466798de389e300511c1095ef3faa1c107403fb8,False
+2026-09-13T19:07:01.893000,Migração de protocolos antigos,ready,2026-09-13T19:07:21.574000,9b8c9ba8dd825dc9cbdde3dc25e4a819bb49686c,False
+2026-09-13T19:07:08.302000,Migrar valores de mg_por_vial para protocolos antigos,ready,2026-10-02T07:15:37.350000,9b8c9ba8dd825dc9cbdde3dc25e4a819bb49686c,False
+2026-09-13T19:07:10.428000,Backfill e Ajustes Protocolo,ready,2026-10-02T07:15:37.350000,466798de389e300511c1095ef3faa1c107403fb8,False
+2026-09-13T19:11:57.607000,"Atualizar detalhamento de protocolos, integrar calendário ao log de aplicações e corrigir fuso horár",ready,2026-10-02T07:15:37.350000,be20effb452eb43395b3e8f9c9db3ca6a102ad39,False
+2026-09-13T19:16:24.584000,Atualizar histórico do CHANGELOG e registrar versão v1.4.30,ready,2026-10-02T07:15:37.350000,6a683fad99bb8e2625a59be0df2ad9a771f3a3b2,False
+2026-09-13T19:25:35.132000,Validação concluída: #38 finalizado,ready,2026-10-02T07:15:37.350000,6a683fad99bb8e2625a59be0df2ad9a771f3a3b2,False
+2026-09-13T19:58:34.353000,Reconstruir layout do dashboard e ajustar integração dos cards GOLD,ready,2026-09-13T20:47:09.776000,eff84c210b8cedee338262bb289ea143738a285b,False
+2026-09-13T20:58:08.553000,Entrega Motor IA GOLD,ready,2026-09-13T20:58:08.746000,eff84c210b8cedee338262bb289ea143738a285b,False
+2026-09-13T21:07:01.831000,"Implementar guardrails, painel de indicadores e sistema de feedback na IA",ready,2026-10-02T07:15:37.306000,81c5c0563b4ea91287fbe177d9c675eafd68c13e,False
+2026-09-13T21:13:17.125000,Implementar funcionalidade de Análise 360º (v1.6),ready,2026-10-02T07:15:37.306000,64aea16b4d24b4b53bb60cd634714d7419080ca8,False
+2026-09-13T21:16:04.548000,"Implementar notificação em tempo real, fila de processamento e otimização do PainelGold",ready,2026-10-02T07:15:37.305000,40affb635cdf7b67d124177a92db35512a54dcb3,False
+2026-09-13T21:20:22.456000,Implementar funcionalidades de exportação e exclusão de conta conforme LGPD,ready,2026-10-02T07:15:37.304000,45cfedf58ba201aed2e16cd9e81fd4948426b43d,False
+2026-09-13T21:29:30.542000,Implementação do Sentry Backend,ready,2026-10-02T07:15:37.305000,45cfedf58ba201aed2e16cd9e81fd4948426b43d,False
+2026-09-13T22:10:55.531000,Configurar Sentry com monitoramento de IA e proteção de dados PII,ready,2026-10-02T07:15:37.305000,ec34e25e624e58b276793ee4d033faf5267785c7,False
+2026-09-13T22:13:55.631000,Adicionar linha de teste para integração do Sentry,ready,2026-10-02T07:15:37.305000,728e79956641d9c50a434d39818f9146d9924271,False
+2026-09-13T22:16:10.539000,Remover linha de teste e validar configuração do Sentry,ready,2026-10-02T07:15:37.306000,3b70c606cd73f38baacbc77a82efd9ebc8f3ef08,False
+2026-09-13T22:16:36.089000,Mascaramento de dados Sentry,ready,2026-10-02T07:15:37.305000,3b70c606cd73f38baacbc77a82efd9ebc8f3ef08,False
+2026-09-13T22:24:06.376000,Manter abordagem atual restritiva,ready,2026-10-02T07:15:37.305000,3b70c606cd73f38baacbc77a82efd9ebc8f3ef08,False
+2026-09-13T22:25:51.729000,Configurar anonimização de usuário e desativar coleta de PII no Sentry,ready,2026-10-02T07:15:37.305000,ff48628d9ea40d4f66b2e58353201c2646f445ff,False
+2026-09-13T23:26:05.981000,Implementar exportação de dados LGPD com rate limiting e nova interface,ready,2026-10-02T07:15:37.306000,4d50369bdca4851b5e18e8b1e3214bc91a028995,False
+2026-09-13T23:31:24.347000,Tratar erro na exportação de dados com envio ao Sentry,ready,2026-10-02T07:15:37.306000,4d50369bdca4851b5e18e8b1e3214bc91a028995,False
+2026-09-13T23:48:28.888000,Adicionar tag rota: analise-ia nos blocos catch das funções de IA,ready,2026-10-02T07:15:37.305000,3cbbef8bf279929bbb72716468b24d098e89b201,False
+2026-09-14T00:00:18.945000,Implementar função de disparo de alertas de teste para validação no Sentry,ready,2026-10-02T07:15:37.306000,2c78afea1d7dde88349ce12f08dc3f48b2cf3b6e,False
+2026-09-14T00:15:45.287000,Ajustar tracesSampleRate do Sentry para teste de performance,ready,2026-10-02T07:15:37.305000,286d5aa0b912c8f5a2c34acff1fd9b4f99e18153,False
+2026-09-14T00:29:53.457000,Corrigir endpoint de envio de transações para o Sentry,ready,2026-10-02T07:15:37.306000,e9c6f23884d413253ea07b759853434225261aaa,False
+2026-09-14T00:55:12.570000,Corrigir payload do envelope e campos críticos de trace,ready,2026-10-02T07:15:37.306000,1560e84c65b296d8fa84772fb55a5b1ae57d3edd,False
+2026-09-14T01:29:40.720000,Validar payload de transação do Sentry em testarAlertas,ready,2026-10-02T07:15:37.305000,c8b606e776b4d5b3fe489b52dc34699439840ba4,False
+2026-09-14T01:58:16.879000,Confirmar envio para endpoint de envelope do Sentry,ready,2026-10-02T07:15:37.306000,d499b7820c2e26f259cd73594327b0a07b6069b0,False
+2026-09-14T02:24:23.065000,Implementar monitoramento de SLA para timeouts de IA no Sentry,ready,2026-10-02T07:15:37.305000,540da47b11e7b47b44187d381746ef9134c7f210,False
+2026-09-14T02:34:25.594000,Finalizar validação de alertas e migrar métrica de span para erro,ready,2026-10-02T07:15:37.306000,6101600c46f52b69b858209a270d9f4df3459a87,False
+2026-09-14T02:54:00.956000,Corrigir versão do CHANGELOG.md,ready,2026-10-02T07:15:37.259000,d8df40e5bb54ad864885b003ff953d2e9608b1f2,False
+2026-09-14T03:16:22.793000,Relatório de Auditoria PeptiCore,ready,2026-10-02T07:15:37.259000,d8df40e5bb54ad864885b003ff953d2e9608b1f2,False
+2026-09-14T03:38:00.342000,Aplicar correções da Auditoria 360°,ready,2026-10-02T07:15:37.259000,49f74871c97c9c83cd0f3fbeec8f869b251912bd,False
+2026-09-14T12:53:48.780000,Solicitação de artefatos pendentes,ready,2026-10-02T07:15:37.259000,de3eec9b3e95d2ea94c49fe541af6596ce3f8c16,False
+2026-09-14T13:21:08.072000,Preparação para Migração Landing,ready,2026-10-02T07:15:37.259000,de3eec9b3e95d2ea94c49fe541af6596ce3f8c16,False
+2026-09-14T13:27:36.565000,Migrar landing page e implementar gate de acesso ao beta,ready,2026-10-02T07:15:37.260000,6a5da19c6690916f58bc66f2098bf203da488893,False
+2026-09-14T13:32:56.182000,Implementar sistema de sincronização de leads e fluxo de convites para Beta Testers,ready,2026-10-02T07:15:37.260000,6a273e0ee168a6fb439c5c1c8c31ccdede365584,False
+2026-09-14T13:41:44.173000,Implementar autenticação OAuth para Google Sheets,ready,2026-10-02T07:15:37.260000,b126f7d4d24ca99a63617ed472937e3fa1af96a4,False
+2026-09-14T13:42:41.904000,Missing Google Sheet Permissions,ready,2026-10-02T07:15:37.259000,b126f7d4d24ca99a63617ed472937e3fa1af96a4,False
+2026-09-14T13:45:07.169000,Implementar sincronização periódica de leads via Google Sheets API,ready,2026-10-02T07:15:37.260000,5790667a7717cffe00ca362b2f9edd949a9c9e73,False
+2026-09-14T14:34:32.595000,Solicitação de conteúdo DS_1.4.42,ready,2026-10-02T07:15:37.259000,5790667a7717cffe00ca362b2f9edd949a9c9e73,False
+2026-09-14T14:36:28.795000,Adicionar documentação do Sistema de Design v1.4.42,ready,2026-10-02T07:15:37.258000,9d219d29f01fcb6916318a5b20557f73e47a0fb9,False
+2026-09-14T14:37:57.461000,Adicionar arquivo documento-mestre.md,ready,2026-10-02T07:15:37.260000,db49130b77fab11ee79cfe4a285c0a1815e92282,False
+2026-09-14T14:39:53.112000,Expandir documento mestre até a seção 15,ready,2026-10-02T07:15:37.259000,4178b3931df4e453767d96ae7e0b51895af8758b,False
+2026-09-14T14:41:19.338000,Criar arquivo de changelog,ready,2026-10-02T07:15:37.259000,32f472b4da6fc9b83a6a6e5243b1eec7b14ce011,False
+2026-09-14T14:42:35.166000,Atualizar histórico no changelog,ready,2026-10-02T07:15:37.259000,201432fd1ddc0e325a0d3c8830a33e31dcbef3fb,False
+2026-09-14T16:57:11.289000,Validação de configuração Brevo,ready,2026-10-02T07:15:37.259000,201432fd1ddc0e325a0d3c8830a33e31dcbef3fb,False
+2026-09-14T16:59:50.074000,untitled,ready,2026-10-02T07:15:37.260000,201432fd1ddc0e325a0d3c8830a33e31dcbef3fb,False
+2026-09-14T17:00:17.664000,Implementação Brevo e-mail,ready,2026-10-02T07:15:37.259000,201432fd1ddc0e325a0d3c8830a33e31dcbef3fb,False
+2026-09-14T18:32:03.454000,Atualizar metadados e favicon no index.html,ready,2026-10-02T07:15:37.258000,66417a643927d88ec8092931b3168f6fc17eabff,False
+2026-09-14T18:44:10.301000,Implementar RLS no Base44,ready,2026-10-02T07:15:37.224000,66417a643927d88ec8092931b3168f6fc17eabff,False
+2026-09-14T18:47:50.789000,Aplicar RLS baseada no usuário em seis entidades,ready,2026-10-02T07:15:37.223000,ba219b11b1171a6f7a7d234013de111ad2f8b34c,False
+2026-09-14T18:50:36.050000,"Implementar regras de RLS nas entidades CacheAnalise, BetaTester e EmailLog",ready,2026-10-02T07:15:37.224000,052b0e6788be3075205fdea092e840a4847f804c,False
+2026-09-14T19:07:04.553000,Implementar políticas de RLS em todas as entidades não-User,ready,2026-10-02T07:15:37.223000,f11edf6047c66a2ea4e625f4171ab209103a5616,False
+2026-09-14T19:12:28.271000,Registrar changelog v1.4.45 e consolidar políticas de RLS,ready,2026-10-02T07:15:37.224000,463a9007b732be9dbb3854d0e11442d4c6aca4f8,False
+2026-09-14T19:16:49.491000,Consolidação e Auditoria Final,ready,2026-10-02T07:15:37.224000,463a9007b732be9dbb3854d0e11442d4c6aca4f8,False
+2026-09-14T19:27:39.112000,Implementar monitoramento de saúde para sincronização de leads com alertas no Sentry,ready,2026-10-02T07:15:37.223000,5be95ac4ca45203a64e93c194db7790a8a2854b1,False
+2026-09-14T19:31:41.224000,Implementar heartbeat para monitoramento de saúde baseado em staleness,ready,2026-10-02T07:15:37.223000,13178aa662f47a19170d5835fc92b5f9378b0509,False
+2026-09-14T19:37:03.588000,Implementação e validação concluídas,ready,2026-10-02T07:15:37.172000,13178aa662f47a19170d5835fc92b5f9378b0509,False
+2026-09-14T19:38:22.186000,Proteger campos sensíveis de usuário no updateMe,ready,2026-10-02T07:15:37.171000,32997d48f878e7d1d04e2f6d39318781f1ff4218,False
+2026-09-14T19:42:36.501000,Auditoria de Segurança Paywall,ready,2026-10-02T07:15:37.171000,32997d48f878e7d1d04e2f6d39318781f1ff4218,False
+2026-09-14T20:03:09.983000,Implementação de Backend Layer 1,ready,2026-10-02T07:15:37.172000,32997d48f878e7d1d04e2f6d39318781f1ff4218,False
+2026-09-15T01:39:51.859000,Implementar controle de permissões para atualização de plano de usuário,ready,2026-10-02T07:15:37.171000,1449e37e5fa8dddda75334460299645982bbf5a7,False
+2026-09-15T01:43:48.596000,Configuração da função atualizarPlano,ready,2026-10-02T07:15:37.173000,1449e37e5fa8dddda75334460299645982bbf5a7,False
+2026-09-15T02:11:13.353000,Integração Stripe e Usuários,ready,2026-10-02T07:15:37.172000,1449e37e5fa8dddda75334460299645982bbf5a7,False
+2026-09-15T02:16:42.563000,Implementar processamento de webhooks do Stripe com idempotência,ready,2026-10-02T07:15:37.172000,ddd23629953255221e3063efa7c8a4469d7f8f3f,False
+2026-09-15T02:19:18.742000,Definir próxima etapa desenvolvimento,ready,2026-10-02T07:15:37.173000,ddd23629953255221e3063efa7c8a4469d7f8f3f,False
+2026-09-15T02:20:25.163000,Configuração de Secrets Stripe,ready,2026-10-02T07:15:37.173000,ddd23629953255221e3063efa7c8a4469d7f8f3f,False
+2026-09-15T02:26:46.093000,Implementar fluxo completo de checkout com Stripe,ready,2026-10-02T07:15:37.172000,31d56158f3519d321c78ab253bf02db7298c0a90,False
+2026-09-15T02:37:31.232000,Ajustar schema de usuário e adicionar opção de gênero,ready,2026-10-02T07:15:37.171000,cd650e6a6731ae578043cee159ec23e4ba0aa99d,False
+2026-09-15T02:43:24.566000,Validação de onboarding e seed,ready,2026-10-02T07:15:37.173000,cd650e6a6731ae578043cee159ec23e4ba0aa99d,False
+2026-09-15T02:44:35.323000,Erro de mapeamento onboarding,ready,2026-10-02T07:15:37.171000,cd650e6a6731ae578043cee159ec23e4ba0aa99d,False
+2026-09-15T02:45:49.788000,untitled,ready,2026-09-15T02:45:49.831000,cd650e6a6731ae578043cee159ec23e4ba0aa99d,False
+2026-09-15T02:46:31.959000,Adicionar campos de nascimento e sexo ao onboarding,ready,2026-10-02T07:15:37.172000,4d756f1709ff2886e8454cc59ddc82e0c7ffb862,False
+2026-09-15T02:48:09.567000,Priorização do onboarding técnico,ready,2026-10-02T07:15:37.172000,4d756f1709ff2886e8454cc59ddc82e0c7ffb862,False
+2026-09-15T02:51:47.017000,Ajustes de categorias e idade,ready,2026-10-02T07:15:37.171000,4d756f1709ff2886e8454cc59ddc82e0c7ffb862,False
+2026-09-15T03:10:09.709000,untitled,ready,2026-09-15T03:10:09.753000,4d756f1709ff2886e8454cc59ddc82e0c7ffb862,False
+2026-09-15T03:10:25.250000,Plano de migração implementado,ready,2026-10-02T07:15:37.172000,4d756f1709ff2886e8454cc59ddc82e0c7ffb862,False
+2026-09-15T03:12:37.625000,Refatorar schema de usuário e realizar migração idempotente de nivel_conhecimento,ready,2026-10-02T07:15:37.171000,c62aeecf0257f6ad03421402c16d1d09bdd3c3bc,False
+2026-09-15T03:13:27.977000,Conclusão da Fase 1,ready,2026-10-02T07:15:37.173000,c62aeecf0257f6ad03421402c16d1d09bdd3c3bc,False
+2026-09-15T03:15:47.973000,Concluir fase 2 do onboarding com novos campos e validações,ready,2026-10-02T07:15:37.173000,e04a28c0783e5f4070efcec6ffcf79204f31b066,False
+2026-09-15T03:18:22.245000,Consolidar CHANGELOG das versões v1.4.48 a v1.4.53,ready,2026-10-02T07:15:37.125000,aed9065419a03283d22e34a75e8b44fa691e6285,False
+2026-09-15T03:20:43.283000,Confirmação v1.4.53 e Fluxo,ready,2026-10-02T07:15:37.125000,aed9065419a03283d22e34a75e8b44fa691e6285,False
+2026-09-15T03:23:01.265000,untitled,ready,2026-09-15T03:23:01.366000,aed9065419a03283d22e34a75e8b44fa691e6285,False
+2026-09-15T03:23:05.206000,untitled,ready,2026-10-02T07:15:37.125000,aed9065419a03283d22e34a75e8b44fa691e6285,False
+2026-09-15T03:23:56.382000,Consistência validada: blocos prontos,ready,2026-10-02T07:15:37.125000,aed9065419a03283d22e34a75e8b44fa691e6285,False
+2026-09-15T03:25:19.029000,Planejamento seed v1.4.55,ready,2026-10-02T07:15:37.126000,aed9065419a03283d22e34a75e8b44fa691e6285,False
+2026-09-15T03:35:25.637000,Adicionar landing page standalone em HTML,ready,2026-10-02T07:15:37.125000,f9eb4db364f812bc5d09c6c1834b7a6d729b43c8,False
+2026-09-15T03:38:29.871000,Download do arquivo HTML,ready,2026-10-02T07:15:37.125000,f9eb4db364f812bc5d09c6c1834b7a6d729b43c8,False
+2026-09-15T04:02:59.963000,untitled,ready,2026-09-15T04:03:00.112000,f9eb4db364f812bc5d09c6c1834b7a6d729b43c8,False
+2026-09-15T04:04:36.438000,"Ajustar espaçamentos, alinhamentos e contato no landing page",ready,2026-10-02T07:15:37.173000,c99f12f360f8d5c3deccd6c000bf4c3e866d0575,False
+2026-09-15T12:03:03.244000,Normalização dos Registros Fármacos,ready,2026-09-15T12:03:23.022000,ef949cb4597427f916a93892046d376099805d8a,False
+2026-09-15T12:03:06.698000,Normalizar entidades e atualizar flags de estado dos peptídeos,ready,2026-10-02T07:15:37.125000,ef949cb4597427f916a93892046d376099805d8a,False
+2026-09-15T12:03:11.041000,Atualização Schema Peptídeos v1.4.58,ready,2026-10-02T07:15:37.126000,c99f12f360f8d5c3deccd6c000bf4c3e866d0575,False
+2026-09-15T12:04:20.549000,Atualização v1.4.58 Concluída,ready,2026-10-02T07:15:37.125000,ef949cb4597427f916a93892046d376099805d8a,False
+2026-09-15T12:07:34.121000,Atualizar artefatos e changelogs para a v1.4.58,ready,2026-10-02T07:15:37.126000,122f94dfe22732a32e696cf2a92ce13020f358a3,False
+2026-09-15T12:07:59.760000,Atualização de Peptídeos e Onboarding,ready,2026-10-02T07:15:37.126000,122f94dfe22732a32e696cf2a92ce13020f358a3,False
+2026-09-15T12:13:03.226000,Importação CSV normalizada validada,ready,2026-09-15T12:13:03.332000,122f94dfe22732a32e696cf2a92ce13020f358a3,False
+2026-09-15T12:13:30.852000,Importação de registros concluída,ready,2026-10-02T07:15:37.125000,122f94dfe22732a32e696cf2a92ce13020f358a3,False
+2026-09-15T12:26:04.709000,Ciclo v1.4.58 Consolidado,ready,2026-10-02T07:15:37.125000,122f94dfe22732a32e696cf2a92ce13020f358a3,False
+2026-09-15T12:38:51.785000,Tornar promoverBetaTester idempotente e integrar com Brevo API v3,ready,2026-10-02T07:15:37.124000,b9ce0eae00536c2a4cd2f468df9e65cf8cffd5e9,False
+2026-09-15T12:44:19.775000,Ajustes críticos Brevo template,ready,2026-10-02T07:15:37.124000,b9ce0eae00536c2a4cd2f468df9e65cf8cffd5e9,False
+2026-09-15T12:47:29.061000,Migrar disparo de e-mail para template do Brevo,ready,2026-10-02T07:15:37.125000,124571fd85d4bdb6a72b5a74e779079d608fe239,False
+2026-09-15T12:48:12.534000,Ajuste de disparo Brevo,ready,2026-10-02T07:15:37.126000,124571fd85d4bdb6a72b5a74e779079d608fe239,False
+2026-09-15T12:48:48.551000,Atualizar URL do domínio canônico e CTA no changelog,ready,2026-10-02T07:15:37.124000,cbf92f9c53cc6b64d510387a57c8de9f91144780,False
+2026-09-15T12:50:48.633000,Finalização da funcionalidade Beta,ready,2026-10-02T07:15:37.124000,cbf92f9c53cc6b64d510387a57c8de9f91144780,False
+2026-09-15T13:28:50.692000,Validação do fluxo Beta,ready,2026-10-02T07:15:37.086000,cbf92f9c53cc6b64d510387a57c8de9f91144780,False
+2026-09-15T13:30:25.429000,Aguardando resultados do curl,ready,2026-10-02T07:15:37.085000,cbf92f9c53cc6b64d510387a57c8de9f91144780,False
+2026-09-15T13:42:33.744000,Configuração de Secret Brevo,ready,2026-10-02T07:15:37.086000,cbf92f9c53cc6b64d510387a57c8de9f91144780,False
+2026-09-15T13:44:04.436000,Brevo Beta Implementado,ready,2026-10-02T07:15:37.086000,cbf92f9c53cc6b64d510387a57c8de9f91144780,False
+2026-09-15T13:45:26.767000,Checklist Validação Beta Tester,ready,2026-10-02T07:15:37.085000,cbf92f9c53cc6b64d510387a57c8de9f91144780,False
+2026-09-15T13:55:40.679000,Teste de envio Brevo,ready,2026-10-02T07:15:37.085000,cbf92f9c53cc6b64d510387a57c8de9f91144780,False
+2026-09-15T13:57:06.356000,Validação de Fluxo Brevo,ready,2026-10-02T07:15:37.085000,cbf92f9c53cc6b64d510387a57c8de9f91144780,False
+2026-09-15T13:59:59.978000,Seleção de Leads Elegíveis,ready,2026-10-02T07:15:37.085000,cbf92f9c53cc6b64d510387a57c8de9f91144780,False
+2026-09-15T14:08:49.038000,Adicionar painel de gestão de leads para administradores,ready,2026-10-02T07:15:37.040000,60ccec98160525bbda04dba5791a1cc9c1d28526,False
+2026-09-15T14:12:42.735000,Acesso à Gestão Leads,ready,2026-10-02T07:15:37.085000,60ccec98160525bbda04dba5791a1cc9c1d28526,False
+2026-09-15T14:19:43.464000,Fluxo validado com sucesso,ready,2026-10-02T07:15:37.040000,60ccec98160525bbda04dba5791a1cc9c1d28526,False
+2026-09-15T14:29:06.325000,Reset de lead concluído,ready,2026-10-02T07:15:37.040000,60ccec98160525bbda04dba5791a1cc9c1d28526,False
+2026-09-15T14:33:39.271000,Ajuste da rota register,ready,2026-10-02T07:15:37.041000,60ccec98160525bbda04dba5791a1cc9c1d28526,False
+2026-09-15T14:42:02.655000,Sistema operando normalmente,ready,2026-10-02T07:15:37.040000,60ccec98160525bbda04dba5791a1cc9c1d28526,False
+2026-09-15T14:44:19.729000,Reset completo simultâneo,ready,2026-10-02T07:15:37.040000,60ccec98160525bbda04dba5791a1cc9c1d28526,False
+2026-09-15T14:44:49.957000,Reset completo e checklist,ready,2026-10-02T07:15:37.041000,60ccec98160525bbda04dba5791a1cc9c1d28526,False
+2026-09-15T14:51:06.913000,Estrutura da resposta validada,ready,2026-10-02T07:15:37.040000,60ccec98160525bbda04dba5791a1cc9c1d28526,False
+2026-09-15T14:52:22.573000,Diagnóstico concluído: fluxo operacional,ready,2026-10-02T07:15:37.040000,60ccec98160525bbda04dba5791a1cc9c1d28526,False
+2026-09-15T14:55:08.381000,Verificação de envio Brevo,ready,2026-10-02T07:15:37.040000,60ccec98160525bbda04dba5791a1cc9c1d28526,False
+2026-09-15T14:55:32.427000,Reset e Promoção Beta,ready,2026-10-02T07:15:37.040000,60ccec98160525bbda04dba5791a1cc9c1d28526,False
+2026-09-15T14:57:38.803000,Refactor lead response handling in AdminLeads,ready,2026-10-02T07:15:37.040000,6aea148ac6cc4fa83295396fe3802eae23f40916,False
+2026-09-15T14:59:56.567000,Publicação e diagnóstico pendentes,ready,2026-10-02T07:15:37.040000,6aea148ac6cc4fa83295396fe3802eae23f40916,False
+2026-09-15T15:02:26.199000,Validação de Reset Beta,ready,2026-10-02T07:15:37.040000,6aea148ac6cc4fa83295396fe3802eae23f40916,False
+2026-09-15T15:12:01.108000,Atualizar registros de versão no CHANGELOG,ready,2026-10-02T07:15:37.041000,645336708a618538fde08680e5b1c861879a9764,False
+2026-09-15T16:46:32.562000,Implementar enum de tipos para catálogo de peptídeos,ready,2026-10-02T07:15:37.041000,196bfab9ae8d2378dc275b7feaece2670fb0e3d6,False
+2026-09-15T16:51:20.340000,Atualizar e-mail de contato em artefatos e documento mestre,ready,2026-10-02T07:15:37.040000,84a7d2f77d922c44edd0c7926d5453c617fa48f4,False
+2026-09-15T17:03:49.439000,Especificação Canônica de Produto,ready,2026-10-02T07:15:37.040000,84a7d2f77d922c44edd0c7926d5453c617fa48f4,False
+2026-09-15T17:07:24.685000,Controle de Versões Projetuais,ready,2026-10-02T07:15:37.039000,84a7d2f77d922c44edd0c7926d5453c617fa48f4,False
+2026-09-15T17:08:53.779000,Atualizar versão do documento de design e alinhar artefatos de controle,ready,2026-10-02T07:15:37.041000,48eab5122169dcb5bc729cca44f692797e8ca049,False
+2026-09-15T17:18:03.704000,Atualizar documentação e consolidar changelog,ready,2026-10-02T07:15:36.993000,ab2cfbe8e553dfa5c50894159ca7f9798080c39b,False
+2026-09-15T21:25:51.555000,Estrutura da Landing Page,ready,2026-10-02T07:15:36.994000,ab2cfbe8e553dfa5c50894159ca7f9798080c39b,False
+2026-09-15T21:27:13.474000,Gestão de arquivo HTML,ready,2026-10-02T07:15:36.994000,ab2cfbe8e553dfa5c50894159ca7f9798080c39b,False
+2026-09-15T21:29:44.310000,Download da Landing Page,ready,2026-10-02T07:15:36.995000,ab2cfbe8e553dfa5c50894159ca7f9798080c39b,False
+2026-09-15T21:34:25.337000,Opções para download completo,ready,2026-10-02T07:15:36.994000,ab2cfbe8e553dfa5c50894159ca7f9798080c39b,False
+2026-09-16T02:04:48.029000,untitled,ready,2026-09-16T02:04:48.130000,ab2cfbe8e553dfa5c50894159ca7f9798080c39b,False
+2026-09-16T02:33:30.922000,Publicar versão final da landing page,ready,2026-10-02T07:15:36.994000,0056208c635effda39bad15cbf94a057c1e49a10,False
+2026-09-16T02:48:03.317000,Diagnóstico de Deployment Web,ready,2026-10-02T07:15:36.993000,0056208c635effda39bad15cbf94a057c1e49a10,False
+2026-09-16T02:54:00.361000,Migrar landing page aprovada para Home e remover seção de Planos,ready,2026-10-02T07:15:36.993000,c84031b9146eb42de434bf8c669438b582c17292,False
+2026-09-16T02:59:04.911000,Centralizar container do card de Comunidade,ready,2026-10-02T07:15:36.993000,9dff55f255e1aaf38fcdd590e5cf68d105964aca,False
+2026-09-16T03:04:08.662000,Adicionar card de Dashboard Interativo à seção de funcionalidades,ready,2026-10-02T07:15:36.994000,f4d4e87c585b757c9940cce20c5f9237c91c1ce2,False
+2026-09-16T03:19:59.454000,Atualizar documentação e changelog para v1.4.70,ready,2026-10-02T07:15:36.994000,a45e37db42f14b3d1760fb48c7326ebd4713dce0,False
+2026-09-16T03:30:01.088000,Implementar infraestrutura de créditos com Stripe e integração de webhook,ready,2026-10-02T07:15:36.994000,92754829f33bca71fa294f8b0414788b77e0ec8f,False
+2026-09-16T11:08:53.274000,Implementação do sistema créditos,ready,2026-10-02T07:15:36.995000,5c7f4cd6a9e1ce735b19b7eab9dc2f6712285a04,False
+2026-09-16T11:16:46.784000,Reverter implementação de cobrança de créditos,ready,2026-10-02T07:15:36.994000,01af895a20317227b6405322f113cd501d429645,False
+2026-09-16T11:39:39.921000,Sincronização de versões v1.4.70,ready,2026-10-02T07:15:36.995000,9dc7bb303419806737ae8d09780ed3162102c16d,False
+2026-09-16T12:13:07.369000,Corrigir nome da variável custoVials,ready,2026-10-02T07:15:36.994000,c54f9d6e9c53fc07bff24d2c8ce16a4a7694225b,False
+2026-09-16T12:17:17.525000,"Implementar lógica de frequência, alertas de extrapolação e cálculo de insumos no protocolo",ready,2026-10-02T07:15:36.994000,145865e1910cd6f7d04d72ace93098269bc8c74e,False
+2026-09-16T12:21:12.519000,Corrigir violação das regras dos hooks no componente de protocolo,ready,2026-10-02T07:15:36.994000,12b69e4466e33aa4b4492941ba43cbff8bc15d2b,False
+2026-09-16T12:23:40.081000,Integrar hipersensibilidades e condições clínicas às análises de IA com alerta de contraindicações,ready,2026-10-02T07:15:36.993000,a9185dde73f6788eee54a03093c4967c18366460,False
+2026-09-16T12:25:46.782000,Refatorar deployment em fases para segredos e Prompt B,ready,2026-10-02T07:15:36.993000,b1f1a357c5a389ffec5d79fcb7fafc58737eaa2f,False
+2026-09-16T13:05:33.844000,Implementar automação de e-mails via Brevo e adicionar card de LGPD,ready,2026-10-02T07:15:36.995000,d6d419353aa03e97445954accddcdb95b2a09370,False
+2026-09-16T13:11:15.024000,URL do logo confirmada,ready,2026-10-02T07:15:36.954000,d6d419353aa03e97445954accddcdb95b2a09370,False
+2026-09-16T13:56:56.920000,"Implementar setup do Sentry, documentação de segurança e testes E2E com Playwright",ready,2026-10-02T07:15:36.954000,caf0a61223c79cb5d105a4b1b7e130a4be4c8aea,False
+2026-09-16T14:47:41.242000,Atualizar changelog e documento-mestre para v1.4.71/v1.4.72,ready,2026-10-02T07:15:36.954000,b3a111ed96601b2a454b8808e9238c87f9e200ca,False
+2026-09-16T16:51:26.895000,untitled,ready,2026-09-16T16:51:26.952000,b3a111ed96601b2a454b8808e9238c87f9e200ca,False
+2026-09-16T16:53:36.358000,Implementar sistema completo de atribuição de parceiros,ready,2026-10-02T07:15:36.954000,aa83fdec93f3807b18c506c0bc3881164e644eb5,False
+2026-09-16T17:18:58.863000,untitled,ready,2026-10-02T07:15:36.954000,aa83fdec93f3807b18c506c0bc3881164e644eb5,False
+2026-09-16T17:20:54.099000,Sistema de Atribuição Implementado,ready,2026-10-02T07:15:36.954000,aa83fdec93f3807b18c506c0bc3881164e644eb5,False
+2026-09-16T17:24:38.797000,Configuração da Planilha Google,ready,2026-10-02T07:15:36.954000,626004712cffb171486cdc0f6d9aef6c6f597959,False
+2026-09-16T17:26:13.977000,Correção de redeclaração secret,ready,2026-10-02T07:15:36.895000,626004712cffb171486cdc0f6d9aef6c6f597959,False
+2026-09-16T17:28:31.696000,Implementar lógica de sincronização para a planilha de comissões,ready,2026-10-02T07:15:36.895000,11b3f552e7c7d7a39aa624d16fd71ee4386dd5d2,False
+2026-09-16T17:31:12.198000,Sistema de Atribuição Operacional,ready,2026-10-02T07:15:36.896000,11b3f552e7c7d7a39aa624d16fd71ee4386dd5d2,False
+2026-09-16T17:33:55.427000,Lista de 13 parceiros,ready,2026-10-02T07:15:36.895000,11b3f552e7c7d7a39aa624d16fd71ee4386dd5d2,False
+2026-09-16T17:35:03.190000,Cadastro e sincronização imediata,ready,2026-10-02T07:15:36.895000,11b3f552e7c7d7a39aa624d16fd71ee4386dd5d2,False
+2026-09-16T17:36:18.956000,Atualizar lista de parceiros no arquivo de configuração,ready,2026-10-02T07:15:36.895000,edf9e4edb44ec65fb2fea8a79d9514cbd295f778,False
+2026-09-16T17:40:37.537000,Limpar nomes de prospectos no sync e na planilha,ready,2026-10-02T07:15:36.895000,04d537f6e070b6ad9bfd9b5559c3c946599a2d96,False
+2026-09-16T17:50:20.948000,Ajuste e validação pendente,ready,2026-10-02T07:15:36.895000,04d537f6e070b6ad9bfd9b5559c3c946599a2d96,False
+2026-09-16T17:53:11.855000,Atualizar CHANGELOG com novas entradas de versão,ready,2026-10-02T07:15:36.896000,81907cb3b7334d60f55c63b2e23b3a901b491f11,False
+2026-09-16T17:55:16.472000,CHANGELOG pronto para sincronizar,ready,2026-10-02T07:15:36.896000,81907cb3b7334d60f55c63b2e23b3a901b491f11,False
+2026-09-17T04:45:38.938000,Implementar MarketplaceGate com registro de lead e menu lateral,ready,2026-10-02T07:15:36.896000,f70dba4504e75f63a1028f09d19281c134a6999c,False
+2026-09-17T04:48:46.481000,MarketplaceGate já implementado,ready,2026-10-02T07:15:36.896000,f70dba4504e75f63a1028f09d19281c134a6999c,False
+2026-09-17T05:15:48.969000,Implementar lógica de captura e deduplicação de leads no backend,ready,2026-10-02T07:15:36.896000,69fdd89a3715b6968e52e3b42cdc6998fc5973af,False
+2026-09-17T05:32:24.468000,Sincronizar arquivos para a versão 1.4.77,ready,2026-10-02T07:15:36.895000,64e4af09aab95efd7c2c6cb5d18c2ed52000f394,False
+2026-09-17T05:33:05.547000,Resumo de Versões PeptiCore,ready,2026-10-02T07:15:36.895000,64e4af09aab95efd7c2c6cb5d18c2ed52000f394,False
+2026-09-17T05:36:59.274000,untitled,ready,2026-09-17T05:36:59.371000,64e4af09aab95efd7c2c6cb5d18c2ed52000f394,False
+2026-09-17T05:37:16.261000,Ajuste Inventário Base44 v1.4.78,ready,2026-10-02T07:15:36.896000,64e4af09aab95efd7c2c6cb5d18c2ed52000f394,False
+2026-09-17T05:40:22.662000,Atualizar documento-mestre e changelog para v1.4.78,ready,2026-10-02T07:15:36.895000,33ab53dff559132ded8bf35df40d003c07964ec3,False
+2026-09-17T06:07:24.217000,Sincronização e deploy v1.4.78,ready,2026-10-02T07:15:36.895000,33ab53dff559132ded8bf35df40d003c07964ec3,False
+2026-09-17T06:08:46.041000,Execução de push deploy,ready,2026-10-02T07:15:36.895000,33ab53dff559132ded8bf35df40d003c07964ec3,False
+2026-09-17T06:14:24.404000,Status de Versões PeptiCore,ready,2026-10-02T07:15:36.954000,33ab53dff559132ded8bf35df40d003c07964ec3,False
+2026-09-17T06:18:03.012000,Atualização de versionamento DS,ready,2026-10-02T07:15:36.895000,33ab53dff559132ded8bf35df40d003c07964ec3,False
+2026-09-17T06:19:24.296000,Atualizar versão do design system e alinhar documentação,ready,2026-10-02T07:15:36.894000,937633efc8a5d2ebeb59e452fd85a464417c7236,False
+2026-09-17T23:01:12.191000,Implementar novas condições clínicas e suporte a multi-categorias para peptídeos,ready,2026-10-02T07:15:36.840000,d9942d9351c013c1236dd0953d42a2042a31b092,False
+2026-09-17T23:51:32.163000,Validação Bloco A concluída,ready,2026-10-02T07:15:36.840000,d9942d9351c013c1236dd0953d42a2042a31b092,False
+2026-09-17T23:53:50.461000,Validação do Bloco A,ready,2026-10-02T07:15:36.839000,d9942d9351c013c1236dd0953d42a2042a31b092,False
+2026-09-17T23:56:49.431000,"Implementar atualizações do B-push 1: novos componentes, refatoração de labels e melhorias na interf",ready,2026-10-02T07:15:36.839000,7d54ec6f5d84ffd3334c5e0d1c84174cc339bd1c,False
+2026-09-18T00:02:29.810000,"Implementar novas funcionalidades de análise, cross-checking e interface do protocolo B-push 2",ready,2026-10-02T07:15:36.839000,5b199f0562946ed7b6de92ac83333e86c7afbd35,False
+2026-09-18T00:15:32.902000,Adicionar roteiro de beta testers e atualizar documentação de governança,ready,2026-10-02T07:15:36.840000,ccd6f0f4887b0cc81d5c746af41b696eeb14c902,False
+2026-09-18T00:28:11.917000,Atualização concluída: v1.4.82 entregue,ready,2026-10-02T07:15:36.840000,ccd6f0f4887b0cc81d5c746af41b696eeb14c902,False
+2026-09-18T00:29:44.934000,Atualizar documentação e consolidar pacote v1.4.82,ready,2026-10-02T07:15:36.839000,eeb2706c72f47eb214f4196bff0b551a6c3bf7bc,False
+2026-09-18T00:53:58.930000,Resumo Versões dos Artefatos,ready,2026-10-02T07:15:36.840000,eeb2706c72f47eb214f4196bff0b551a6c3bf7bc,False
+2026-09-18T00:56:26.793000,Registrar pendência de governança no CHANGELOG,ready,2026-10-02T07:15:36.839000,824136f849b64d4bad8616d37a6c0fe4e17566a4,False
+2026-09-18T01:26:36.932000,Resumo de Leads Admin,ready,2026-10-02T07:15:36.840000,824136f849b64d4bad8616d37a6c0fe4e17566a4,False
+2026-09-18T02:41:40.454000,Implementar sistema de temas no dashboard,ready,2026-10-02T07:15:36.839000,78a1825ca58bc140630d17e611e32d0a4ac9bc93,False
+2026-09-18T02:46:07.933000,Add safe fallback to useTheme hook,ready,2026-10-02T07:15:36.839000,3dbedad5838ef29dd9e5103f2c643b62cb54803b,False
+2026-09-18T03:12:19.613000,Implementar roteamento dinâmico de templates no dashboard,ready,2026-10-02T07:15:36.840000,8978f79e938a1ad927c8ed705da551e609509cb2,False
+2026-09-18T04:42:21.582000,Consolidar dashboard e remover templates legados,ready,2026-10-02T07:15:36.839000,b58cbffb40262cc301d956eaf6f5b6613a216797,False
+2026-09-18T04:44:39.528000,Dashboard Best of Implementado,ready,2026-10-02T07:15:36.840000,b58cbffb40262cc301d956eaf6f5b6613a216797,False
+2026-09-18T05:11:46.226000,Implementar Onboarding Tour V2 e atualizar integração de dados do dashboard,ready,2026-10-02T07:15:36.839000,0c3f2f663d045d7f0b355c872f319167266b3c32,False
+2026-09-18T05:16:20.969000,Atualizar versão para v1.4.83 e consolidar documentação de funcionalidades,ready,2026-10-02T07:15:36.839000,613d76e8f90835cc7131f394dfc086ef3911c166,False
+2026-09-18T05:21:09.785000,Checklist Validação Dashboard v1.4.83,ready,2026-10-02T07:15:36.840000,613d76e8f90835cc7131f394dfc086ef3911c166,False
+2026-09-18T05:22:49.157000,Adicionar checklist de pós-deploy v1.4.83,ready,2026-10-02T07:15:36.839000,528ed2c47560da57a74a7f771ebac0e155e07d94,False
+2026-09-18T05:35:20.335000,Atualização e ajuste do prompt,ready,2026-10-02T07:15:36.839000,528ed2c47560da57a74a7f771ebac0e155e07d94,False
+2026-09-18T05:56:49.728000,Adicionar prompt de deploy v1.4.83,ready,2026-10-02T07:15:36.801000,b86672f80fd1294dfd4ac72a4e0ac7ffcf55cf78,False
+2026-09-18T05:57:58.174000,Aviso de deploy pendente,ready,2026-10-02T07:15:36.801000,b86672f80fd1294dfd4ac72a4e0ac7ffcf55cf78,False
+2026-09-18T11:43:42.079000,Ajuste técnico de prompt,ready,2026-10-02T07:15:36.801000,b86672f80fd1294dfd4ac72a4e0ac7ffcf55cf78,False
+2026-09-18T11:50:24.759000,Correção de Segurança Pepticore,ready,2026-10-02T07:15:36.801000,b86672f80fd1294dfd4ac72a4e0ac7ffcf55cf78,False
+2026-09-18T11:54:28.660000,Aplicar melhorias de segurança e refatorar integrações nas funções do sistema,ready,2026-10-02T07:15:36.800000,c88a68d7142c2534454226b7b39500134174a556,False
+2026-09-18T11:55:35.293000,Verificação de ID Secrets,ready,2026-10-02T07:15:36.801000,c88a68d7142c2534454226b7b39500134174a556,False
+2026-09-18T12:11:27.530000,Verificação de Secret ID,ready,2026-10-02T07:15:36.801000,c88a68d7142c2534454226b7b39500134174a556,False
+2026-09-18T12:12:32.454000,Conferência de Secrets necessária,ready,2026-10-02T07:15:36.750000,c88a68d7142c2534454226b7b39500134174a556,False
+2026-09-18T12:26:54.755000,Configurar ID da planilha de leads via variável de ambiente,ready,2026-10-02T07:15:36.751000,a042da56ac3732dfa96bff08fdeb106e53311add,False
+2026-09-18T12:28:29.405000,Erro: Planilha não encontrada,ready,2026-10-02T07:15:36.751000,a042da56ac3732dfa96bff08fdeb106e53311add,False
+2026-09-18T12:29:30.489000,Erro 404 Google Sheets,ready,2026-10-02T07:15:36.751000,a042da56ac3732dfa96bff08fdeb106e53311add,False
+2026-09-18T12:30:49.969000,Configuração do Secret Spreadsheet,ready,2026-10-02T07:15:36.751000,a042da56ac3732dfa96bff08fdeb106e53311add,False
+2026-09-18T12:32:37.075000,Atualizar changelog e configurar ID da planilha de leads,ready,2026-10-02T07:15:36.751000,e95f5cbe2fae2b16bcad056e458d9021ac5f9fea,False
+2026-09-18T12:32:50.082000,Ciclo de Leads Concluído,ready,2026-10-02T07:15:36.751000,e95f5cbe2fae2b16bcad056e458d9021ac5f9fea,False
+2026-09-18T12:37:03.715000,Checklist para Threat Modeling,ready,2026-10-02T07:15:36.750000,e95f5cbe2fae2b16bcad056e458d9021ac5f9fea,False
+2026-09-18T12:39:10.796000,Relatório de Auditoria P0,ready,2026-10-02T07:15:36.751000,e95f5cbe2fae2b16bcad056e458d9021ac5f9fea,False
+2026-09-18T12:41:59.293000,Migrar upload de relatórios para storage privado com segurança reforçada,ready,2026-10-02T07:15:36.750000,59d2cf82b89d2e370612d2f3b3c069b81e679cdc,False
+2026-09-18T12:44:09.715000,Plano de Execução Beta,ready,2026-10-02T07:15:36.751000,59d2cf82b89d2e370612d2f3b3c069b81e679cdc,False
+2026-09-18T12:46:35.327000,Diagnóstico e estratégia beta,ready,2026-10-02T07:15:36.751000,59d2cf82b89d2e370612d2f3b3c069b81e679cdc,False
+2026-09-18T12:53:32.690000,Adicionar política de RLS ao PainelClinicoResult,ready,2026-10-02T07:15:36.752000,5999f9aeed05d399c789a132d3e230b8a9f0fd13,False
+2026-09-18T12:56:20.774000,Implementar RLS e validar leads na função respostaBeta,ready,2026-10-02T07:15:36.750000,a278164908108a8cf02cd7f128e1124e02b2e75f,False
+2026-09-18T13:13:35.193000,Mapeamento de vulnerabilidades críticas,ready,2026-10-02T07:15:36.751000,a278164908108a8cf02cd7f128e1124e02b2e75f,False
+2026-09-18T13:14:57.275000,Update file upload configuration schema,ready,2026-10-02T07:15:36.750000,cc4ea73d1ef2dced376ea8bc6a1abaf43a9f00aa,False
+2026-09-18T13:20:08.430000,Corrigir falhas de segurança e implementar validações nas funções de IA e administrativa,ready,2026-10-02T07:15:36.751000,ca8a46dfbc5c2f067a2b14aac8324c32daf6f032,False
+2026-09-18T13:33:19.138000,"Implementar validação, idempotência e rate limit no endpoint registrarLeadAppsScript",ready,2026-10-02T07:15:36.751000,2ec55b89c6abf7655c2fae148614d4fad6fbcc3d,False
+2026-09-18T13:39:01.438000,Validação e Segurança RegistrarLead,ready,2026-10-02T07:15:36.751000,2ec55b89c6abf7655c2fae148614d4fad6fbcc3d,False
+2026-09-18T14:00:28.398000,Atualizar documento-mestre para v1.4.88,ready,2026-10-02T07:15:36.750000,1afd39f7f56ce360123fefc7eea62123befae0aa,False
+2026-09-18T14:19:01.558000,Adicionar documentos de pré-questionário e template de convite para beta testers,ready,2026-10-02T07:15:36.750000,876ef79869cd3410d2e38021dacdd36c5a2f46eb,False
+2026-09-18T14:32:50.427000,Relatório de Verificação Base44,ready,2026-10-02T07:15:36.751000,876ef79869cd3410d2e38021dacdd36c5a2f46eb,False
+2026-09-18T14:36:10.802000,Adicionar nota de rastreabilidade na v1.4.87 ao CHANGELOG.md,ready,2026-10-02T07:15:36.713000,e6c55829f10b55a30b2bb6f91083a494ab9c9667,False
+2026-09-18T15:06:44.605000,Implementar Onboarding Tour V2 e fluxo de preenchimento via stash no Wizard,ready,2026-10-02T07:15:36.713000,eb28e43cd46fab7974d67f8ee351b0230c05e7a2,False
+2026-09-18T15:09:08.729000,Implementação finalizada com sucesso,ready,2026-10-02T07:15:36.713000,eb28e43cd46fab7974d67f8ee351b0230c05e7a2,False
+2026-09-18T15:12:06.025000,Alinhamento e testes Base44,ready,2026-10-02T07:15:36.750000,eb28e43cd46fab7974d67f8ee351b0230c05e7a2,False
+2026-09-18T15:39:22.087000,Sincronizar documentação para a versão v1.4.89,ready,2026-10-02T07:15:36.712000,2c6fc3bae2cabbc7556c1602b2f0a99cc4d84e8e,False
+2026-09-18T15:43:50.293000,untitled,ready,2026-09-18T15:43:50.408000,2c6fc3bae2cabbc7556c1602b2f0a99cc4d84e8e,False
+2026-09-18T15:43:58.641000,Priorização de desenvolvimento operacional,ready,2026-10-02T07:15:36.712000,2c6fc3bae2cabbc7556c1602b2f0a99cc4d84e8e,False
+2026-09-18T15:50:56.549000,Validação de Testes E2E,ready,2026-10-02T07:15:36.713000,2c6fc3bae2cabbc7556c1602b2f0a99cc4d84e8e,False
+2026-09-18T16:13:23.945000,Como executar Testing Agent,ready,2026-10-02T07:15:36.713000,2c6fc3bae2cabbc7556c1602b2f0a99cc4d84e8e,False
+2026-09-18T17:07:25.016000,Interface de CLI Base44,ready,2026-10-02T07:15:36.713000,2c6fc3bae2cabbc7556c1602b2f0a99cc4d84e8e,False
+2026-09-18T17:48:25.400000,Custo de Créditos Base44,ready,2026-10-02T07:15:36.713000,2c6fc3bae2cabbc7556c1602b2f0a99cc4d84e8e,False
+2026-09-18T19:15:02.430000,Configuração de Conexão GitHub,ready,2026-10-02T07:15:36.712000,2c6fc3bae2cabbc7556c1602b2f0a99cc4d84e8e,False
+2026-09-18T19:15:47.814000,Autorização OAuth GitHub solicitada,ready,2026-10-02T07:15:36.712000,2c6fc3bae2cabbc7556c1602b2f0a99cc4d84e8e,False
+2026-09-18T19:17:07.531000,Configuração de Sincronização GitHub,ready,2026-10-02T07:15:36.713000,2c6fc3bae2cabbc7556c1602b2f0a99cc4d84e8e,False
+2026-09-18T19:23:55.640000,Adicionar funcionalidade de sincronização do changelog com o GitHub na página de admin,ready,2026-10-02T07:15:36.712000,2d1fccb95ec3c592764c476da01ee6c7eaf37214,False
+2026-09-18T19:27:17.105000,Implementar sincronização em lote de documentos e refatorar funções de integração com GitHub,ready,2026-10-02T07:15:36.713000,c73854b98418bf0fbc8f3ec6d2908d01ea3c08a6,False
+2026-09-18T19:34:28.669000,Implementar lógica de sincronização idempotente com validação de ledger,ready,2026-10-02T07:15:36.713000,87a8aba21bcc09dfce882b57775b5324c1deb56f,False
+2026-09-18T19:37:53.742000,Registro e bump v1.4.90,ready,2026-10-02T07:15:36.713000,87a8aba21bcc09dfce882b57775b5324c1deb56f,False
+2026-09-18T19:42:47.961000,Ajuste no Fluxo Versionamento,ready,2026-10-02T07:15:36.713000,87a8aba21bcc09dfce882b57775b5324c1deb56f,False
+2026-09-18T20:27:16.275000,Adicionar declarações de globais do Node para corrigir lint nos scripts,ready,2026-10-02T07:15:36.712000,378c34ba73d124a46b23f48df56eb0d2375442d5,False
+2026-09-18T21:03:59.731000,Aguardando ações manuais sincronização,ready,2026-10-02T07:15:36.713000,378c34ba73d124a46b23f48df56eb0d2375442d5,False
+2026-09-18T22:22:43.429000,Atualizar documentos de governança e sincronização do sistema,ready,2026-10-02T07:15:36.712000,278cbde24455c73e411afd4667c6d4418b977147,False
+2026-09-18T22:32:51.182000,Espelhos atualizados para v1.4.91,ready,2026-10-02T07:15:36.676000,278cbde24455c73e411afd4667c6d4418b977147,False
+2026-09-18T22:38:42.947000,Race Condition em Sincronização,ready,2026-10-02T07:15:36.676000,278cbde24455c73e411afd4667c6d4418b977147,False
+2026-09-18T22:41:32.643000,Otimizar sincronização para commit atômico no GitHub,ready,2026-10-02T07:15:36.676000,20a6bdfffd612613035ab8967371ac230d806b39,False
+2026-09-18T22:46:01.847000,Correção atômica validada com sucesso,ready,2026-10-02T07:15:36.676000,20a6bdfffd612613035ab8967371ac230d806b39,False
+2026-09-18T22:57:50.350000,Histórico e Versões PeptiCore,ready,2026-10-02T07:15:36.676000,20a6bdfffd612613035ab8967371ac230d806b39,False
+2026-09-18T23:00:11.514000,Reforçar validação de sincronização nos scripts de CI,ready,2026-10-02T07:15:36.676000,de548ce94d7ebc5ec7a061c28ce55bcdeb565d9b,False
+2026-09-18T23:13:49.243000,Update Design System Version,ready,2026-09-18T23:13:49.314000,bec0fa4c4f514309ba3cf5c3bcdc18d0443f762b,False
+2026-09-18T23:15:16.202000,Validação de versão concluída,ready,2026-10-02T07:15:36.676000,bec0fa4c4f514309ba3cf5c3bcdc18d0443f762b,False
+2026-09-18T23:21:28.723000,Atualização da versão design,ready,2026-09-18T23:21:28.759000,76154deca519f6e9eef8fe609704b4b6691d56d2,False
+2026-09-18T23:24:23.534000,Implementar notificação proativa via Brevo e Sentry para divergências de sync no githubContentSync,ready,2026-10-02T07:15:36.626000,964bc53560747bf131bee1a0bac67e227bd0f5fa,False
+2026-09-19T17:30:20.343000,Atualização Comissões PeptiCore Concluída,ready,2026-10-02T07:15:36.625000,964bc53560747bf131bee1a0bac67e227bd0f5fa,False
+2026-09-19T17:32:49.723000,Validação e Roteiro Prospectos,ready,2026-10-02T07:15:36.625000,964bc53560747bf131bee1a0bac67e227bd0f5fa,False
+2026-09-19T20:48:12.260000,Inverter orientação do ícone de seringa no SyringeSelector,ready,2026-10-02T07:15:36.625000,873fcdf58405e4cc5afb646edf2632be72f34944,False
+2026-09-19T21:27:56.890000,Inspeção e validação técnica,ready,2026-10-02T07:15:36.626000,873fcdf58405e4cc5afb646edf2632be72f34944,False
+2026-09-19T21:30:23.529000,Relatório de integridade técnica,ready,2026-10-02T07:15:36.626000,873fcdf58405e4cc5afb646edf2632be72f34944,False
+2026-09-19T21:32:08.755000,Atualizar threat-model.md com status de mitigação e orientações de sincronização,ready,2026-10-02T07:15:36.625000,9734da119e924e13e9c8a2a77161f88e49609c73,False
+2026-09-19T21:33:18.994000,Priorizar validação antes changelog,ready,2026-10-02T07:15:36.626000,9734da119e924e13e9c8a2a77161f88e49609c73,False
+2026-09-19T21:45:56.696000,Status Validação Backend Checkout,ready,2026-10-02T07:15:36.626000,9734da119e924e13e9c8a2a77161f88e49609c73,False
+2026-09-19T22:40:20.006000,Auditoria GOLD aprovada,ready,2026-10-02T07:15:36.626000,9734da119e924e13e9c8a2a77161f88e49609c73,False
+2026-09-19T22:46:13.119000,Sincronização de versão v1.4.92,ready,2026-10-02T07:15:36.626000,9734da119e924e13e9c8a2a77161f88e49609c73,False
+2026-09-19T22:48:47.762000,Bump versão para 1.4.92,ready,2026-10-02T07:15:36.625000,110357d2539c4ff250b786dabfa0811dd849c5d5,False
+2026-09-19T22:50:18.148000,Atualizar artefatos de governança para v1.4.92,ready,2026-10-02T07:15:36.625000,c0ca17d59e5b93c7657cf6e260fdc1b5e166c5a6,False
+2026-09-19T22:53:55.636000,Sincronização v1.4.92 concluída,ready,2026-10-02T07:15:36.626000,c0ca17d59e5b93c7657cf6e260fdc1b5e166c5a6,False
+2026-09-19T22:57:25.345000,Sincronização pendente v1.4.92 confirmada,ready,2026-10-02T07:15:36.626000,c0ca17d59e5b93c7657cf6e260fdc1b5e166c5a6,False
+2026-09-19T22:58:56.322000,Validação de sincronização gatekeeper,ready,2026-10-02T07:15:36.626000,c0ca17d59e5b93c7657cf6e260fdc1b5e166c5a6,False
+2026-09-19T23:02:22.428000,Gatekeeper 1.4.92 validado,ready,2026-10-02T07:15:36.626000,c0ca17d59e5b93c7657cf6e260fdc1b5e166c5a6,False
+2026-09-19T23:19:53.620000,untitled,ready,2026-09-19T23:19:53.673000,c0ca17d59e5b93c7657cf6e260fdc1b5e166c5a6,False
+2026-09-19T23:20:18.803000,Atualização manual Base44 v1.4.93,ready,2026-10-02T07:15:36.625000,c0ca17d59e5b93c7657cf6e260fdc1b5e166c5a6,False
+2026-09-19T23:23:47.468000,Atualizar versão para 1.4.93 e implementar sincronização da missão e posicionamento,ready,2026-10-02T07:15:36.625000,13718c97bb517bc77bf0d8a35013194e5607f7a8,False
+2026-09-19T23:28:24.113000,Atualizar versão do sistema para v1.4.93 e sincronizar espelhos,ready,2026-10-02T07:15:36.625000,d893671f1b4159f604d42ed9872c037616546012,False
+2026-09-19T23:31:40.954000,Atualizar versão para 1.4.93 no sync/version.json,ready,2026-10-02T07:15:36.625000,58bcf427595151f5dc1be4eb3c8d8df981f020e7,False
+2026-09-19T23:32:07.656000,Gatekeeper v1.4.93 pronto,ready,2026-10-02T07:15:36.626000,58bcf427595151f5dc1be4eb3c8d8df981f020e7,False
+2026-09-20T01:50:11.613000,Proposta de bump v1.4.94,ready,2026-10-02T07:15:36.580000,58bcf427595151f5dc1be4eb3c8d8df981f020e7,False
+2026-09-20T01:53:39.824000,Bump version to 1.4.94,ready,2026-10-02T07:15:36.580000,2d18567bbf5cf28558a3aa5bde18fe6874725280,False
+2026-09-20T01:55:11.355000,Configurar mdRawPlugin para interceptar imports de arquivos markdown,ready,2026-10-02T07:15:36.581000,df33cdbd6fb56d52289f37faeb44ae25e98a1006,False
+2026-09-20T02:01:57.712000,Reverter para sincronização client-side com mdRawPlugin,ready,2026-10-02T07:15:36.581000,dd7b4d78a3ae2aa2b793f2ead8f00f7c6fbc0af2,False
+2026-09-20T02:05:07.799000,Atualização Adapta v1.4.94,ready,2026-10-02T07:15:36.580000,dd7b4d78a3ae2aa2b793f2ead8f00f7c6fbc0af2,False
+2026-09-20T02:31:50.490000,Atualização Gatekeeper v1.4.94 concluída,ready,2026-10-02T07:15:36.580000,dd7b4d78a3ae2aa2b793f2ead8f00f7c6fbc0af2,False
+2026-09-20T02:32:35.058000,Ajustar regex do mdRawPlugin para evitar erro de parse do Vite,ready,2026-10-02T07:15:36.580000,0efacad9ffe1bcca3d859774a886683585d7eee0,False
+2026-09-20T02:34:17.212000,Ajustar regex e prioridade do mdRawPlugin no vite.config.js,ready,2026-10-02T07:15:36.580000,05f674ce92ca1ece696b19837883a97c8232adda,False
+2026-09-20T02:34:41.298000,Correção e deploy bem-sucedidos,ready,2026-10-02T07:15:36.580000,05f674ce92ca1ece696b19837883a97c8232adda,False
+2026-09-20T02:38:21.285000,Sincronização concluída: validar ledger,ready,2026-10-02T07:15:36.580000,05f674ce92ca1ece696b19837883a97c8232adda,False
+2026-09-20T02:40:03.670000,Gatekeeper 1.4.94 consolidado,ready,2026-10-02T07:15:36.580000,05f674ce92ca1ece696b19837883a97c8232adda,False
+2026-09-20T03:00:50.147000,Decisão de Ciclo v1.4.95,ready,2026-10-02T07:15:36.578000,05f674ce92ca1ece696b19837883a97c8232adda,False
+2026-09-20T03:06:45.676000,Implementar versão 1.4.95 com validação de alinhamento e novos artefatos,ready,2026-10-02T07:15:36.580000,c3f33d125c98405cbad8945001278b23049116d0,False
+2026-09-20T03:24:17.004000,Adicionar script de alinhamento e workflow de sincronização,ready,2026-10-02T07:15:36.580000,ca6699366cbb0a60c1519c7b5603007be1e830e2,False
+2026-09-20T03:25:32.299000,Correção do Script Alinhamento,ready,2026-10-02T07:15:36.580000,ca6699366cbb0a60c1519c7b5603007be1e830e2,False
+2026-09-20T03:27:17.140000,Validação de deploy v1.4.95,ready,2026-10-02T07:15:36.580000,ca6699366cbb0a60c1519c7b5603007be1e830e2,False
+2026-09-20T03:30:04.377000,Sincronização configurada com sucesso,ready,2026-10-02T07:15:36.581000,ca6699366cbb0a60c1519c7b5603007be1e830e2,False
+2026-09-20T03:32:27.228000,Configuração de CI/CD GitHub,ready,2026-10-02T07:15:36.579000,ca6699366cbb0a60c1519c7b5603007be1e830e2,False
+2026-09-20T03:48:45.646000,Script de Check Alinhamento,ready,2026-10-02T07:15:36.578000,ca6699366cbb0a60c1519c7b5603007be1e830e2,False
+2026-09-20T03:59:46.385000,Resumo de Versões PeptiCore,ready,2026-10-02T07:15:36.580000,ca6699366cbb0a60c1519c7b5603007be1e830e2,False
+2026-09-20T04:05:18.055000,Correção e Sincronização Estrutural,ready,2026-10-02T07:15:36.578000,ca6699366cbb0a60c1519c7b5603007be1e830e2,False
+2026-09-20T04:07:20.601000,Implementar sincronização e governança de Build Reference e Dream Team,ready,2026-10-02T07:15:36.546000,a15c2d57edf9610fdf414c203013f52cd278af60,False
+2026-09-20T04:09:47.854000,Finalizar Integração e Sincronização,ready,2026-10-02T07:15:36.546000,a15c2d57edf9610fdf414c203013f52cd278af60,False
+2026-09-20T04:13:50.160000,Sincronização de Documentação Técnica,ready,2026-10-02T07:15:36.546000,a15c2d57edf9610fdf414c203013f52cd278af60,False
+2026-09-20T04:16:42.390000,Adicionar conteúdo dos artefatos de governança nos espelhos,ready,2026-10-02T07:15:36.546000,576403141fb879385c74541af206152ee69131ac,False
+2026-09-20T04:19:19.551000,Finalização do Base44,ready,2026-10-02T07:15:36.545000,576403141fb879385c74541af206152ee69131ac,False
+2026-09-20T04:21:40.202000,Validação de CI e Checkout,ready,2026-10-02T07:15:36.546000,576403141fb879385c74541af206152ee69131ac,False
+2026-09-20T04:24:47.056000,Ajuste de timeout excedido,ready,2026-10-02T07:15:36.545000,576403141fb879385c74541af206152ee69131ac,False
+2026-09-20T04:25:38.708000,Status e Ajuste Workflow,ready,2026-10-02T07:15:36.492000,576403141fb879385c74541af206152ee69131ac,False
+2026-09-20T04:26:39.584000,Solicitar reautorização de workflow,ready,2026-10-02T07:15:36.491000,576403141fb879385c74541af206152ee69131ac,False
+2026-09-20T04:28:08.084000,Workflow Gatekeeper totalmente automatizado,ready,2026-10-02T07:15:36.492000,576403141fb879385c74541af206152ee69131ac,False
+2026-09-20T04:35:15.480000,Sincronização dos espelhos Base44,ready,2026-10-02T07:15:36.492000,8c2012cf528127e17f747ff0efc7f9c4e06555e4,False
+2026-09-20T04:43:55.634000,Plano de divisão estrutural,ready,2026-10-02T07:15:36.492000,8c2012cf528127e17f747ff0efc7f9c4e06555e4,False
+2026-09-20T04:47:21.142000,Atualizar Documento Mestre para v1.4.96 e estruturar skills do Adapta,ready,2026-10-02T07:15:36.492000,0d0ccdbf8533c38ed76467c0e296d04299d21159,False
+2026-09-20T04:51:53.585000,Sincronização e atualização v1.4.96,ready,2026-10-02T07:15:36.492000,0d0ccdbf8533c38ed76467c0e296d04299d21159,False
+2026-09-20T05:01:17.596000,Automatizar atualização atômica da versão no ledger e cabeçalhos,ready,2026-10-02T07:15:36.491000,cc97811eff48b8a8d8a7d30d8de4a96b09512ab0,False
+2026-09-20T05:04:48.216000,Plano Validação Stripe Checkout,ready,2026-10-02T07:15:36.492000,cc97811eff48b8a8d8a7d30d8de4a96b09512ab0,False
+2026-09-20T05:27:01.523000,Implementar terceira camada de validação de sincronização de skills,ready,2026-10-02T07:15:36.492000,d0ab2e103f822e9847f7b273be8077341365acea,False
+2026-09-20T05:33:27.405000,Implementar sincronização atômica de artefatos com commit único,ready,2026-10-02T07:15:36.492000,bd91e5dfa65c1d3b680c5bb4c3d844515dc681a9,False
+2026-09-20T05:37:15.670000,Corrigir caminho de importação do arquivo de skills,ready,2026-10-02T07:15:36.492000,bd91e5dfa65c1d3b680c5bb4c3d844515dc681a9,False
+2026-09-20T05:39:46.179000,Ciclo v1.4.96 concluído,ready,2026-10-02T07:15:36.491000,bd91e5dfa65c1d3b680c5bb4c3d844515dc681a9,False
+2026-09-20T05:43:53.593000,Sync atômico executado com sucesso,ready,2026-10-02T07:15:36.491000,bd91e5dfa65c1d3b680c5bb4c3d844515dc681a9,False
+2026-09-20T05:54:44.927000,Plano Validação Stripe v1.4.97,ready,2026-10-02T07:15:36.492000,bd91e5dfa65c1d3b680c5bb4c3d844515dc681a9,False
+2026-09-20T05:57:51.128000,Adicionar domínio autorizado nas origens permitidas,ready,2026-10-02T07:15:36.492000,a6781b12d632878524437db3bb2c85fbc2d9ebeb,False
+2026-09-20T05:59:14.530000,Prosseguir para Frente C,ready,2026-10-02T07:15:36.491000,a6781b12d632878524437db3bb2c85fbc2d9ebeb,False
+2026-09-20T06:10:12.863000,Centralizar configurações de ambiente e remover hardcoding no checkout,ready,2026-10-02T07:15:36.491000,cf520bb913cd0c3a5a87d69721d2f5d02d7f453e,False
+2026-09-20T06:24:01.963000,untitled,ready,2026-09-20T06:24:02.012000,cf520bb913cd0c3a5a87d69721d2f5d02d7f453e,False
+2026-09-20T06:24:21.844000,Sincronização concluída: v1.4.97 validada,ready,2026-10-02T07:15:36.492000,cf520bb913cd0c3a5a87d69721d2f5d02d7f453e,False
+2026-09-20T06:33:01.054000,Atualizar versão para 1.4.97 e sincronizar arquivos do sistema,ready,2026-10-02T07:15:36.491000,1625da63a463d318c7bcca37de758bc38a95085a,False
+2026-09-20T06:38:58.271000,Correção de erro ESM,ready,2026-10-02T07:15:36.491000,1625da63a463d318c7bcca37de758bc38a95085a,False
+2026-09-20T06:44:24.742000,Remover wrapper Vite e desescapar conteúdo ao sincronizar com GitHub,ready,2026-10-02T07:15:36.491000,2f8dbdb1af42ccc4e8e462398b66b95564e422da,False
+2026-09-20T06:48:29.582000,Adicionar roteiro de testes do Stripe,ready,2026-10-02T07:15:36.446000,25bddb10775356667a89106421455a6242e9a8b4,False
+2026-09-20T06:51:38.190000,Aplicar ciclo v1.4.98 com correção de falso-positivo Vite e Content Fidelity,ready,2026-10-02T07:15:36.446000,e3fddc19bc65db9f811e4bf0968ba404e513adfa,False
+2026-09-20T07:00:17.404000,Implementar espelhamento e sincronização do Índice Documental,ready,2026-10-02T07:15:36.446000,cf4fec18ac675dfd1075b6f71332d0282f9221d2,False
+2026-09-20T07:21:44.006000,Configuração do CI Main,ready,2026-10-02T07:15:36.446000,cf4fec18ac675dfd1075b6f71332d0282f9221d2,False
+2026-09-20T08:54:43.958000,untitled,ready,2026-09-20T08:54:44.001000,cf4fec18ac675dfd1075b6f71332d0282f9221d2,False
+2026-09-20T08:55:29.727000,Alinhamento e Bump Atômico,ready,2026-10-02T07:15:36.446000,cf4fec18ac675dfd1075b6f71332d0282f9221d2,False
+2026-09-20T09:00:00.010000,Bump atômico v1.4.99 e alinhamento dos artefatos GOV,ready,2026-10-02T07:15:36.446000,e931928cff993b84ac7f5031d14b4d1f8a9fa30c,False
+2026-09-20T09:07:39.400000,Finalização da v1.4.99 concluída,ready,2026-10-02T07:15:36.445000,e931928cff993b84ac7f5031d14b4d1f8a9fa30c,False
+2026-09-20T17:56:18.487000,Check-list de Versão Aprovado,ready,2026-10-02T07:15:36.445000,e931928cff993b84ac7f5031d14b4d1f8a9fa30c,False
+2026-09-20T18:57:30.323000,Validação e ajustes necessários,ready,2026-10-02T07:15:36.445000,e931928cff993b84ac7f5031d14b4d1f8a9fa30c,False
+2026-09-20T19:04:56.520000,Divergência nos scripts CI,ready,2026-10-02T07:15:36.445000,e931928cff993b84ac7f5031d14b4d1f8a9fa30c,False
+2026-09-20T19:07:52.509000,Remover controle de versão do manifesto e limpar scripts obsoletos,ready,2026-10-02T07:15:36.446000,eac9df05ff76ac2ce398440305edb881f2f7e051,False
+2026-09-20T19:11:35.089000,Atualizar versão para v1.4.100 e refatorar check-sync.js,ready,2026-10-02T07:15:36.446000,2c4fff945f61c110d260dad89b4b8dec61f98bf3,False
+2026-09-20T19:46:21.835000,Adiamento do bump v1.4.101,ready,2026-10-02T07:15:36.444000,2c4fff945f61c110d260dad89b4b8dec61f98bf3,False
+2026-09-20T19:49:57.864000,Bump version to 1.4.101 and update GOV consistency,ready,2026-10-02T07:15:36.446000,5d03c6f6427a1a1b9384e44f8d0a16b5d0d2cc0b,False
+2026-09-20T19:51:09.883000,Ciclo v1.4.101 finalizado,ready,2026-10-02T07:15:36.446000,5d03c6f6427a1a1b9384e44f8d0a16b5d0d2cc0b,False
+2026-09-20T19:59:11.834000,Automação Teste Stripe Completa,ready,2026-10-02T07:15:36.445000,5d03c6f6427a1a1b9384e44f8d0a16b5d0d2cc0b,False
+2026-09-20T20:57:46.128000,Diagnóstico de falha: Inexistente,ready,2026-10-02T07:15:36.445000,5d03c6f6427a1a1b9384e44f8d0a16b5d0d2cc0b,False
+2026-09-20T21:33:18.934000,Implementação de ambiente dev,ready,2026-10-02T07:15:36.445000,5d03c6f6427a1a1b9384e44f8d0a16b5d0d2cc0b,False
+2026-09-20T22:02:19.601000,"Atualizar presets de protocolo, adicionar FAQ nas ferramentas e configurar guard de rotas",ready,2026-10-02T07:15:36.445000,723028324534a6bca5b05276e7269ceabee0d643,False
+2026-09-20T22:18:56.207000,Reestruturar navegação e implementar novas seções e componentes da B19,ready,2026-10-02T07:15:36.447000,8c324f0c276dea893707bfaba03742da8804d561,False
+2026-09-20T22:27:33.141000,Atualização do Changelog Canônico,ready,2026-10-02T07:15:36.447000,8c324f0c276dea893707bfaba03742da8804d561,False
+2026-09-20T22:29:49.033000,Atualização do changelog oficial,ready,2026-10-02T07:15:36.404000,8c324f0c276dea893707bfaba03742da8804d561,False
+2026-09-20T22:37:19.937000,Cria arquivo de rascunho para gerenciamento de logs de alteração,ready,2026-10-02T07:15:36.405000,e9d903b0ababefa2e487c2f85cad83b1bdc24691,False
+2026-09-20T22:41:36.848000,Definições financeiras Skill CFO,ready,2026-10-02T07:15:36.405000,e9d903b0ababefa2e487c2f85cad83b1bdc24691,False
+2026-09-20T22:49:00.278000,Corrigir detalhes financeiros e diretrizes de despesas no changelog,ready,2026-10-02T07:15:36.405000,666d8ce8558a5ce8ac0a1c4df71d5366c1f9f420,False
+2026-09-20T22:53:30.334000,Adicionar tag de alinhamento à entrada 5 no changelog,ready,2026-10-02T07:15:36.405000,4b9ec1da7561a68dc7d406f7ca9908e1f9a5af6d,False
+2026-09-21T00:46:38.726000,untitled,ready,2026-09-21T00:46:38.797000,4b9ec1da7561a68dc7d406f7ca9908e1f9a5af6d,False
+2026-09-21T00:55:56.515000,untitled,ready,2026-09-21T00:55:56.566000,4b9ec1da7561a68dc7d406f7ca9908e1f9a5af6d,False
+2026-09-21T00:56:20.403000,Sincronização Versão 1.4.101,ready,2026-10-02T07:15:36.404000,4b9ec1da7561a68dc7d406f7ca9908e1f9a5af6d,False
+2026-09-21T01:01:09.211000,Consolidar tags de alinhamento e bump de versão para v1.4.102,ready,2026-10-02T07:15:36.354000,44803314ba0bc093b3efba8637a8d33ec38bf9de,False
+2026-09-21T03:31:37.205000,Correção de Divergência Base44,ready,2026-10-02T07:15:36.355000,44803314ba0bc093b3efba8637a8d33ec38bf9de,False
+2026-09-21T03:35:24.388000,Restaurar versão do ledger e limpar manifesto de skills,ready,2026-10-02T07:15:36.355000,1f9a1a2ddff4e777d8547cc7cd0d2f7b916cd506,False
+2026-09-21T03:40:14.508000,Remover artefatos obsoletos e ajustar sincronização do sistema,ready,2026-10-02T07:15:36.354000,ce6d82ec75f1d8a23e9bd5267a4df2d80a6fb6db,False
+2026-09-21T03:46:30.069000,Corrigir caminho do arquivo de mapeamento da matriz de alinhamento,ready,2026-10-02T07:15:36.405000,7797566374ebe4483cf0654c38dacd94623589b4,False
+2026-09-21T03:47:46.631000,Sync Pendente: Veto Aplicado,ready,2026-10-02T07:15:36.355000,7797566374ebe4483cf0654c38dacd94623589b4,False
+2026-09-21T03:49:32.261000,Mover arquivo da matriz de alinhamento para a raiz,ready,2026-10-02T07:15:36.355000,f9822a0daa79afe4936cf035fd38f1853f8bfd67,False
+2026-09-21T03:51:08.213000,Sync concluído: Commit b96f803,ready,2026-10-02T07:15:36.355000,f9822a0daa79afe4936cf035fd38f1853f8bfd67,False
+2026-09-21T04:07:21.837000,Corrigir localização da matriz e sincronizar arquivos de documentação,ready,2026-10-02T07:15:36.355000,932d437e14274e5a01986da3702dcacc5fdf9c17,False
+2026-09-21T04:09:32.237000,EOD v1.5.0 Consolidado,ready,2026-10-02T07:15:36.355000,932d437e14274e5a01986da3702dcacc5fdf9c17,False
+2026-09-21T04:16:06.416000,Atualizar critérios de tags de alinhamento no changelog,ready,2026-10-02T07:15:36.405000,6d7da92ee326af313db6dcc8c56b158e38c2fa15,False
+2026-09-21T04:31:57.708000,Adicionar lição aprendida v1.5.0 ao changelog-draft.md,ready,2026-10-02T07:15:36.354000,6bed33c7880f686e253fcdd43ddf70b36e2f28ab,False
+2026-09-21T04:47:19.883000,Bump version to 1.5.1 and update documentation,ready,2026-10-02T07:15:36.355000,04a05fe147e6843b739549971556b824e1d1a69f,False
+2026-09-21T04:53:29.655000,Relatório de Revalidação Segurança,ready,2026-10-02T07:15:36.354000,04a05fe147e6843b739549971556b824e1d1a69f,False
+2026-09-21T05:15:41.388000,Corrigir preenchimento e mapeamento de dados no Wizard de protocolo,ready,2026-10-02T07:15:36.404000,ae3f49d33229ff135565fa9a1e0dcbb91ed0a4a5,False
+2026-09-21T05:48:47.988000,Implementar nova versão do onboarding com 13 cards e melhorias de UX,ready,2026-10-02T07:15:36.355000,76dbd1e344981d70fab2ebc84e583fc90ef6831e,False
+2026-09-21T05:56:45.694000,Guia de Validação Test-Agent,ready,2026-10-02T07:15:36.354000,76dbd1e344981d70fab2ebc84e583fc90ef6831e,False
+2026-09-21T06:04:08.721000,Pendências do ciclo atual,ready,2026-10-02T07:15:36.355000,76dbd1e344981d70fab2ebc84e583fc90ef6831e,False
+2026-09-21T06:07:31.330000,Fix e Bump Versionamento,ready,2026-10-02T07:15:36.355000,76dbd1e344981d70fab2ebc84e583fc90ef6831e,False
+2026-09-21T06:09:40.414000,Validação do Testing Agent,ready,2026-10-02T07:15:36.354000,76dbd1e344981d70fab2ebc84e583fc90ef6831e,False
+2026-09-21T15:53:54.505000,Checklist de Versionamento Aprovado,ready,2026-10-02T07:15:36.354000,76dbd1e344981d70fab2ebc84e583fc90ef6831e,False
+2026-09-21T15:59:04.747000,Gestão de Bump Atômico,ready,2026-10-02T07:15:36.355000,76dbd1e344981d70fab2ebc84e583fc90ef6831e,False
+2026-09-21T16:01:27.074000,Consolidação de Entradas v1.6.0,ready,2026-10-02T07:15:36.354000,76dbd1e344981d70fab2ebc84e583fc90ef6831e,False
+2026-09-21T16:05:16.208000,Adicionar entradas ao changelog-draft.md,ready,2026-10-02T07:15:36.308000,594974ef9ae25ae359bc94944c03ccbee06ccd6f,False
+2026-09-21T16:56:38.990000,Atualizar changelog-draft com novas entradas de custo de controle,ready,2026-10-02T07:15:36.309000,2771843530c916148373d5b9b8961cd45f61b673,False
+2026-09-21T21:45:00.220000,untitled,ready,2026-09-21T21:45:00.288000,2771843530c916148373d5b9b8961cd45f61b673,False
+2026-09-21T21:48:57.934000,Consolidar versão v1.6.0 e atualizar artefatos do sistema,ready,2026-10-02T07:15:36.309000,19b09a1d855552915e3f852a7e9ca556ad46e462,False
+2026-09-21T21:53:14.687000,Consolidação versão 1.6.0 concluída,ready,2026-10-02T07:15:36.310000,19b09a1d855552915e3f852a7e9ca556ad46e462,False
+2026-09-21T21:59:29.917000,Relatório de validação sincronização,ready,2026-10-02T07:15:36.310000,19b09a1d855552915e3f852a7e9ca556ad46e462,False
+2026-09-22T00:28:15.480000,Remover espelhos órfãos e alinhar governança no bump.js,ready,2026-10-02T07:15:36.309000,0e941cf874c7e403dc0a5c70e54f6f63a554426f,False
+2026-09-22T00:33:31.994000,Sincronização de parceiros concluída,ready,2026-10-02T07:15:36.309000,0e941cf874c7e403dc0a5c70e54f6f63a554426f,False
+2026-09-22T01:24:25.083000,Registro Roadmap DEV QUEUE,ready,2026-10-02T07:15:36.309000,64986ebb2559c9fc1475221a4a1008d7e06a0efd,False
+2026-09-22T01:39:08.512000,Implementar Red Flag Engine v1 com validação regulatória e controle de consentimento,ready,2026-10-02T07:15:36.308000,7057d87926b8a6e11dceb2b797755590fa37f94f,False
+2026-09-22T01:47:52.572000,Solicitação de link matriz,ready,2026-10-02T07:15:36.309000,7057d87926b8a6e11dceb2b797755590fa37f94f,False
+2026-09-22T02:02:15.978000,Relatório de Reconciliação Cirúrgica,ready,2026-10-02T07:15:36.308000,7057d87926b8a6e11dceb2b797755590fa37f94f,False
+2026-09-22T02:10:01.256000,Ajustar comportamento e exibição de status null no módulo regulatório,ready,2026-10-02T07:15:36.310000,91c6affb154409994d34c175e9265a0bf7ccefae,False
+2026-09-22T02:27:57.690000,Implementar motor de Global-Score v1.7.0 com teto regulatório e badges de revisão,ready,2026-10-02T07:15:36.308000,3517b3f2942433d3d3b300911fe4d464b7ca7b0e,False
+2026-09-22T02:35:38.980000,Adicionar registros v1.4.96 e v1.4.97 ao changelog-draft.md,ready,2026-10-02T07:15:36.308000,b60393bef8af726078d45027a03153de0a32d125,False
+2026-09-22T02:39:06.488000,Relatório de Divergência Ledger,ready,2026-10-02T07:15:36.309000,b60393bef8af726078d45027a03153de0a32d125,False
+2026-09-22T02:40:47.817000,Atualizar versões nos documentos e matriz de alinhamento,ready,2026-10-02T07:15:36.309000,888e14a0bf9fc156e2afc238eab5c1bf50876d86,False
+2026-09-22T02:44:24.313000,Atualizar versões de renumeradas no changelog-draft,ready,2026-10-02T07:15:36.310000,62642e869498ec4d2ac600a5730e111e81432026,False
+2026-09-22T02:54:53.224000,untitled,ready,2026-09-22T02:54:53.274000,62642e869498ec4d2ac600a5730e111e81432026,False
+2026-09-22T02:59:15.487000,Bump da versão para 1.6.2 e atualização da documentação,ready,2026-10-02T07:15:36.308000,93b883e6952af1c21a43eaf43894aa033236a60c,False
+2026-09-22T03:12:09.038000,Relatório de Verificação Base44,ready,2026-10-02T07:15:36.309000,93b883e6952af1c21a43eaf43894aa033236a60c,False
+2026-09-22T03:17:47.253000,Remover resíduo de path stale e reclassificar status regulatório de Gonadorelin,ready,2026-10-02T07:15:36.309000,0fe69eab3f5780d4aafd1e4a047ba8b280551637,False
+2026-09-22T03:27:56.216000,Marcar combos como derivados no arquivo de peptídeos,ready,2026-10-02T07:15:36.308000,bbf98e41f468784adca6e1e8e88e82ba641752a8,False
+2026-09-22T03:33:55.030000,Atualizar ledger e documentação para versão 1.7.2,ready,2026-10-02T07:15:36.268000,a8b0b4f73e3a26e9959eff9f5770ff9bc192dfc3,False
+2026-09-22T03:53:27.856000,Implementar e integrar o módulo Evidence Graph em todos os pontos de exposição,ready,2026-10-02T07:15:36.268000,2b731caf9ac487c0a941d7298619990164145ea2,False
+2026-09-22T04:22:43.931000,untitled,ready,2026-09-22T04:22:44.001000,2b731caf9ac487c0a941d7298619990164145ea2,False
+2026-09-22T04:25:35.517000,Corrigir função de varredura regulatória e estabilizar monitoramento,ready,2026-10-02T07:15:36.268000,721b499426cf7a7388b8104b93157a6496ff72aa,False
+2026-09-22T04:34:22.934000,Correção de erro Gonadorelin,ready,2026-09-22T04:34:55.264000,806c25de29e34009eb434583ab737a375401248a,False
+2026-09-22T04:34:27.490000,Corrigir lógica de varredura para ignorar propostas já aprovadas,ready,2026-09-22T04:39:04.632000,ba65fbc98603ff756f9208106d1d0b2be06a2faa,False
+2026-09-22T04:38:17.699000,Corrigir varredura de peptídeos e atualizar versão para 1.8.1,ready,2026-10-02T07:15:36.267000,ba65fbc98603ff756f9208106d1d0b2be06a2faa,False
+2026-09-22T04:51:19.312000,Implementar módulo Copilot v1.8.2 e sistema de protocolos validados,ready,2026-10-02T07:15:36.268000,973ef9b7ffc9f718f26c581cda903e92ac18d6b2,False
+2026-09-22T05:07:56.633000,Atualizar changelog e pendências do EOD v1.8.2,ready,2026-10-02T07:15:36.268000,beadd8c42eb14b1517178165883f588c8099413a,False
+2026-09-22T05:37:09.637000,Checklist Pré-Voo 1.8.2,ready,2026-10-02T07:15:36.220000,beadd8c42eb14b1517178165883f588c8099413a,False
+2026-09-22T05:41:18.797000,Atualizar versão para v1.9.0 e consolidar changelog,ready,2026-10-02T07:15:36.219000,79ea9f2d1775a08bdb1cbbf5e3f753302cc1d083,False
+2026-09-22T05:53:52.965000,Auditoria de Falhas Atribuição,ready,2026-10-02T07:15:36.219000,79ea9f2d1775a08bdb1cbbf5e3f753302cc1d083,False
+2026-09-22T05:55:55.981000,Corrigir persistência e validação de códigos de referência,ready,2026-10-02T07:15:36.220000,79599d616d891ff3f75f37786f9ff1d164374edb,False
+2026-09-22T06:00:02.111000,Atualizar versão para v1.10.0 e consolidar mudanças no changelog,ready,2026-10-02T07:15:36.219000,fc01545220011a26a9b5b1a8637cdb8921ba748a,False
+2026-09-22T06:02:42.557000,Alinhamento validado com sucesso,ready,2026-10-02T07:15:36.220000,fc01545220011a26a9b5b1a8637cdb8921ba748a,False
+2026-09-22T06:07:28.523000,Fluxo de Validação Sync,ready,2026-10-02T07:15:36.220000,fc01545220011a26a9b5b1a8637cdb8921ba748a,False
+2026-09-22T06:49:44.578000,Relatório de Conformidade Versão,ready,2026-10-02T07:15:36.219000,fc01545220011a26a9b5b1a8637cdb8921ba748a,False
+2026-09-22T06:52:44.119000,Registrar roadmap estratégico pós-auditoria no changelog-draft.md,ready,2026-10-02T07:15:36.220000,c9f862799fcee5cf1f69821b51e81546a203ae4f,False
+2026-09-22T06:56:48.605000,Bump para versão 1.11.0 e registro do Gate de Alinhamento,ready,2026-10-02T07:15:36.220000,d41d8aa2fd02d7edab1b9beba142d85c4dbfca5d,False
+2026-09-22T06:59:32.692000,Diagnóstico Fluxo Afiliado PeptiCore,ready,2026-10-02T07:15:36.219000,d41d8aa2fd02d7edab1b9beba142d85c4dbfca5d,False
+2026-09-22T07:06:55.437000,Corrigir URL do webhook do Stripe e implementar validação de ref_code,ready,2026-10-02T07:15:36.221000,f93f1dfcfe1a49e0ee1e37050c624511feb4287d,False
+2026-09-22T14:03:50.785000,Relatório de Verificação v1.11.0,ready,2026-10-02T07:15:36.220000,fb105a51da87196f975b64a45dcbec91fb76a62a,False
+2026-09-22T14:12:58.433000,Link do grupo ausente,ready,2026-10-02T07:15:36.221000,fb105a51da87196f975b64a45dcbec91fb76a62a,False
+2026-09-22T15:59:27.597000,Análise de bloqueios testes,ready,2026-10-02T07:15:36.220000,fb105a51da87196f975b64a45dcbec91fb76a62a,False
+2026-09-22T16:13:47.174000,Bypass obrigatório para OTP,ready,2026-10-02T07:15:36.219000,fb105a51da87196f975b64a45dcbec91fb76a62a,False
+2026-09-22T16:25:04.093000,"Implementar bypass de OTP para dev, card de boas-vindas do WhatsApp e atualizar endpoint do webhook ",ready,2026-10-02T07:15:36.220000,af3a76683127bf8d05e3e9c1687aea5a15862fd6,False
+2026-09-22T16:28:53.388000,Correção Endpoint Webhook Stripe,ready,2026-10-02T07:15:36.220000,af3a76683127bf8d05e3e9c1687aea5a15862fd6,False
+2026-09-22T16:33:44.716000,Relatório de Roteamento Stripe,ready,2026-10-02T07:15:36.219000,af3a76683127bf8d05e3e9c1687aea5a15862fd6,False
+2026-09-22T16:39:04.326000,Correção de Webhook Stripe,ready,2026-10-02T07:15:36.220000,af3a76683127bf8d05e3e9c1687aea5a15862fd6,False
+2026-09-22T17:10:01.358000,Validação Ponta a Ponta RefCode,ready,2026-10-02T07:15:36.219000,af3a76683127bf8d05e3e9c1687aea5a15862fd6,False
+2026-09-22T17:40:39.978000,Diagnóstico de Bugs Auth,ready,2026-10-02T07:15:36.219000,af3a76683127bf8d05e3e9c1687aea5a15862fd6,False
+2026-09-22T17:42:54.165000,Implementar bypass de OTP para testes e purgar usuários de teste,ready,2026-10-02T07:15:36.219000,41db0bb2fda81236ec3d1fca23bd2a53dd39d11c,False
+2026-09-22T18:02:54.764000,Diagnóstico Falha Bypass E2E,ready,2026-10-02T07:15:36.172000,41db0bb2fda81236ec3d1fca23bd2a53dd39d11c,False
+2026-09-22T18:11:51.700000,Erro de Autenticação Webhook,ready,2026-10-02T07:15:36.172000,41db0bb2fda81236ec3d1fca23bd2a53dd39d11c,False
+2026-09-22T18:18:36.558000,Erro no Webhook Stripe,ready,2026-10-02T07:15:36.172000,41db0bb2fda81236ec3d1fca23bd2a53dd39d11c,False
+2026-09-22T18:42:25.769000,Relatório Validação e Limpeza,ready,2026-10-02T07:15:36.173000,41db0bb2fda81236ec3d1fca23bd2a53dd39d11c,False
+2026-09-22T18:45:11.998000,Verificação de consistência ledger,ready,2026-10-02T07:15:36.172000,41db0bb2fda81236ec3d1fca23bd2a53dd39d11c,False
+2026-09-22T18:47:20.382000,Adicionar 4 entradas ao changelog-draft.md,ready,2026-10-02T07:15:36.172000,ea042ae05dbeba960289c96c27239d1eaddeebcf,False
+2026-09-22T18:51:27.477000,Consolidar atualizações EOD v1.13.2,ready,2026-10-02T07:15:36.172000,1beaafecdb2b18073ddb503e3d5cf20da75d50c0,False
+2026-09-22T18:57:22.017000,Consolidar versão v1.13.2 e limpar changelog-draft,ready,2026-10-02T07:15:36.173000,a31bbfcca0c544d61da0988cdd8a24b9d9944f6e,False
+2026-09-23T02:52:54.406000,Preflight Diário: Ciclo Limpo,ready,2026-10-02T07:15:36.173000,a31bbfcca0c544d61da0988cdd8a24b9d9944f6e,False
+2026-09-23T02:57:21.659000,Adicionar entrada ao changelog do Núcleo Universal v1.0,ready,2026-10-02T07:15:36.173000,2086b907e0cd3845f2a6818a9da9c3fbff07273f,False
+2026-09-23T04:50:02.318000,Adicionar entradas de marketing ao changelog-draft.md,ready,2026-10-02T07:15:36.171000,a48e1a49d4c6e0176a8fad29660864146fea1e17,False
+2026-09-23T05:01:30.681000,Bump version to 1.14.0 and update changelogs,ready,2026-10-02T07:15:36.173000,1dc47924e283c91ae2f7e2199f10aec6faee2ec2,False
+2026-09-23T05:49:15.963000,untitled,ready,2026-10-02T07:15:36.172000,1dc47924e283c91ae2f7e2199f10aec6faee2ec2,False
+2026-09-23T05:50:27.286000,Substituir visualizador da calculadora por seringa holográfica neon,ready,2026-10-02T07:15:36.173000,6d8843c712f7c16639999d01e977afc34dda1ee7,False
+2026-09-23T05:51:22.016000,Reverter para a animação original da seringa SVG,ready,2026-10-02T07:15:36.172000,f17ba4d90f6ab5a9b46308c0e2f29da32df8b58e,False
+2026-09-23T05:52:34.832000,Seringa holográfica neon,ready,2026-10-02T07:15:36.173000,f17ba4d90f6ab5a9b46308c0e2f29da32df8b58e,False
+2026-09-23T05:53:42.823000,Traduzir páginas de autenticação para português,ready,2026-10-02T07:15:36.172000,5c1d0720c2642ac5a529c91d89d1271c2f077cfc,False
+2026-09-23T05:54:46.261000,Idiomas dos e-mails validados,ready,2026-10-02T07:15:36.173000,5c1d0720c2642ac5a529c91d89d1271c2f077cfc,False
+2026-09-23T06:01:53.175000,Limitações do e-mail Base44,ready,2026-10-02T07:15:36.173000,5c1d0720c2642ac5a529c91d89d1271c2f077cfc,False
+2026-09-23T06:03:31.590000,Publicar traduções no app,ready,2026-10-02T07:15:36.172000,5c1d0720c2642ac5a529c91d89d1271c2f077cfc,False
+2026-09-23T06:10:02.434000,Atualizar título da página de cadastro no Register.jsx,ready,2026-10-02T07:15:36.172000,d55e2a984386857666dba1da2cd7db8d4614c952,False
+2026-09-23T12:18:32.481000,Relatório Pre-flight de Sincronização,ready,2026-10-02T07:15:36.130000,a365074c02cce67d6e96c22b8ea9550afcb66a11,False
+2026-09-23T12:23:12.685000,Status Atual: CHANGELOG Consolidado,ready,2026-10-02T07:15:36.130000,a365074c02cce67d6e96c22b8ea9550afcb66a11,False
+2026-09-23T12:26:30.284000,Status: Fila e Prioridades,ready,2026-10-02T07:15:36.130000,a365074c02cce67d6e96c22b8ea9550afcb66a11,False
+2026-09-23T13:11:21.459000,Ajuste do fluxo OTP,ready,2026-10-02T07:15:36.130000,a365074c02cce67d6e96c22b8ea9550afcb66a11,False
+2026-09-23T13:34:45.629000,Diagnóstico do bypass OTP,ready,2026-10-02T07:15:36.130000,a365074c02cce67d6e96c22b8ea9550afcb66a11,False
+2026-09-23T13:42:36.502000,Adicionar observabilidade ao erro do devOtpBypass em Register.jsx,ready,2026-10-02T07:15:36.084000,41e74f5bf3a98d9914d0aee3652f4d721fef5d1b,False
+2026-09-23T13:56:14.391000,Relatório de Testes e Status,ready,2026-10-02T07:15:36.083000,41e74f5bf3a98d9914d0aee3652f4d721fef5d1b,False
+2026-09-24T09:50:55.007000,Relatório de Testes Blocos,ready,2026-10-02T07:15:36.083000,41e74f5bf3a98d9914d0aee3652f4d721fef5d1b,False
+2026-09-24T09:56:53.290000,Análise de Fluxo RedirectRef,ready,2026-10-02T07:15:36.083000,41e74f5bf3a98d9914d0aee3652f4d721fef5d1b,False
+2026-09-24T10:06:00.497000,Resultado Auditoria Usuário Smoke,ready,2026-10-02T07:15:36.083000,41e74f5bf3a98d9914d0aee3652f4d721fef5d1b,False
+2026-09-24T10:21:57.103000,Verificação e Teste Onboarding,ready,2026-10-02T07:15:36.083000,41e74f5bf3a98d9914d0aee3652f4d721fef5d1b,False
+2026-09-24T11:04:57.971000,Relatório Validação Usuário Bloco2,ready,2026-10-02T07:15:36.083000,41e74f5bf3a98d9914d0aee3652f4d721fef5d1b,False
+2026-09-24T11:19:15.600000,Liberação de acesso beta,ready,2026-10-02T07:15:36.083000,41e74f5bf3a98d9914d0aee3652f4d721fef5d1b,False
+2026-09-24T11:31:20.216000,Execução E2E Onboarding Tour,ready,2026-10-02T07:15:36.083000,41e74f5bf3a98d9914d0aee3652f4d721fef5d1b,False
+2026-09-24T12:42:52.532000,Relatório de Validação Onboarding,ready,2026-10-02T07:15:36.084000,129def5a2402b3a12f16cf7f5f6f52ce53f8d3d1,False
+2026-09-24T12:46:51.990000,Status: Webhook e ANVISA,ready,2026-10-02T07:15:36.084000,129def5a2402b3a12f16cf7f5f6f52ce53f8d3d1,False
+2026-09-24T12:54:20.844000,Padronização Regulatória de Peptídeos,ready,2026-10-02T07:15:36.084000,129def5a2402b3a12f16cf7f5f6f52ce53f8d3d1,False
+2026-09-24T13:13:34.036000,Atualização Matriz Regulatória Peptídeos,ready,2026-10-02T07:15:36.083000,129def5a2402b3a12f16cf7f5f6f52ce53f8d3d1,False
+2026-09-24T13:18:17.566000,Atualizar changelog com persona científica e critérios da matriz,ready,2026-10-02T07:15:36.083000,1ac6622d8dbce7d490b81deeb227d8b352e470d0,False
+2026-09-24T13:25:54.116000,Bump de versão para v1.15.0 e sincronização de governança,ready,2026-10-02T07:15:36.083000,b0ea90c4deb73885f4bd3b77346e22c0ede849ad,False
+2026-09-24T13:43:28.950000,Atualizar roteiro de códigos de parceiros e nota sobre testes Stripe no changelog,ready,2026-10-02T07:15:36.084000,f06e5f0276daab9991bb81a5ab85420734a1e150,False
+2026-09-24T15:02:14.994000,Preparação para teste E2E,ready,2026-10-02T07:15:36.084000,f06e5f0276daab9991bb81a5ab85420734a1e150,False
+2026-09-24T16:07:11.421000,Validação Webhook Stripe Aprovada,ready,2026-10-02T07:15:36.083000,f06e5f0276daab9991bb81a5ab85420734a1e150,False
+2026-09-24T16:17:09.816000,Definição de tom prospectos,ready,2026-10-02T07:15:36.082000,f06e5f0276daab9991bb81a5ab85420734a1e150,False
+2026-09-24T20:19:51.031000,Nova sessão Stripe gerada,ready,2026-10-02T07:15:36.084000,f06e5f0276daab9991bb81a5ab85420734a1e150,False
+2026-09-24T20:41:07.076000,Diagnóstico Completo Pipeline Stripe,ready,2026-10-02T07:15:36.083000,f06e5f0276daab9991bb81a5ab85420734a1e150,False
+2026-09-24T20:48:20.627000,Cleanup Pós-Diagnóstico Concluído,ready,2026-10-02T07:15:36.084000,f06e5f0276daab9991bb81a5ab85420734a1e150,False
+2026-09-24T20:52:41.308000,Falha sincronização artefatos v1.15.0,ready,2026-10-02T07:15:36.083000,f06e5f0276daab9991bb81a5ab85420734a1e150,False
+2026-09-24T21:11:52.471000,Atualizar CHANGELOG e versionamento para v1.16.0,ready,2026-10-02T07:15:36.037000,c80a2e310865ab3b432badc4109928c348f8f60c,False
+2026-09-24T21:37:18.142000,Status e prioridades: v1.16.0,ready,2026-10-02T07:15:36.037000,c80a2e310865ab3b432badc4109928c348f8f60c,False
+2026-09-24T22:03:42.050000,Atualizar registro de handover no changelog,ready,2026-10-02T07:15:36.037000,536d2534da816e0acfb9218401d8b7f023fae334,False
+2026-09-24T22:38:47.535000,Checklist Pré-voo DEV 24/09,ready,2026-10-02T07:15:36.039000,536d2534da816e0acfb9218401d8b7f023fae334,False
+2026-09-24T22:40:40.246000,Handover de Estado 24/09,ready,2026-10-02T07:15:36.038000,536d2534da816e0acfb9218401d8b7f023fae334,False
+2026-09-24T22:45:58.772000,Alinhamento de Personas Confirmado,ready,2026-10-02T07:15:36.038000,536d2534da816e0acfb9218401d8b7f023fae334,False
+2026-09-24T22:55:03.745000,Implementação paralela de infraestrutura,ready,2026-10-02T07:15:36.038000,536d2534da816e0acfb9218401d8b7f023fae334,False
+2026-09-24T23:46:23.418000,Implementação Stripe Ambiente Seguro,ready,2026-09-24T23:46:46.521000,e40d83d2805c537739c928d518a3706597058b0b,False
+2026-09-24T23:46:28.025000,Implementar resolução de chaves Stripe por ambiente com guard de segurança,ready,2026-10-02T07:15:36.038000,e40d83d2805c537739c928d518a3706597058b0b,False
+2026-09-24T23:48:15.963000,Veredito Validação Guard Stripe,ready,2026-10-02T07:15:36.037000,536d2534da816e0acfb9218401d8b7f023fae334,False
+2026-09-24T23:50:43.889000,Relatório de Auditoria Stripe,ready,2026-10-02T07:15:36.038000,e40d83d2805c537739c928d518a3706597058b0b,False
+2026-09-24T23:59:17.806000,Refatorar validação de segredos do Stripe por ambiente,ready,2026-10-02T07:15:36.038000,d3ec5a649ee9e2747636e3e8713f013ccc9d1d86,False
+2026-09-25T00:03:25.418000,Adicionar bypass de OTP condicional em ambiente de desenvolvimento,ready,2026-10-02T07:15:36.038000,00fa635451dbb691485b9007ac59bb76cceceeb3,False
+2026-09-25T01:43:09.336000,Atualizar layout e precificação do menu Planos,ready,2026-10-02T07:15:36.038000,b42a93c0ad8288b081d488ef9a4e43b50bde6a8a,False
+2026-09-25T04:36:55.302000,Bump para v1.17.0 e atualização de changelog,ready,2026-10-02T07:15:36.039000,2ba552efaa7230473a9b0cc19de8fb6cbb8108e1,False
+2026-09-25T04:54:59.952000,Status de Governança v1.17.0,ready,2026-10-02T07:15:36.038000,2ba552efaa7230473a9b0cc19de8fb6cbb8108e1,False
+2026-09-25T14:03:22.614000,Status de Operação Verde,ready,2026-10-02T07:15:36.037000,2ba552efaa7230473a9b0cc19de8fb6cbb8108e1,False
+2026-09-25T14:04:40.014000,Auditoria de Landing Concluída,ready,2026-10-02T07:15:36.037000,2ba552efaa7230473a9b0cc19de8fb6cbb8108e1,False
+2026-09-25T14:08:08.482000,Implementação da Página Planos,ready,2026-10-02T07:15:36.038000,0825eaac343fee84a6d9f7d6920882e2e62fa0c1,False
+2026-09-25T14:34:27.601000,Atualizar UI dos planos e implementar navegação cross-route,ready,2026-10-02T07:15:36.039000,27b2c508ad3623d670e35f7399bb3a36f0402547,False
+2026-09-25T14:47:38.657000,Centralizar badge de promoção no componente de planos,ready,2026-10-02T07:15:36.038000,a4f19b11a50dd527eaedb262a82bc9b24281c643,False
+2026-09-25T14:53:58.976000,Reestruturar visual do card GOLD,ready,2026-10-02T07:15:36.038000,7f6f6cdb1b592e0e5529b19de36fe6461b4ed532,False
+2026-09-25T14:57:50.124000,Adicionar registros ao changelog-draft.md,ready,2026-10-02T07:15:36.002000,20ee2e30529c4a5c94d7b5e051f525e709d88c3f,False
+2026-09-25T15:07:08.458000,Adicionar Dashboard Interativo e atualizar terminologias da FerramentasIA,ready,2026-10-02T07:15:36.003000,cf573cb8bf8ef48657d6416aaf549f3c863b71b4,False
+2026-09-25T15:21:56.241000,Ajustar layout e tipografia do gráfico Score 360º,ready,2026-10-02T07:15:36.002000,e964d1ed45a443b9f2079c9175ff3636ced83532,False
+2026-09-25T15:28:43.062000,Ajustar layout e espaçamento do gráfico de radar,ready,2026-10-02T07:15:36.003000,ca68c6a295242d1f76ae1e4c1aabd4e4d4ce808c,False
+2026-09-25T15:42:17.903000,Ajustar responsividade e overflow do gráfico em FerramentasIA,ready,2026-10-02T07:15:36.002000,ebce8ff682cc2949c9227f4750e81ab3c73e7c80,False
+2026-09-25T16:03:22.929000,Corrigir sobreposição de layout no componente de radar,ready,2026-10-02T07:15:36.002000,8bd96dfdaa33a015405c33930bd652ed7e823673,False
+2026-09-25T16:37:34.838000,Atualizar card Radar 360º para acesso antecipado,ready,2026-10-02T07:15:35.947000,b2f2cc640e70896ea3eacf1948b2b64d75165bcb,False
+2026-09-25T17:16:05.917000,Configuração de métodos autenticação,ready,2026-10-02T07:15:35.946000,b2f2cc640e70896ea3eacf1948b2b64d75165bcb,False
+2026-09-25T17:23:46.133000,Configuração do Radar 360,ready,2026-10-02T07:15:35.946000,b2f2cc640e70896ea3eacf1948b2b64d75165bcb,False
+2026-09-25T20:13:21.110000,Registrar entrega de oferta formal em changelog,ready,2026-10-02T07:15:35.947000,f5d9d416b25383c6a22e940f69b336cf5184924f,False
+2026-09-25T20:16:51.512000,Renomear card para Global-Score e centralizar conteúdo SVG,ready,2026-10-02T07:15:35.946000,c9be824e928493190a9221d17b10ef62445bdb61,False
+2026-09-25T20:34:32.256000,Aumentar tamanho e espaçamento do card Global-Score,ready,2026-10-02T07:15:35.946000,9730e9fbef98064478dd6371d9b5b29eb4eafe93,False
+2026-09-26T01:55:09.061000,Ajustar layout do Global-Score e redesenhar ícone da seringa,ready,2026-10-02T07:15:35.946000,f5c4cf765730a0f4f8c80fb7baa30fe907529f49,False
+2026-09-26T01:57:33.335000,Adicionar entrada de auth ao changelog-draft.md,ready,2026-10-02T07:15:35.946000,1675007c2555a6b5791b167d820941a34da2319d,False
+2026-09-26T01:58:35.288000,Adicionar registro do Global-Score ao changelog-draft,ready,2026-10-02T07:15:35.948000,de5f66538ddf4ab37ec88d6a34776680b3d8b97a,False
+2026-09-26T02:14:16.995000,Preflight VERDE: Status OK,ready,2026-10-02T07:15:35.947000,de5f66538ddf4ab37ec88d6a34776680b3d8b97a,False
+2026-09-26T02:24:05.122000,Auditoria Stripe Env Split,ready,2026-10-02T07:15:35.947000,de5f66538ddf4ab37ec88d6a34776680b3d8b97a,False
+2026-09-26T02:35:23.043000,Remover validação redundante de assinatura Stripe no webhook,ready,2026-10-02T07:15:35.948000,de5f66538ddf4ab37ec88d6a34776680b3d8b97a,False
+2026-09-26T02:41:19.191000,Implementar split de secrets Stripe por ambiente,ready,2026-10-02T07:15:35.947000,8e6171be934f202336abdf359eca580c442b5938,False
+2026-09-26T02:43:54.435000,Configuração de Secrets Stripe,ready,2026-10-02T07:15:35.947000,8e6171be934f202336abdf359eca580c442b5938,False
+2026-09-26T03:10:56.209000,Relatório Validação Checkout Stripe,ready,2026-10-02T07:15:35.947000,8e6171be934f202336abdf359eca580c442b5938,False
+2026-09-26T03:15:00.486000,Teste de Checkout Stripe,ready,2026-10-02T07:15:35.947000,8e6171be934f202336abdf359eca580c442b5938,False
+2026-09-26T03:18:16.214000,Relatório Validação Checkout DEV,ready,2026-10-02T07:15:35.947000,8e6171be934f202336abdf359eca580c442b5938,False
+2026-09-26T03:41:07.563000,Revert HMAC validation logic and update Stripe signing secret,ready,2026-10-02T07:15:35.947000,8e6171be934f202336abdf359eca580c442b5938,False
+2026-09-26T03:49:31.354000,Corrigir chave secreta do Stripe Webhook,ready,2026-10-02T07:15:35.947000,8e6171be934f202336abdf359eca580c442b5938,False
+2026-09-26T04:08:47.453000,Fixar tratamento de webhook para bypass de gateway,ready,2026-10-02T07:15:35.946000,8e6171be934f202336abdf359eca580c442b5938,False
+2026-09-26T04:36:55.157000,Adicionar logs de diagnóstico ao webhook do Stripe,ready,2026-10-02T07:15:35.947000,143bc58f1217bbbc73eafc334b26778930455c10,False
+2026-09-26T05:11:49.179000,Validação do Handler Checkout,ready,2026-10-02T07:15:35.947000,143bc58f1217bbbc73eafc334b26778930455c10,False
+2026-09-26T05:26:29.749000,Implementar botão de upgrade GOLD na página de IA e ajustar atalhos flutuantes,ready,2026-10-02T07:15:35.946000,bb584bb23ec42c4994b50ccc62b18462b06b3ef4,False
+2026-09-26T05:41:11.538000,Corrigir incompatibilidade de casing na validação dos planos Gold,ready,2026-10-02T07:15:35.905000,003f913ae18e14d151168df6394d1f6fff9eaa7f,False
+2026-09-26T05:53:14.272000,Implementar fluxo de login com OTP,ready,2026-10-02T07:15:35.905000,01e7f4731c5a5f1bfc661c42d238a399d1c5f3f1,False
+2026-09-26T06:04:30.571000,Bug Crítico Backend Planos,ready,2026-10-02T07:15:35.905000,01e7f4731c5a5f1bfc661c42d238a399d1c5f3f1,False
+2026-09-26T06:09:16.813000,Corrigir validação de plano Gold e dependências de runtime nos motores de análise,ready,2026-10-02T07:15:35.906000,2894da03f83a6eded555b1c6ffa02fe74b4bdf9b,False
+2026-09-26T06:14:38.310000,"Atualizar página de planos com novas opções Free, GOLD e Avaliação 360",ready,2026-10-02T07:15:35.905000,8b24d791e49b7a86a9950c2b908db9d79ce8ed43,False
+2026-09-26T06:19:21.052000,Adicionar entradas de alinhamento ao changelog-draft.md,ready,2026-10-02T07:15:35.905000,e294c48b36fa5fb58c482d5e54ca824ec89ecfe7,False
+2026-09-26T06:20:24.899000,Registro de Entradas Atualizado,ready,2026-10-02T07:15:35.905000,e294c48b36fa5fb58c482d5e54ca824ec89ecfe7,False
+2026-09-26T14:47:47.845000,Relatório de Validação Planos,ready,2026-10-02T07:15:35.905000,e294c48b36fa5fb58c482d5e54ca824ec89ecfe7,False
+2026-09-26T15:08:35.102000,"Centralizar títulos de página, normalizar rótulos de planos e ajustar layout de planos",ready,2026-10-02T07:15:35.905000,675c0fe0bc78a9210e7c425e90ccb84df12e4596,False
+2026-09-26T15:13:03.496000,Adicionar exibição do plano do usuário na página de perfil,ready,2026-10-02T07:15:36.130000,e664b9c21b3ee54df811fca85b2effae2c61734a,False
+2026-09-26T15:25:43.691000,Extrair card de plano para componente dedicado,ready,2026-10-02T07:15:35.905000,53205399ab63c281cafcdf51e859e52a6986cbf0,False
+2026-09-26T15:47:21.808000,Refatorar componentes e aplicar correções de segurança no perfil do usuário,ready,2026-10-02T07:15:35.905000,26d3e31be980571cd3dd7ac34e9336e3dec7b717,False
+2026-09-26T19:02:56.630000,Automação de Smoke Test,ready,2026-10-02T07:15:35.906000,26d3e31be980571cd3dd7ac34e9336e3dec7b717,False
+2026-09-26T19:59:42.929000,Relatório de Diagnóstico EOD,ready,2026-10-02T07:15:35.905000,26d3e31be980571cd3dd7ac34e9336e3dec7b717,False
+2026-09-26T20:04:39.495000,Adicionar entradas ao changelog-draft.md,ready,2026-10-02T07:15:35.906000,6050e15abb2734d0520bcd2741ebaa7fa9575dfa,False
+2026-09-26T21:05:34.670000,Consolidar versão 1.22.2 com atualizações de governança e planos,ready,2026-10-02T07:15:35.906000,230f62bd4acca9fa1c361584f051bb2e930a41a8,False
+2026-09-26T21:35:42.985000,Implementar núcleo do Motor de Afiliados v2.1 e atribuição de Leads,ready,2026-10-02T07:15:35.906000,ae0ae0fad0a884c21eaa94766adb47521c776f00,False
+2026-09-26T21:51:50.353000,Implementar validações de cenários críticos no cálculo de comissões,ready,2026-10-02T07:15:35.906000,1d63dd3d18b32524607bc8bc3bac578b6f8d2849,False
+2026-09-26T21:51:53.438000,Validação de cenários críticos,ready,2026-09-26T21:52:14.874000,1d63dd3d18b32524607bc8bc3bac578b6f8d2849,False
+2026-09-26T21:54:19.837000,Implementar motor de comissionamento e cron de fechamento mensal parametrizado,ready,2026-10-02T07:15:35.906000,26bcc5358d13e60f69e759f859e13ebaa5770c3c,False
+2026-09-26T22:12:40.280000,Implementar sistema de referral com créditos Stripe e webhook de reembolso,ready,2026-10-02T07:15:35.906000,2a25b3eb9fc2217a67812706bc235052c795b405,False
+2026-09-26T22:38:26.691000,Implementar motor de anti-fraude e governança do incremento 4,ready,2026-10-02T07:15:35.906000,6815ffcee9df7bb2242a05b93b28ee37a4b67245,False
+2026-09-27T03:31:40.143000,Localização dos dados Peptideo,ready,2026-10-02T07:15:35.759000,6815ffcee9df7bb2242a05b93b28ee37a4b67245,False
+2026-09-27T13:13:54.872000,Relatório de Preflight Dev,ready,2026-10-02T07:15:35.658000,6815ffcee9df7bb2242a05b93b28ee37a4b67245,False
+2026-09-27T13:35:45.403000,Diagnóstico de Falha Webhook,ready,2026-10-02T07:15:35.867000,6815ffcee9df7bb2242a05b93b28ee37a4b67245,False
+2026-09-27T13:49:13.540000,Configuração de Endpoints Stripe,ready,2026-10-02T07:15:35.867000,6815ffcee9df7bb2242a05b93b28ee37a4b67245,False
+2026-09-27T14:04:29.558000,Relatório Correção Webhook Stripe,ready,2026-10-02T07:15:35.866000,6815ffcee9df7bb2242a05b93b28ee37a4b67245,False
+2026-09-27T14:17:32.531000,Sincronização de slots ambiente,ready,2026-10-02T07:15:35.800000,6815ffcee9df7bb2242a05b93b28ee37a4b67245,False
+2026-09-27T14:31:56.250000,Relatório de Validação Webhook,ready,2026-10-02T07:15:35.802000,6815ffcee9df7bb2242a05b93b28ee37a4b67245,False
+2026-09-27T15:00:00.086000,Falha Crítica Validação Funil,ready,2026-10-02T07:15:35.800000,6815ffcee9df7bb2242a05b93b28ee37a4b67245,False
+2026-09-27T15:10:37.108000,"Corrigir fluxo de cadastro de leads, adicionar rastreamento UTM e ajustar envio de e-mails",ready,2026-10-02T07:15:35.799000,27f0d4c73c0f3cafad27ad7060f5449420f85611,False
+2026-09-27T15:14:29.167000,Ajuste da Planilha Leads,ready,2026-10-02T07:15:35.799000,27f0d4c73c0f3cafad27ad7060f5449420f85611,False
+2026-09-27T15:18:15.710000,Implementar preenchimento automático de UTMs na planilha de leads via backend,ready,2026-10-02T07:15:35.800000,223061aeec5b54f6684fac387c3aa15b125291b7,False
+2026-09-27T15:19:54.439000,Falha na Revalidação Funil,ready,2026-10-02T07:15:35.867000,223061aeec5b54f6684fac387c3aa15b125291b7,False
+2026-09-27T15:23:04.321000,Falha na Revalidação Funil,ready,2026-10-02T07:15:35.866000,223061aeec5b54f6684fac387c3aa15b125291b7,False
+2026-09-27T16:13:19.662000,Falha na Captura UTM,ready,2026-10-02T07:15:35.866000,223061aeec5b54f6684fac387c3aa15b125291b7,False
+2026-09-27T16:14:50.820000,Atualizar changelog-draft.md com novas entradas de governança e versões minor,ready,2026-10-02T07:15:35.800000,8c37a0371e026a5aec79e74bb6144fe1f271801a,False
+2026-09-27T16:27:47.876000,Retificar entradas e consolidar notas no changelog-draft,ready,2026-10-02T07:15:35.759000,178ca4ac63bd32709544a37338807a9e2d0c2932,False
+2026-09-27T17:57:13.551000,Atualizar critério para GATE_FISCAL na Entrada 3 do changelog-draft,ready,2026-10-02T07:15:35.759000,4a6ed7e0b854d28b42b406d2285b802d65bb557f,False
+2026-09-27T19:49:18.816000,Relatório de Validação Funil,ready,2026-10-02T07:15:35.759000,4a6ed7e0b854d28b42b406d2285b802d65bb557f,False
+2026-09-27T19:53:08.104000,Remover arquivo da landing page estática,ready,2026-10-02T07:15:35.799000,0dcbca95025d86449197d3a69a0a8397d3f43461,False
+2026-09-28T05:31:19.463000,Remover preços e plano Avaliação 360 da interface,ready,2026-10-02T07:15:35.867000,b53fa7de2a1aa52b9c918e70f34efcd0ed55ef14,False
+2026-09-28T14:55:55.428000,Bump de versão v1.23.0 e atualização da matriz de alinhamento,ready,2026-10-02T07:15:35.802000,bb769808fc7cd266e5e7291444c156754b731245,False
+2026-09-28T15:02:11.270000,Consolidar entradas pendentes e limpar draft do changelog,ready,2026-10-02T07:15:35.800000,cff0d582d34848c05b52ae784ec9f8b1059b85ed,False
+2026-09-29T03:02:05.805000,Relatório Pre-flight de Sincronização,ready,2026-10-02T07:15:35.803000,cff0d582d34848c05b52ae784ec9f8b1059b85ed,False
+2026-09-29T03:08:52.692000,Atualizar manifesto de skills e limpar arquivos órfãos,ready,2026-10-02T07:15:35.799000,78a9bf09fc218f3a63fb9fb4385482ffa2be626b,False
+2026-09-29T03:21:28.080000,Validação e correção de logs,ready,2026-10-02T07:15:35.866000,78a9bf09fc218f3a63fb9fb4385482ffa2be626b,False
+2026-09-29T03:26:02.940000,Diagnóstico falha Hard Purge,ready,2026-10-02T07:15:35.799000,78a9bf09fc218f3a63fb9fb4385482ffa2be626b,False
+2026-09-29T03:31:06.784000,Implementar execução de cron com auditoria e idempotência,ready,2026-10-02T07:15:35.801000,68a95b4e07e99c628a3b2dc5c5dea00151a0d1be,False
+2026-09-29T03:35:24.906000,Evitar execução de purga destrutiva quando não houver registros elegíveis,ready,2026-10-02T07:15:35.800000,4f24a2d48d22b1f10ef7c2447f53b409a9c8b0b4,False
+2026-09-29T03:38:34.236000,Implementar job de purga com validação e auditoria,ready,2026-10-02T07:15:35.759000,8561b155e0539499f014322194f16f7a7c376563,False
+2026-09-29T04:32:10.219000,Relatório de Verificação Sistêmica,ready,2026-10-02T07:15:35.801000,8561b155e0539499f014322194f16f7a7c376563,False
+2026-09-29T04:37:17.962000,Relatório Auditoria de Peptídeos,ready,2026-10-02T07:15:35.801000,8561b155e0539499f014322194f16f7a7c376563,False
+2026-09-29T04:46:23.426000,Atualizar matriz de alinhamento e versão do sistema,ready,2026-10-02T07:15:35.800000,a83998881132abc4bbada18b75b8b1ce024c5d4f,False
+2026-09-29T04:50:39.367000,Corrigir tags de persona e atualizar critérios na matriz de alinhamento,ready,2026-10-02T07:15:35.866000,f5be66a8ad88ccee28a342caa3883c36c4ee817a,False
+2026-09-29T05:10:43.490000,Sincronização Ledger e CHANGELOG,ready,2026-10-02T07:15:35.802000,f5be66a8ad88ccee28a342caa3883c36c4ee817a,False
+2026-09-29T05:13:28.121000,Atualiza Changelog com coorte do beta e reclassificação de personas,ready,2026-10-02T07:15:35.800000,8a54f5d3a2bb6045ffab6a2ec9d8c6d9e1733b46,False
+2026-09-29T05:31:04.909000,Instruções de criação isolada,ready,2026-10-02T07:15:35.802000,8a54f5d3a2bb6045ffab6a2ec9d8c6d9e1733b46,False
+2026-09-29T05:40:54.004000,Consolidar EOD e atualizar versão para 1.37.0,ready,2026-10-02T07:15:35.760000,60c670c0f01cf19f4b1570ace6f2c17deb5a920e,False
+2026-09-29T05:43:39.508000,untitled,ready,2026-09-29T05:43:39.595000,60c670c0f01cf19f4b1570ace6f2c17deb5a920e,False
+2026-09-29T05:47:46.783000,Sincronizar script de validação de artefatos governamentais,ready,2026-10-02T07:15:35.802000,9491c3cf9b81f4dddfee3201d4b1ceb8c7d31691,False
+2026-09-29T05:54:50.880000,Arquivar histórico do CHANGELOG e corrigir contagem de entradas,ready,2026-10-02T07:15:35.800000,fa2e9f701de51c5836d1a651e65bdc7780c7a841,False
+2026-09-29T05:58:21.833000,Relatório de Status P6,ready,2026-10-02T07:15:35.801000,fa2e9f701de51c5836d1a651e65bdc7780c7a841,False
+2026-09-29T06:02:05.426000,chore(governanca): registrar contrato ADAPTA->BASE44->GITHUB no draft,ready,2026-10-02T07:15:35.801000,a8af392616e627d401acfbca345dac15e185098a,False
+2026-09-29T06:06:05.932000,Corrigir tag de alinhamento no changelog-draft,ready,2026-10-02T07:15:35.800000,7089ba2e072b08447bc026ca2c6a2d95592cf82f,False
+2026-09-29T06:12:40.996000,Implementar automação de gate com script de verificação,ready,2026-10-02T07:15:35.800000,9373d7b861f9a71597f8d523608854b320b57c52,False
+2026-09-29T06:18:36.478000,Consolidar atualizações de versão v1.38.0 e v1.39.0,ready,2026-10-02T07:15:35.800000,b36aab08880b62159bf85e36ea8ab84e6e3b461d,False
+2026-09-29T12:52:22.568000,Validação P6 Pós-Publicação,ready,2026-10-02T07:15:35.799000,b36aab08880b62159bf85e36ea8ab84e6e3b461d,False
+2026-09-29T12:57:24.625000,Falha na Revalidação P6,ready,2026-10-02T07:15:35.759000,b36aab08880b62159bf85e36ea8ab84e6e3b461d,False
+2026-09-29T12:59:29.474000,Ajuste necessário no P6,ready,2026-10-02T07:15:35.760000,b36aab08880b62159bf85e36ea8ab84e6e3b461d,False
+2026-09-30T06:42:16.818000,Conflitos na versão v1.40.0,ready,2026-10-02T07:15:35.800000,b36aab08880b62159bf85e36ea8ab84e6e3b461d,False
+2026-09-30T06:45:27.875000,Relatório de Governança v1.39.0,ready,2026-10-02T07:15:35.759000,b36aab08880b62159bf85e36ea8ab84e6e3b461d,False
+2026-09-30T06:47:32.693000,Status das Frentes Técnicas,ready,2026-10-02T07:15:35.801000,b36aab08880b62159bf85e36ea8ab84e6e3b461d,False
+2026-09-30T14:16:09.320000,Status de Release Pendente,ready,2026-10-02T07:15:35.867000,b36aab08880b62159bf85e36ea8ab84e6e3b461d,False
+2026-09-30T14:17:40.207000,Implementar otimizações de SEO e adicionar página de lista de espera,ready,2026-10-02T07:15:35.491000,d785473cf0ce04c298d34f4c956a2fc0345532ed,False
+2026-10-01T05:24:16.519000,Configuração de Execução Testes,ready,2026-10-03T15:35:45.679000,d785473cf0ce04c298d34f4c956a2fc0345532ed,False
+2026-10-02T07:16:27.413000,FIX F1.1 bug1 doses-por-vial + SyringeVisualizer na CalculadoraReconstituicao,failed,2026-10-02T07:17:03.402000,25135ab6ed1fc9b710387dd0f2057b22eb2b1f5b,False
+2026-10-02T15:49:43.472000,Correção lógica e componente visualizador,failed,2026-10-02T15:49:56.916000,25135ab6ed1fc9b710387dd0f2057b22eb2b1f5b,False
+2026-10-02T15:52:42.957000,Corrigir exportação de constantes e viabilizar build do projeto,ready,2026-10-03T15:35:45.680000,5cc2c69c207d4bffceab65e1b529df2c87638ede,False
+2026-10-03T05:11:53.206000,Fix ledger self-referencing bug,ready,2026-10-03T05:11:53.266000,960a08b9497e60c9511b80af87a98d6aad4219a6,False
+2026-10-03T05:14:05.627000,Atualizar changelog para v1.40.1,ready,2026-10-03T15:35:45.667000,0ed6158e14ccc8294557e85c2c2862ce90523b79,False
+2026-10-03T05:16:38.359000,Atualizar CHANGELOG e alinhar registros de governança,ready,2026-10-03T15:35:45.649000,80c9eec7ea8d486c3d7339a83a9ebb848f3f20b5,False
+2026-10-03T21:24:54.159000,F1.2-RB-01 pre-run (03/10) — baseline antes de A2/A6/B1/B2,ready,2026-10-03T21:24:54.215000,8c3285cb0e72fdb0593ee27bfac761eda8d59327,False
+2026-10-03T21:40:23.097000,Upgrade UI e Ajustes,ready,2026-10-03T21:40:23.212000,40b9a6a4a81b9058260f2e3130c2ac9aae17ecb6,False
+2026-10-03T21:42:34.732000,docs(sync): sincronizar artefatos de governança para v1.40.2,ready,2026-10-04T01:53:42.970000,5cb0ea7d0f38eee901ddcc66b4bdc3e44303e6be,False
+2026-10-04T01:28:20.594000,Atualização visual e estrutural,failed,2026-10-04T01:28:34.049000,722cc073bec780e729d01bec47ad8eadb7294374,False
+2026-10-04T01:29:53.683000,Refatorar fechamento de tag no grid de FerramentasIA,ready,2026-10-04T01:53:42.918000,6a7c2575ded7ca1898d11eb58b8c7df4342306da,False
+2026-10-04T02:58:07.704000,Implementar conversão Google Ads,ready,2026-10-04T02:58:07.783000,9d9b4aa4dbbbd3a6065fa48af0d07bf9068d2ab4,False
+2026-10-04T02:58:32.904000,Build Verde Sucesso Completo,ready,2026-10-04T12:53:18.139000,9d9b4aa4dbbbd3a6065fa48af0d07bf9068d2ab4,False
+2026-10-04T12:08:01.017000,Declarar variável global no Home.jsx para corrigir erro de linting,ready,2026-10-04T12:53:18.129000,5a2aca0dcbf0a4f53c76bb8088eaa5bb23aa2870,False
+2026-10-04T12:12:00.147000,Correção ESLint gtag concluída,ready,2026-10-04T12:53:18.121000,5a2aca0dcbf0a4f53c76bb8088eaa5bb23aa2870,False
+2026-10-04T12:51:55.466000,Documento Mestre PeptiCore Atualizado,failed,2026-10-04T12:52:08.044000,21cc616ca2278ffa5007e323cc891d89abdaede5,False
+2026-10-04T12:52:09.846000,Verificação de arquivos corrompidos,failed,2026-10-04T13:13:59.793000,21cc616ca2278ffa5007e323cc891d89abdaede5,False
+2026-10-04T14:48:49.195000,Especificação técnica e governança PeptiCore,ready,2026-10-04T14:48:49.290000,1d10305b3cec5e2642447de2306663d2712fd389,False
+2026-10-04T14:49:28.420000,Bloqueio de sincronização pendente,ready,2026-10-05T05:59:24.807000,1d10305b3cec5e2642447de2306663d2712fd389,False
+2026-10-04T15:00:38.156000,Aborto de release: divergências,ready,2026-10-05T05:59:24.806000,1d10305b3cec5e2642447de2306663d2712fd389,False
+2026-10-04T15:13:45.867000,Sincronizar artefatos e atualizar changelog para v1.40.6,ready,2026-10-05T05:59:24.806000,764ce305486419c793e370cb14794978153c0f39,False
+2026-10-04T15:28:07.627000,Corrigir sincronização v1.40.6 e atualizar registro,ready,2026-10-04T22:36:47.769000,c651bbbe632347a41d261c67e10b1f1695bdbb32,False
+2026-10-04T15:41:35.603000,Higienizar CHANGELOG e remover arquivo de versão órfão,ready,2026-10-04T22:36:47.775000,327dd948a94f8715a4c35b89c627f0b9cba963d7,False
+2026-10-04T16:53:29.323000,Bump da versão para v1.41.0 e atualização dos documentos de governança,ready,2026-10-04T22:36:47.756000,5e4b9222359da71ee1197aa0d79472cc0ab3b87d,False
+2026-10-04T16:59:58.102000,Reprovação: Gate 4 bloqueado,ready,2026-10-04T22:36:47.768000,5e4b9222359da71ee1197aa0d79472cc0ab3b87d,False
+2026-10-04T21:48:59.737000,Atualização Governança v1.41.1,ready,2026-10-04T21:48:59.792000,7c008f322ee1e165394840dc4da202f22c7f32f4,False
+2026-10-04T21:51:25.560000,Consolidação v1.41.1 concluída com sucesso,ready,2026-10-04T21:51:58.960000,3db30cc28729182e324f2f247da6d73adfc1c707,False
+2026-10-04T21:51:42.535000,Consolidar versão v1.41.1 e corrigir sincronização de ledger,ready,2026-10-04T22:36:47.762000,3db30cc28729182e324f2f247da6d73adfc1c707,False
+2026-10-04T21:51:59.142000,Consolidação v1.41.1 concluída,ready,2026-10-04T22:36:47.738000,7c008f322ee1e165394840dc4da202f22c7f32f4,False
+2026-10-05T14:33:17.982000,Implementação da BetaPage v1.41.1,ready,2026-10-05T14:33:18.068000,00d58a021a24f0d450c380747d801e31aed0a1b1,False
+2026-10-05T14:38:38.321000,Autorização necessária: checkpoint Base44,ready,2026-10-05T15:00:15.451000,00d58a021a24f0d450c380747d801e31aed0a1b1,False
+2026-10-05T14:38:38.358000,Autorização necessária: Checkpoint Base44,ready,2026-10-05T15:00:15.420000,00d58a021a24f0d450c380747d801e31aed0a1b1,False
+2026-10-05T14:38:55.975000,Verificação e criação de checkpoint,ready,2026-10-05T15:00:15.402000,00d58a021a24f0d450c380747d801e31aed0a1b1,False
+2026-10-05T18:23:46.492000,Autenticação para novo checkpoint,ready,2026-10-05T19:08:44.414000,00d58a021a24f0d450c380747d801e31aed0a1b1,False
+2026-10-05T18:23:47.874000,Autenticação de checkpoint concluída,ready,2026-10-05T18:23:47.940000,00d58a021a24f0d450c380747d801e31aed0a1b1,False
+2026-10-05T18:24:47.209000,Aguardando publicação em produção,ready,2026-10-05T19:08:44.394000,00d58a021a24f0d450c380747d801e31aed0a1b1,False
+2026-10-05T18:24:47.764000,Publicação manual necessária,ready,2026-10-05T18:24:47.920000,00d58a021a24f0d450c380747d801e31aed0a1b1,False
+2026-10-05T18:26:07.011000,Necessário publicar nova versão,ready,2026-10-05T19:08:44.434000,00d58a021a24f0d450c380747d801e31aed0a1b1,False
+2026-10-05T18:26:07.632000,Necessário clicar em Publish,ready,2026-10-05T18:26:07.707000,00d58a021a24f0d450c380747d801e31aed0a1b1,False
+2026-10-05T18:26:33.376000,Correção e publicação necessária,ready,2026-10-05T19:08:44.369000,00d58a021a24f0d450c380747d801e31aed0a1b1,False
+2026-10-05T19:47:01.824000,Ajustes na Calculadora Dosagem,ready,2026-10-05T19:47:16.156000,7ccf1203e037e5b7470cecff943549bb7d8f3053,False
+2026-10-05T19:48:10.574000,Build concluído e publicado,ready,2026-10-06T05:23:20.338000,7ccf1203e037e5b7470cecff943549bb7d8f3053,False
+2026-10-05T19:48:11.391000,Build concluído com sucesso,ready,2026-10-05T19:48:11.494000,7ccf1203e037e5b7470cecff943549bb7d8f3053,False
+2026-10-05T19:48:57.812000,"Build concluído, aguardando publicação",ready,2026-10-06T05:23:20.344000,7ccf1203e037e5b7470cecff943549bb7d8f3053,False
+2026-10-05T19:59:13.297000,Atualização visual da seringa,ready,2026-10-05T19:59:17.058000,09bc73e18f5458cd8c3922f0ddf048decc97a385,False
+2026-10-05T19:59:45.434000,Ajuste de escala necessário,ready,2026-10-06T05:23:20.339000,09bc73e18f5458cd8c3922f0ddf048decc97a385,False
+2026-10-05T21:09:34.139000,Refatorar componente simulador seringa,ready,2026-10-05T21:09:38.894000,eb906c3d26ddbc986956e5800621ce12d318b84f,False
+2026-10-05T21:10:56.227000,Correção da escala seringa,ready,2026-10-06T05:23:20.339000,eb906c3d26ddbc986956e5800621ce12d318b84f,False
+2026-10-05T21:16:14.468000,Atualização da Calculadora Dosagem,ready,2026-10-05T21:16:18.249000,9470d49dba0636e46868f53d2a89b4e1be9d4a9b,False
+2026-10-05T21:17:04.962000,Correção do êmbolo injetável,ready,2026-10-06T05:23:20.344000,9470d49dba0636e46868f53d2a89b4e1be9d4a9b,False
+2026-10-06T02:32:53.619000,Refatoração visual da seringa,ready,2026-10-06T02:33:02.538000,b64cade656b443c91420e8adcaeadefcd31d44f9,False
+2026-10-06T02:33:14.775000,Ajuste de escala visual,ready,2026-10-06T05:23:20.344000,b64cade656b443c91420e8adcaeadefcd31d44f9,False
+2026-10-06T03:46:01.415000,Atualização visual do êmbolo,ready,2026-10-06T03:46:06.778000,8ca8f9997f37f56e68d531c2dac10d90284dafd4,False
+2026-10-06T03:46:33.698000,Ajustes no novo êmbolo,ready,2026-10-06T05:23:20.334000,8ca8f9997f37f56e68d531c2dac10d90284dafd4,False
+2026-10-06T03:55:18.696000,Ajustes na Calculadora Dosagem,ready,2026-10-06T03:55:24.811000,490b02983cf2b17fb11f33315b4e36b257323ed3,False
+2026-10-06T03:55:45.095000,Ajuste de Escala Invertida,ready,2026-10-06T05:23:20.325000,490b02983cf2b17fb11f33315b4e36b257323ed3,False
+2026-10-06T04:07:07.546000,Ajuste na régua dosagem,ready,2026-10-06T04:07:17.285000,6f8efeab122cd8c8e8427765eb38080a6c6b4fc8,False
+2026-10-06T04:07:20.076000,Ajuste visual dos rótulos,ready,2026-10-06T05:23:20.334000,6f8efeab122cd8c8e8427765eb38080a6c6b4fc8,False
+2026-10-06T04:18:29.648000,Refatoração Calculadora de Dosagem,ready,2026-10-06T04:18:39.806000,e22fd76a272db9966f5eeaae7092efd22552ff19,False
+2026-10-06T04:18:41.908000,Ajuste de Escala Invertida,ready,2026-10-06T05:23:20.334000,e22fd76a272db9966f5eeaae7092efd22552ff19,False
+2026-10-06T04:42:17.532000,Atualizar layout da calculadora,ready,2026-10-06T04:42:19.941000,9efdf5b70c4b9fd9e928a3b006c3c5e7ac4f6edf,False
+2026-10-06T04:42:40.440000,Ajuste layout botões seringa,ready,2026-10-06T05:23:20.347000,9efdf5b70c4b9fd9e928a3b006c3c5e7ac4f6edf,False
+2026-10-06T04:45:40.417000,Adjust syringe button padding,ready,2026-10-06T04:45:49.522000,0b8f67394ba2b39c6532cf480f56bf8ca0028dcf,False
+2026-10-06T04:45:58.859000,Build e publique prontamente,ready,2026-10-06T05:23:20.339000,0b8f67394ba2b39c6532cf480f56bf8ca0028dcf,False
+2026-10-06T04:49:49.524000,Adiciona campos WhatsApp/Observação,ready,2026-10-06T04:49:57.401000,a2eaad89f046fd60d0406470417e38793866b58d,False
+2026-10-06T04:49:58.318000,Build e Publique Agora,ready,2026-10-06T05:23:20.339000,a2eaad89f046fd60d0406470417e38793866b58d,False
+2026-10-06T04:52:59.132000,Adjust landing page grid,ready,2026-10-06T04:53:10.714000,d6568d6e1f3e948da7f4c9b564968673974c5fac,False
+2026-10-06T04:53:17.037000,Build concluído com sucesso,ready,2026-10-06T05:23:20.334000,d6568d6e1f3e948da7f4c9b564968673974c5fac,False
+2026-10-06T04:58:44.593000,Atualizar calculadora de dosagem,ready,2026-10-06T04:58:49.980000,f1e3c448e4fc87b3e75914f480b5d6dc16cd5bed,False
+2026-10-06T04:59:19.587000,Ajustar estilo dos botões na landing page,ready,2026-10-06T05:23:20.339000,c634cdf6f6be9aa526815a8a29f553ac452e0a18,False
+2026-10-06T05:02:10.053000,Atualização da Calculadora Dosagem,ready,2026-10-06T05:02:17.835000,c1b4883ce5fc9eaf4e284f434bcf9bc71b03319f,False
+2026-10-06T05:02:27.389000,Build e Publish imediato,ready,2026-10-06T05:28:17.963000,c1b4883ce5fc9eaf4e284f434bcf9bc71b03319f,False
+2026-10-06T05:18:00.356000,Before security fix: Permissions for CheckIn,ready,2026-10-07T01:31:58.425000,c1b4883ce5fc9eaf4e284f434bcf9bc71b03319f,False
+2026-10-06T05:21:43.025000,Implementar Cockpit Biológico PeptiCore,ready,2026-10-06T05:21:44.419000,f668e34da154e69b8ea5a89dd57281e2c055dd2a,False
+2026-10-06T05:22:51.847000,Fase 1 pronta: publicação,ready,2026-10-06T05:23:29.230000,4a5f762742db02c39a25277edd8ffd122dd77b61,False
+2026-10-06T05:23:00.406000,Checkpoint Fase 1 Concluído,ready,2026-10-06T10:46:54.821000,f668e34da154e69b8ea5a89dd57281e2c055dd2a,False
+2026-10-06T05:23:10.279000,Refatorar motor PepScore e corrigir funções de IA no dashboard,ready,2026-10-06T10:46:54.830000,4a5f762742db02c39a25277edd8ffd122dd77b61,False
+2026-10-06T05:27:21.339000,Refatoração do PepScore IA,ready,2026-10-06T05:27:27.066000,56281b521d5f51e15fdea587c5cd36ba3fd4b9e0,False
+2026-10-06T05:28:13.554000,Update NudgeGold component styling,ready,2026-10-06T10:46:54.806000,4c80f05f97b911e09e6e23c20fc5ac3601299fa0,False
+2026-10-06T13:12:55.923000,Build v16,ready,2026-10-06T13:12:56.117000,48c6d403dd326c75d8a579ac4f740628835832fa,False
+2026-10-06T13:21:39.246000,Build v17,ready,2026-10-06T13:21:45.444000,da44172a08a7f747da73aab1d26baa5dfabe6510,False
+2026-10-06T13:24:09.845000,Build v18,ready,2026-10-06T13:24:25.282000,8ff93f602969359ee831c68a94d53e99b5c6efbc,False
+2026-10-06T13:39:47.732000,Build v19 overflow,ready,2026-10-06T13:40:00.081000,8b1143386e5dff7a0e39f3f95909e61f6fb127b0,False
+2026-10-07T01:53:09.365000,EOD v1.42.0 — consolidacao 0610 (B0-B5 + Bloco A/C),failed,2026-10-07T01:53:22.520000,11a270c900f4c53be21752d11fb8e69c63c6718a,False
+2026-10-07T01:55:42.445000,EOD v1.42.0 build 2 — pos-fix tagline footer,failed,2026-10-07T01:56:06.787000,27f282d114367bc3fdffdd1d001e31803df8988c,False
+2026-10-07T01:57:50.098000,EOD v1.42.0 build 3 — footer tagline fix,ready,2026-10-07T01:58:05.182000,8fffdfffa24853d22e091de13244440dfa58e20f,False
+2026-10-07T18:55:16.938000,Fix tracking conversao Ads: ponte gtag_report_conversion global no index.html (rota /lista-de-espera disparava sem a funcao definida) — 07/10/2026,ready,2026-10-07T18:55:23.259000,9cfe6c41cf1bfc615ac6e5d1114a90107bb3b3c8,False
+2026-10-07T19:06:06.124000,v1.42.1 — fix tracking: ponte global gtag_report_conversion (CHANGELOG+ledger bump),ready,2026-10-07T19:06:06.237000,91c84369fde05a014c41d1cf83b7a866b5188c49,False
+2026-10-07T19:39:57.951000,v1.42.1 consolidacao GOV: headers documento-mestre/design-system/build-reference bump 1.42.0->1.42.1 + ledger completo (fix Sync Check),ready,2026-10-07T19:40:07.040000,5b99016375c727e72d77f57708b54fb86d2b30d2,False
+2026-10-08T16:02:38.849000,Meta Pixel base + evento Lead na waitlist (semente de conversao p/ cold start),ready,2026-10-08T16:02:38.918000,29a7f8338276da4425fa49869a853fb654fa5214,False
+2026-10-08T16:03:04.502000,Fix e update v1.42.1,ready,2026-10-08T16:03:04.582000,29a7f8338276da4425fa49869a853fb654fa5214,False
+2026-10-08T16:03:32.648000,Deploy de Lead concluído,ready,2026-10-08T21:15:08.164000,29a7f8338276da4425fa49869a853fb654fa5214,False
+2026-10-09T02:04:56.984000,Runbook Sprint 1 Fase 0 PeptiCore 360 (PUR v1.0) — onboarding dados profundos + consentimento LGPD Art. 11,ready,2026-10-09T02:05:01.962000,6e40151075593139e949218605e04b354070612d,False
+2026-10-09T04:22:32.478000,FIX-CORTEX-0910: deploy Waitlist wa.me click-to-chat (furo 1 funil),ready,2026-10-09T04:22:32.625000,c97ca198c0c910dadd1f029853b778cb28c59073,False
+2026-10-09T05:11:54.602000,Implementação PeptiCore 360 Sprint,ready,2026-10-09T05:11:54.660000,c97ca198c0c910dadd1f029853b778cb28c59073,False
+2026-10-09T05:13:43.987000,PACOTE-NOTURNO-0910 — despacho R2/R3/R4 gravado (Adapta→Córtex),ready,2026-10-09T05:13:46.322000,c053995248c1b0ad182eb4c8e862be500ffe9b13,False
+2026-10-09T05:14:06.735000,Relatório Execução Purgacron R2,ready,2026-10-09T05:45:24.732000,c97ca198c0c910dadd1f029853b778cb28c59073,False
+2026-10-09T05:14:06.945000,Validação Executiva de Purga,ready,2026-10-09T05:14:07.099000,c053995248c1b0ad182eb4c8e862be500ffe9b13,False
+2026-10-09T05:14:23.234000,Status do Build Pendente,ready,2026-10-09T05:45:24.730000,c053995248c1b0ad182eb4c8e862be500ffe9b13,False
+2026-10-09T05:14:23.718000,Status e pendência de build,ready,2026-10-09T05:14:23.788000,c053995248c1b0ad182eb4c8e862be500ffe9b13,False
+2026-10-09T05:15:06.853000,Status: Pendências e Divergências,ready,2026-10-09T05:45:24.736000,c053995248c1b0ad182eb4c8e862be500ffe9b13,False
+2026-10-09T05:19:43.746000,R14 — Fix copy ANVISA (FAQ GOLD-exclusivo + demo Consistência) — roteiros 11-16,ready,2026-10-09T05:19:43.830000,c6ff2345de0fd59655ccbd4fa2d6e9a2aaf33ebf,False
+2026-10-09T05:23:48.384000,FIX-CORTEX-0910-ROTEIRO6-7 — Score 360 Onboarding + Calculadora Publica (HML),ready,2026-10-09T05:23:48.467000,1d4390185929f35196e2f34ddd7a7c5349340813,False
+2026-10-09T05:40:34.139000,FIX-CORTEX-0910-ROTEIRO6-7b — fluxo completo 6 telas (wireframe),ready,2026-10-09T05:40:34.196000,0a008c78fb364c46660da0988b20dfefe6b319cf,False
+2026-10-09T06:00:17.193000,Implementação Onboarding Score 360,ready,2026-10-09T06:00:17.256000,0a008c78fb364c46660da0988b20dfefe6b319cf,False
+2026-10-09T06:04:33.715000,Relatório Execução Fase Zero,ready,2026-10-09T06:05:05.516000,a49107d3d17b3adfb039a68a4ce4dc3d00db908c,False
+2026-10-09T06:04:48.024000,Implementar motor de consentimento e trilha de auditoria append-only para pilares de dados,ready,2026-10-09T07:01:13.588000,a49107d3d17b3adfb039a68a4ce4dc3d00db908c,False
+2026-10-09T06:04:52.586000,Consolidação da Fase 0,ready,2026-10-09T07:01:13.634000,0a008c78fb364c46660da0988b20dfefe6b319cf,False
+2026-10-09T07:54:56.954000,"Implementar ajustes de conformidade, presets de protocolo e otimização de IA",ready,2026-10-09T09:15:11.736000,b40b4188c108ab1a786086da2d93993c3ce8f3b9,False
+2026-10-10T02:39:57.019000,FIX-CORTEX-1010-BETAADS-PEPTI,ready,2026-10-10T02:40:00.821000,47e0193092ff0b9bb207ed04c1305f5e474240eb,False
+2026-10-10T03:07:06.834000,SPRINT1-FASE0-WIRE-UI-V1430,ready,2026-10-10T03:07:22.338000,c71194327ecd8f3f75f6293b2ec90fb5e8ad91c1,False
+2026-10-10T03:21:43.177000,FIX-CORTEX-1010-ROTEIRO24-DESPACHO,ready,2026-10-10T03:21:43.259000,c4d903a6a573bbb21eb0e24ff7b38fb4b1c51891,False
+2026-10-10T15:05:36.104000,FIX-CORTEX-1010-FAVICON-3D — favicon logo 3D PeptiCore em public/ + index.html (substitui SVG genérico),ready,2026-10-10T15:05:44.373000,566c6106ef14473c871b18180027c8ca12c4d884,False
+2026-10-10T15:08:03.781000,FIX-CORTEX-1010-FAVICON-3D-v2 — apple-touch renomeado p/ favicon-180 (colisao rota midia) + 180 publicado,ready,2026-10-10T15:08:19.529000,3ac1cb00458574e87d3cd3c4681dfc486281044a,False
+2026-10-10T22:13:21.828000,EOD-1010-CONSOLIDACAO-v1.44.0-POLITICA-V14-DPO-WIRING,ready,2026-10-10T22:13:29.882000,a928af08b4e1bf099befb2c98c2cb6def9752f14,False
+2026-10-10T23:23:15.216000,FIX-CORTEX-1010-POLITICA-V14-PUBLICACAO,ready,2026-10-10T23:23:15.285000,8c6df1e3f85795fd1d7d5283cd53a09bcfb496f2,False
+2026-10-11T13:55:38.999000,FIX-CORTEX-1110-3PAGINAS-TRIAGEM-COMO-BETA,ready,2026-10-11T13:55:43.678000,4c0e2c2ade8735048e0aebde1f2c03a3997a671f,False
+2026-10-11T14:32:09.880000,COMANDO-MASTER-V2-1110-HERO-SEO,ready,2026-10-11T14:32:23.399000,19d5a1a95deb4455467cee3009be8bf0d5e5d26b,False
+2026-10-11T16:53:51.827000,COMPLIANCE-HOME-1110-LIGO-001,ready,2026-10-11T16:54:06.683000,e997184fc96d25a65b2300e3522976b9ee221b9e,False
+2026-10-11T16:55:00.401000,COMPLIANCE-HOME-1110-LIGO-002-FIX-H1,ready,2026-10-11T16:55:08.246000,e60c7209ef892af615c9c0dd5f6b322f239bb98a,False
+2026-10-11T16:57:56.661000,COMPLIANCE-HOME-1110-LIGO-003-RESIDUOS,ready,2026-10-11T16:58:12.579000,7cb1297e3c8057f6f0c1713d05a7a0072164875b,False
+2026-10-11T22:23:52.696000,FIX-CORTEX-1110-FAVICON-BINARY,ready,2026-10-11T22:24:12.458000,4e141d16a33ce03a4860abb69f3302fd7ea73fc7,False
+2026-10-11T22:24:05.719000,FIX-CORTEX-1110-FAVICON-DATAURI,ready,2026-10-11T22:24:11.027000,353c7aa83a4ebba304015aaeb9d67202d6921c61,False
+2026-10-11T22:25:40.611000,FIX-CORTEX-1110-FAVICON-BINARIO,ready,2026-10-11T22:25:40.946000,95eac78ea883520743858ca41e4085bd95410ca7,False
+2026-10-11T22:26:18.758000,FIX-CORTEX-1110-FAVICON-DATAURI,ready,2026-10-11T22:26:18.836000,4140231d6d6e1371a397cfa4f209c4d945108ebb,False
+2026-10-11T22:26:50.750000,FIX-CORTEX-1110-FAVICON-DATAURI,ready,2026-10-11T22:27:02.128000,40326fbb39e39658d065cf225b9b1279b24f865d,False
+2026-10-11T22:31:01.212000,FIX-CORTEX-1110-FAVICON-SVG-DATAURI,ready,2026-10-11T22:31:09.269000,81909b772b4e0ef90d6647ea0d26f91368c973f2,False
+2026-10-11T22:34:25.356000,FIX-CORTEX-1110-FAVICON-MOLECULA-DATAURI,ready,2026-10-11T22:34:32.394000,154ac59010034e54513556e263b7c1319fc42a1d,False
+2026-10-12T00:45:09.481000,FIX-CORTEX-1110-BETAADS-BIOIDENTICO,ready,2026-10-12T00:45:11.279000,a02982adff0c808f8fed2812ffbd76bd356e8b0e,False
+2026-10-12T23:37:53.097000,Landing Segura v1.45.0,ready,2026-10-12T23:37:53.525000,a153ea7083342acbf952730da626d7beb8d7fe00,False
+2026-10-12T23:39:17.315000,Implementar página de política de privacidade,ready,2026-10-13T14:16:23.178000,f46aa1ca4989d2c0c0e406dade4d4d81d292e4ec,False
+2026-10-12T23:45:40.280000,Atualizar política de privacidade para versão canônica de 12/10/2026,ready,2026-10-13T14:16:23.426000,57921cf6a0c3dfef5a7d7d1dc4f9c05df074145d,False
+2026-10-13T01:27:32.383000,Atualizar versão da política de privacidade para 12/10/2026,ready,2026-10-13T14:16:23.174000,dd36b246405b6bc95bf0cfdc5eae9341ca87271f,False
+2026-10-13T02:20:10.637000,Pendências e ajustes técnicos,ready,2026-10-13T14:16:23.178000,dd36b246405b6bc95bf0cfdc5eae9341ca87271f,False
+2026-10-13T02:44:50.417000,Definição de integração WhatsApp,ready,2026-10-13T14:16:23.178000,dd36b246405b6bc95bf0cfdc5eae9341ca87271f,False
+2026-10-13T02:44:51.285000,Definição de integração WhatsApp,ready,2026-10-13T02:44:51.384000,dd36b246405b6bc95bf0cfdc5eae9341ca87271f,False
+2026-10-13T02:45:01.610000,Fila livre: Bloco 1,ready,2026-10-13T14:16:23.201000,dd36b246405b6bc95bf0cfdc5eae9341ca87271f,False
+2026-10-13T02:45:02.075000,Fila livre: Bloco 1,ready,2026-10-13T02:45:02.155000,dd36b246405b6bc95bf0cfdc5eae9341ca87271f,False
+2026-10-13T02:45:32.789000,Configuração de Lead WhatsApp,ready,2026-10-13T14:16:23.170000,dd36b246405b6bc95bf0cfdc5eae9341ca87271f,False
+2026-10-13T11:16:42.689000,Implementar endpoint de recebimento de leads com deduplicação e integração de planilha,ready,2026-10-13T14:16:23.172000,ef3d35d865552f7ac648ddba0e427afcab16f074,False
+2026-10-13T11:26:14.374000,Implementar endpoint de recebimento de leads com deduplicação e notificação,ready,2026-10-13T14:16:23.162000,b120533ed5ed1fadfb139dd75e05389ae1da9982,False
+2026-10-14T05:22:59.591000,Auditoria de Consentimento e Update,ready,2026-10-14T05:22:59.683000,174fb88197afdad924b37cd288d5b54d5a9ce7b0,False
+2026-10-14T05:26:42.479000,Implementar governança de deploy e corrigir CI para ESM,ready,2026-10-14T09:15:09.283000,b183bce0740c77cfa4b80feda1568eb54986529b,False
+2026-10-15T19:41:20.071000,Sanitização de marca landing,ready,2026-10-15T19:41:25.554000,dee87635099d71a860dbf8ac148b1cba4f2be1e5,False
+2026-10-15T19:47:03.605000,Release v1.46.1 Checkpoint Concluído,ready,2026-10-16T02:29:02.174000,d67cc9f0183c350ce4fd9da4cda86fcf37b1cbf2,False
+2026-10-15T19:47:12.539000,Finalizar sanitização de PI e realizar bump para versão 1.46.1,ready,2026-10-16T02:29:02.168000,d67cc9f0183c350ce4fd9da4cda86fcf37b1cbf2,False
+2026-10-15T19:47:38.176000,Checklist de release concluído,ready,2026-10-16T02:29:02.191000,d67cc9f0183c350ce4fd9da4cda86fcf37b1cbf2,False
+2026-10-15T19:51:39.244000,Atualização Motor de Afiliados,ready,2026-10-15T19:51:50.587000,572acfd5dc4f6ad4dc69f6e20de36d09f23ce203,False
+2026-10-15T19:54:06.262000,Release v1.47.0 e Checkpoint,ready,2026-10-16T02:29:02.168000,955eeacadfff6f16e2ffb440958408dcde22fdfb,False
+2026-10-15T19:54:14.441000,Release v1.47.0 e atualização de documentação,ready,2026-10-16T02:29:02.131000,955eeacadfff6f16e2ffb440958408dcde22fdfb,False
+2026-10-15T19:54:27.501000,Status da Release V1.47.0,ready,2026-10-15T21:15:35.763000,955eeacadfff6f16e2ffb440958408dcde22fdfb,False
+2026-10-16T02:27:20.448000,Implementação contador lista espera,ready,2026-10-16T02:27:20.542000,debf71ef6e835f84b643d603d08854229ffa8846,False
+2026-10-16T02:27:47.240000,Finalizando ciclo e build,ready,2026-10-16T03:15:15.182000,debf71ef6e835f84b643d603d08854229ffa8846,False
+2026-10-16T07:18:06.628000,Redução da janela beta,ready,2026-10-16T07:18:06.809000,780da1c2b013de1f73e7b3d5c9c8ade6e8fe6bd2,False
+2026-10-16T07:19:23.300000,Deploy e otimização pendentes,ready,2026-10-16T09:15:08.443000,780da1c2b013de1f73e7b3d5c9c8ade6e8fe6bd2,False
+2026-10-16T19:35:42.779000,R1-CTA-WAME-955031020-1610,ready,2026-10-16T19:35:42.859000,d3b60e2484d4c894d940b39d339f25b94bbd55ba,False
+2026-10-18T18:06:48.395000,MC-CASE-001-LP-FaseA-1810,ready,2026-10-18T18:06:48.497000,22a8d502d218dd42b1d3a6203d2198afcc43be25,False
+2026-10-19T03:06:11.891000,MC-CASE-001-LP-FaseB-slots-1810,ready,2026-10-19T03:06:11.950000,a4cf464936e02c7d63ac2f85625f7895e195d4f9,False
+2026-10-19T13:14:31.926000,MC-PEPTICORE-PACIENTE001-002-1910,ready,2026-10-19T13:14:32.062000,51121cfa380fdf8aa82e13dee010cc56c53720c9,False
+2026-10-19T13:31:30.351000,MC-PEPTICORE-PACIENTE001-002-1910-INLINE,ready,2026-10-19T13:31:30.426000,420ae53e216dee841839a365210b47bd94bc398e,False
+2026-10-20T16:24:22.440000,MC-L350-F1-NAV-PLANOS-BADGE,ready,2026-10-21T09:15:17.911000,212fcc338e1d24ac63d862ab4873f66a0ecd5998,False
+2026-10-20T16:26:01.290000,MC-L350-F3-FORCE,ready,2026-10-20T21:15:15.906000,b268fa272ebd273a1bb877a8fd0373ca666e1e4b,False
+2026-10-21T10:49:54.089000,jornada-v3-spec-l386,ready,2026-10-22T10:41:49.894000,13aa503995d4490086f35c1a51bb85bc021d20db,False
+2026-10-21T10:58:11.215000,ui-nav-overlap-001-l385,ready,2026-10-21T15:15:25.912000,88acc1f42bd3d35ff1971cd43bf86db5dc980e22,False
+2026-10-21T19:28:12.698000,MC-UI-DEBT-A2-score360-2110,ready,2026-10-21T19:28:12.775000,e18732e3ba3d4d25c6f01926f6bed9024dac8ed7,False
+2026-10-22T10:40:05.019000,Atualização de funcionalidades e jornadas,ready,2026-10-22T10:40:05.099000,e18732e3ba3d4d25c6f01926f6bed9024dac8ed7,False
+2026-10-22T10:40:35.406000,Job de Purga LGPD,ready,2026-10-22T16:53:40.372000,e18732e3ba3d4d25c6f01926f6bed9024dac8ed7,False
+2026-10-22T10:44:20.943000,Fix Purga Usuários Inativos,ready,2026-10-22T10:44:31.556000,7618c55a9af4c497d0c05b937d221d4c78faf35d,False
+2026-10-22T10:44:32.689000,Rotina de Purga LGPD,ready,2026-10-22T16:53:40.371000,7618c55a9af4c497d0c05b937d221d4c78faf35d,False
+2026-10-22T10:52:52.394000,Implementação de script de purga,ready,2026-10-22T10:52:52.458000,7bc4acda8f9fdfa9dd0e01d9fcd06908482d4b26,False
+2026-10-22T10:53:09.532000,Fluxo de Purga Efetivo,ready,2026-10-22T16:53:40.372000,7bc4acda8f9fdfa9dd0e01d9fcd06908482d4b26,False
+2026-10-22T10:54:45.764000,Otimização cron de purga,ready,2026-10-22T10:55:00.681000,7139724c7e02fb91dff19fba5e74b3726366afe0,False
+2026-10-22T10:55:07.002000,Endpoint de Exclusão de Conta,ready,2026-10-22T16:53:40.358000,7139724c7e02fb91dff19fba5e74b3726366afe0,False
+2026-10-22T10:55:59.989000,Reativar conta de usuário,ready,2026-10-22T16:53:40.377000,7139724c7e02fb91dff19fba5e74b3726366afe0,False
+2026-10-22T13:52:30.165000,P02-captura-passada2,ready,2026-10-22T13:52:30.512000,331a579fe79859b551690d6cba5ad71501159958,False
+2026-10-22T17:05:25.982000,P02-captura-passada3,ready,2026-10-22T17:05:26.040000,8893ca405bf26ac62a8290863ca29b4e15995466,False
+2026-10-22T17:09:28.057000,P02-captura-passada3,ready,2026-10-22T17:09:28.152000,c55071f57b957695eb7073652cece0e9638a858f,False
