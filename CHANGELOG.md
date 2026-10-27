@@ -2,6 +2,15 @@
 
 Fonte Única de Verdade da holding. Toda decisão operacional e homologação estrutural constará aqui antes de sua ativação efetiva.
 
+## [1.2.5] - 2026-10-27
+
+### Adicionado (DIR-2710-01 — D4 desacoplado da rodada 1; execução Córtex 27/10)
+- **[Governança]** EMENDA Nº 2 AO NÚCLEO UNIVERSAL v1.2 publicada: `governance/nucleo/EMENDA-N2-NUCLEO-v1.2.md` — extensão agêntica do PUR (contrato de agente em 9 campos), fórmula de autonomia com filtro eliminatório dos 4 contrapesos (meta ≥90% inalterada), anexo de segurança OWASP Top 10 for Agentic Applications 2026, correção de citação LGPD no P4 (Art. 11 dados sensíveis / Art. 20 revisão de decisão unicamente automatizada), monitor de vigência normativa D-15/D-0, vigência de manutenção em ciclo de 180 dias com resenda por bump Major/Minor, nova Regra-Mãe K (premissa normativa só vale reconciliada) e ancoragem de numeração normativa (citação por nome + número). Veículo aditivo per DIR-2410-01 + DIR-2610-01 — conteúdo material do v1.2 inalterado. DOC-2610-07 · HOMOLOGADO.
+- **[Governança]** Contrato-piloto D5 emitido: `governance/nucleo/CONTRATO-AGENTE-F11-TRILHA.md` — trilha de validação dos 6 motores (Eixo 2/F1.1) sob a Emenda nº 2: 9 campos, teto US$ 0,50/rodada, unidade de promoção = RODADA, baseline T2 26/10, telemetria JSONL append-only. DOC-2610-08 · EMITIDO.
+- **[Governança]** Rodada 1 do pacote noturno permanece BLOQUEADA POR CREDENCIAL (DIR-2710-01, Ledger Vivo linha 55) — desacoplada do D4; resposta aos 4 pontos do DOC-2610-14 publicada em _RETORNO (STATUS_COMANDO-DESTRAVAR-RODADA1-CREDENCIAL-E2E_2710.md).
+
+*Emissor: CEO Lucio (DIR-2710-01, homologado 27/10/2026) · Executor: Córtex (Control Plane) — 27/10/2026.*
+
 ## [1.2.3] - 2026-10-20
 
 ### Corrigido (DIRECTIVE MC-GOV-002, Item 1 — registro da lição de fonte de estado; bump Patch, correção de processo sem mudança normativa)
