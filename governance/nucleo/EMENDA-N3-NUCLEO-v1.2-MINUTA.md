@@ -1,6 +1,8 @@
 # EMENDA Nº 3 AO NÚCLEO UNIVERSAL MASTERCORE v1.2
 
 **Nome Canônico do Artefato:** EMENDA-N3-NUCLEO-UNIVERSAL-v1.2
+
+> ⚠️ **ARTEFATO SUPERSEDIDO.** Esta minuta foi homologada pelo CEO em 27/10/2026 (DIR-2710-03). A norma vigente é `governance/nucleo/EMENDA-N3-NUCLEO-v1.2.md` (sha256 9ae9a30c). Este arquivo permanece como histórico de revisão e NÃO deve ser citado como norma.
 **Emissor:** Córtex (Control Plane) · **Autoridade Aprovatória Exclusiva:** LÚCIO — CEO MasterCore
 **Data de emissão:** 27/10/2026 · **Trinca:** 27/10/2026
 **Veículo:** EMENDA ADITIVA ao Núcleo Universal v1.2 (HOMOLOGADO DEFINITIVO desde 14/10/2026, commit a5f0944, ledger 1.2.0, cláusula 6.1). DIR-2410-01 veda bump de versão nova (Núcleo v1.3 proibido); DIR-2610-01 homologou o veículo EMENDA.
