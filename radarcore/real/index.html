@@ -129,23 +129,16 @@
     <p class="sub" id="meta"></p>
     <div class="kpis" id="kpis"></div>
 
-    <div class="tabs" id="tabs">
-      <button class="tab on" data-s="all">Todas <span class="tab-count" id="tc-all"></span></button>
-      <button class="tab" data-s="nacional">Nacional <span class="tab-count" id="tc-nacional"></span></button>
-      <button class="tab" data-s="internacional">Internacional <span class="tab-count" id="tc-internacional"></span></button>
-      <button class="tab" data-s="mesa">Mesa A16 <span class="tab-count" id="tc-mesa"></span></button>
+    <div class="tabs" id="tabs" aria-label="Estado dos registros">
+      <button class="tab on" data-s="all" aria-pressed="true">Todas <span class="tab-count" id="tc-all"></span></button>
+      <button class="tab" data-s="avaliacao" aria-pressed="false">Em avaliação <span class="tab-count" id="tc-avaliacao"></span></button>
+      <button class="tab" data-s="fila" aria-pressed="false">Fila <span class="tab-count" id="tc-fila"></span></button>
+      <button class="tab" data-s="acompanhamento" aria-pressed="false">Acompanhamento <span class="tab-count" id="tc-acompanhamento"></span></button>
+      <button class="tab" data-s="nao_priorizadas" aria-pressed="false">Não priorizadas <span class="tab-count" id="tc-nao_priorizadas"></span></button>
+      <button class="tab" data-s="descartadas" aria-pressed="false">Descartadas <span class="tab-count" id="tc-descartadas"></span></button>
     </div>
-    <div class="filtros" id="filtros">
-      <span class="flabel">Tipo</span>
-      <button class="fchip on" data-f="all">Todos <span class="fcount" id="fc-all"></span></button>
-      <button class="fchip" data-f="RFP">RFP <span class="fcount" id="fc-RFP"></span></button>
-      <button class="fchip" data-f="Challenge">Challenge <span class="fcount" id="fc-Challenge"></span></button>
-      <button class="fchip" data-f="Prêmio">Prêmio <span class="fcount" id="fc-Premio"></span></button>
-      <button class="fchip" data-f="Regulatório">Regulatório <span class="fcount" id="fc-Regulatorio"></span></button>
-    </div>
-
     <table class="tbl">
-      <thead><tr><th>Oportunidade</th><th>Tipo</th><th>Prazo</th><th>Score histórico</th><th>Status</th><th></th></tr></thead>
+      <thead><tr><th>Oportunidade / perfil</th><th>Prazo ou marco informado</th><th>Estado registrado</th><th></th></tr></thead>
       <tbody id="tb"></tbody>
     </table>
     <div class="empty" id="empty" style="display:none">Nenhuma oportunidade neste filtro.</div>
@@ -188,124 +181,53 @@ async function callGate(cred,action){
   return d;
 }
 function toggle(tr){ var open=tr.nextElementSibling.classList.toggle('open');tr.setAttribute('aria-expanded',String(open)); }
-function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
 function chipClass(v){ return v==='GO'?'chip-g':(v==='NO-GO'?'chip-r':'chip-a'); }
 function semaClass(v){ return v==='GO'?'sv':(v==='NO-GO'?'sr':'sa'); }
 function scoreClass(v){ return v==='GO'?'s-go':(v==='NO-GO'?'s-no-go':'s-alerta'); }
-function prazoTxt(p, dias){
-  if(!p) return '—';
-  if(dias!=null){
-    if(dias<0) return 'Prazo passado — revalidar';
-    if(dias<=15) return '▸ '+dias+' dias';
-    if(dias<=45) return dias+' dias';
-    return dias+' dias';
-  }
-  return String(p).split('-').reverse().join('/');
-}
-
 function kpiHtml(k){ return '<div class="kpi"><div class="n">'+esc(k.n)+'</div><div class="l">'+esc(k.l)+'</div><div class="t">'+esc(k.label)+'</div></div>'; }
-
-function rowFeed(it){
-  var ver = it.veredito;
-  var h = '<tr class="data-row" onclick="toggle(this)">'
-    + '<td class="opp"><b>'+esc(it.nome)+'</b><span class="sub">'+esc(it.org||'')+' · '+esc(it.valor||'')+'</span></td>'
-    + '<td><span class="chip chip-a">'+esc(it.tipo)+'</span></td>'
-    + '<td>'+esc(prazoTxt(it.prazo, it.prazo_dias))+'</td>'
-    + '<td><span class="score '+scoreClass(ver)+'">'+esc(it.score)+'</span></td>'
-    + '<td><span class="sema '+semaClass(ver)+'"></span>'+esc(it.status||'')+'</td>'
-    + '<td class="chev">▾</td></tr>';
-  var det = '<tr class="detail"><td colspan="6"><div class="det">'
-    + '<p><span class="lbl">Resumo</span><br>'+esc(it.resumo||'—')+'</p>'
-    + '<p><span class="lbl">Score histórico — '+esc(it.score)+'/100</span><br>'+esc(it.score_ia||'—')+'</p>'
-    + '<p><span class="lbl">Ação</span><br>'+esc(it.acao||'—')+'</p>'
-    + (it.fonte ? '<p><span class="lbl">Fonte</span><br><span class="src">'+esc(it.fonte)+'</span></p>' : '')
-    + '</div></td></tr>';
-  return h + det;
+function sourceLinks(text){
+  var urls=String(text||'').match(/https?:\/\/[^\s;]+/g)||[];
+  return urls.map(function(url){try{var u=new URL(url);if(u.protocol!=='https:'&&u.protocol!=='http:')return '';return '<a class="src" href="'+esc(u.href)+'" target="_blank" rel="noopener noreferrer">'+esc(u.hostname)+'</a>';}catch(e){return '';}}).join(' · ');
 }
-
-function rowMesa(f){
-  var h = '<tr class="data-row" onclick="toggle(this)">'
-    + '<td class="opp"><b>'+esc(f.id+' — '+f.nome)+'</b><span class="sub">'+esc((f.achados&&f.achados[0])||'')+'</span></td>'
-    + '<td><span class="chip '+chipClass(f.veredito)+'">'+esc(f.veredito)+'</span></td>'
-    + '<td>—</td>'
-    + '<td><span class="score '+scoreClass(f.veredito)+'">'+esc(f.score)+'</span></td>'
-    + '<td><span class="sema '+semaClass(f.veredito)+'"></span>'+esc(f.sem||'')+'</td>'
-    + '<td class="chev">▾</td></tr>';
-  var det = '<tr class="detail"><td colspan="6"><div class="det">'
-    + '<p><span class="lbl">Achados</span></p><ul>'+ (f.achados||[]).map(function(a){return '<li>'+esc(a)+'</li>';}).join('') +'</ul>'
-    + '<p><span class="lbl">Risco</span><br>'+esc(f.risco||'—')+'</p>'
-    + '<p><span class="lbl">Ação</span><br>'+esc(f.acao||'—')+'</p>'
-    + '</div></td></tr>';
-  return h + det;
+function rowRegistry(it){
+  var fields=[['Evidência registrada',it.evidencia],['Próximo tratamento',it.proximo],['Aprovação necessária',it.gate],['Verificado em',it.verificado],['Resultado e limites',it.limite],['Motivo',it.motivo],['Fontes e dossiês',it.fonte]];
+  return '<tr class="data-row" tabindex="0" role="button" aria-expanded="false" onclick="toggle(this)"><td class="opp"><b>'+esc(it.iniciativa)+'</b><span class="sub">'+esc(it.id)+' · '+esc(it.titular)+'</span></td><td>'+esc(it.prazo)+'</td><td>'+esc(it.estado)+'</td><td class="chev">▾</td></tr><tr class="detail"><td colspan="4"><div class="det">'+fields.map(function(f){return '<p><span class="lbl">'+esc(f[0])+'</span><br>'+esc(f[1]||'Não informado')+'</p>';}).join('')+'<p>'+sourceLinks(it.fonte)+'</p></div></td></tr>';
 }
-
 function render(){
-  var rows=[], n=0;
-  if(TAB==='mesa'){
-    (DATA.mesa.frentes||[]).forEach(function(f){ rows.push(rowMesa(f)); });
-    n = DATA.mesa.frentes.length;
-  } else {
-    var escopos = TAB==='all' ? ['nacional','internacional'] : [TAB];
-    escopos.forEach(function(e){
-      (DATA.feed[e]&&DATA.feed[e].itens||[]).forEach(function(it){
-        if(FILTRO!=='all' && it.tipo!==FILTRO) return;
-        rows.push(rowFeed(it)); n++;
-      });
-    });
-  }
-  document.getElementById('tb').innerHTML = rows.join('');
-  document.querySelectorAll('tr.data-row').forEach(function(tr){tr.tabIndex=0;tr.setAttribute('role','button');tr.setAttribute('aria-expanded','false');tr.onkeydown=function(event){if(event.key==='Enter'||event.key===' '){event.preventDefault();toggle(tr);}};});
-  document.getElementById('empty').style.display = n? 'none':'block';
+  var rows=DATA.vektor.registros.filter(function(r){return TAB==='all'||r.grupo===TAB;});
+  document.getElementById('tb').innerHTML=rows.map(rowRegistry).join('');
+  document.getElementById('empty').style.display=rows.length?'none':'block';
+  document.querySelectorAll('tr.data-row').forEach(function(tr){tr.onkeydown=function(event){if(event.key==='Enter'||event.key===' '){event.preventDefault();toggle(tr);}};});
 }
-
+function counts(){
+  ['all','avaliacao','fila','acompanhamento','nao_priorizadas','descartadas'].forEach(function(g){
+    var n=DATA.vektor.registros.filter(function(r){return g==='all'||r.grupo===g;}).length;
+    document.getElementById('tc-'+g).textContent='('+n+')';
+  });
+}
 function setTab(t){
   TAB=t;
-  document.querySelectorAll('#tabs .tab').forEach(function(b){ b.classList.toggle('on', b.getAttribute('data-s')===t); });
-  var fr = document.getElementById('filtros');
-  fr.style.display = (t==='mesa') ? 'none' : 'flex';
-  if(t==='mesa'){ FILTRO='all'; document.querySelectorAll('.fchip').forEach(function(c){ c.classList.toggle('on', c.getAttribute('data-f')==='all'); }); }
+  document.querySelectorAll('#tabs .tab').forEach(function(b){var on=b.getAttribute('data-s')===t;b.classList.toggle('on',on);b.setAttribute('aria-pressed',String(on));});
   render();
 }
-function setFiltro(f){
-  FILTRO=f;
-  document.querySelectorAll('.fchip').forEach(function(c){ c.classList.toggle('on', c.getAttribute('data-f')===f); });
-  render();
-}
-document.querySelectorAll('#tabs .tab').forEach(function(b){ b.addEventListener('click', function(){ setTab(b.getAttribute('data-s')); }); });
-document.querySelectorAll('.fchip').forEach(function(c){ c.addEventListener('click', function(){ setFiltro(c.getAttribute('data-f')); }); });
-
-function counts(){
-  var nn=0, ni=0, nm=(DATA.mesa.frentes||[]).length;
-  (DATA.feed.nacional&&DATA.feed.nacional.itens||[]).forEach(function(){ nn++; });
-  (DATA.feed.internacional&&DATA.feed.internacional.itens||[]).forEach(function(){ ni++; });
-  document.getElementById('tc-all').textContent='('+ (nn+ni) +')';
-  document.getElementById('tc-nacional').textContent='('+nn+')';
-  document.getElementById('tc-internacional').textContent='('+ni+')';
-  document.getElementById('tc-mesa').textContent='('+nm+')';
-  var tipos={'RFP':0,'Challenge':0,'Prêmio':0,'Regulatório':0};
-  ['nacional','internacional'].forEach(function(e){ (DATA.feed[e]&&DATA.feed[e].itens||[]).forEach(function(it){ if(tipos[it.tipo]!=null) tipos[it.tipo]++; }); });
-  document.getElementById('fc-all').textContent='('+ (nn+ni) +')';
-  document.getElementById('fc-RFP').textContent='('+tipos['RFP']+')';
-  document.getElementById('fc-Challenge').textContent='('+tipos['Challenge']+')';
-  document.getElementById('fc-Premio').textContent='('+tipos['Prêmio']+')';
-  document.getElementById('fc-Regulatorio').textContent='('+tipos['Regulatório']+')';
-}
+document.querySelectorAll('#tabs .tab').forEach(function(b){b.addEventListener('click',function(){setTab(b.getAttribute('data-s'));});});
 
 async function showRadar(email,cred,seq){
   var response=await callGate(cred,'data');
   if(seq!==AUTH_SEQ)return;
   var d=typeof response.data==='string'?JSON.parse(response.data):response.data;
-  if(!d||!d.feed||!d.mesa)throw new Error('dados_indisponiveis');
+  if(!d||!d.vektor||!Array.isArray(d.vektor.registros))throw new Error('dados_indisponiveis');
   var expires=credentialExpiry(cred);
   if(!expires||expires<=Date.now())throw Object.assign(new Error('sessao_expirada'),{code:'sessao_expirada'});
   DATA=d;
   document.getElementById('who').textContent='Conta autorizada: '+email;
-  document.getElementById('meta').textContent='Última atualização informada: '+(d.meta&&d.meta.atualizado||'não informada');
+  document.getElementById('meta').textContent='Sincronizado do VEKTOR_RADAR em '+(d.meta&&d.meta.atualizado?new Date(d.meta.atualizado).toLocaleString('pt-BR',{timeZone:'America/Sao_Paulo'})+' (Brasília)':'data não informada');
   document.getElementById('kpis').innerHTML=(d.kpis||[]).map(kpiHtml).join('');
   document.getElementById('gen').textContent=d.meta&&d.meta.atualizado||'';
   var updated=Date.parse(d.meta&&d.meta.atualizado||'');
   var stale=!Number.isFinite(updated)||Date.now()-updated>86400000;
-  document.getElementById('freshness').textContent=stale?'Dados históricos ou atualização sem comprovação recente. Revalide prazos, valores e elegibilidade na fonte oficial.':'Dados recebidos do servidor autorizado. Confira regulamento e pendências antes de decidir.';
+  document.getElementById('freshness').textContent=(stale?'Cópia sem sincronização nas últimas 24 horas. ':'Cópia sincronizada do registro oficial. ')+'Atualização pontual; não automática. '+(d.vektor.execucao&&d.vektor.execucao.evidencia||'')+' Estado em avaliação não comprova elegibilidade; prazo informado não comprova inscrição aberta.';
   counts();render();
   document.getElementById('gate').style.display='none';
   document.getElementById('panel').style.display='block';
