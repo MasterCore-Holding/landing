@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow, noarchive">
-<title>RadarCore — MasterCore · Versão interna (autenticada)</title>
+<title>Vektor — RadarCore · MasterCore</title>
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
   body { background:#081125; color:#F8FAFC; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Arial,sans-serif; min-height:100vh; }
@@ -76,36 +76,56 @@
     td.opp { font-size:15px; padding-bottom:10px; }
     td.chev { display:none; }
   }
+
+  :root{color-scheme:dark}
+  body{background:#0a192f;background-image:linear-gradient(rgba(148,163,184,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(148,163,184,.025) 1px,transparent 1px);background-size:64px 64px}
+  .wrap{max-width:1180px;padding-top:24px}
+  .top{padding-bottom:22px;border-bottom:1px solid #24364c;margin-bottom:28px}
+  .brand{color:#f8fafc;text-decoration:none;font-size:20px;letter-spacing:-.5px}
+  .brand .dot{background:#0ea5e9;box-shadow:none}
+  .brand small{font-size:12px;font-weight:400;color:#94a3b8;letter-spacing:0}
+  .badge{color:#7dd3fc;border-color:#245471;letter-spacing:1.3px}
+  #gate{max-width:570px;margin:64px auto 32px;padding:42px 32px;background:#0e2038;border:1px solid #243f5a;border-radius:20px;text-align:center}
+  #gate h1{font-size:clamp(30px,6vw,44px);letter-spacing:-1.5px;line-height:1.12;margin:18px 0}
+  #gate .sub{margin-bottom:24px}
+  .signin-note{color:#94a3b8;font-size:12px;line-height:1.6;margin-top:22px}
+  .back{color:#7dd3fc;font-size:13px;text-decoration:none}
+  .roadmap{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:22px 0}
+  .roadmap span{padding:7px 13px;border:1px solid #243f5a;border-radius:100px;color:#94a3b8;font-size:12px}
+  .roadmap .active{background:#0ea5e91a;border-color:#0ea5e9;color:#7dd3fc}
+  .notice{padding:14px 18px;border:1px solid #55482a;background:#30291b;border-radius:12px;color:#fcd98b;font-size:13px;line-height:1.6;margin:18px 0}
+  .kpi,.gcard{background:#0e2038;border-color:#243f5a}
+  .kpi .n{background:none;color:#7dd3fc}
+  .tbl th,.det .lbl,.gcard h3{color:#7dd3fc}
+  .tab.on{background:#0ea5e9;color:#071425;border-color:#0ea5e9}
+  button:focus-visible,a:focus-visible,tr:focus-visible{outline:3px solid #7dd3fc;outline-offset:4px}
+  .who{margin-bottom:16px}
+  .sair{color:#cbd5e1}
+  @media(max-width:600px){#gate{margin-top:32px;padding:30px 18px}.wrap{padding:20px 16px 48px}.brand small{display:none}.gcard{min-width:0}.top{gap:20px}}
 </style>
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
 <div class="wrap">
-  <div class="top">
-    <div class="brand"><span class="dot"></span> RadarCore · MasterCore</div>
-    <button class="sair" onclick="sair()">Sair</button>
-  </div>
-  <div class="radares" style="display:flex; gap:8px; flex-wrap:wrap; align-items:center; padding:0 0 18px; border-bottom:1px solid #1E3A5F; margin-bottom:30px;">
-    <span style="color:#64748B; font-size:11px; letter-spacing:1.5px; text-transform:uppercase; margin-right:4px;">Radares</span>
-    <a class="rchip on" href="/radarcore/real/" style="display:inline-flex; align-items:center; gap:6px; padding:6px 13px; border-radius:999px; border:1px solid #14B8A6; background:rgba(20,184,166,.12); color:#14B8A6; font-size:12.5px; font-weight:600; text-decoration:none;"><span style="width:7px;height:7px;border-radius:50%;background:#14B8A6;box-shadow:0 0 8px #14B8A6;display:inline-block;"></span> Radar RFP</a>
-    <a class="rchip" href="/towercore/" style="display:inline-flex; align-items:center; gap:6px; padding:6px 13px; border-radius:999px; border:1px solid #1E3A5F; color:#94A3B8; font-size:12.5px; font-weight:600; text-decoration:none;"><span style="width:7px;height:7px;border-radius:50%;background:#F59E0B;display:inline-block;"></span> Radar Pré-Lançamento · TowerCore</a>
-    <span class="rchip" style="padding:6px 13px; border-radius:999px; border:1px solid #1E3A5F; color:#64748B; font-size:12.5px; font-weight:600; opacity:.55;">Radar Innovation — em breve</span>
-    <span class="rchip" style="padding:6px 13px; border-radius:999px; border:1px solid #1E3A5F; color:#64748B; font-size:12.5px; font-weight:600; opacity:.55;">Security — em breve</span>
-    <span class="rchip" style="padding:6px 13px; border-radius:999px; border:1px solid #1E3A5F; color:#64748B; font-size:12.5px; font-weight:600; opacity:.55;">Fomento — em breve</span>
-    <span class="rchip" style="padding:6px 13px; border-radius:999px; border:1px solid #1E3A5F; color:#64748B; font-size:12.5px; font-weight:600; opacity:.55;">Regulatório — em breve</span>
-    <span class="rchip" style="padding:6px 13px; border-radius:999px; border:1px solid #1E3A5F; color:#64748B; font-size:12.5px; font-weight:600; opacity:.55;">Distress — em breve</span>
-  </div>
+  <header class="top">
+    <a class="brand" href="/"><span class="dot"></span> MasterCore <small>/ RadarCore</small></a>
+    <button class="sair" id="logout" onclick="sair()" style="display:none">Sair da conta</button>
+  </header>
   <div id="gate">
-    <div class="badge">Uso interno</div>
-    <h1>Radar RFP</h1>
-    <p class="sub">Monitor de oportunidades (RFPs, prêmios, challenges e marcos regulatórios) do Grupo MasterCore.<br>Área interna — acesso controlado por conta Google autorizada.</p>
-    <div id="gbtn" style="display:flex; justify-content:center; margin-top:22px; min-height:44px;"></div>
-    <div class="err" id="e" style="color:#F87171; font-size:14px; min-height:20px; margin:14px 0 8px; text-align:center;"></div>
+    <div class="badge">RadarCore · Acesso interno</div>
+    <h1>Inteligência para<br>o próximo movimento.</h1>
+    <p class="sub">Entre para acompanhar o piloto Vektor: oportunidades verificadas, pendências claras e decisões com evidência.</p>
+    <div id="gbtn" style="display:flex;justify-content:center;min-height:44px"></div>
+    <div id="e" role="status" aria-live="polite" style="color:#fca5a5;font-size:14px;min-height:22px;margin-top:16px"></div>
+    <p class="signin-note">Use uma conta Google autorizada pela MasterCore.</p>
+    <p style="margin-top:24px"><a class="back" href="/radarcore/">← Conhecer o RadarCore</a></p>
   </div>
   <div id="panel" style="display:none">
     <div class="who" id="who"></div>
-    <div class="badge">Feed global + Mesa A16</div>
-    <h1>Radar de Oportunidades</h1>
+    <div class="badge">Vektor · Piloto interno</div>
+    <h1>Oportunidades, com contexto.</h1>
+    <div class="roadmap" aria-label="Produtos"><span class="active">Vektor · Piloto ativo</span><span>Tech · Planejado</span><span>Tower · Futuro</span></div>
+    <div class="notice" id="freshness">Aguardando dados autorizados. A presença no painel não comprova elegibilidade nem aprovação.</div>
     <p class="sub" id="meta"></p>
     <div class="kpis" id="kpis"></div>
 
@@ -125,14 +145,14 @@
     </div>
 
     <table class="tbl">
-      <thead><tr><th>Oportunidade</th><th>Tipo</th><th>Prazo</th><th>Score IA</th><th>Status</th><th></th></tr></thead>
+      <thead><tr><th>Oportunidade</th><th>Tipo</th><th>Prazo</th><th>Score histórico</th><th>Status</th><th></th></tr></thead>
       <tbody id="tb"></tbody>
     </table>
     <div class="empty" id="empty" style="display:none">Nenhuma oportunidade neste filtro.</div>
 
     <div class="gate">
-      <div class="gcard"><h3>Decisão da taxa US$15k</h3><p><b style="color:#F59E0B">NÃO PAGAR AGORA</b><br>Nenhum edital de saúde US$100M com taxa US$15k foi localizado na fonte primária (SAM.gov/ARPA-H/grants.gov) na varredura de 20/10. Sem alvo confirmado, pagamento viola a regra pedra do MAPA v5.6 (capital após evidência).</p></div>
-      <div class="gcard"><h3>Condição de GO</h3><p>Pagar somente se o Bayard fornecer o ID/link do edital e o Radar confirmar elegibilidade em nova varredura dirigida.</p></div>
+      <div class="gcard"><h3>Antes de decidir</h3><p>Confira a edição, o prazo, o regulamento e os requisitos eliminatórios na fonte oficial. Informação desconhecida permanece em diligência.</p></div>
+      <div class="gcard"><h3>Próximos radares</h3><p>Security, Regulatório e Distress estão em avaliação. Fomento integra o escopo do Vektor. Nenhum novo radar foi ativado nesta interface.</p></div>
     </div>
     <div class="foot">Grupo MasterCore · control plane · <span id="gen"></span></div>
   </div>
@@ -142,8 +162,32 @@ var HUB='https://master-core-hub.base44.app/api/apps/6ac33e5bd58233f964488e87/fu
 var SES='mc_radar_session', CRED='mc_radar_cred';
 var DATA=null, TAB='all', FILTRO='all';
 
-function sair(){ try{localStorage.removeItem(SES);}catch(e){} try{sessionStorage.removeItem(CRED);}catch(e){} location.reload(); }
-function toggle(tr){ tr.nextElementSibling.classList.toggle('open'); }
+var SESSION_TIMER=null, AUTH_SEQ=0;
+function clearSession(){
+  clearTimeout(SESSION_TIMER);
+  try{localStorage.removeItem(SES);}catch(e){}
+  try{sessionStorage.removeItem(CRED);}catch(e){}
+}
+function hidePanel(message){
+  DATA=null;
+  document.getElementById('panel').style.display='none';
+  document.getElementById('logout').style.display='none';
+  document.getElementById('gate').style.display='block';
+  ['tb','kpis','who','meta','gen'].forEach(function(id){document.getElementById(id).textContent='';});
+  document.getElementById('e').textContent=message||'';
+}
+function sair(){AUTH_SEQ++;clearSession();hidePanel('Você saiu da conta.');if(window.google)google.accounts.id.disableAutoSelect();startGoogle();}
+function credentialExpiry(cred){
+  try{var p=JSON.parse(atob(cred.split('.')[1].replace(/-/g,'+').replace(/_/g,'/')));return Number(p.exp)*1000;}catch(e){return 0;}
+}
+function authError(code){return code==='acesso_nao_autorizado'?'Esta conta não tem acesso ao RadarCore.':(code==='sessao_expirada'?'Sua sessão expirou. Entre novamente.':'Não foi possível validar seu acesso. Tente novamente.');}
+async function callGate(cred,action){
+  var r=await fetch(HUB,{method:'POST',headers:{'Content-Type':'application/json'},cache:'no-store',body:JSON.stringify({credential:cred,action:action||''})});
+  var d=await r.json();
+  if(!r.ok||!d.ok){var e=new Error(d.error||'indisponivel');e.code=d.error;throw e;}
+  return d;
+}
+function toggle(tr){ var open=tr.nextElementSibling.classList.toggle('open');tr.setAttribute('aria-expanded',String(open)); }
 function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 function chipClass(v){ return v==='GO'?'chip-g':(v==='NO-GO'?'chip-r':'chip-a'); }
 function semaClass(v){ return v==='GO'?'sv':(v==='NO-GO'?'sr':'sa'); }
@@ -151,6 +195,7 @@ function scoreClass(v){ return v==='GO'?'s-go':(v==='NO-GO'?'s-no-go':'s-alerta'
 function prazoTxt(p, dias){
   if(!p) return '—';
   if(dias!=null){
+    if(dias<0) return 'Prazo passado — revalidar';
     if(dias<=15) return '▸ '+dias+' dias';
     if(dias<=45) return dias+' dias';
     return dias+' dias';
@@ -171,7 +216,7 @@ function rowFeed(it){
     + '<td class="chev">▾</td></tr>';
   var det = '<tr class="detail"><td colspan="6"><div class="det">'
     + '<p><span class="lbl">Resumo</span><br>'+esc(it.resumo||'—')+'</p>'
-    + '<p><span class="lbl">Score IA — '+esc(it.score)+'/100</span><br>'+esc(it.score_ia||'—')+'</p>'
+    + '<p><span class="lbl">Score histórico — '+esc(it.score)+'/100</span><br>'+esc(it.score_ia||'—')+'</p>'
     + '<p><span class="lbl">Ação</span><br>'+esc(it.acao||'—')+'</p>'
     + (it.fonte ? '<p><span class="lbl">Fonte</span><br><span class="src">'+esc(it.fonte)+'</span></p>' : '')
     + '</div></td></tr>';
@@ -209,6 +254,7 @@ function render(){
     });
   }
   document.getElementById('tb').innerHTML = rows.join('');
+  document.querySelectorAll('tr.data-row').forEach(function(tr){tr.tabIndex=0;tr.setAttribute('role','button');tr.setAttribute('aria-expanded','false');tr.onkeydown=function(event){if(event.key==='Enter'||event.key===' '){event.preventDefault();toggle(tr);}};});
   document.getElementById('empty').style.display = n? 'none':'block';
 }
 
@@ -245,52 +291,67 @@ function counts(){
   document.getElementById('fc-Regulatorio').textContent='('+tipos['Regulatório']+')';
 }
 
-function showRadar(email, cred){
+async function showRadar(email,cred,seq){
+  var response=await callGate(cred,'data');
+  if(seq!==AUTH_SEQ)return;
+  var d=typeof response.data==='string'?JSON.parse(response.data):response.data;
+  if(!d||!d.feed||!d.mesa)throw new Error('dados_indisponiveis');
+  var expires=credentialExpiry(cred);
+  if(!expires||expires<=Date.now())throw Object.assign(new Error('sessao_expirada'),{code:'sessao_expirada'});
+  DATA=d;
+  document.getElementById('who').textContent='Conta autorizada: '+email;
+  document.getElementById('meta').textContent='Última atualização informada: '+(d.meta&&d.meta.atualizado||'não informada');
+  document.getElementById('kpis').innerHTML=(d.kpis||[]).map(kpiHtml).join('');
+  document.getElementById('gen').textContent=d.meta&&d.meta.atualizado||'';
+  var updated=Date.parse(d.meta&&d.meta.atualizado||'');
+  var stale=!Number.isFinite(updated)||Date.now()-updated>86400000;
+  document.getElementById('freshness').textContent=stale?'Dados históricos ou atualização sem comprovação recente. Revalide prazos, valores e elegibilidade na fonte oficial.':'Dados recebidos do servidor autorizado. Confira regulamento e pendências antes de decidir.';
+  counts();render();
   document.getElementById('gate').style.display='none';
   document.getElementById('panel').style.display='block';
-  document.getElementById('who').textContent='Sessão ativa: '+email;
-  fetch(HUB,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({credential:cred,action:'data'})})
-    .then(function(r){ if(!r.ok) throw 0; return r.json(); })
-    .then(function(d){ if(!(d.data&&d.data.length)) { console.log('radar-data ainda não sincronizado'); } })
-    .catch(function(){});
-  fetch('/radar-data.json?nocache='+Date.now())
-    .then(function(r){ if(!r.ok) throw 0; return r.json(); })
-    .then(function(d){
-      if(!d || !d.mesa || !d.feed){ throw 0; }
-      DATA=d;
-      document.getElementById('meta').textContent = (d.meta&&d.meta.titulo? d.meta.titulo+' · ':'') + 'atualizado '+(d.meta&&d.meta.atualizado? d.meta.atualizado.replace('T',' ').replace('Z',' UTC'):'');
-      document.getElementById('kpis').innerHTML = (d.kpis||[]).map(kpiHtml).join('');
-      document.getElementById('gen').textContent = (d.meta&&d.meta.atualizado? d.meta.atualizado : '');
-      counts(); render();
-    })
-    .catch(function(){ document.getElementById('meta').textContent='Não foi possível carregar o radar-data.json — recarregue a página.'; });
+  document.getElementById('logout').style.display='inline-block';
+  clearTimeout(SESSION_TIMER);
+  SESSION_TIMER=setTimeout(function(){AUTH_SEQ++;clearSession();hidePanel('Sua sessão expirou. Entre novamente.');startGoogle();},Math.min(expires-Date.now(),2147483647));
 }
-function onCred(resp){
-  var cred=resp.credential;
-  fetch(HUB,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({credential:cred})})
-    .then(function(r){ return r.json().then(function(d){ return {ok:r.ok, d:d}; }); })
-    .then(function(x){
-      if(x.ok && x.d.ok){
-        try{ localStorage.setItem(SES, JSON.stringify({email:x.d.email, exp:Date.now()+12*3600*1000})); sessionStorage.setItem(CRED, cred);}catch(e){}
-        showRadar(x.d.email, cred);
-      } else if(x.d && x.d.error==='acesso_nao_autorizado'){ document.getElementById('e').textContent='Acesso não autorizado — radar restrito à allowlist MasterCore.'; }
-      else { document.getElementById('e').textContent='Não foi possível concluir o login — tente novamente.'; }
-    })
-    .catch(function(){ document.getElementById('e').textContent='Indisponível — tente novamente.'; });
+async function onCred(resp){
+  var seq=++AUTH_SEQ;
+  hidePanel('Validando acesso…');
+  try{
+    var cred=resp&&resp.credential;
+    if(!cred||credentialExpiry(cred)<=Date.now())throw Object.assign(new Error('sessao_expirada'),{code:'sessao_expirada'});
+    var result=await callGate(cred);
+    if(seq!==AUTH_SEQ)return;
+    await showRadar(result.email,cred,seq);
+    if(seq!==AUTH_SEQ)return;
+    // A identidade local nunca libera o painel: o servidor valida novamente em cada entrada.
+    try{sessionStorage.setItem(CRED,cred);}catch(e){}
+    document.getElementById('e').textContent='';
+  }catch(e){
+    if(seq!==AUTH_SEQ)return;
+    clearSession();hidePanel(authError(e.code));startGoogle();
+  }
+}
+async function startGoogle(){
+  try{
+    var r=await fetch(HUB,{cache:'no-store'});
+    if(!r.ok)throw new Error('config');
+    var cfg=await r.json();
+    if(!cfg.ready||!cfg.client_id)throw new Error('config');
+    for(var i=0;i<50&&!(window.google&&google.accounts&&google.accounts.id);i++)await new Promise(function(resolve){setTimeout(resolve,100);});
+    if(!(window.google&&google.accounts&&google.accounts.id))throw new Error('google');
+    google.accounts.id.initialize({client_id:cfg.client_id,callback:onCred});
+    document.getElementById('gbtn').textContent='';
+    google.accounts.id.renderButton(document.getElementById('gbtn'),{theme:'filled_blue',size:'large',text:'signin_with',shape:'pill',locale:'pt-BR'});
+  }catch(e){document.getElementById('e').textContent='Login temporariamente indisponível. Recarregue a página para tentar novamente.';}
 }
 function boot(){
-  var sess=null, cred=null;
-  try{ sess=JSON.parse(localStorage.getItem(SES)||'null'); }catch(e){}
-  try{ cred=sessionStorage.getItem(CRED); }catch(e){}
-  if(sess && cred && sess.exp>Date.now()){ showRadar(sess.email, cred); return; }
-  try{ localStorage.removeItem(SES); }catch(e){}
-  fetch(HUB).then(function(r){ return r.json(); }).then(function(cfg){
-    if(!cfg.ready){ document.getElementById('e').textContent='Autenticação Google em configuração final — volte em instantes.'; return; }
-    google.accounts.id.initialize({ client_id: cfg.client_id, callback: onCred });
-    google.accounts.id.renderButton(document.getElementById('gbtn'), {theme:'filled_blue', size:'large', text:'signin_with', shape:'pill', locale:'pt-BR'});
-  }).catch(function(){ document.getElementById('e').textContent='Indisponível — tente novamente.'; });
+  hidePanel('');
+  try{localStorage.removeItem(SES);}catch(e){}
+  var cred=null;try{cred=sessionStorage.getItem(CRED);}catch(e){}
+  if(cred&&credentialExpiry(cred)>Date.now())onCred({credential:cred});
+  else{clearSession();startGoogle();}
 }
-window.addEventListener('load', boot);
+window.addEventListener('load',boot);
 </script>
 </body>
 </html>
